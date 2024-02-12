@@ -1,0 +1,177 @@
+{% extends 'src/html/base.html' %} {% load static %} {% block content %}
+
+<style>
+  body {
+    background-color: white;
+  }
+
+  .h-screen {
+    background-color: white;
+  }
+
+  .backbtn {
+    cursor: pointer;
+  }
+</style>
+
+
+
+
+
+<div class="container-fluid">
+
+
+  <header class="bg-surface-primary border-bottom pt-6">
+    <div class="row align-items-center">
+      <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+        <!-- Title -->
+        <h1 class="h2 mb-2 ls-tight pl-4">Review Question Paper</h1>
+      </div>
+      <!-- Actions -->
+    </div>
+  </header>
+
+<section class="content">
+  <div
+    class="container mt-5"
+  >
+    <a
+      href="javascript:void(0);"
+      onclick="window.location.href='/questions/'"
+      class="text-black h3"
+    >
+      <i class="fas fa-long-arrow-alt-left me-2"></i>Back to Questions Panel
+    </a>
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div
+          class="d-flex justify-content-between align-items-center mt-2 mb-4"
+        >
+          <p class="mb-0 text-primary" id="cart_count_info">
+            You have added {{que_count}} questions in your Question Paper
+          </p>
+        </div>
+
+
+
+    {% for que in temp_qp.qp_items %}
+    <div class="row" id="item-{{que.qid}}">
+      <div class="col-12">
+          <div class="card mb-3">
+              <div class="card-body">
+                <!-- Product details wrapper -->
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <!-- Left column for image and description -->
+                    <div class="d-flex flex-column flex-md-row align-items-center">
+                        <div>
+                            <h5>{{ que.que|safe }}</h5>
+                            <p class="small mb-0 me-3">{{ que.expl }}</p>
+                        </div>
+                    </div>
+                    <!-- Right column for delete button -->
+                    <div class="ms-auto">
+                        <a class="inline text-end" style="color: #cecece; cursor: pointer" onclick="deleteItem('{{que.qid}}')">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+<div class="col-12 col-md-4" >
+
+              <div class="card text-white rounded-3 bg-secondary">
+                <div class="card-body">
+                  <hr class="my-4" />
+
+                
+
+                  <button type="button" class="btn btn-dark btn-lg btn-block" onclick="setQuestionPaper('{{temp_qp.qp_temp_id}}')">
+                    <div class="d-flex justify-content-between">
+                      <span>SET QUESTION PAPER <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+</div>
+
+
+          </div>
+        
+
+  </div>
+
+</section>
+
+</div>
+<script type="text/javascript">
+
+
+
+// Example usage of the function
+
+
+var que_count = parseInt('{{que_count | safe }}', 10); // Convert to integer
+  function deleteItem(qid) {
+    // Find the item div by its ID and remove it
+    var itemDiv = document.getElementById("item-" + qid);
+    if (itemDiv) {
+            var insti_id = '{{insti_id | safe }}';
+            var qp_temp_id = '{{qp_temp_id | safe }}';
+
+            
+
+            
+            $.ajax({
+                url: "/update-question-paper/",
+                method: "POST",
+                data: {qid: qid, insti_id: insti_id, qp_temp_id: qp_temp_id, action: 'delete'},
+                success: function (res) {
+
+                    itemDiv.remove();
+                
+                    var newCartCount = que_count - 1; // Decrease the count by 1
+
+                    // Update the text of the element with the new count
+                    $('#cart_count_info').text('You have added ' + newCartCount +' questions in your Question Paper');
+                    que_count = newCartCount;
+
+                    },
+                    error: function () {
+                    }
+                });
+          }
+        }
+
+
+
+
+
+
+function setQuestionPaper(qp_temp_id) {
+      $.ajax({
+        url: "/set-question-paper/",
+        method: "POST",
+        data: { qp_temp_id : qp_temp_id },
+        success: function(res) {
+            window.location.href = '/question-papers/';
+        },
+        error: function() {
+            // Handle error
+        }
+    });
+}
+
+      
+
+
+
+
+</script>
+
+{% endblock %}

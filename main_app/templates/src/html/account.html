@@ -1,0 +1,366 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+
+
+
+
+
+.font-bold {
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.badge_custom {
+	
+    --bs-bg-opacity: 1;
+    border: 1px solid #63dfba;
+    color: #63dfba;
+    padding: 10px;
+
+}
+.scrollable-tabs {
+    display: inline-flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    align-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.scrollable-tabs .nav-link {
+    flex-shrink: 0;
+}
+</style>
+ <div class="container-fluid">
+
+        <div class="row">
+	<div class="card p-3 shadow">
+		<h2 class="text-center text-primary p-3">ACCOUNT DETAILS</h2>
+
+			<ul class="nav nav-tabs mb-3 scrollable-tabs" id="nav-tab" role="tablist">
+				<li class="nav-link text-success font-bold active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-step-1" type="button" role="tab" aria-controls="nav-home" aria-selected="true">GSTIN INFO</li>
+				<li class="nav-link text-success font-bold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-step-2" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">SPOC INFO</li>
+				<li class="nav-link text-success font-bold" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-step-3" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">BUSSINESS INFO</li>
+				<li class="nav-link text-success font-bold" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-step-4" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">ADDRESS</li>
+				<li class="nav-link text-success font-bold" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-step-5" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">BANK</li>
+				<li class="nav-link text-success font-bold" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-step-6" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">DOCUMENTS</li>
+			</ul>
+
+		<div class="tab-content p-3 border bg-white" id="nav-tabContent">
+			
+			<div class="tab-pane fade active show" id="nav-step-1" role="tabpanel" aria-labelledby="nav-home-tab">
+				
+
+				<!-- STEP 1 -->
+
+
+				<div class="card-body">
+					<h5 class="text-success p-3">GSTIN INFO</h5>
+
+	                <div class="table-responsive">
+	                  <table class="table text-nowrap mb-0 align-middle">
+	                    
+	                    <tbody>
+
+	                    	<tr>
+	                      		<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">GSTIN</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.company_gstin}}</h6></td>
+	                    	</tr>
+	                    	<tr>
+	                        	<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">COMPANY NAME</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.name}}</h6></td>
+	                    	</tr>
+	                     	<tr>
+	                        	<th class="border-bottom-0">
+	                         		<h6 class="fw-semibold mb-0">LEGAL NAME</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                          		<p class="mb-0 fw-normal">{{account.legal_name}}</p>
+	                        	</td>
+	                    	</tr>
+	                       
+	                                     
+	                    </tbody>
+	                  </table>
+	                </div>
+                  	
+                </div>
+
+
+
+				<!-- END STEP 1 -->
+			</div>
+
+
+			<div class="tab-pane fade" id="nav-step-2" role="tabpanel" aria-labelledby="nav-profile-tab">
+				
+
+				<div class="card-body">
+					<h5 class="text-success p-3">SPOC INFO</h5>
+
+	                <div class="table-responsive">
+	                  <table class="table text-nowrap mb-0 align-middle">
+	                    
+	                    <tbody>
+
+	                    	<tr>
+	                      		<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">MOBILE</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.spoc_contact_number}}</h6></td>
+	                    	</tr>
+	                    	
+	                     	<tr>
+	                        	<th class="border-bottom-0">
+	                         		<h6 class="fw-semibold mb-0">EMAIL</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                          		<p class="mb-0 fw-normal">{{account.spoc_email}}</p>
+	                        	</td>
+	                    	</tr>
+	                       
+	                                     
+	                    </tbody>
+	                  </table>
+	                </div>
+                  	
+                </div>
+
+
+			</div>
+
+			<div class="tab-pane fade" id="nav-step-3" role="tabpanel" aria-labelledby="nav-contact-tab">
+								<div class="card-body">
+					<h5 class="text-success p-3">BUSSINESS INFO</h5>
+
+	                <div class="table-responsive">
+	                  <table class="table text-nowrap mb-0 align-middle">
+	                    
+	                    <tbody>
+	                    	<tr>
+	                        	<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">PRODUCTS</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                        		
+	                        		{% for product in account.p_name %}
+	                        			<span class="badge fw-semibold badge_custom">
+	                        				{{product}}
+	                        			</span>
+	                        		{% endfor %}
+
+	                        	</td>
+	                        		
+	                    	</tr>
+
+	                    	
+	                    	<tr>
+	                        	<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">CREDITS</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.credit}} Days</h6></td>
+	                    	</tr>
+	                    	<tr>
+	                      		<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">TOTAL EMPLOYEES</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.number_of_employees}}</h6></td>
+	                    	</tr>
+	                     	<tr>
+	                        	<th class="border-bottom-0">
+	                         		<h6 class="fw-semibold mb-0">ANNUAL TURNOVER</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                          		<p class="mb-0 fw-normal">{{account.turnover}} Cr.</p>
+	                        	</td>
+	                    	</tr>
+	                       
+	                                     
+	                    </tbody>
+	                  </table>
+	                </div>
+                  	
+                </div>
+			</div>
+
+			<div class="tab-pane fade" id="nav-step-4" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+				<div class="row">
+
+					<div class="col-lg-6">
+		                  			<div class="card-body">
+									<h5 class="text-success p-3">REGISTERED ADDRESS</h5>
+
+					                <p class="p-3">{{account.address}}</p>
+				                  	
+				                </div>
+		                </div>
+
+		              	<div class="col-lg-6">
+		                 			<div class="card-body">
+					<h5 class="text-success p-3">PICKUP ADDRESS</h5>
+
+	               	<p class="p-3" sty>{{account.address}}</p>
+                  	
+                
+		                </div>
+		              </div>
+          </div>
+					
+			</div>
+
+			<div class="tab-pane fade" id="nav-step-5" role="tabpanel" aria-labelledby="nav-contact-tab">
+					<div class="card-body">
+					<h5 class="text-success p-3">BANKING DETAILS</h5>
+
+	                <div class="table-responsive">
+	                  <table class="table text-nowrap mb-0 align-middle">
+	                    
+	                    <tbody>
+	                    	<tr>
+	                        	<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">BANK NAME</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                        		
+	                        		{{account.bank_name}}
+
+	                        	</td>
+	                        		
+	                    	</tr>
+
+	                    	
+	                    	<tr>
+	                        	<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">ACCOUNT NO.</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.acc_no}}</h6></td>
+	                    	</tr>
+	                    	<tr>
+	                      		<th class="border-bottom-0">
+	                          		<h6 class="fw-semibold mb-0">IFSC CODE</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{account.ipsc}}</h6></td>
+	                    	</tr>
+	                     	<tr>
+	                        	<th class="border-bottom-0">
+	                         		<h6 class="fw-semibold mb-0">CANCELLED CHEQUE</h6>
+	                        	</th>
+	                        	<td class="border-bottom-0">
+	                          		<p class="mb-0 fw-normal">{{account.certs.cancelled_chq.link}}</p>
+	                        	</td>
+	                    	</tr>
+	                       
+	                                     
+	                    </tbody>
+	                  </table>
+	                </div>
+                  	
+                </div>
+				</div>
+
+
+				<div class="tab-pane fade" id="nav-step-6" role="tabpanel" aria-labelledby="nav-contact-tab">
+					<div class="card-body">
+					<h5 class="text-center text-success p-3">DOCUMENTS</h5>
+
+					<div class="table-responsive">
+						<table class="table text-nowrap mb-0 align-middle">
+						  
+						  <tbody>
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">POLLUTION CERTIFICATION</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.certs.poll_cert.link}}</p>
+								</td>
+							</tr>
+  
+							  
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">REGISTERED CERTIFICATION</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.certs.reg_cert.link}}</p>
+								</td>
+							</tr>
+
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">CERTIFICATION-1</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.certs.cert1.link}}</p>
+								</td>
+								
+							</tr>
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">REMARKS-1</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.cert1_remark}}</p>
+								</td>
+							</tr>
+							
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">CERTIFICATION-2</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.certs.cert2.link}}</p>
+								</td>
+							</tr>
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">REMARKS-2</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.cert2_remark}}</p>
+								</td>
+							</tr>
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">CERTIFICATION-3</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.certs.cert3.link}}</p>
+								</td>
+							</tr>
+							<tr>
+								<th class="border-bottom-0">
+									 <h6 class="fw-semibold mb-0">REMARKS-3</h6>
+								</th>
+								<td class="border-bottom-0">
+									  <p class="mb-0 fw-normal">{{account.cert3_remark}}</p>
+								</td>
+							</tr>
+							 
+										   
+						  </tbody>
+						</table>
+					  </div>
+                 	 	
+                	</div>
+				</div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,362 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style type="text/css">
+
+
+
+  .recent-orders1 {
+
+      padding-top: 100px;
+
+}
+  .recent-orders {
+
+      margin: 20px;
+    }
+
+    
+
+    .carousel-control-prev span{
+        margin-left: -150px;
+    }
+
+    .carousel-control-next span{
+        margin-right: -150px;
+    }
+
+    .carousel-control-prev span,
+.carousel-control-next span{
+    color: black;
+    font-size: 24px;
+}
+
+@media (max-width: 767.98px) {
+    .carousel-control-prev span {
+        margin-left: -20px;
+    }
+
+    .carousel-control-next span{
+        margin-right: -20px;
+    }
+}
+
+
+</style>
+        
+
+
+
+
+ <!-- <div class="container-fluid">
+  {% for halt in trip.path %}
+      <div class="row justify-content-center align-items-center">
+
+        
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{halt.retailer}}</h5>
+                     <button onclick="openGoogleMaps()">Open Google Maps</button>
+                    <a class="card-text" href="https://www.google.com/maps?q=28.466381,77.070405">LOCATION</a>
+                </div>
+            </div>
+        </div>
+
+ 
+
+
+      </div> 
+       {% endfor %}
+
+  </div> -->
+
+
+<div class="container-fluid">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h5 class="fw-bold">Good morning, Rakesh</h1>
+                <h2 class="fw-bolder " style="color: #444571;">You have <span style="color: #4D67C2;">6 deliveries</span>  today</h3>
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-center">
+            <div class="col-12 ">
+                <!-- Carousel Container -->
+                <div class="position-relative  ">
+                    <!-- Carousel -->
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <!-- Delivery Item 1 -->
+                            <div class="carousel-item active">
+                                <div class="card mx-auto"> <!-- Wrap the card with mx-auto -->
+                                    <div class="card-body">
+                                        <div class="mb-6">
+                                        <h5 class="card-title mb-2 fw-bold">Delivery 1</h5>
+                                    </div>
+                                        <div class="mb-3 ">
+                                   <img src="https://ib-onboarding.s3.ap-south-1.amazonaws.com/website/g-map.png" width="20" height="20" alt="">
+                                            
+                                        <a href="#" class="mb-2 ms-2">Go to Maps</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Drop off: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">Plot No, 115, Sector 44, Gurugram, Haryana 122002.</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Started at: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">10:21 pm</p>
+                                    </div>
+                                        <h5 class="card-text fw-bold" style="color: #1B1E22;"> 30-2-2034</h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-primary" style="background-color: #1AA56A;">Start</button>
+                                            <button class="btn btn-secondary ms-2" style="background-color: #FF3D57;">End</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- Delivery Item 2 -->
+                            <div class="carousel-item">
+                                <div class="card mx-auto"> <!-- Wrap the card with mx-auto -->
+                                    <div class="card-body">
+                                        <div class="mb-6">
+                                        <h5 class="card-title mb-2 fw-bold">Delivery 2</h5>
+                                    </div>
+                                        <div class="mb-3 ">
+                                      <img src="https://ib-onboarding.s3.ap-south-1.amazonaws.com/website/g-map.png" width="20" height="20" alt="">
+                                            
+                                        <a href="#" class="mb-2 ms-2">Go to Maps</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Drop off: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">Plot No, 135, Sector 52, Gurugram, Haryana 122002.</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Started at: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">10:21 pm</p>
+                                    </div>
+                                        <h5 class="card-text fw-bold" style="color: #1B1E22;"> 30-2-2034</h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-primary" style="background-color: #1AA56A;">Start</button>
+                                            <button class="btn btn-secondary ms-2" style="background-color: #FF3D57;">End</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- Delivery Item 3 -->
+                            <div class="carousel-item">
+                                <div class="card mx-auto"> <!-- Wrap the card with mx-auto -->
+                                    <div class="card-body">
+                                        <div class="mb-6">
+                                        <h5 class="card-title mb-2 fw-bold">Delivery 3</h5>
+                                    </div>
+                                        <div class="mb-3 ">
+                                      <img src="https://ib-onboarding.s3.ap-south-1.amazonaws.com/website/g-map.png" width="20" height="20" alt="">
+                                            
+                                        <a href="#" class="mb-2 ms-2">Go to Maps</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Drop off: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">Plot No, 135, Sector 56, Gurugram, Haryana 122002.</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Started at: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">10:21 pm</p>
+                                    </div>
+                                        <h5 class="card-text fw-bold" style="color: #1B1E22;"> 30-2-2034</h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-primary" style="background-color: #1AA56A;">Start</button>
+                                            <button class="btn btn-secondary ms-2" style="background-color: #FF3D57;">End</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- Delivery Item 4 -->
+                            <div class="carousel-item">
+                                <div class="card mx-auto"> <!-- Wrap the card with mx-auto -->
+                                    <div class="card-body">
+                                        <div class="mb-6">
+                                        <h5 class="card-title mb-2 fw-bold">Delivery 4</h5>
+                                    </div>
+                                        <div class="mb-3 ">
+                                      <img src="https://ib-onboarding.s3.ap-south-1.amazonaws.com/website/g-map.png" width="20" height="20" alt="">
+                                            
+                                        <a href="#" class="mb-2 ms-2">Go to Maps</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Drop off: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">Plot No, 135, Sector 56, Gurugram, Haryana 122002.</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="card-text">Started at: </p>
+                                        <p class="fw-medium ms-2" style="color: #1B1E22;">10:21 pm</p>
+                                    </div>
+                                        <h5 class="card-text fw-bold" style="color: #1B1E22;"> 30-2-2034</h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-primary" style="background-color: #1AA56A;">Start</button>
+                                            <button class="btn btn-secondary ms-2" style="background-color: #FF3D57;">End</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Previous Button -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span>&lt;</span>
+                        </button>
+                        <!-- Next Button -->
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span>&gt;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <script>
+   
+
+        function openGoogleMaps() {
+            // Specify the latitude and longitude
+            var latitude = 28.466381;
+            var longitude = 77.070405;
+
+            // Create the Google Maps URL
+            var mapUrl = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+
+            // Navigate to the Google Maps URL
+            window.location.href = mapUrl;
+        }
+
+
+              function displayAttendance(trip_id) {
+
+            window.location.href = '/trip-details/' + trip_id + '/';
+
+          }
+
+
+          var statusModal = document.getElementById('stockModal');
+          statusModal.addEventListener('show.bs.modal', function (event) {
+              var button = event.relatedTarget;
+              var order_id = button.getAttribute('data-order-id');
+              var status = button.getAttribute('data-status');
+              var modalOrder = statusModal.querySelector('.modal-body #order_value');
+              var modalStatus = statusModal.querySelector('.modal-body #statusSelect');
+      
+              modalOrder.textContent = order_id;
+              modalStatus.value = status; // Set the dropdown value
+          });
+
+          var choiceModal = document.getElementById('choiceModal');
+          choiceModal.addEventListener('show.bs.modal', function (event) {
+              var button = event.relatedTarget;
+              var order_id = button.getAttribute('data-order-id');
+              var status = button.getAttribute('data-status');
+              var modalOrder = choiceModal.querySelector('.modal-body #order_value_id');
+              var modalStatus = choiceModal.querySelector('.modal-body #statusSelect');
+      
+              modalOrder.textContent = order_id;
+              modalStatus.value = status; // Set the dropdown value
+          });
+
+          function acceptOrder(order_id){
+
+            var data = {
+                  'order_id': order_id,
+                  'status': "ACCEPTED",
+              };
+
+            $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+
+                      location.reload();
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+
+          }
+          
+          function rejectOrder(){
+            
+            var order_id = document.getElementById('order_value_id').textContent;
+            var status = "REJECTED";
+      
+            var data = {
+                  order_id: order_id,
+                  status: "REJECTED",
+              };
+              console.log(data);
+      
+              $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+
+                      location.reload();
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+
+          };
+
+          function updateOrderStatus() {
+              var order_id = document.getElementById('order_value').textContent;
+              var status = document.getElementById('statusSelect').value;
+      
+              // Construct the data object to be sent
+              var data = {
+                  order_id: order_id,
+                  status: status,
+              };
+      
+              // Using jQuery AJAX to send data to the server
+              $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+      
+                      // Update the status in the corresponding table cell
+                      // var statusCell = document.querySelector('td[data-order-id="' + order_id + '"]');
+                      // var statusBadge = statusCell.querySelector('.badge');
+                      // statusBadge.textContent = status;
+                      location.reload();
+      
+                      // You can also update other elements if needed
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+          }
+      </script>
+          
+
+{% endblock %}
+
+     

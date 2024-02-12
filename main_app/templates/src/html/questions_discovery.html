@@ -1,0 +1,325 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<style>
+
+.counter-button-container{
+  z-index: 100;
+  position: fixed;
+  left: 91%;
+}
+
+.btn {
+    position: relative;
+  }
+
+  #cartCountSpan {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red; /* Set the background color for the notification */
+    color: white;
+    border-radius: 50%; /* Make it a circle */
+    padding: 4px 8px; /* Adjust padding as needed */
+    font-size: 12px; /* Adjust font size as needed */
+  }
+  
+  .row-cols-2 .col,
+  .row-cols-md-3 .col,
+  .row-cols-lg-4 .col {
+   
+    padding: 2px;
+  }
+
+  .cardproducts{
+    transition: box-shadow 0.5s ease-in-out; /* Increase transition duration */
+  }
+
+  .cardproducts:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+
+
+  .btn-circle {
+    border-radius: 50% !important; 
+    padding: 10px;
+    margin-left: 30px;
+  }
+
+  .container-box {
+        border: none;
+        padding: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        
+    }
+    
+    .rupeetext ,
+    .gsttext
+    {
+      font-size: 14px;
+    }
+
+  @media (max-width: 767px) {
+
+    .counter-button-container{
+      left: 70%;
+    }
+
+    .row-cols-md-3 .col {
+      margin-bottom: 1rem;
+    }
+
+    .rupeetext ,
+    .gsttext
+    {
+      font-size: 12px;
+    }
+
+    .cardcontainer{
+      width: 84%;
+    }
+
+    .card-text {
+      font-size: 12px;
+    }
+
+    .card-title {
+      font-size: 10px;
+    }
+
+    .d-md-flex {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .btn-circle {
+        border-radius: 0 !important;
+        width: 100%;
+        padding: 1px;
+        margin-left: 0px;
+    }
+  }
+
+
+  .select-container {
+    width: 100%;
+  }
+
+  #retailerSelect {
+    width: 150%;
+  }
+
+  /* Media query for mobile devices */
+  @media only screen and (max-width: 600px) {
+    #retailerSelect {
+      width: 100%;
+    }
+  }
+
+  .container-box {
+            text-align: center;
+            padding: 15px;
+            margin: 10px;
+            text-decoration: none;
+            color: #000;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .container-box.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-success {
+        background-color: green;
+        color: black;
+    }
+
+</style>
+
+
+
+
+
+        <!-- Header -->
+
+
+<div class="container-fluid">
+          <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h4 mb-0 ls-tight text-warning" style="padding-bottom: 20px;">You are placing an order at Retailer {{retailer_id}}</h1>
+                        </div>
+                        <!-- Actions -->
+                       
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+             <div class="d-flex justify-content-between align-items-center px-6">
+               <!-- Retailer Dropdown on the Left -->
+             
+           
+               <!-- Cart Button on the Right -->
+               <div class="counter-button-container">
+                 <a onclick="window.location.href='/review-qp/{{qp_temp_id}}/'">
+                   <button id="cartCounterBtn" class="btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 27 27" fill="none">
+                       <circle cx="13.5" cy="13.5" r="13.5" fill="#7A68D0"/>
+                       <path d="M10.375 21C11.0654 21 11.625 20.4404 11.625 19.75C11.625 19.0596 11.0654 18.5 10.375 18.5C9.68464 18.5 9.125 19.0596 9.125 19.75C9.125 20.4404 9.68464 21 10.375 21Z" fill="white"/>
+                       <path d="M16.625 21C17.3154 21 17.875 20.4404 17.875 19.75C17.875 19.0596 17.3154 18.5 16.625 18.5C15.9346 18.5 15.375 19.0596 15.375 19.75C15.375 20.4404 15.9346 21 16.625 21Z" fill="white"/>
+                       <path d="M20.365 9.76125C19.925 9.34056 19.3361 9.11172 18.7275 9.125H9.53375L9.36937 7.83625C9.30969 7.33043 9.06649 6.8641 8.68588 6.52565C8.30526 6.1872 7.8137 6.00016 7.30437 6H6.9375C6.68886 6 6.4504 6.09877 6.27459 6.27459C6.09877 6.4504 6 6.68886 6 6.9375C6 7.18614 6.09877 7.4246 6.27459 7.60041C6.4504 7.77623 6.68886 7.875 6.9375 7.875H7.30437C7.3555 7.87555 7.40462 7.89501 7.44224 7.92964C7.47987 7.96426 7.50334 8.01159 7.50813 8.0625L8.44563 15.4119C8.50476 15.9181 8.74773 16.385 9.12842 16.7238C9.5091 17.0627 10.001 17.2499 10.5106 17.25H16.8369C17.5894 17.2496 18.321 17.0022 18.9194 16.5458C19.5178 16.0895 19.9499 15.4494 20.1494 14.7238L20.9281 11.8919C21.0319 11.5187 21.0345 11.1247 20.9355 10.7502C20.8366 10.3757 20.6396 10.0344 20.365 9.76125ZM18.3438 14.2269C18.2522 14.5564 18.0554 14.847 17.7834 15.0543C17.5113 15.2616 17.1789 15.3742 16.8369 15.375H10.5106C10.4595 15.3746 10.4104 15.3551 10.3729 15.3205C10.3353 15.2858 10.312 15.2384 10.3075 15.1875L9.77313 11H18.8212C18.8695 10.9996 18.9172 11.0105 18.9606 11.0316C19.004 11.0528 19.0419 11.0837 19.0713 11.122C19.1007 11.1603 19.1209 11.2048 19.1302 11.2522C19.1395 11.2996 19.1377 11.3484 19.125 11.395L18.3438 14.2269Z" fill="white"/>
+                     </svg>
+                     <span id="cartCountSpan">{{que_count}}</span>
+                   </button>
+                 </a>
+               </div>
+             </div>
+                 
+             <div class="row" style="padding-top: 30px;">
+                  {% for category in categories %}
+                  <div class="col-md-3">
+                      <a class="container-box {% if cat == category.key %}active{% endif %}" href="/product-discovery/{{retailer_id}}/?cat={{category.key}}">
+                          <p>{{ category.name }}</p>
+                      </a>
+                  </div>
+                  {% endfor %}
+            </div>
+
+
+           
+
+    
+        {% for question in questions %}
+        <div class="row">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 16px;">{{ question.que|safe }}</h5>
+                    <p class="card-text">{{ question.expl }}</p>
+                    <div class="text-end">
+                        <button id="addBtn-{{ question.qid }}" class="btn btn-outline-success m-1" onclick="addToCart('{{ question.qid }}')">+</button>
+                    </div>
+                </div>
+            </div>
+       </div>
+        {% endfor %}
+
+</div>
+
+
+
+
+
+<!-- cards section -->
+
+
+<script>
+
+
+
+// $(document).ready(function() {
+//     $('#retailerSelect').select2({
+//         ajax: {
+//             url: '/search-retailers/', // Endpoint URL
+//             dataType: 'json',
+//             delay: 300,
+//             processResults: function(data) {
+//                 return {
+//                     results: [
+//                     { id: '', text: "Please Select Retailer" },
+//                     ...data.data.map(item => ({
+//                         id: item.id,
+//                         text: item.text
+//                     }))
+//                 ]
+//                 };
+//             }
+//         }
+//     });
+// });
+
+
+
+
+
+
+
+var queCount = '{{que_count | safe }}'; // Move productCount outside the event listener
+
+function addToCart(qid) {
+
+
+
+  // Increment the product count
+  queCount = parseInt(queCount, 10) + 1;;
+  var insti_id = '{{insti_id | safe }}';
+  var qp_temp_id = '{{qp_temp_id | safe }}';
+
+      $.ajax({
+        url: "/add-to-question-paper/",
+        method: "POST",
+        data: {qid: qid, insti_id: insti_id, qp_temp_id: qp_temp_id},
+        success: function (res) {
+          updateCounter();
+            // Change the button color to green after adding the product
+            var addButton = document.getElementById("addBtn-" + qid);
+            addButton.classList.remove("btn-primary");
+            addButton.classList.add("btn-success");
+            // addButton.innerHTML = "Add";
+            addButton.disabled = true;
+        },
+        error: function () {
+            // Handle error
+        }
+        });
+
+
+ 
+
+
+  // Update the counter button text
+  
+}
+
+function updateCounter() {
+  // Update the counter button text
+  var cartCountSpan = document.getElementById("cartCountSpan");
+  cartCountSpan.textContent = `${queCount}`;
+}
+
+
+</script>
+
+
+
+
+
+{% endblock %}

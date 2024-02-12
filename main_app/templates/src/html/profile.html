@@ -1,0 +1,87 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+
+body {
+  background-color: #eee;
+}
+
+
+.card {
+  border:none;
+  padding: 10px;
+}
+
+.form-select:focus {
+  border-color: #8bbafe;outline: 0;box-shadow: none;
+}
+.graphic {
+  background-color: blue;border:1px solid blue;
+}
+.graphic:hover {
+  background-color: blue;border:1px solid blue;
+}
+.code {
+  background-color: red;border:1px solid red;
+}
+.code:hover {
+  background-color: red;border:1px solid red;
+}
+.form-select {
+  width: 172px;
+}
+.team-button button {
+  font-size: 12px;width: 180px;height: 40px;
+}
+.team-projects span {
+  font-size: 12px;width: 180px;height: 40px;border: 1px solid #d4d2d2;padding: 10px;background-color: #eee;border-radius: 4px;padding-left: 23px;padding-right: 23px;
+}  
+</style>
+
+
+
+
+ <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-lg-6 col-md-12">
+<div class="card">
+ <div class="d-flex flex-column align-items-center p-2">
+        <img src="https://i.imgur.com/7ZqokLR.jpg" class="rounded-circle" width="200">
+        <div style="padding: 40px;">
+          <span>Nagendra Kumar</span><br>
+          <span>9540025266</span>
+      </div>
+    </div>
+</div>
+
+                </div>
+
+                <!-- Second Column -->
+                <div class="col-lg-6 col-md-12">
+<div class="card">
+    <div class="d-flex flex-column align-items-center p-2">
+        
+        <span>Sr. Engineering Manager</span>
+        <span style="padding: 20px;">EAT132543542</span>
+    </div>
+
+
+
+</div>
+
+                </div>
+            </div>
+        </div>
+</div>
+
+       
+
+{% endblock %}
+
+     

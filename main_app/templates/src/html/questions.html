@@ -1,0 +1,251 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<style>
+
+.counter-button-container{
+  z-index: 100;
+  position: fixed;
+  left: 91%;
+}
+
+.btn {
+    position: relative;
+  }
+
+  #cartCountSpan {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red; /* Set the background color for the notification */
+    color: white;
+    border-radius: 50%; /* Make it a circle */
+    padding: 4px 8px; /* Adjust padding as needed */
+    font-size: 12px; /* Adjust font size as needed */
+  }
+  
+  .row-cols-2 .col,
+  .row-cols-md-3 .col,
+  .row-cols-lg-4 .col {
+   
+    padding: 2px;
+  }
+
+  .cardproducts{
+    transition: box-shadow 0.5s ease-in-out; /* Increase transition duration */
+  }
+
+  .cardproducts:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+
+
+  .btn-circle {
+    border-radius: 50% !important; 
+    padding: 10px;
+    margin-left: 30px;
+  }
+
+  .container-box {
+        border: none;
+        padding: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        
+    }
+    
+    .rupeetext ,
+    .gsttext
+    {
+      font-size: 14px;
+    }
+
+  @media (max-width: 767px) {
+
+    .counter-button-container{
+      left: 70%;
+    }
+
+    .row-cols-md-3 .col {
+      margin-bottom: 1rem;
+    }
+
+    .rupeetext ,
+    .gsttext
+    {
+      font-size: 12px;
+    }
+
+    .cardcontainer{
+      width: 84%;
+    }
+
+    .card-text {
+      font-size: 12px;
+    }
+
+    .card-title {
+      font-size: 10px;
+    }
+
+    .d-md-flex {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .btn-circle {
+        border-radius: 0 !important;
+        width: 100%;
+        padding: 1px;
+        margin-left: 0px;
+    }
+  }
+
+
+  .select-container {
+    width: 100%;
+  }
+
+  #retailerSelect {
+    width: 150%;
+  }
+
+  /* Media query for mobile devices */
+  @media only screen and (max-width: 600px) {
+    #retailerSelect {
+      width: 100%;
+    }
+  }
+
+  .container-box {
+            text-align: center;
+            padding: 15px;
+            margin: 10px;
+            text-decoration: none;
+            color: #000;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .container-box.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-success {
+        background-color: green;
+        color: black;
+    }
+
+</style>
+
+
+
+
+
+        <!-- Header -->
+
+
+<div class="container-fluid">
+	        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h4 mb-0 ls-tight text-primary" style="padding-bottom: 20px;">Questions</h1>
+                        </div>
+                        <!-- Actions -->
+                       
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+             <div class="d-flex justify-content-between align-items-center px-6">
+               <!-- Retailer Dropdown on the Left -->
+             
+           
+               <!-- Cart Button on the Right -->
+               <div class="counter-button-container">
+                 <a onclick="window.location.href='/add-question/'">
+                   <button class="btn btn-primary">
+                     + QUESTION
+                   </button>
+                 </a>
+               </div>
+             </div>
+                 
+             <div class="row" style="padding-top: 30px;">
+                  {% for category in categories %}
+                  <div class="col-md-3">
+                      <a class="container-box {% if cat == category.key %}active{% endif %}" href="/product-discovery/{{retailer_id}}/?cat={{category.key}}">
+                          <p>{{ category.name }}</p>
+                      </a>
+                  </div>
+                  {% endfor %}
+            </div>
+
+
+           
+
+    
+        {% for question in questions %}
+        <div class="row">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 16px;">{{ question.que|safe}}</h5>
+                    <p class="card-text">{{ question.expl }}</p>
+                    
+                </div>
+            </div>
+   		 </div>
+        {% endfor %}
+
+</div>
+
+
+
+
+
+<!-- cards section -->
+
+
+<script>
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+{% endblock %}

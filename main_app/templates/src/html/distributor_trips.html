@@ -1,0 +1,541 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style type="text/css">
+
+
+
+
+</style>
+        
+
+
+
+
+
+
+<div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="stockModalLabel" style="color: grey;">UPDATE ORDER STATUS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <p class="form-control-plaintext" id="order"><span id="order_value"></span></p>
+                <label for="statusSelect">Status:</label>
+                <select class="form-control" id="statusSelect">
+                    <option value="PLACED">PLACED</option>
+                    <option value="ACCEPTED">ACCEPTED</option>
+                    <option value="REJECTED">REJECTED</option>
+                    <option value="PROCESSING">PROCESSING</option>
+                    <option value="PICKUP_PENDING">PICKUP PENDING</option>
+                    <option value="PICKUP_COMPLETED">PICKUP COMPLETED</option>
+                </select>
+            </div>
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-primary" onclick="updateOrderStatus()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Trips</h5>
+
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">TRIP ID</h6>
+                        </th>
+                        <th class="border-bottom-0" style="width: 250px;">
+                          <h6 class="fw-semibold mb-0">CREATED AT</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">STATUS</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">ASSIGNED TO</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">DETAILS</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      {% for trip in trips %}
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{trip.trip_id}}</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">{{trip.created_at}}</h6>
+                                                      
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{trip.status}}</p>
+                        </td>
+                        <td class="border-bottom-0" data-bs-toggle="modal" data-bs-target="#stockModal" data-status="{{order.status}}" data-order-id="{{order.order_id}}" style="cursor: pointer;">
+                          <div class="d-flex align-items-center gap-2">
+
+                            <span class="badge bg-danger fw-semibold">{{trip.assigned_to}}              
+                           
+                          </span><i class="ti ti-edit"></i>
+                          </div>
+                        </td>
+                          <td class="border-bottom-0">
+                          <button class="btn btn-outline-success" onclick="displayAttendance('{{trip.trip_id}}')"> SHOW</button>
+                        </td>
+                      </tr> 
+                      {% endfor %}
+
+
+                                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row">
+          <!-- card 1 -->
+          <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="text-black fw-bold h4 ">Trip 1</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                              <div>
+                             <label class="mb-2 mt-2">Total Deliveries:</label>
+                             <select class="ms-2 p-1">
+                              <option>6</option>
+                              <option>6</option>
+                              <option>6</option>
+                             </select>
+                              </div>
+                              <div>
+                                <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                    <div class="d-flex flex-column ">
+                                    <p class="mb-0 mt-2">Assigned to: </p>
+                                    <p class="h5 text-black ">Rakesh Kumar</p>
+                                  </div>
+                                </div>
+                                <div class="text-center text-white oval-shape">In Transit</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <input type="range" id="slider1" class="form-range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+          <!-- Card 2-->
+          <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="text-black fw-bold h4 ">Trip 2</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                              <div>
+                             <label class="mb-2 mt-2">Total Deliveries:</label>
+                             <select class="ms-2 p-1">
+                              <option>6</option>
+                              <option>6</option>
+                              <option>6</option>
+                             </select>
+                              </div>
+                              <div>
+                                <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                    <div class="d-flex flex-column ">
+                                    <p class="mb-0 mt-2">Assigned to: </p>
+                                    <p class="h5 text-black ">Suresh Kumar</p>
+                                  </div>
+                                </div>
+                                <div class="text-center text-white oval-shape" style="background-color: #FF3D57;">On Track</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <input type="range" id="slider2" class="form-range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+              <div class="card-body">
+                  <h5 class="text-black fw-bold h4 ">Trip 3</h5>
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="d-flex justify-content-between">
+                            <div>
+                           <label class="mb-2 mt-2">Total Deliveries:</label>
+                           <select class="ms-2 p-1">
+                            <option>6</option>
+                            <option>6</option>
+                            <option>6</option>
+                           </select>
+                            </div>
+                            <div>
+                              <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-12">
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                  <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                  <div class="d-flex flex-column ">
+                                  <p class="mb-0 mt-2">Assigned to: </p>
+                                  <p class="h5 text-black ">Sumit Kumar</p>
+                                </div>
+                              </div>
+                              <div class="text-center text-white oval-shape" style="background-color: #1AA56A;">Completed</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-12">
+                          <input type="range" id="slider3" class="form-range" min="0" max="100" value="50">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        </div>
+        <div class="row">
+          <!-- card 4 -->
+          <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="text-black fw-bold h4 ">Trip 4</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                              <div>
+                             <label class="mb-2 mt-2">Total Deliveries:</label>
+                             <select class="ms-2 p-1">
+                              <option>6</option>
+                              <option>6</option>
+                              <option>6</option>
+                             </select>
+                              </div>
+                              <div>
+                                <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                    <div class="d-flex flex-column ">
+                                    <p class="mb-0 mt-2">Assigned to: </p>
+                                    <p class="h5 text-black ">Rakesh Kumar</p>
+                                  </div>
+                                </div>
+                                <div class="text-center text-white oval-shape">In Transit</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <input type="range" id="slider4" class="form-range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+          <!-- Card 5-->
+          <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="text-black fw-bold h4 ">Trip 5</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                              <div>
+                             <label class="mb-2 mt-2">Total Deliveries:</label>
+                             <select class="ms-2 p-1">
+                              <option>6</option>
+                              <option>6</option>
+                              <option>6</option>
+                             </select>
+                              </div>
+                              <div>
+                                <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                    <div class="d-flex flex-column ">
+                                    <p class="mb-0 mt-2">Assigned to: </p>
+                                    <p class="h5 text-black ">Suresh Kumar</p>
+                                  </div>
+                                </div>
+                                <div class="text-center text-white oval-shape" style="background-color: #FF3D57;">On Track</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <input type="range" id="slider5" class="form-range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+              <div class="card-body">
+                  <h5 class="text-black fw-bold h4 ">Trip 6</h5>
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="d-flex justify-content-between">
+                            <div>
+                           <label class="mb-2 mt-2">Total Deliveries:</label>
+                           <select class="ms-2 p-1">
+                            <option>6</option>
+                            <option>6</option>
+                            <option>6</option>
+                           </select>
+                            </div>
+                            <div>
+                              <p class="mb-2 mt-2">Date: <span class="text-black h6">6-Feb-2024</span></p>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-12">
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                  <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                  <div class="d-flex flex-column ">
+                                  <p class="mb-0 mt-2">Assigned to: </p>
+                                  <p class="h5 text-black ">Sumit Kumar</p>
+                                </div>
+                              </div>
+                              <div class="text-center text-white oval-shape" style="background-color: #1AA56A;">Completed</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-12">
+                          <input type="range" id="slider6" class="form-range" min="0" max="100" value="50">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        </div>
+      </div>
+      
+        <script>
+
+$(document).ready(function() {
+    // Function to update slider track color dynamically for each slider
+    $(".form-range").each(function() {
+        var sliderId = $(this).attr("id");
+        var storedValue = localStorage.getItem(sliderId); // Retrieve stored value from local storage
+
+        // Set slider value to the stored value or default to 50 if no value is stored
+        $(this).val(storedValue || 50);
+
+        updateSliderColor($(this)); // Update slider color based on initial value
+
+        // Update slider color dynamically when input value changes
+        $(this).on("input", function() {
+            updateSliderColor($(this)); // Update slider color
+            localStorage.setItem(sliderId, $(this).val()); // Store slider value in local storage
+        });
+    });
+});
+
+// Function to update slider track color dynamically based on slider value
+function updateSliderColor(slider) {
+    var value = slider.val();
+    var gradient = "linear-gradient(to right, #7A68D0 0%, #7A68D0 " + value + "%, #E0E0E0 " + value + "%, #E0E0E0 100%)";
+    slider.css("background", gradient);
+}
+
+
+              function displayAttendance(trip_id) {
+
+            window.location.href = '/trip-details/' + trip_id + '/';
+
+          }
+
+
+          var statusModal = document.getElementById('stockModal');
+          statusModal.addEventListener('show.bs.modal', function (event) {
+              var button = event.relatedTarget;
+              var order_id = button.getAttribute('data-order-id');
+              var status = button.getAttribute('data-status');
+              var modalOrder = statusModal.querySelector('.modal-body #order_value');
+              var modalStatus = statusModal.querySelector('.modal-body #statusSelect');
+      
+              modalOrder.textContent = order_id;
+              modalStatus.value = status; // Set the dropdown value
+          });
+
+          var choiceModal = document.getElementById('choiceModal');
+          choiceModal.addEventListener('show.bs.modal', function (event) {
+              var button = event.relatedTarget;
+              var order_id = button.getAttribute('data-order-id');
+              var status = button.getAttribute('data-status');
+              var modalOrder = choiceModal.querySelector('.modal-body #order_value_id');
+              var modalStatus = choiceModal.querySelector('.modal-body #statusSelect');
+      
+              modalOrder.textContent = order_id;
+              modalStatus.value = status; // Set the dropdown value
+          });
+
+          function acceptOrder(order_id){
+
+            var data = {
+                  'order_id': order_id,
+                  'status': "ACCEPTED",
+              };
+
+            $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+
+                      location.reload();
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+
+          }
+          
+          function rejectOrder(){
+            
+            var order_id = document.getElementById('order_value_id').textContent;
+            var status = "REJECTED";
+      
+            var data = {
+                  order_id: order_id,
+                  status: "REJECTED",
+              };
+              console.log(data);
+      
+              $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+
+                      location.reload();
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+
+          };
+
+          function updateOrderStatus() {
+              var order_id = document.getElementById('order_value').textContent;
+              var status = document.getElementById('statusSelect').value;
+      
+              // Construct the data object to be sent
+              var data = {
+                  order_id: order_id,
+                  status: status,
+              };
+      
+              // Using jQuery AJAX to send data to the server
+              $.ajax({
+                  url: '/update-order-status/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+      
+                      // Update the status in the corresponding table cell
+                      // var statusCell = document.querySelector('td[data-order-id="' + order_id + '"]');
+                      // var statusBadge = statusCell.querySelector('.badge');
+                      // statusBadge.textContent = status;
+                      location.reload();
+      
+                      // You can also update other elements if needed
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+          }
+      </script>
+          
+
+{% endblock %}
+
+     

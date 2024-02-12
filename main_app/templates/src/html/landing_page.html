@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
+
+        <meta property="og:title" content="Anonymous Chat - Chat with Strangers Anonymously - Texting Club House">
+        <meta property="og:description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
+        <meta property="og:url" content="https://textingclubhouse.com">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:title" content="Anonymous Chat - Chat with Strangers Anonymously - Texting Club House">
+        <meta name="twitter:description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
+        <meta name="twitter:url" content="https://textingclubhouse.com">
+
+        <link rel="icon" href="/media/favicon.ico" type="image/x-icon">
+        <link rel="canonical" href="https://textingclubhouse.com">
+        <title>TextingClubHouse - Chat with Strangers Anonymously</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+:root {
+  --cd-color-white: #ffffff;
+  --cd-color-blue: #47cdee;
+  --cd-color-purple: #520bad;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*:focus {
+  box-shadow: none !important;
+}
+html {
+
+  scroll-behavior: smooth;
+}
+body {
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "inter";
+  color: var(--cd-color-white);
+  font-weight: 400;
+}
+
+
+
+
+
+
+    /* Other CSS styles remain unchanged */
+
+
+
+
+
+
+h4 {
+  margin: 10px 0;
+  color: var(--mdb-green);
+  font-weight: bold;
+}
+
+h6 {
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.card-container {
+  border-radius: 5px;
+  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+  color: #b3b8cd;
+  padding-top: 30px;
+  position: relative;
+  text-align: center;
+  margin: auto;
+}
+
+/*.card-container .pro {
+  color: #231e39;
+  background-color: #febb0b;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 7px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}*/
+
+.card-container .pro {
+  color: #007ffe;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 3px 3px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 99999;
+  border-radius: 50%;
+}
+
+.card-container .round {
+  border-radius: 50%;
+}
+
+button.primary {
+  background-color: black;
+  border: 1px solid #black;
+  border-radius: 3px;
+  color: white;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  margin: auto;
+  display: block;
+}
+
+
+
+
+.skills {
+  text-align: left;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.skills ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skills ul li {
+  border: 1px solid #2d2747;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0 7px 7px 0;
+  padding: 7px;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 999;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+footer i {
+  color: red;
+}
+
+footer a {
+  color: #3c97bf;
+  text-decoration: none;
+}
+
+    .titled {
+      font-family: 'Merriweather', serif !important;
+      font-size: 30px !important;
+      font-weight: 400 !important;
+      line-height: 64px !important;
+    }
+
+    .subtitled {
+      font-family: 'Merriweather', serif !important;
+      font-size: 20px !important;
+      font-weight: 400 !important;
+      line-height: 36px !important;
+    }
+    .fa-check-circle {
+      background-color: white;
+    }
+
+    .navbar-transparent {
+    background-color: transparent !important;
+    backdrop-filter: blur(5px); /* Optional: adds a blur effect */
+    border-bottom: none !important;
+}
+
+    .navbar-sticky {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Adjust z-index as needed */
+        background-color: rgba(255, 255, 255, 0.8); /* Add background color for visibility */
+    }
+
+    .head1 {
+            padding: 5px;
+            border: 1px #8ddc90 solid;
+            display: inline-block;
+            color: #011901;
+            background: #daffda;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 30px;
+    }
+    .head2 {
+            padding: 5px;
+            border: 1px #8ddc90 solid;
+            display: inline-block;
+            color: #011901;
+            background: #daffda;
+            font-size: 14px;
+            font-weight: bold;
+    }
+
+
+
+
+img {
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Globel style                                */
+/* -------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+
+
+.card {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-transparent fixed-top navbar-sticky" role="navigation" aria-label="main navigation">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <strong style="color: green; margin-right: 5px;"> QUIZ</strong>LITE
+            </div>
+        </div>
+        <div class="navbar-item">
+            <a style="color: #3e8ed0; margin-right: 5px; font-weight: bold" href="/login/"> LOGIN</a>
+        </div>
+    </div>
+</nav>
+
+
+
+
+  <!-- Hero del producto -->
+  <section class="hero is-white is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns  is-vcentered reverse-columns">
+          <div class="column
+          is-10-mobile 
+          is-10-tablet 
+          is-5-desktop 
+          is-5-widescreen 
+          is-5-fullhd " data-aos="fade-down">
+            <h2 class="title titled is-1 mb-6" style="color: #3e8ed0;">
+              Revolutionizing Education through Interactive Quizzing
+            </h2>
+            <div class="head">
+    <div class="head1">Path to Interactive Learning and Growth</div>
+    <div class="head2">Create engaging quizzes for your students</div>
+</div>
+
+          </div>
+          <div data-aos="fade-right" class="column
+          is-10-mobile 
+          is-10-tablet 
+          is-4-desktop 
+          is-7-widescreen 
+          is-4-fullhd is-offset-1-fullhd">
+            <figure class="image is-square">
+              <img src="https://bulmatemplates.github.io/bulma-templates/images/undraw_Camera_re_cnp4.svg">
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+
+        {% for post in posts %}
+          <div class="col" >
+            <div class="card rounded-10 border-0 shadow-lg cd-40 mb-5" style="margin: auto;">
+                <div class="card-head align-items-center p-0">
+                    <img src="https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?h=350&auto=compress&cs=tinysrg"
+                        alt="">
+                </div>
+                <div class="card-body pt-4">
+                    <h6 class="card-title fw-semibold">Title</h6>
+                    <p>Something short and simple here</p>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+  </div>
+    <section class="hero is-medium has-text-centered" style="padding-bottom: 100px;">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div data-aos="zoom-in-up" class="column is-8">
+            <h1 class="title titled is-1 mb-6">
+              Tailored, <span id="typewriter"></span>
+
+
+
+            </h1>
+            <h2 class="subtitle subtitled" style="color: #3e8ed0;">
+              Your go-to destination for interactive quizzing and personalized learning experiences.
+
+            </h2>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<footer class="py-4" style="background-color: #3e8ed0;">
+    <div class="container text-center">
+        <p class="mb-0">
+            Created with <i class="fas fa-heart text-danger"></i> by Nagendra
+        </p>
+    </div>
+</footer>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
+  <script>
+    new Typewriter('#typewriter', {
+      strings: ['Interactive, and Collaborative!'],
+      autoStart: true,
+      loop: true,
+    });
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true
+    });
+
+  function handleMessageButtonClick(user_name) {
+    // Replace this with the desired action when the button is clicked
+        window.location.href = "/chat/?to=" + user_name;
+  }
+
+
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetDivId = urlParams.get('targetDiv');
+            const targetDiv = document.getElementById(targetDivId);
+            if (targetDiv) {
+                targetDiv.scrollIntoView();
+            }
+        });
+  </script>
+</body>
+</html>

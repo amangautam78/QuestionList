@@ -1,0 +1,222 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="modal fade" id="user-modal" tabindex="-1" aria-labelledby="user-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="user-modal-label" style="color: grey;">Enter Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" name="name" id="name">
+
+                <label for="name" class="form-label">Mobile:</label>
+                <input type="phone" class="form-control" name="mobile" id="mobile" oninput="validateInput(this)" maxlength="10" minlength="10">
+
+                <label for="name" class="form-label">Email:</label>
+                <input type="text" class="form-control" name="email" id="email">
+
+                <label for="name" class="form-label">Role:</label>
+
+                <select class="form-control" id="role">
+                  <option value="" selected>Plese select role</option>
+                  <option value="admin">Admin</option>
+                  <option value="employee">employee</option>
+              </select>
+                
+                <label for="name" class="form-label">Designation:</label>
+                <input type="text" class="form-control" name="designation" id="designation">
+
+            </div>
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-primary" onclick="addEmployee()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+
+              <div class="card-body p-4">
+                <button type="button" class="btn btn-secondary m-1" style="float: right;" 
+                data-bs-toggle="modal" data-bs-target="#user-modal" style="cursor: pointer; font-size: 10px; margin-left: 12px !important;"
+                >Add+</button>
+                <h5 class="card-title fw-semibold mb-4">Employees</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0" style="  width: 180px;">
+                          <h6 class="fw-semibold mb-0">CODE</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">CONTACT INFO</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">NAME</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">ROLE</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">DESIGNATION</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for emp in employees %}
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{emp.emp_id}}</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">{{emp.mobile}}</h6>
+                            <span class="fw-normal">{{emp.email}}</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{emp.name}}</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary rounded-3 fw-semibold">{{emp.role}}</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">{{emp.designation}}</h6>
+                        </td>
+                      </tr> 
+                      {% endfor %}
+                             
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <script type="text/javascript">
+
+          function validateInput(input) {
+
+          input.value = input.value.replace(/\D/g, '');
+
+          }
+          
+          function validateForm() {
+              var name = document.getElementById('name').value;
+              var mobile = document.getElementById('mobile').value;
+              var email = document.getElementById('email').value;
+              var role = document.getElementById('role').value;
+              var designation = document.getElementById('designation').value;
+
+              var valid = true;
+              
+              if (name === "") {
+                document.getElementById("name").classList.add("is-invalid");
+
+                setTimeout(function () {
+                  document.getElementById("name").classList.remove("is-invalid");
+                }, 1000); 
+                valid = false; 
+              }
+
+              if (designation === "") {
+                document.getElementById("designation").classList.add("is-invalid");
+
+                setTimeout(function () {
+                  document.getElementById("designation").classList.remove("is-invalid");
+                }, 1000); 
+                valid = false; 
+              }
+
+              if (role === "") {
+                document.getElementById("role").classList.add("is-invalid");
+
+                setTimeout(function () {
+                  document.getElementById("role").classList.remove("is-invalid");
+                }, 1000); 
+                valid = false; 
+              }
+
+              if (mobile.length < 10) {
+                document.getElementById("mobile").classList.add("is-invalid");
+
+                setTimeout(function () {
+                  document.getElementById("mobile").classList.remove("is-invalid");
+                }, 1000); 
+
+                valid = false; 
+              }
+
+              var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(email)) {
+                document.getElementById("email").classList.add("is-invalid");
+
+                setTimeout(function () {
+                  document.getElementById("email").classList.remove("is-invalid");
+                }, 1000); 
+
+                valid = false; 
+              }
+
+              return valid;
+            }
+
+
+          function addEmployee() {
+
+            res = validateForm()
+            if (! res){return res}
+
+              var name = document.getElementById('name').value;
+              var mobile = document.getElementById('mobile').value;
+              var email = document.getElementById('email').value;
+              var role = document.getElementById('role').value;
+              var designation = document.getElementById('designation').value;
+      
+              var data = {
+                  name: name,
+                  mobile: mobile,
+                  email: email,
+                  role:role,
+                  designation:designation,
+              };
+      
+              $.ajax({
+                  url: '/employees/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+                      $('[data-bs-dismiss="modal"]').click();
+
+                      location.reload();
+      
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      
+                  }
+              });
+          }
+</script> 
+
+
+{% endblock %}
+
+
+
+     

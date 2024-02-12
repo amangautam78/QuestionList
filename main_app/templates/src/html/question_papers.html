@@ -1,0 +1,253 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+  {% block content %}
+<style type="text/css">
+
+
+  .recent-orders1 {
+
+      padding-top: 100px;
+
+}
+  .recent-orders {
+
+      margin: 20px;
+
+}
+
+.oval-shape{
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #13deb9;
+  color: black;
+  font-weight: bold;
+}
+
+ /* CSS for slider */
+.form-range::-webkit-slider-thumb {
+    background-color: #7A68D0; /* Purple color for the thumb */
+}
+
+.form-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, #7A68D0 0%, #7A68D0 50%, #E0E0E0 50%, #E0E0E0 100%);
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+}
+
+/* CSS for thumb track */
+.form-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Other browser thumb track styles */
+.form-range::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
+}
+
+</style>
+  
+<div class="container-fluid">
+          <header class="container">
+                <a type="button" class="btn btn-primary" style="float: right; margin: 10px;" 
+                 href="/questions-discovery/">SET QUESTION PAPER</a>
+                
+            </header>
+        </div>
+
+<div class="container-fluid">
+
+
+    <div class="container">
+    
+    <div class="row">
+    {% for item in question_papers %}
+
+              <!-- card 1 -->
+              <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="text-black fw-bold h4 ">{{item.qp_id}}</h5>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                
+                                  <div>
+                                    <p class="mb-2 mt-2"><span class="text-black h6">{{item.created_at}}</span></p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                        <div class="d-flex flex-column ">
+                                        <p class="mb-0 mt-2">BY: </p>
+                                        <p class="h5 text-black ">{{item.user_id}}</p>
+                                      </div>
+                                    </div>
+                                    <div class="text-center oval-shape">EXAM READY</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <input type="range" id="slider1" class="form-range" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    {% endfor %}
+    </div>
+    </div>
+
+           
+               
+    
+
+               
+                
+            </div>
+
+
+
+
+<div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dataModalLabel">ORDER DETAIL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Data from Django will be displayed here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById('dataModal');
+
+  modal.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget;
+    // Extract the data-id attribute from the button
+    var itemId = button.getAttribute('data-id');
+
+    // Use itemId in the API URL
+    fetch('/get-order-details/' + itemId + '/')  // Modify URL as needed
+      .then(response => response.json())
+      .then(data => {
+
+
+        
+        const modalBody = modal.querySelector('.modal-body');
+        // Clear previous content
+        modalBody.innerHTML = '';
+
+        // Start building the HTML for the table
+        let html = `
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-text">Order ID: <strong>${itemId}</strong></p>
+            <p class="card-text">Grand Total: <strong>₹ ${data.data.total}</strong></p>
+        </div>
+    </div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col" style="width: 300px;">Product Desc</th>
+                <th scope="col">Qty</th>
+                <th scope="col">GST</th>
+                <th scope="col">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+        `;
+            
+
+
+        // Check if data is not empty and has items
+            if (data.data.items.length > 0) {
+                // Start with an empty string for HTML
+
+                // Iterate over each item in the order_data array
+                data.data.items.forEach((item, index) => {
+                    // Append a table row for each item
+                    html += `<tr>
+                        <th scope="row">${index + 1}</th>
+                        <td>${item.name}</td>
+                        <td>${item.product_desc}</td>
+                        <td>${item.qty}</td>
+                         <td>${item.gst}</td>
+                        <td>${item.total}</td>
+                    </tr>`;
+                });
+            }
+
+        // Close the table tag
+        html += `
+        </tbody>
+    </table>
+</div>
+`;
+
+        // Set the HTML inside the modal body
+        modalBody.innerHTML = html;
+      })
+      .catch(error => console.error('Error:', error));
+  });
+});
+
+
+
+
+    function cart(){
+
+        window.location.href = '/cart/?s=IN'
+
+    };
+
+    function editOrder(oId, type){
+
+        if (type === 'edit'){
+            window.location.href = '/partner-cart/?edit=1'+ '&oid=' + oId    
+        }
+        else {
+            window.location.href = '/partner-cart/?view=1'+ '&oid=' + oId
+        }
+
+    };
+
+</script>
+
+{% endblock %}

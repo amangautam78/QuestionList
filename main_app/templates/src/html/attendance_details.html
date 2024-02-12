@@ -1,0 +1,184 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style type="text/css">
+
+
+
+  .recent-orders1 {
+
+      padding-top: 100px;
+
+}
+  .recent-orders {
+
+      margin: 20px;
+
+}
+
+</style>
+        
+        <div class="recent-orders1">
+        </div>
+
+
+
+
+ <div class="table-responsive card recent-orders">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    
+                    <tbody>
+
+                      
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{emp_id}}</h6></td>
+                        
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4"> {{emp_name}}</h6>
+                        </td>
+
+
+
+                  
+                        <td class="border-bottom-0">
+                          <button type="button" class="btn btn-outline-success m-1" onclick='timeIn("{{emp_id}}")'>TIME IN</button>
+                        </td>
+                        <td class="border-bottom-0">
+                          <button type="button" class="btn btn-outline-danger m-1" onclick='timeOut("{{emp_id}}")'>TIME OUT</button>
+                         </td>
+                      </tr> 
+                      
+                   
+                    </tbody>
+                  </table>
+                </div>
+
+
+
+
+
+
+ <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">MONTH TO DATE</h5>
+
+                <div class="table-responsive">
+                  <table class="table text-nowrap align-middle table-bordered">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">DATE</h6>
+                        </th>
+                        <th class="border-bottom-0" style="width: 250px;">
+                          <h6 class="fw-semibold mb-0">IN TIME</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">OUT TIME</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">WORK HOURS</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">STATUS</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      {% for emp in emp_history %}
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{emp.date}}</h6></td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">{{emp.in.created_at}}</p>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{emp.out.created_at}}</p>
+                        </td>
+                        <td class="border-bottom-0" data-bs-toggle="modal" data-bs-target="#stockModal" data-status="{{order.status}}" data-order-id="{{order.order_id}}" style="cursor: pointer;">
+                            <p class="mb-0 fw-normal">{{emp.work_hrs}}</p>               
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{emp.status}}</p>
+                        </td>
+                        
+                      </tr> 
+                      {% endfor %}
+
+
+                                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+
+
+          function timeIn(emp_id) {
+
+      
+              // Construct the data object to be sent
+              var data = {
+                  emp_id: emp_id,
+                  action: 'in',
+              };
+      
+              // Using jQuery AJAX to send data to the server
+              $.ajax({
+                  url: '/mark-attendance/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+
+                      location.reload();
+      
+                      // You can also update other elements if needed
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+          }
+
+          function timeOut(emp_id) {
+
+      
+              // Construct the data object to be sent
+              var data = {
+                  emp_id: emp_id,
+                  action: 'out',
+              };
+      
+              // Using jQuery AJAX to send data to the server
+              $.ajax({
+                  url: '/mark-attendance/',
+                  type: 'POST',
+                  data: data,
+                  success: function (response) {
+
+                      location.reload();
+      
+                      // You can also update other elements if needed
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Error:', error);
+                      // Handle errors here
+                  }
+              });
+          }
+      </script>
+          
+
+{% endblock %}
+
+     

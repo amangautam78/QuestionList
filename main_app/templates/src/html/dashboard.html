@@ -1,0 +1,104 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+ <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+         
+
+              <div class="col-lg-4">
+                      <!-- Monthly Earnings -->
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row alig n-items-start">
+                            <div class="col-8">
+                              <h5 class="card-title mb-9 fw-semibold"> Total Orders </h5>
+                              <h4 class="fw-semibold mb-3">{{data.total_orders}}</h4>
+                              <div class="d-flex align-items-center pb-1">
+                                <span
+                                  class="me-2 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                                  <i class="ti ti-arrow-up-right text-success"></i>
+                                </span>
+                                
+                              </div>
+                            </div>
+                            <div class="col-4">
+                              <div class="d-flex justify-content-end">
+                                <div
+                                  class="text-white bg-warning rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                  <i class="ti ti-file fs-6"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              <div class="col-lg-4">
+                <!-- Monthly Earnings -->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> Total Revenue </h5>
+                        <h4 class="fw-semibold mb-3">{{data.total_revenue}}</h4>
+                        <div class="d-flex align-items-center pb-1">
+                          <span
+                            class="me-2 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-up-right text-success"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div
+                            class="text-white bg-success rounded-circle p-6 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-currency-rupee fs-6"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+               <div class="col-lg-4">
+                <!-- Monthly Earnings -->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> Total Employees </h5>
+                        <h4 class="fw-semibold mb-3">{{data.total_employees}}</h4>
+                        <div class="d-flex align-items-center pb-1">
+                          <span
+                            class="me-2 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-up-right text-success"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div
+                            class="text-white bg-primary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-users fs-6"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+       
+       
+
+{% endblock %}
+
+     
