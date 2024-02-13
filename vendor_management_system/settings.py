@@ -33,6 +33,9 @@ PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu1SU1LfVLPHCozMxH2Mo4l
 ALLOWED_HOSTS = ['*']  # Not recommended but useful in dev mode
 
 
+
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 # Application definition
 
 INSTALLED_APPS = [

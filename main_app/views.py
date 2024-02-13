@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from vendor_management_system.settings import DB, PUBLIC_KEY
 from utils import generate_url
 from main_app.response import SuccessResponse, BadRequestResponse
-
+from google.auth import jwt as gjwt
 
 
 def landing_page(request):
@@ -26,8 +26,51 @@ def login(request):
 	return render(request, 'src/html/login.html', {})
 
 @csrf_exempt
-def google_auth(request):
-	pass
+def google_callback(request):
+	token = request.POST.get("credential")
+	decoded_token = gjwt.decode(token, verify=False)
+	
+	name = decoded_token.get("name","")
+	email = decoded_token.get("email","")
+	
+	user_doc = DB.users.find_one({"email":email})
+	decoded_token['created_at'] = datetime.now()
+	if not user_doc:
+		DB.leads.insert_one(decoded_token)
+		
+	if user_doc and user_doc.get("is_verified"):
+
+		req_id = str(uuid.uuid4())
+		id = user_doc.get("id")
+		mob = user_doc.get("mobile")
+		email = user_doc.get("email","")
+		otp_time = user_doc.get("otp_created")
+		user_type = user_doc.get("type")
+		company_id = user_doc.get("company_id")
+		name = user_doc.get("name")
+		user_id = user_doc.get("user_id")
+
+		user_dict = {
+				  "login_type": "google",
+                  "id": id,
+                  "email": email,
+                  "user_type": user_type,
+                  "user_id": user_id,
+                  "username": name,
+                  "mobile": mob,
+                  "company_id": company_id
+                }
+
+		jwt_token = generate_token(user_dict)
+		user_doc = DB.users.find_one_and_update({"email":email},{"$set":{"token":jwt_token, "token_valid":True,"req_id":req_id}})
+
+		return redirect('/dashboard')
+	
+	return redirect('/inquiry')
+
+def inquiry(request):
+	
+	return render(request,'src/html/inquiry.html')
 
 def dashboard(request):
 
@@ -351,6 +394,13 @@ def employees(request):
 	return render(request, 'src/html/employees.html', {'employees': employees})
 
 
+def take_exam(request):
+	qp_id = request.GET.get('qp_id')
+	return render(request, 'src/html/exam.html', {'qp_id': qp_id})
+
+
+def start_exam(request):
+	return render(request, 'src/html/exam_questions.html')
 def account(request):
 
 	# token = request.COOKIES.get('t')

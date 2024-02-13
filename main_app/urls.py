@@ -47,8 +47,11 @@ urlpatterns = [
     path('students/', views.students, name="students"),
     path('get-student/<str:student_id>/', views.get_student, name="get_student"),
     path('delete-student/<str:student_id>/', views.delete_student, name="delete_student"),
-    path('auth/google/', views.google_auth, name="google_auth"),
-
+    path('auth/google', views.google_callback),
+    path('inquiry', views.inquiry),
+    path('take-exam', views.take_exam),
+    path('start-exam/', views.start_exam),
+    
 
 
     
