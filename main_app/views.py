@@ -396,11 +396,31 @@ def employees(request):
 
 def take_exam(request):
 	qp_id = request.GET.get('qp_id')
-	return render(request, 'src/html/exam.html', {'qp_id': qp_id})
+	que_paper = DB.question_papers.find_one({'qp_id': qp_id}, {'_id': 0, 'guideline': 1, 'qp_id': 1})
+	return render(request, 'src/html/exam.html', {'qp_id': que_paper.get('qp_id'), 'question_paper': que_paper})
 
 
 def start_exam(request):
-	return render(request, 'src/html/exam_questions.html')
+	qp_id = request.GET.get('qp_id')
+	que_number = int(request.GET.get('que_num')) - 1 if request.GET.get('que_num') else 0
+	question = list(DB.question_papers.aggregate([{'$match': {'qp_id': qp_id}}, {
+        '$project': {
+            'qp_items_length': {'$size': '$qp_items'},
+            'question': {'$arrayElemAt': ['$qp_items', que_number]}  # Retrieve the first question from qp_items array
+        }
+    }]))
+	if question:
+		qp_items_length = list(range(1, question[0]['qp_items_length'] + 1))
+		question = question[0]['question']
+		
+	next_btn = None
+	prev_btn = None
+	if len(qp_items_length) == que_number + 1:
+		next_btn = 'disable'
+	if que_number == 0:
+		prev_btn = 'disable'
+
+	return render(request, 'src/html/exam_questions.html', {'prev_btn': prev_btn, 'next_btn': next_btn, 'qp_id': qp_id, 'question': question, 'qp_items_length': qp_items_length, 'que_label': que_number + 1})
 def account(request):
 
 	# token = request.COOKIES.get('t')
