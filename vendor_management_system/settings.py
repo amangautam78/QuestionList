@@ -116,11 +116,9 @@ DATABASES = {
 
 import pymongo
 
-CONNECTION_STRING = (
-    "mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/"
-)
+CONNECTION = pymongo.MongoClient('mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/?retryWrites=true&w=majority')
 
-DB = pymongo.MongoClient(CONNECTION_STRING).ql
+DB = CONNECTION.ql
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
