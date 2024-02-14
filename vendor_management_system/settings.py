@@ -108,6 +108,12 @@ DATABASES = {
 # import dns.resolver
 # dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 # dns.resolver.default_resolver.nameservers=['8.8.8.8']
+# import pymongo
+
+# CONNECTION = pymongo.MongoClient('mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/?retryWrites=true&w=majority')
+
+# DB = CONNECTION.ql
+
 import pymongo
 
 CONNECTION = pymongo.MongoClient('mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/?retryWrites=true&w=majority')

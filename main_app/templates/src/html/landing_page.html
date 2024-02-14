@@ -25,12 +25,13 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
   <style>
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 :root {
-  --cd-color-white: #ffffff;
   --cd-color-blue: #47cdee;
   --cd-color-purple: #520bad;
 }
@@ -265,9 +266,120 @@ p {
 }
 
 
+#loader{
+        width: 100% !important;
+        height: 100% !important;
+        background-color: #000000;
+        position: absolute;
+        z-index: 99999;
+        transition: all ease-in-out 1s;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+    }
+    #loader h1{
+        color: #FD330B;
+        font-size: 4vw;
+        color: transparent;
+        background: linear-gradient(to right,#40E0D0, #B2FFFF);
+        -webkit-background-clip: text;
+        position: absolute;
+        opacity: 0;
+        animation-name: load;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-timing-function: linear;
+        transition: all ease-in-out 2s;
+
+    }
+
+    @keyframes load {
+        0% {
+            opacity: 0;
+        }
+        10%{
+            opacity: 1;
+        }
+        90%{
+            opacity: 1;
+        }
+        100% {
+            opacity: 0
+        
+    }}
+    #loader h1:nth-child(2){
+        animation-delay: 2s;
+        
+    }
+    #loader h1:nth-child(3){
+        animation-delay: 3s;
+
+    }
+   
+
+    #moving-text h1 {
+        font-size: 5vw;
+        display: inline-block;
+
+
+    }
+
+    .gola {
+        width: 3vw;
+        height: 3vw;
+        border-radius: 50%;
+        background-color: #FD330B;
+        display: inline-block;
+        white-space: nowrap;
+        margin: 0vw 3vw;
+
+    }
+    
+
+    .con {
+        white-space: nowrap;
+        display: inline-block;
+        animation-name: move;
+        animation-duration: 8s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    #moving-text {
+        overflow: scroll;
+        white-space: nowrap;
+        padding: 3vw 0;
+    }
+
+    #moving-text::-webkit-scrollbar {
+        display: none;
+    }
+
+    @keyframes move {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+    .page4{
+      height: 100%;
+      width: 100%;
+    
+    }
+
   </style>
 </head>
 <body>
+  <div id="loader">
+    <h1> ENGAGING</h1>
+    <h1> EMPOWERING</h1>
+    <h1> DYNAMIC</h1>
+</div>
 <nav class="navbar navbar-transparent fixed-top navbar-sticky" role="navigation" aria-label="main navigation">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <div class="navbar-brand">
@@ -353,6 +465,25 @@ p {
   </div>
 </section>
 
+<div id="moving-text">
+  <div class="con">
+      <div class="gola"></div>
+      <h1>STIMULATING</h1>
+      <div class="gola"></div>
+      <h1>INSPIRATIONAL</h1>
+      <div class="gola"></div>
+      <h1>CUSTOMIZED</h1>
+  </div>
+  <div class="con">
+      <div class="gola"></div>
+      <h1>STIMULATING</h1>
+      <div class="gola"></div>
+      <h1>INSPIRATIONAL</h1>
+      <div class="gola"></div>
+      <h1>CUSTOMIZED</h1>
+  </div>
+</div>
+
 
 
 
@@ -381,7 +512,122 @@ p {
     </div>
   </section>
 
-<footer class="py-4" style="background-color: #3e8ed0;">
+  <div class="page4">
+    <div class="row" style="height: 15vh; width: 100%;">
+      <div class="col p-5 text-center" style="font-weight: bold; font-size: 2vw;" >
+        <span class="">STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
+      </div>
+    </div>
+    <div class="row" style=" padding: 3vw;justify-content: space-around; ">
+
+
+      <div class="col-md-4 col-sm-12 col-lg-4 m-1 mt-2" style="border: 1px solid #D5D5D5; height: auto;width: auto;border-radius: 30px;">
+<div class="row">
+
+  <div class="col p-3">
+    <div class="box mt-2 p-3 w-50 text-center" style="border-radius: 20px;background-color: #00203b;" >
+      <h4 style="color: white;" >Basic</h4>
+ </div>
+
+ <div class="col">
+  <div class="pk" style="height: 12vh; width: 100%;border-bottom: 1px solid #cbcbcb ;">
+    <p class="p-2" style="font-size: 3vw; font-weight: bold;color: #2d2d2d;">Software Only</p>
+
+  </div>
+  <div class="combine" style="height: 35vh;">
+    <p class="p-3 pt-5" style="font-size: 2vw; font-weight: bold;color: #2d2d2d;">Features</p>
+    <p class="pt-3 pl-3 pr-2"> <i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Access to Questions and 
+      Assessment creation modules</p>
+      <p class="pt-3 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Detailed analytics, Progress tracking</p>
+      <p class="pt-3 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Monthly performance reports</p>
+  </div>
+  <div class="price mb-3">
+    <p class="p-2" style="font-size: 2vw;font-weight: 500;">Price</p>
+    <p class="p-2" style="font-size: 2vw;font-weight: bold;">₹499 / month / student</p>
+  </div>
+   <div class="button w-100 text-white " style="font-weight: bold;background: #00203b;border-radius: 20px;">Get Started</div>
+
+ </div>
+  </div>
+</div>
+      </div>
+
+
+      <div class="col-md-4 col-sm-12 col-lg-4 m-1 mt-2"  style="border: 1px solid #D5D5D5; height: auto;width: auto;border-radius: 30px;background-color: #00203b;color: white;">
+<div class="row">
+
+  <div class="col p-3" >
+    <div class="box mt-2 p-3 w-60 text-center" style="border-radius: 20px;background-color: #02C501;" >
+      <h4 style="color: rgb(0, 57, 88);" >Most Popular<i class="fa-solid fa-medal pl-3"></i></h4>
+ </div>
+
+ <div class="col">
+  <div class="pk" style="height: 12vh; width: 100%;border-bottom: 1px solid #cbcbcb ;">
+    <p class="p-1" style="font-size: 3vw; font-weight: bold;line-height: 2.5vw;">Software & <br>
+      Questions Bank</p>
+
+  </div>
+  <div class="combine" style="height: 35vh;">
+    <p class="p-3 pt-5" style="font-size: 2vw; font-weight: bold;">Features</p>
+    <p class="pt-3 pl-3 pr-2"> <i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Access to Questions and 
+      Assessment creation modules</p>
+      <p class="pt-3 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Detailed analytics, Progress tracking</p>
+      <p class="pt-3 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Monthly performance reports</p>
+      <p class="pt-3 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Access to Questions Marketplace</p>
+  </div>
+  <div class="price mb-3">
+    <p class="p-2" style="font-size: 2vw;font-weight: 500;">Price</p>
+    <p class="p-2" style="font-size: 2vw;font-weight: bold;">₹699 / month / student</p>
+  </div>
+   <div class="button w-100  " style="font-weight: bold;background: #02C501;border-radius: 20px;color: #00203b;">Get Started</div>
+
+ </div>
+  </div>
+</div>
+      </div>
+
+
+      <div class="col-md-4 col-sm-12 col-lg-4 m-1 mt-2" style="border: 1px solid #D5D5D5; height: auto;width: auto;border-radius: 30px;">
+<div class="row">
+
+  <div class="col p-3">
+    <div class="box mt-2 p-3 mb-1 w-100 text-center" style="border-radius: 20px;background-color: #FFDC34;" >
+      <h4 style="color: rgb(0, 58, 96);" >Premium <i class="fa-solid fa-medal pl-5 " ></i><i class="fa-solid fa-medal pl-3 text-end"></i></h4>
+ </div>
+
+ <div class="col">
+  <div class="pk" style="height: 15vh; width: 100%;border-bottom: 1px solid #cbcbcb ;">
+    <p class="p-2" style="font-size: 2.3vw; font-weight: bolder;color: #2d2d2d;line-height: 2.5vw;">Software, <br>
+      Questions Bank, & <br>
+      Mentoring Session</p>
+
+  </div>
+  <div class="combine" style="height: 35vh;">
+    <p class="p-3 pt-5" style="font-size: 2vw; font-weight: bold;color: #2d2d2d;">Features</p>
+    <p class="pt-3 pl-3 pr-2"> <i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Access to Questions and 
+      Assessment creation modules</p>
+      <p class="pt-2 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Detailed analytics, Progress tracking</p>
+      <p class="pt-2 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Monthly performance reports</p>
+      <p class="pt-2 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Access to Questions Marketplace</p>
+      <p class="pt-2 pl-3 pr-2"><i class="fa-regular fa-circle-check pr-2" style="color: #65e697;"></i>Mentoring Session with Students</p>
+  </div>
+  <div class="price mb-3">
+    <p class="p-2" style="font-size: 2vw;font-weight: 500;">Price</p>
+    <p class="p-2" style="font-size: 2vw;font-weight: bold;">₹999 / month / student</p>
+  </div>
+   <div class="button w-100 " style="font-weight: bold;background: #FFDC34;border-radius: 20px;color: #00203b; ">Get Started</div>
+
+ </div>
+  </div>
+</div>
+      </div>
+     
+    </div>
+  </div>
+
+  
+
+<footer class="py-4" style="background-color: #00203b;">
     <div class="container text-center">
         <p class="mb-0">
             Created with <i class="fas fa-heart text-danger"></i> by Nagendra
@@ -430,6 +676,11 @@ p {
                 targetDiv.scrollIntoView();
             }
         });
+
+        const loader = document.querySelector("#loader");
+setTimeout(()=>{
+    loader.style.top = "-100%";
+},4000)
   </script>
 </body>
 </html>
