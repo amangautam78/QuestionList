@@ -6,15 +6,18 @@
 
 <style type="text/css">
 #editor-container {
-  height: 375px;
+  height: 250px;
   background-color: white;
 }
-</style>
+#editor-container-explaination {
+  height: 200px;
+  background-color: white;
+}
 
-<div class="container-fluid">
-  <header class="container">
-  </header>
-</div>
+.correct-answer {
+    background-color: #13deb9; /* Green color */
+}
+</style>
 
 <div class="container-fluid">
   <section class="content">
@@ -25,12 +28,39 @@
         <!-- Add submit button -->
         
       </div>
+
+      <div class="card" style="padding: 20px;">
+      <h6 style="padding-bottom: 10px;">Add Options</h6>
+      <div id="form-placeholder"></div>
+      <button id="btn-add" class="btn btn-outline-primary m-1 rounded-circle" style="width: 50px; height: 50px;">+</button>
+
+    </div>
+     <div class="card">
+        <div id="editor-container-explaination">
+        </div>
+        <!-- Add submit button -->
+        
+      </div>
+
       <button id="submitBtn" class="btn btn-primary" style="float: right;">Submit</button>
     </div>
   </section>
 </div>
 
+
 <script>
+
+
+function toggleRowColor(checkbox) {
+    var row = checkbox.closest('.option-row');
+    if (checkbox.checked) {
+        row.classList.add('correct-answer');
+    } else {
+        row.classList.remove('correct-answer');
+    }
+}
+
+
 var quill = new Quill('#editor-container', {
   modules: {
     toolbar: [
@@ -39,7 +69,19 @@ var quill = new Quill('#editor-container', {
       ['image', 'code-block']
     ]
   },
-  placeholder: 'Compose an epic...',
+  placeholder: 'Compose a question...',
+  theme: 'snow'  // or 'bubble'
+});
+
+var quill = new Quill('#editor-container-explaination', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Compose an explaination...',
   theme: 'snow'  // or 'bubble'
 });
 
@@ -63,6 +105,52 @@ function handleSubmit() {
 
 // Attach click event listener to the submit button
 document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+
+
+function appendUserRow(id, user) {
+            var html = `<div id="opt-row.${id}" class="form-group row option-row" style="margin-bottom: 10px; padding: 10px;">
+    <div class="col-12 col-md-2">
+        <label for="opt-no.${id}" class="col-form-label">(${id})</label>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <input required type="text" class="form-control" id="opt-name.${id}" name="opt-name.${id}" placeholder="Option" value="${user.name}">
+    </div>
+
+    <div class="col-6 col-md-2">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="correct-answer-${id}" name="correct-answer-${id}" onchange="toggleRowColor(this)">
+            <label class="form-check-label" for="correct-answer-${id}">
+                Correct
+            </label>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-2">
+        <i class="ti ti-trash col-form-label" onclick="delRow(${id})" style="float: right;"></i>
+    </div>
+</div>
+
+`;
+            $("#form-placeholder").append(html);
+        }
+
+function delRow(id) {
+            var element = document.getElementById("opt-row." + id);
+            element.parentNode.removeChild(element);
+        }
+
+$(document).ready(function () {
+            var count = 1;
+$("#btn-add").click(function () {
+                appendUserRow(count++, {
+                    name: "",
+                })
+            });
+});
+
+
+
 </script>
 
 {% endblock %}

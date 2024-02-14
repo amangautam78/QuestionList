@@ -421,21 +421,20 @@ def start_exam(request):
 		prev_btn = 'disable'
 
 	return render(request, 'src/html/exam_questions.html', {'prev_btn': prev_btn, 'next_btn': next_btn, 'qp_id': qp_id, 'question': question, 'qp_items_length': qp_items_length, 'que_label': que_number + 1})
+
+
+@csrf_exempt
 def account(request):
 
 	# token = request.COOKIES.get('t')
 	# st, data = verify_token(token)
 	# if not st:
 	# 	return redirect('https://infinitybrands.co/login/')
-
-	company_id = '' #data.get('company_id')
-
-	account = DB['client'].find_one({'id': 'C1705127074'})or {}
-
-	for cert, doc in account.get('certs', {}).items():
-
-		account['certs'][cert]['link'] = generate_url(doc.get('f_key',""))
-
+	if request.method == 'POST':
+		requested_data = dict(request.POST.items())
+		insti_id = 'IN{}'.format(str(int(datetime.now().timestamp())))
+		requested_data['insti_id'] = insti_id
+		DB.institutes.insert_one(requested_data)
 	return render(request, 'src/html/account.html', {'account': account})
 
 
