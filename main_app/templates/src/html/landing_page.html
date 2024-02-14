@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,15 +26,21 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+  <link href="{% static 'fonts/reo.ttf' %}" rel="stylesheet" media="screen">
   <style>
 
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-@font-face {
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"); */
+/* @font-face {
         font-family: reo;
         src: url(../assets/Fonts/NBInternationalProBoo\ \(1\).ttf);
-    }
+    } */
+
+    @font-face {
+    font-family: 'reo';
+    
+    src: local('reo'), url('../assets/fonts/reo.ttf') format('opentype');
+}
 :root {
   --cd-color-white: #ffffff;
   --cd-color-blue: #47cdee;
@@ -45,7 +52,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: reo;
+  font-family: reo !important;
 }
 *:focus {
   box-shadow: none !important;
