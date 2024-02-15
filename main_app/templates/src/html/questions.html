@@ -158,9 +158,36 @@
         color: black;
     }
 
-.card-title img {
+.question img {
    max-width: 100%;
-    height: auto; 
+  height: auto; 
+}
+.explain img {
+   max-width: 100%;
+  height: auto; 
+}
+.correct_option {
+    display: inline-block;
+    margin-bottom: 10px;
+    border: solid 1px var(--bs-green);
+    padding: 10px;
+}
+.correct_option1 {
+  padding: 10px;
+
+}
+.explain {
+  background-color: #ade2ff;
+  padding: 10px;
+}
+.options {
+  background: #edf9ff;
+  padding: 10px;
+
+}
+.question {
+  background-color: #f2f2f2;
+  padding: 10px;
 }
 </style>
 
@@ -215,18 +242,44 @@
 
            
 
-    
+    <div class="row">
         {% for question in questions %}
-        <div class="row">
+        <div class="col col-md-6">
             <div class="card border-0 shadow">
                 <div class="card-body">
-                    <h5 class="card-title" style="font-size: 16px;">{{ question.que|safe}}</h5>
-                    <p class="card-text">{{ question.expl }}</p>
+                  <div class="question">
+                    <p class="card-text"><strong>QUESTION</strong></p>
+                    {{ question.que|safe}}
+                  </div>
+                    <div class="options">
+                    <p class="card-text"><strong>OPTIONS</strong></p>
+                    {% for index, option in question.options.items %}
+                      {% if option.ans == 'true' %}
+                      <p class="card-text">
+                      <div class="correct_option text-success">
+                        Option {{index}}: {{ option.opt|safe }}
+                      </div>
+                      </p>
+                      {% else %}
+                        <p class="card-text">
+                          <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                        </p>
+                      {% endif %}
+
+                    {% endfor %}
+                  </div>
+
+                  <div class="explain">
+                    <strong>EXPLANATION</strong>
+                    <p class="card-text">{{ question.explain|safe }}</p>
+                  </div>
                     
                 </div>
             </div>
-   		 </div>
+          </div>
+   		
         {% endfor %}
+         </div>
 
 </div>
 

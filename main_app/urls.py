@@ -25,7 +25,8 @@ urlpatterns = [
     path('profile/', views.profile),
     path('attendance/', views.employees_attendance),
    
-    path('account/',views.account),
+    path('accounts/',views.accounts),
+    path('add-account/',views.add_account),
    
     path('attendance-details/<str:emp_id>/', views.attendance_details),
     path('mark-attendance/', views.mark_attendance),

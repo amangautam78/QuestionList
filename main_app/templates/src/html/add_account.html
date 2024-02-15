@@ -26,50 +26,50 @@
       <!-- 0) Institute/School Name -->
       <div class="mb-3">
         <label for="instituteName" class="form-label">Institute/School Name <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="instituteName" required name="institute_name">
+        <input type="text" class="form-control" id="instituteName" required name="institute_name" value="{{account.institute_name}}">
       </div>
 
       <!-- 1) Mobile Number -->
       <div class="mb-3">
         <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-        <input type="tel" class="form-control" id="mobileNumber" pattern="[0-9]{10}" required name="mobile">
+        <input type="tel" class="form-control" id="mobileNumber" pattern="[0-9]{10}" required name="mobile" value="{{account.mobile}}">
         <div class="form-text">Please enter a 10-digit mobile number.</div>
       </div>
 
       <!-- 2) Spoc Name -->
       <div class="mb-3">
         <label for="spocName" class="form-label">Spoc Name</label>
-        <input type="text" class="form-control" id="spocName" name="spoc_name">
+        <input type="text" class="form-control" id="spocName" name="spoc_name" value="{{account.spoc_name}}">
       </div>
 
       <!-- 3) Designation -->
       <div class="mb-3">
         <label for="designation" class="form-label">Designation</label>
-        <input type="text" class="form-control" id="designation", name="designation">
+        <input type="text" class="form-control" id="designation", name="designation" value="{{account.designation}}">
       </div>
 
       <!-- 4) Institute/School Address -->
       <div class="mb-3">
         <label for="schoolAddress" class="form-label">Institute/School Address</label>
-        <textarea class="form-control" id="schoolAddress" rows="3" name="address"></textarea>
+        <textarea class="form-control" id="schoolAddress" rows="3" name="address">{{account.address}}</textarea>
       </div>
 
       <!-- 5) Total Student Strength -->
       <div class="mb-3">
         <label for="studentStrength" class="form-label">Total Student Strength</label>
-        <input type="number" class="form-control" id="studentStrength" name="students_count">
+        <input type="number" class="form-control" id="studentStrength" name="students_count" value="{{account.students_count}}">
       </div>
 
       <!-- 6) Institute/School Email -->
       <div class="mb-3">
         <label for="schoolEmail" class="form-label">Institute/School Email</label>
-        <input type="email" class="form-control" id="schoolEmail" name="email">
+        <input type="email" class="form-control" id="schoolEmail" name="email" value="{{account.email}}">
       </div>
 
       <!-- 7) Remark -->
       <div class="mb-3">
         <label for="remark" class="form-label">Remark</label>
-        <textarea class="form-control" id="remark" rows="3" name="remark"></textarea>
+        <textarea class="form-control" id="remark" rows="3" name="remark">{{account.remark}}</textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

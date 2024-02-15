@@ -430,17 +430,31 @@ def start_exam(request):
 
 
 @csrf_exempt
-def account(request):
+def accounts(request):
 
 	# token = request.COOKIES.get('t')
 	# st, data = verify_token(token)
 	# if not st:
 	# 	return redirect('https://infinitybrands.co/login/')
-	if request.method == 'POST':
-		requested_data = dict(request.POST.items())
-		insti_id = 'IN{}'.format(str(int(datetime.now().timestamp())))
-		requested_data['insti_id'] = insti_id
-		DB.institutes.insert_one(requested_data)
-	return render(request, 'src/html/account.html', {'account': account})
+	accounts = list(DB.institutes.find({}, {'_id': 0}))
+	print(accounts)
 
+	return render(request, 'src/html/accounts.html', {'accounts': accounts})
+
+
+@csrf_exempt
+def add_account(request):
+	if request.method == 'POST':
+		insti_id = request.GET.get('insti_id')
+		requested_data = dict(request.POST.items())
+		if not insti_id:
+			insti_id = 'IN{}'.format(str(int(datetime.now().timestamp())))
+		requested_data['insti_id'] = insti_id
+		DB.institutes.update_one({'insti_id': insti_id}, {'$set': requested_data}, upsert=True)
+		return redirect('/accounts/')
+	insti_id = request.GET.get('insti_id')
+	account = {}
+	if insti_id:
+		account = DB.institutes.find_one({'insti_id': insti_id})
+	return render(request, 'src/html/add_account.html', {'account': account})
 

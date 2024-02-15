@@ -1,0 +1,103 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+	.counter-button-container{
+  z-index: 100;
+  position: fixed;
+  left: 91%;
+}
+</style>
+
+
+
+<div class="container-fluid">
+	        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h4 mb-0 ls-tight text-primary" style="padding-bottom: 20px;">Institute/School Accounts</h1>
+                        </div>
+                        <!-- Actions -->
+                       
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+                     <div class="d-flex justify-content-between align-items-center px-6">
+               <!-- Retailer Dropdown on the Left -->
+             
+           
+               <!-- Cart Button on the Right -->
+               <div class="counter-button-container">
+                 <a onclick="window.location.href='/add-account/'">
+                   <button class="btn btn-outline-success m-1" style="border-radius: 50%; font-size: 23px; float: right;">
+                     +
+                   </button>
+                 </a>
+               </div>
+             </div>
+
+
+             <table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Institute</th>
+      <th>SPOC Info</th>
+      <th>Address</th>
+      <th>Remark</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  	{% for account in accounts %}
+	    <tr>
+	      <td>
+	        <div class="d-flex align-items-center">
+	          <img
+	              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+	              alt=""
+	              style="width: 45px; height: 45px"
+	              class="rounded-circle"
+	              />
+	          <div class="ms-3">
+	            <p class="fw-bold mb-1">{{account.insti_id}}</p>
+	            <p class="text-muted mb-0">{{account.institute_name}}</p>
+	            <p class="text-muted mb-0">{{account.students_count}}</p>
+	          </div>
+	        </div>
+	      </td>
+	      <td>
+	        <p class="fw-normal mb-1">{{account.spoc_name}}</p>
+	        <p class="text-muted mb-0">{{account.designation}}</p>
+	        <p class="fw-normal mb-1">{{account.mobile}}</p>
+	        <p class="fw-normal mb-1">{{account.email}}</p>
+	      </td>
+	      <td>
+	        <span class="badge text-success rounded-pill d-inline">{{account.address}}</span>
+	      </td>
+	      <td>{{account.remark}}</td>
+	      <td>
+	        <a type="button" class="btn btn-outline-success btn-sm btn-rounded" href="/add-account?insti_id={{account.insti_id}}">
+	          Edit
+	        </a>
+	      </td>
+	    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+    </div>
+
+
+
+
+{% endblock %}
