@@ -3,20 +3,28 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
+        <meta name="description" content="Reshaping the educational landscape and empowering educators and students worldwide
 
-        <meta property="og:title" content="Anonymous Chat - Chat with Strangers Anonymously - Texting Club House">
-        <meta property="og:description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
-        <meta property="og:url" content="https://textingclubhouse.com">
+. - QnA Class">
+
+        <meta property="og:title" content="Redefining assessment and Learning - QNACLASS">
+        <meta property="og:description" content="Reshaping the educational landscape and empowering educators and students worldwide
+
+. - QnA Class">
+        <meta property="og:url" content="https://qnaclass.com">
         <meta property="og:type" content="website">
 
-        <meta name="twitter:title" content="Anonymous Chat - Chat with Strangers Anonymously - Texting Club House">
-        <meta name="twitter:description" content="Chat anonymously with strangers in real-time. Join our anonymous chat rooms and have fun conversations with people from around the world. - Texting Club House">
-        <meta name="twitter:url" content="https://textingclubhouse.com">
+        <meta name="twitter:title" content="Reshaping the educational landscape and empowering educators and students worldwide
 
-        <link rel="icon" href="/media/favicon.ico" type="image/x-icon">
-        <link rel="canonical" href="https://textingclubhouse.com">
-        <title>TextingClubHouse - Chat with Strangers Anonymously</title>
+. - QnA Class">
+        <meta name="twitter:description" content="Reshaping the educational landscape and empowering educators and students worldwide
+
+. - QnA Class">
+        <meta name="twitter:url" content="https://qnaclass.com">
+
+        <link rel="icon" href="/static/assets/images/logos/favicon.png" type="image/x-icon">
+        <link rel="canonical" href="https://qnaclass.com">
+        <title>QnA Class</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -263,6 +271,9 @@ p {
 .card {
   min-width: 300px;
   max-width: 300px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: auto;
 }
 
 
@@ -384,7 +395,7 @@ p {
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <div class="navbar-brand">
             <div class="navbar-item">
-                <strong style="color: green; margin-right: 5px;"> QUIZ</strong>LITE
+                <strong style="color: green; margin-right: 5px;"> QnA</strong>CLASS
             </div>
         </div>
         <div class="navbar-item">
@@ -446,19 +457,45 @@ p {
   <div class="container">
     <div class="row">
 
-        {% for post in posts %}
-          <div class="col" >
-            <div class="card rounded-10 border-0 shadow-lg cd-40 mb-5" style="margin: auto;">
-                <div class="card-head align-items-center p-0">
-                    <img src="https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?h=350&auto=compress&cs=tinysrg"
-                        alt="">
-                </div>
-                <div class="card-body pt-4">
-                    <h6 class="card-title fw-semibold">Title</h6>
-                    <p>Something short and simple here</p>
-                </div>
+        {% for question in hero_questions %}
+
+
+          <div class="col col-md-3">
+              <div class="card border-0 shadow">
+                  <div class="card-body">
+                    <div class="question">
+                      <p class="card-text"><strong>QUESTION</strong></p>
+                      {{ question.que|safe}}
+                    </div>
+                    <hr>
+                      <div class="options">
+                      <p class="card-text"><strong>OPTIONS</strong></p>
+                      {% for index, option in question.options.items %}
+                        {% if option.ans == 'true' %}
+                        <p class="card-text">
+                        <div class="correct_option text-success">
+                          Option {{index}}: {{ option.opt|safe }}
+                        </div>
+                        </p>
+                        {% else %}
+                          <p class="card-text">
+                            <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                          </p>
+                        {% endif %}
+
+                      {% endfor %}
+                    </div>
+                    <hr>
+
+                    <div class="explain text-wrap">
+                      <strong>EXPLANATION</strong>
+                      <p class="card-text">{{ question.explain|safe }}</p>
+                    </div>
+                      
+                  </div>
+              </div>
             </div>
-          </div>
+
         {% endfor %}
 
     </div>
@@ -630,7 +667,7 @@ p {
 <footer class="py-4" style="background-color: #00203b;">
     <div class="container text-center">
         <p class="mb-0">
-            Created with <i class="fas fa-heart text-danger"></i> by Nagendra
+            Created with <i class="fas fa-heart text-danger"></i> by QnA Class
         </p>
     </div>
 </footer>

@@ -18,8 +18,8 @@ from google.auth import jwt as gjwt
 
 
 def landing_page(request):
-	posts = [{},{},{},{}] #list(DB.blogs.find())
-	return render(request, 'src/html/landing_page.html', {'posts': posts})
+	questions = list(DB.hero_questions.find())
+	return render(request, 'src/html/landing_page.html', {'hero_questions': questions})
 
 def login(request):
 
