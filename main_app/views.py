@@ -207,12 +207,18 @@ def set_question_paper(request):
 @csrf_exempt
 def add_question(request):
 	if request.method == 'POST':
-		content = request.POST.get('content')
+		requested_data = dict(request.POST)
+		question = requested_data.get('question')[0] if requested_data.get('question') else ''
+		explain = requested_data.get('explaination')[0] if requested_data.get('explaination') else ''
+		options = requested_data.get('options[]')
+		correct_ans = requested_data.get('correctAnswers[]')
+		is_multi = True if requested_data.get('is_multi') else False
 		qid = str(uuid4())
-		source = 'form'
-		if content:
-			source = 'quill'
-		DB.questions.insert_one({'que': content, 'qid': qid, 'source': source})
+		option_map = {}
+		for idx, opt in enumerate(options):
+			option_map.update({str(idx + 1): {'opt': opt, 'ans': correct_ans[idx]}})
+		source = 'quill'
+		DB.questions.insert_one({'que': question, 'explain': explain, 'options': option_map, 'is_multi': is_multi, 'qid': qid, 'source': source})
 		return JsonResponse({})
 	return render(request, "src/html/add_question.html", {})
 

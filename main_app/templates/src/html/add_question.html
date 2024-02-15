@@ -19,6 +19,19 @@
 }
 </style>
 
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  <div id="basicToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-warning text-light">
+      <h5 class="my-0">You Have Created a New Question</h5>
+    </div>
+    <div class="toast-body bg-[#fff] text-black">
+      <strong>              Keep on creating New Question
+</strong>
+    </div>
+  </div>  
+</div>
+
 <div class="container-fluid">
   <section class="content">
     <div class="container">
@@ -73,7 +86,7 @@ var quill = new Quill('#editor-container', {
   theme: 'snow'  // or 'bubble'
 });
 
-var quill = new Quill('#editor-container-explaination', {
+var quill_explaination = new Quill('#editor-container-explaination', {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -85,17 +98,61 @@ var quill = new Quill('#editor-container-explaination', {
   theme: 'snow'  // or 'bubble'
 });
 
-// Function to handle form submission
+function getEditorQuestion() {
+    return quill.root.innerHTML;
+}
+
+function getEditorExplaination() {
+    return quill_explaination.root.innerHTML;
+}
+
+
 function handleSubmit() {
-  // Get the HTML content from the Quill editor
-  var content = document.querySelector('.ql-editor').innerHTML;
+
+  var question = getEditorQuestion();
+  var explaination = getEditorExplaination();
+  function gatherFormData() {
+
+      var formData = {
+          question: question,
+          explaination: explaination,
+          options: [],
+          correctAnswers: []
+      };
+
+      var optionRows = document.querySelectorAll('.option-row');
+      var correctAnswerCount = 0;
+      optionRows.forEach(function(row, index) {
+          var optionInput = row.querySelector('[id^="opt-name"]');
+            var correctCheckbox = row.querySelector('[id^="correct-answer"]');
+
+
+          formData.options.push(optionInput.value);
+          formData.correctAnswers.push(correctCheckbox.checked);
+          if (correctCheckbox.checked) {
+                    correctAnswerCount++;
+                }
+
+      });
+      if (correctAnswerCount > 1) {
+            formData.is_multi = true;
+        }
+
+      return formData;
+  }
+
+  // Example usage
+  var formData = gatherFormData();
   // Make AJAX call to send the content to the backend
   $.ajax({
     url: '/add-question/', // Replace with your Django endpoint
     method: 'POST',
-    data: { content: content },
+    data: formData,
     success: function(response) {
-      console.log('Content saved successfully:', response);
+      quill.root.innerHTML = ""; // Assuming this is the editor for the question
+      quill_explaination.root.innerHTML = ""; // Assuming this is the editor for the explanation
+      document.getElementById("form-placeholder").innerHTML = ""; // Clear options
+      new bootstrap.Toast(document.querySelector('#basicToast')).show();
     },
     error: function(xhr, status, error) {
       console.error('Error saving content:', error);
