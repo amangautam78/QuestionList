@@ -35,12 +35,17 @@
 <div class="container-fluid">
   <section class="content">
     <div class="container">
+
+      <div class="card" style="padding: 20px; max-width: 400px;">
+          <label class="form-label"> BATCH </label>
+          <input type="text" name="batch" id="batch" class="form-control">
+      </div>
       <div class="card">
         <div id="editor-container">
         </div>
-        <!-- Add submit button -->
-        
+        <!-- Add submit button -->   
       </div>
+
 
       <div class="card" style="padding: 20px;">
       <h6 style="padding-bottom: 10px;">Add Options</h6>
@@ -111,13 +116,15 @@ function handleSubmit() {
 
   var question = getEditorQuestion();
   var explaination = getEditorExplaination();
+  var batchValue = $('#batch').val();
   function gatherFormData() {
 
       var formData = {
           question: question,
           explaination: explaination,
           options: [],
-          correctAnswers: []
+          correctAnswers: [],
+          batch: batchValue,
       };
 
       var optionRows = document.querySelectorAll('.option-row');
@@ -152,6 +159,7 @@ function handleSubmit() {
       quill.root.innerHTML = ""; // Assuming this is the editor for the question
       quill_explaination.root.innerHTML = ""; // Assuming this is the editor for the explanation
       document.getElementById("form-placeholder").innerHTML = ""; // Clear options
+      $('#batch').val('');
       new bootstrap.Toast(document.querySelector('#basicToast')).show();
     },
     error: function(xhr, status, error) {

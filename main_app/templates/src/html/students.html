@@ -253,6 +253,7 @@
           <th>Email</th>
           <th>Address</th>
           <th>Phone</th>
+          <th>Batch</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -263,6 +264,7 @@
           <td class="email">{{student.email}}</td>
           <td class="address">{{student.address}}</td>
           <td class="mobile">{{student.mobile}}</td>
+          <td class="batch">{{student.batch}}</td>
           <td>
                 <i class="fas fa-pencil-alt" onclick="openEditModal(this)"></i>
 
@@ -313,6 +315,10 @@
           <div class="form-group">
             <label>Mobile</label>
             <input type="text" class="form-control" name="mobile" required>
+          </div>
+          <div class="form-group">
+            <label>Batch</label>
+            <input type="text" class="form-control" name="batch" required>
           </div>
         </div>
         <div class="modal-footer">
@@ -402,6 +408,10 @@ function openEditModal(iconElement) {
                                         <label>Mobile</label>
                                         <input type="text" class="form-control" name="mobile" value="${response.data.mobile}" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Batch</label>
+                                        <input type="text" class="form-control" name="batch" value="${response.data.batch}" required>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
@@ -439,6 +449,7 @@ $(document).on('click', '.save-changes-btn', function() {
         row.find('.email').text(newData.email);
         row.find('.address').text(newData.address);
         row.find('.mobile').text(newData.mobile);
+        row.find('.batch').text(newData.batch);
     }
 
 function saveChanges(studentId) {

@@ -422,40 +422,38 @@ footer button.show{
 		            {{question.que|safe}}
 		        </div>
                  <div class="info-list">
-                    <div>
-                    <span>Options</span>
-                </div>
+                   <div class="options">
+                    <p class="card-text"><strong>OPTIONS</strong></p>
+                        {% for index, option in question.options.items %}
+                            <div class="mb-3 form-check">
+                                <label class="form-check-label" for="{{ index }}">
+                                    <div class="checkbox-label">{{ index }}</div>
+                                    {% if question.is_multi %}
+                                        <input type="checkbox" class="form-check-input checkbox-option" name="options[]" id="{{ index }}" value="{{ index }}">
+                                    {% else %}
+                                    {% if selected_data and selected_data.0 == index %}
 
-<div class="mb-3 form-check">
-    <label class="form-check-label" for="exampleCheck1">
-        <div class="checkbox-label">A</div>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        {{ question.options.a|safe }}
-    </label>
-</div>
-<div class="mb-3 form-check">
-    <label class="form-check-label" for="exampleCheck1">
-        <div class="checkbox-label">B</div>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        {{ question.options.b|safe }}
-    </label>
-</div>
-<div class="mb-3 form-check">
-    <label class="form-check-label" for="exampleCheck1">
-        <div class="checkbox-label">C</div>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        {{ question.options.c|safe }}
-    </label>
-</div>
-<div class="mb-3 form-check">
-    <label class="form-check-label" for="exampleCheck1">
-        <div class="checkbox-label">D</div>
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        {{ question.options.d|safe }}
-    </label>
-</div>
-            
-                    
+
+                                        <input type="radio" class="form-check-input radio-option" name="options" id="{{ index }}" value="{{ index }}" checked>
+                                    {% else %}
+                                        <input type="radio" class="form-check-input radio-option" name="options" id="{{ index }}" value="{{ index }}">
+                                    {% endif %}
+
+
+
+
+                                    {% endif %}
+                                    {{ option.opt|safe }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                  </div>
+
+
+
+            <div class="text-end">
+                  <button class="btn btn-outline-success save_answer" onclick="saveAnswer('{{question.qid}}')"> SAVE </button>  
+            </div>
          
                     
                 </div>
@@ -476,12 +474,23 @@ footer button.show{
 
 
 		        </div>
+                {% if next_btn %}
+                <div class="buttons">
+                <div class="text-end">
+                    <button class="btn btn-outline-success m-1" onclick="nextSubmit()">SUBMIT</button>
+                </div>
+            </div>
+                {% endif %}
 		    </div>
 		</div>
 		<div class="col-12 col-md-4">
 			<div class="info_box activeInfo">
                 {% for que_num in qp_items_length %}
-			         <button class="btn btn-secondary response_button" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
+                    {% if que_num in answered %}
+			         <button class="btn btn-success response_button" id="res-{{que_num}}" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
+                     {% else %}
+                     <button class="btn btn-secondary response_button" id="res-{{que_num}}" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
+                    {% endif %}
                 {% endfor %}
 			</div>
 		</div>
@@ -556,6 +565,58 @@ function nextQuestion(que_number) {
 function toQuestion(que_number) {
     var qp_id = '{{ qp_id|safe }}';
     window.location.href = "/start-exam/?qp_id=" + qp_id + '&que_num=' + que_number;
+}
+
+function saveAnswer(qid) {
+    var qp_id = '{{ qp_id|safe }}';
+    var que_num = '{{ que_label|safe }}';
+
+    var selectedOptions = [];
+    var checkboxes = document.querySelectorAll('.checkbox-option:checked');
+    var radios = document.querySelectorAll('.radio-option:checked');
+
+    checkboxes.forEach(function(checkbox) {
+        selectedOptions.push(checkbox.value);
+    });
+
+    radios.forEach(function(radio) {
+        selectedOptions.push(radio.value);
+    });
+
+    $.ajax({
+        url: "/save-answer/",
+        method: "POST",
+        data: {qid: qid, que_num: que_num, qp_id: qp_id, selected_options: selectedOptions},
+        success: function (res) {
+          
+            // Change the button color to green after adding the product
+            var resButton = document.getElementById("res-" + que_num);
+            resButton.classList.remove("btn-secondary");
+            resButton.classList.add("btn-success");
+
+        },
+        error: function () {
+            // Handle error
+        }
+        });
+}
+
+function nextSubmit () {
+    var qp_id = '{{ qp_id|safe }}';
+        $.ajax({
+        url: "/save-final-sheet/",
+        method: "POST",
+        data: {qp_id: qp_id},
+        success: function (res) {
+            window.location.href = '/student-answer-sheet/?qp_id=' + qp_id;
+
+        },
+        error: function () {
+            // Handle error
+        }
+        });
+
+
 }
 
     </script>

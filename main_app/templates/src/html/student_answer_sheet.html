@@ -1,0 +1,74 @@
+{% extends 'src/html/base.html' %} {% load static %} {% block content %}
+
+<style>
+  body {
+    background-color: white;
+  }
+
+  .h-screen {
+    background-color: white;
+  }
+
+  .backbtn {
+    cursor: pointer;
+  }
+</style>
+
+
+
+
+
+<div class="container-fluid">
+
+
+  <header class="bg-surface-primary border-bottom pt-6">
+    <div class="row align-items-center">
+      <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+        <!-- Title -->
+        <h1 class="h2 mb-2 ls-tight pl-4">RESULT</h1>
+      </div>
+      <!-- Actions -->
+    </div>
+  </header>
+
+<section class="content">
+
+
+    <div class="row" id="item-{{que.qid}}">
+      <div class="col-12">
+          <div class="card mb-3">
+              <div class="card-body">
+                <!-- Product details wrapper -->
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <!-- Left column for image and description -->
+                    <div class="align-items-center">
+                        <div class="question">
+                    <h1>{{ total_correct}}/ {{total_questions}}</h1>
+                  </div>
+                 
+                    </div>
+         
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+
+
+
+
+
+
+</section>
+
+</div>
+<script type="text/javascript">
+
+      
+
+
+
+
+</script>
+
+{% endblock %}

@@ -5,7 +5,7 @@ import jwt
 from datetime import datetime, timedelta
 from uuid import uuid4
 
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.views import APIView
@@ -20,6 +20,7 @@ from google.auth import jwt as gjwt
 def landing_page(request):
 	questions = list(DB.hero_questions.find())
 	return render(request, 'src/html/landing_page.html', {'hero_questions': questions})
+
 
 def login(request):
 
@@ -40,59 +41,55 @@ def google_callback(request):
 		
 	if user_doc and user_doc.get("is_verified"):
 
-		req_id = str(uuid.uuid4())
-		id = user_doc.get("id")
+		sub = user_doc.get("sub")
 		mob = user_doc.get("mobile")
-		email = user_doc.get("email","")
-		otp_time = user_doc.get("otp_created")
-		user_type = user_doc.get("type")
-		company_id = user_doc.get("company_id")
+		email = user_doc.get("email")
+		user_type = user_doc.get("user_type")
+		insti_id = user_doc.get("insti_id")
 		name = user_doc.get("name")
-		user_id = user_doc.get("user_id")
 
 		user_dict = {
 				  "login_type": "google",
-                  "id": id,
                   "email": email,
                   "user_type": user_type,
-                  "user_id": user_id,
-                  "username": name,
+                  "sub": sub,
+                  "name": name,
                   "mobile": mob,
-                  "company_id": company_id
+                  "insti_id": insti_id
                 }
-
 		jwt_token = generate_token(user_dict)
-		user_doc = DB.users.find_one_and_update({"email":email},{"$set":{"token":jwt_token, "token_valid":True,"req_id":req_id}})
-
-		return redirect('/dashboard')
+		response = HttpResponseRedirect('/dashboard')
+		response.set_cookie("t", jwt_token)
+		user_doc = DB.users.find_one_and_update({"email":email}, {"$set":{"token":jwt_token}})
+		return response
 	
 	return redirect('/inquiry')
+
 
 def inquiry(request):
 	
 	return render(request,'src/html/inquiry.html')
 
+
 def dashboard(request):
 
-	# token = request.GET.get('t')
-	# valid = False
-	
-	# if request.COOKIES.get('t'):
-	# 	valid, data = verify_token(request.COOKIES['t'])
-
-	# if token:
-	# 	valid, data = verify_token(token)
-		
-	# if not valid:
-	# 	return redirect('https://infinitybrands.co/login/')
-	
+	valid = False
 	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+		
+	if not valid:
+		return redirect('/')
+	
+	user_type = data.get('user_type')
 
-	total_orders = 100
-	total_employees = 50
-	total_revenue = 100000
+	total_students = 0
+	total_question_papers = 0
+	total_questions = 0
 
-	response = render(request, "src/html/dashboard.html",{"data": {'total_employees': total_employees, 'total_revenue': total_revenue, 'total_orders': total_orders}})
+
+
+	response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
 
 	# if token and not request.COOKIES.get("t"):
 	# 	response.set_cookie("t",token)
@@ -213,12 +210,13 @@ def add_question(request):
 		options = requested_data.get('options[]')
 		correct_ans = requested_data.get('correctAnswers[]')
 		is_multi = True if requested_data.get('is_multi') else False
+		batch = requested_data.get('batch')[0] if requested_data.get('batch') else ''
 		qid = str(uuid4())
 		option_map = {}
 		for idx, opt in enumerate(options):
 			option_map.update({str(idx + 1): {'opt': opt, 'ans': correct_ans[idx]}})
 		source = 'quill'
-		DB.questions.insert_one({'que': question, 'explain': explain, 'options': option_map, 'is_multi': is_multi, 'qid': qid, 'source': source})
+		DB.questions.insert_one({'batch': batch, 'que': question, 'explain': explain, 'options': option_map, 'is_multi': is_multi, 'qid': qid, 'source': source})
 		return JsonResponse({})
 	return render(request, "src/html/add_question.html", {})
 
@@ -251,15 +249,6 @@ def delete_student(request, student_id):
 
 def generate_token(user_dict):
 
-    user_dict = {"login_type": "google",
-                  "id": 2,
-                  "email": "nk@infinitybrands.co",
-                  "user_type": "partner",
-                  "user_id": "USER12345",
-                  "username": "GRASSLAND CORPORATION",
-                  "mobile": "9540025266",
-                  "company_id": "ABC123"
-                }
     token = jwt.encode({"exp": datetime.now() + timedelta(days=7) , **user_dict}, PUBLIC_KEY, algorithm="HS256")
 
     return token
@@ -272,16 +261,9 @@ def verify_token(token):
     decoded_token = {}  
     if token:
         try:
-            auth_token  = token.split(" ")[-1] if "Bearer" in token else token
-            decoded_token = jwt.decode(auth_token, PUBLIC_KEY, algorithms="HS256", options={"verify_exp": False})
-
+            decoded_token = jwt.decode(token, PUBLIC_KEY, algorithms="HS256", options={"verify_exp": False})
         except Exception as e:
             return False, {}
-
-        user_doc = DB.users.find_one({"id": decoded_token["id"]}) or {}
-        if not user_doc.get('token_valid'):
-            return False, {}
-    
     else:
         return False, {}
     
@@ -407,8 +389,26 @@ def take_exam(request):
 
 
 def start_exam(request):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+
+	student_id = data.get('sub')
 	qp_id = request.GET.get('qp_id')
+	
+
 	que_number = int(request.GET.get('que_num')) - 1 if request.GET.get('que_num') else 0
+
+	q_num = que_number + 1
+	sheet = DB.answer_sheet.find_one({'student_id': student_id, 'qp_id': qp_id}) or {}
+	selected_data = []
+	answered = []
+	if sheet.get('answers'):
+		answered = list(map(int, list(sheet.get('answers').keys())))
+	sheet_selected_data = sheet.get('answers', {}).get(str(q_num))
+	if sheet_selected_data:
+		selected_data = sheet_selected_data.get('selected')
 	question = list(DB.question_papers.aggregate([{'$match': {'qp_id': qp_id}}, {
         '$project': {
             'qp_items_length': {'$size': '$qp_items'},
@@ -426,19 +426,81 @@ def start_exam(request):
 	if que_number == 0:
 		prev_btn = 'disable'
 
-	return render(request, 'src/html/exam_questions.html', {'prev_btn': prev_btn, 'next_btn': next_btn, 'qp_id': qp_id, 'question': question, 'qp_items_length': qp_items_length, 'que_label': que_number + 1})
+
+	return render(request, 'src/html/exam_questions.html', {'prev_btn': prev_btn, 'next_btn': next_btn, 'qp_id': qp_id, 'question': question, 'qp_items_length': qp_items_length, 'que_label': que_number + 1, 'selected_data': selected_data, 'answered': answered})
+
+
+@csrf_exempt
+def save_answer(request):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+
+	requested_data = dict(request.POST)
+	qid = requested_data.get('qid')[0] if requested_data.get('qid') else ''
+	que_num = requested_data.get('que_num')[0] if requested_data.get('que_num') else ''
+	qp_id = requested_data.get('qp_id')[0] if requested_data.get('qp_id') else ''
+	selected = requested_data.get('selected_options[]') if requested_data.get('selected_options[]') else []
+	question = DB.questions.find_one({'qid': qid}, {'options': 1})
+	ans = []
+	for key, val in question.get('options').items():
+		if val.get('ans') == 'true':
+			ans.append(key)
+
+	DB.answer_sheet.update_one({'student_id': data.get('sub'), 'qp_id': qp_id}, {
+		'$set': {
+			f'answers.{que_num}.qid': qid,
+			f'answers.{que_num}.selected': selected,
+			f'answers.{que_num}.ans': ans
+			}
+		}, upsert=True)
+	return JsonResponse({})
+
+
+@csrf_exempt
+def save_final_sheet(request):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	student_id = data.get('sub')
+	requested_data = dict(request.POST.items())
+	qp_id = requested_data.get('qp_id')
+	DB.answer_sheet.update_one({'student_id': student_id, 'qp_id': qp_id}, {'$set': {'status': 'SUBMITTED'}})
+	return JsonResponse({})
+
+
+def student_answer_sheet(request):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	student_id = data.get('sub')
+	qp_id = request.GET.get('qp_id')
+	data_sheet = DB.answer_sheet.find_one({'student_id': student_id, 'qp_id': qp_id})
+	total_questions = 0
+	total_correct = 0
+	for k, v in data_sheet.get('answers').items():
+		if v.get('ans') == v.get('selected'):
+			total_correct = total_correct + 1
+		total_questions = total_questions + 1
+
+	total_wrong = total_questions - total_correct
+	return render(request, 'src/html/student_answer_sheet.html', {'total_questions': total_questions, 'total_correct': total_correct, 'total_wrong': total_wrong})
 
 
 @csrf_exempt
 def accounts(request):
 
-	# token = request.COOKIES.get('t')
-	# st, data = verify_token(token)
-	# if not st:
-	# 	return redirect('https://infinitybrands.co/login/')
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	if data.get('user_type') == 'TEACHER':
+		account = DB.institutes.find_one({'insti_id': data.get('insti_id')}, {'_id': 0})
+		return render(request, 'src/html/account_details.html', {'account': account})
 	accounts = list(DB.institutes.find({}, {'_id': 0}))
-	print(accounts)
-
 	return render(request, 'src/html/accounts.html', {'accounts': accounts})
 
 

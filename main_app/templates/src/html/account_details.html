@@ -1,0 +1,71 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+    .card {
+      max-width: 500px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #f8f9fa;
+      border-bottom: none;
+      padding-bottom: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+    .card-title {
+      margin-bottom: 0;
+    }
+    .details-label {
+      font-weight: bold;
+    }
+    .details-value {
+      margin-bottom: 15px;
+    }
+
+</style>
+
+ <div class="container-fluid">
+
+<div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Institute/School ID: {{account.insti_id}}</h3>
+          </div>
+          <div class="card-body">
+            <!-- Institute/School Name -->
+            <div class="details-label">Institute/School Name:</div>
+            <div class="details-value">{{account.institute_name}}</div>
+            <!-- Mobile Number -->
+            <div class="details-label">Mobile Number:</div>
+            <div class="details-value">{{account.mobile}}</div>
+            <!-- Spoc Name -->
+            <div class="details-label">Spoc Name:</div>
+            <div class="details-value">{{account.spoc_name}}</div>
+            <!-- Designation -->
+            <div class="details-label">Designation:</div>
+            <div class="details-value">{{account.designation}}</div>
+            <!-- Institute/School Address -->
+            <div class="details-label">Institute/School Address:</div>
+            <div class="details-value">{{account.address}}</div>
+            <!-- Institute/School Email -->
+            <div class="details-label">Institute/School Email:</div>
+            <div class="details-value">{{account.email}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+

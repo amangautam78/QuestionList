@@ -37,7 +37,7 @@
   >
     <a
       href="javascript:void(0);"
-      onclick="window.location.href='/questions/'"
+      onclick="window.location.href='/questions-discovery/'"
       class="text-black h3"
     >
       <i class="fas fa-long-arrow-alt-left me-2"></i>Back to Questions Panel
@@ -62,11 +62,21 @@
                 <!-- Product details wrapper -->
                 <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
                     <!-- Left column for image and description -->
-                    <div class="d-flex flex-column flex-md-row align-items-center">
-                        <div>
-                            <h5>{{ que.que|safe }}</h5>
-                            <p class="small mb-0 me-3">{{ que.expl }}</p>
-                        </div>
+                    <div class="align-items-center">
+                        <div class="question">
+                    <p class="card-text"><strong>QUESTION</strong></p>
+                    {{ que.que|safe}}
+                  </div>
+                    <div class="options">
+                    <p class="card-text"><strong>OPTIONS</strong></p>
+                    {% for index, option in que.options.items %}
+                     
+                        <p class="card-text">
+                          <div class="correct_option1">Option {{index}}) <strong>{{ option.opt|safe }}</strong></div>
+                        </p>
+
+                    {% endfor %}
+                  </div>
                     </div>
                     <!-- Right column for delete button -->
                     <div class="ms-auto">
