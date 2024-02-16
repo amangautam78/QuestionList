@@ -25,15 +25,24 @@
     <div class="row align-items-center">
       <div class="col-sm-6 col-12 mb-4 mb-sm-0">
         <!-- Title -->
-        <h1 class="h2 mb-2 ls-tight pl-4">RESULT</h1>
+        <h1 class="h2 mb-2 ls-tight pl-4">Review Question Paper</h1>
       </div>
       <!-- Actions -->
     </div>
   </header>
 
 <section class="content">
+  <div
+    class="container mt-5"
+  >
+
+    <div class="row">
+      <div class="col-12 col-md-8">
 
 
+
+
+    {% for que in questions.qp_items %}
     <div class="row" id="item-{{que.qid}}">
       <div class="col-12">
           <div class="card mb-3">
@@ -43,27 +52,43 @@
                     <!-- Left column for image and description -->
                     <div class="align-items-center">
                         <div class="question">
-                    <h1>{{ total_correct}}/ {{total_questions}}</h1>
-                    <a class="btn btn-warning" href="/explanation-sheet/?qp_id={{qp_id}}">ANSWER SHEET WITH EXPLANATION</a>
+                    <p class="card-text"><strong>QUESTION</strong></p>
+                    {{ que.que|safe}}
+                  </div>
+                  <div class="question">
+                    <p class="card-text"><strong>EXPLANATION</strong></p>
+                    {{ que.explain|safe}}
                   </div>
                  
                     </div>
-         
+      
                 </div>
               </div>
             </div>
       </div>
     </div>
+    {% endfor %}
 
 
+</div>
+<div class="col-12 col-md-4" >
 
 
+</div>
 
+
+          </div>
+        
+
+  </div>
 
 </section>
 
 </div>
 <script type="text/javascript">
+
+
+
 
       
 

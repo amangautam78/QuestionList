@@ -55,6 +55,8 @@ urlpatterns = [
     path('save-answer/', views.save_answer),
     path('save-final-sheet/', views.save_final_sheet),
     path('student-answer-sheet/', views.student_answer_sheet),
+    path('explanation-sheet/', views.explanation_sheet),
+
     
     
 

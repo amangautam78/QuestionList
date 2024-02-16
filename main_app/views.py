@@ -487,7 +487,18 @@ def student_answer_sheet(request):
 		total_questions = total_questions + 1
 
 	total_wrong = total_questions - total_correct
-	return render(request, 'src/html/student_answer_sheet.html', {'total_questions': total_questions, 'total_correct': total_correct, 'total_wrong': total_wrong})
+	return render(request, 'src/html/student_answer_sheet.html', {'total_questions': total_questions, 'total_correct': total_correct, 'total_wrong': total_wrong, 'qp_id': qp_id})
+
+def explanation_sheet(request):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	student_id = data.get('sub')
+	qp_id = request.GET.get('qp_id')
+	questions = DB.question_papers.find_one({'qp_id': qp_id})
+	return render(request, 'src/html/explanation_sheet.html', {'questions': questions})
+
 
 
 @csrf_exempt
