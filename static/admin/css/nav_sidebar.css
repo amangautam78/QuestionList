@@ -12,23 +12,39 @@
     justify-content: center;
     flex: 0 0 23px;
     width: 23px;
+<<<<<<< HEAD
     border: 0;
     border-right: 1px solid var(--hairline-color);
     background-color: var(--body-bg);
     cursor: pointer;
     font-size: 1.25rem;
     color: var(--link-fg);
+=======
+    border-right: 1px solid #eaeaea;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    color: #447e9b;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     padding: 0;
 }
 
 [dir="rtl"] .toggle-nav-sidebar {
+<<<<<<< HEAD
     border-left: 1px solid var(--hairline-color);
+=======
+    border-left: 1px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-right: 0;
 }
 
 .toggle-nav-sidebar:hover,
 .toggle-nav-sidebar:focus {
+<<<<<<< HEAD
     background-color: var(--darkened-bg);
+=======
+    background-color: #f6f6f6;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #nav-sidebar {
@@ -37,13 +53,22 @@
     left: -276px;
     margin-left: -276px;
     border-top: 1px solid transparent;
+<<<<<<< HEAD
     border-right: 1px solid var(--hairline-color);
     background-color: var(--body-bg);
+=======
+    border-right: 1px solid #eaeaea;
+    background-color: #ffffff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     overflow: auto;
 }
 
 [dir="rtl"] #nav-sidebar {
+<<<<<<< HEAD
     border-left: 1px solid var(--hairline-color);
+=======
+    border-left: 1px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-right: 0;
     left: 0;
     margin-left: 0;
@@ -59,6 +84,7 @@
     content: '\00AB';
 }
 
+<<<<<<< HEAD
 .main > #nav-sidebar {
     visibility: hidden;
 }
@@ -69,6 +95,16 @@
 }
 
 [dir="rtl"] .main.shifted > #nav-sidebar {
+=======
+.main.shifted > #nav-sidebar {
+    left: 24px;
+    margin-left: 0;
+}
+
+[dir="rtl"] .main.shifted > #nav-sidebar {
+    left: 0;
+    right: 24px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-right: 0;
 }
 
@@ -94,11 +130,16 @@
 
 #nav-sidebar .current-app .section:link,
 #nav-sidebar .current-app .section:visited {
+<<<<<<< HEAD
     color: var(--header-color);
+=======
+    color: #ffc;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     font-weight: bold;
 }
 
 #nav-sidebar .current-model {
+<<<<<<< HEAD
     background: var(--selected-row);
 }
 
@@ -114,12 +155,16 @@
 
 .main.shifted > #nav-sidebar + .content {
     max-width: calc(100% - 299px);
+=======
+    background: #ffc;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 @media (max-width: 767px) {
     #nav-sidebar, #toggle-nav-sidebar {
         display: none;
     }
+<<<<<<< HEAD
 
     .main > #nav-sidebar + .content,
     .main.shifted > #nav-sidebar + .content {
@@ -147,4 +192,10 @@
 
 #nav-sidebar table {
     width: 100%;
+=======
+}
+
+.change-list .main > #nav-sidebar+.content {
+    overflow: hidden;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }

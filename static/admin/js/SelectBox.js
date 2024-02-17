@@ -13,7 +13,10 @@
         redisplay: function(id) {
             // Repopulate HTML select box from cache
             const box = document.getElementById(id);
+<<<<<<< HEAD
             const scroll_value_from_top = box.scrollTop;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
             box.innerHTML = '';
             for (const node of SelectBox.cache[id]) {
                 if (node.displayed) {
@@ -23,7 +26,10 @@
                     box.appendChild(new_option);
                 }
             }
+<<<<<<< HEAD
             box.scrollTop = scroll_value_from_top;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         },
         filter: function(id, text) {
             // Redisplay the HTML select box, displaying only the choices containing ALL
@@ -33,7 +39,11 @@
                 node.displayed = 1;
                 const node_text = node.text.toLowerCase();
                 for (const token of tokens) {
+<<<<<<< HEAD
                     if (!node_text.includes(token)) {
+=======
+                    if (node_text.indexOf(token) === -1) {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
                         node.displayed = 0;
                         break; // Once the first token isn't found we're done
                     }
@@ -41,10 +51,13 @@
             }
             SelectBox.redisplay(id);
         },
+<<<<<<< HEAD
         get_hidden_node_count(id) {
             const cache = SelectBox.cache[id] || [];
             return cache.filter(node => node.displayed === 0).length;
         },
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         delete_from_cache: function(id, value) {
             let delete_index = null;
             const cache = SelectBox.cache[id];

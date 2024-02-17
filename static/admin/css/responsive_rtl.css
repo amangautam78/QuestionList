@@ -23,9 +23,15 @@
     [dir="rtl"] .change-list .filtered .paginator,
     [dir="rtl"] .filtered #toolbar,
     [dir="rtl"] .filtered div.xfull,
+<<<<<<< HEAD
     [dir="rtl"] .filtered .actions,
     [dir="rtl"] #changelist-filter {
         margin-left: 0;
+=======
+    [dir="rtl"] .filtered .actions {
+        margin-right: 0;
+        margin-left: 230px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     [dir="rtl"] .inline-group ul.tools a.add,
@@ -63,12 +69,24 @@
 /* MOBILE */
 
 @media (max-width: 767px) {
+<<<<<<< HEAD
+=======
+    [dir="rtl"] .change-list .filtered .results,
+    [dir="rtl"] .change-list .filtered .paginator,
+    [dir="rtl"] .filtered #toolbar,
+    [dir="rtl"] .filtered div.xfull,
+    [dir="rtl"] .filtered .actions {
+        margin-left: 0;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     [dir="rtl"] .aligned .related-lookup,
     [dir="rtl"] .aligned .datetimeshortcuts {
         margin-left: 0;
         margin-right: 15px;
     }
 
+<<<<<<< HEAD
     [dir="rtl"] .aligned ul,
     [dir="rtl"] form .aligned ul.errorlist {
         margin-right: 0;
@@ -81,4 +99,9 @@
     [dir="rtl"] .aligned .vCheckboxLabel {
         padding: 1px 5px 0 0;
     }
+=======
+    [dir="rtl"] .aligned ul {
+        margin-right: 0;
+    }
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }

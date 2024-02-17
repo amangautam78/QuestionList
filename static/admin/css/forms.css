@@ -5,8 +5,13 @@
 .form-row {
     overflow: hidden;
     padding: 10px;
+<<<<<<< HEAD
     font-size: 0.8125rem;
     border-bottom: 1px solid var(--hairline-color);
+=======
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .form-row img, .form-row input {
@@ -22,6 +27,7 @@ form .form-row p {
     padding-left: 0;
 }
 
+<<<<<<< HEAD
 .flex-container {
     display: flex;
 }
@@ -32,23 +38,37 @@ form .form-row p {
 
 .form-multiline > div {
     padding-bottom: 10px;
+=======
+.hidden {
+    display: none;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* FORM LABELS */
 
 label {
     font-weight: normal;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     font-size: 0.8125rem;
+=======
+    color: #666;
+    font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .required label, label.required {
     font-weight: bold;
+<<<<<<< HEAD
     color: var(--body-fg);
+=======
+    color: #333;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* RADIO BUTTONS */
 
+<<<<<<< HEAD
 form div.radiolist div {
     padding-right: 7px;
 }
@@ -62,6 +82,18 @@ form div.radiolist label {
 }
 
 form div.radiolist input[type="radio"] {
+=======
+form ul.radiolist li {
+    list-style-type: none;
+}
+
+form ul.radiolist label {
+    float: none;
+    display: inline;
+}
+
+form ul.radiolist input[type="radio"] {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin: -2px 4px 0 0;
     padding: 0;
 }
@@ -81,7 +113,11 @@ form ul.inline li {
 .aligned label {
     display: block;
     padding: 4px 10px 0 0;
+<<<<<<< HEAD
     min-width: 160px;
+=======
+    float: left;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     width: 160px;
     word-wrap: break-word;
     line-height: 1;
@@ -91,6 +127,7 @@ form ul.inline li {
     content: '';
     display: inline-block;
     vertical-align: middle;
+<<<<<<< HEAD
     height: 1.625rem;
 }
 
@@ -100,6 +137,16 @@ form ul.inline li {
     margin-bottom: 0;
     margin-left: 0;
     overflow-wrap: break-word;
+=======
+    height: 26px;
+}
+
+.aligned label + p, .aligned label + div.help, .aligned label + div.readonly {
+    padding: 6px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 170px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .aligned ul label {
@@ -121,7 +168,11 @@ form .aligned ul {
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 form .aligned div.radiolist {
+=======
+form .aligned ul.radiolist {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -129,17 +180,28 @@ form .aligned div.radiolist {
 
 form .aligned p.help,
 form .aligned div.help {
+<<<<<<< HEAD
+=======
+    clear: left;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-top: 0;
     margin-left: 160px;
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 form .aligned p.date div.help.timezonewarning,
 form .aligned p.datetime div.help.timezonewarning,
 form .aligned p.time div.help.timezonewarning {
     margin-left: 0;
     padding-left: 0;
     font-weight: normal;
+=======
+form .aligned label + p.help,
+form .aligned label + div.help {
+    margin-left: 0;
+    padding-left: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 form .aligned p.help:last-child,
@@ -184,7 +246,18 @@ form .aligned table p {
     width: 610px;
 }
 
+<<<<<<< HEAD
 fieldset .fieldBox {
+=======
+.checkbox-row p.help,
+.checkbox-row div.help {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+fieldset .fieldBox {
+    float: left;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-right: 20px;
 }
 
@@ -195,7 +268,10 @@ fieldset .fieldBox {
 }
 
 form .wide p,
+<<<<<<< HEAD
 form .wide ul.errorlist,
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 form .wide input + p.help,
 form .wide input + div.help {
     margin-left: 200px;
@@ -203,7 +279,11 @@ form .wide input + div.help {
 
 form .wide p.help,
 form .wide div.help {
+<<<<<<< HEAD
     padding-left: 50px;
+=======
+    padding-left: 38px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 form div.help ul {
@@ -226,35 +306,57 @@ fieldset.collapsed h2, fieldset.collapsed {
 }
 
 fieldset.collapsed {
+<<<<<<< HEAD
     border: 1px solid var(--hairline-color);
+=======
+    border: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-radius: 4px;
     overflow: hidden;
 }
 
 fieldset.collapsed h2 {
+<<<<<<< HEAD
     background: var(--darkened-bg);
     color: var(--body-quiet-color);
 }
 
 fieldset .collapse-toggle {
     color: var(--header-link-color);
+=======
+    background: #f8f8f8;
+    color: #666;
+}
+
+fieldset .collapse-toggle {
+    color: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 fieldset.collapsed .collapse-toggle {
     background: transparent;
     display: inline;
+<<<<<<< HEAD
     color: var(--link-fg);
+=======
+    color: #447e9b;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* MONOSPACE TEXTAREAS */
 
 fieldset.monospace textarea {
+<<<<<<< HEAD
     font-family: var(--font-family-monospace);
+=======
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* SUBMIT ROW */
 
 .submit-row {
+<<<<<<< HEAD
     padding: 12px 14px 12px;
     margin: 0 0 20px;
     background: var(--darkened-bg);
@@ -264,6 +366,15 @@ fieldset.monospace textarea {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+=======
+    padding: 12px 14px;
+    margin: 0 0 20px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-align: right;
+    overflow: hidden;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 body.popup .submit-row {
@@ -271,6 +382,7 @@ body.popup .submit-row {
 }
 
 .submit-row input {
+<<<<<<< HEAD
     height: 2.1875rem;
     line-height: 0.9375rem;
 }
@@ -285,40 +397,86 @@ body.popup .submit-row {
 
 .submit-row a.deletelink {
     margin-left: auto;
+=======
+    height: 35px;
+    line-height: 15px;
+    margin: 0 0 0 5px;
+}
+
+.submit-row input.default {
+    margin: 0 0 0 8px;
+    text-transform: uppercase;
+}
+
+.submit-row p {
+    margin: 0.3em;
+}
+
+.submit-row p.deletelink-box {
+    float: left;
+    margin: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .submit-row a.deletelink {
     display: block;
+<<<<<<< HEAD
     background: var(--delete-button-bg);
     border-radius: 4px;
     padding: 0.625rem 0.9375rem;
     height: 0.9375rem;
     line-height: 0.9375rem;
     color: var(--button-fg);
+=======
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .submit-row a.closelink {
     display: inline-block;
+<<<<<<< HEAD
     background: var(--close-button-bg);
     border-radius: 4px;
     padding: 10px 15px;
     height: 0.9375rem;
     line-height: 0.9375rem;
     color: var(--button-fg);
+=======
+    background: #bbbbbb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 15px;
+    line-height: 15px;
+    margin: 0 0 0 5px;
+    color: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .submit-row a.deletelink:focus,
 .submit-row a.deletelink:hover,
 .submit-row a.deletelink:active {
+<<<<<<< HEAD
     background: var(--delete-button-hover-bg);
     text-decoration: none;
+=======
+    background: #a41515;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .submit-row a.closelink:focus,
 .submit-row a.closelink:hover,
 .submit-row a.closelink:active {
+<<<<<<< HEAD
     background: var(--close-button-hover-bg);
     text-decoration: none;
+=======
+    background: #aaaaaa;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* CUSTOM FORM FIELDS */
@@ -360,6 +518,13 @@ body.popup .submit-row {
     width: 2.2em;
 }
 
+<<<<<<< HEAD
+=======
+.vTextField, .vUUIDField {
+    width: 20em;
+}
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 .vIntegerField {
     width: 5em;
 }
@@ -372,10 +537,13 @@ body.popup .submit-row {
     width: 5em;
 }
 
+<<<<<<< HEAD
 .vTextField, .vUUIDField {
     width: 20em;
 }
 
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 /* INLINES */
 
 .inline-group {
@@ -397,12 +565,21 @@ body.popup .submit-row {
 
 .inline-related h3 {
     margin: 0;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     padding: 5px;
     font-size: 0.8125rem;
     background: var(--darkened-bg);
     border-top: 1px solid var(--hairline-color);
     border-bottom: 1px solid var(--hairline-color);
+=======
+    color: #666;
+    padding: 5px;
+    font-size: 13px;
+    background: #f8f8f8;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .inline-related h3 span.delete {
@@ -411,12 +588,20 @@ body.popup .submit-row {
 
 .inline-related h3 span.delete label {
     margin-left: 2px;
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .inline-related fieldset {
     margin: 0;
+<<<<<<< HEAD
     background: var(--body-bg);
+=======
+    background: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border: none;
     width: 100%;
 }
@@ -424,11 +609,19 @@ body.popup .submit-row {
 .inline-related fieldset.module h3 {
     margin: 0;
     padding: 2px 5px 3px 5px;
+<<<<<<< HEAD
     font-size: 0.6875rem;
     text-align: left;
     font-weight: bold;
     background: #bcd;
     color: var(--body-bg);
+=======
+    font-size: 11px;
+    text-align: left;
+    font-weight: bold;
+    background: #bcd;
+    color: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .inline-group .tabular fieldset.module {
@@ -437,7 +630,10 @@ body.popup .submit-row {
 
 .inline-related.tabular fieldset.module table {
     width: 100%;
+<<<<<<< HEAD
     overflow-x: scroll;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .last-related fieldset {
@@ -465,9 +661,15 @@ body.popup .submit-row {
     height: 1.1em;
     padding: 2px 9px;
     overflow: hidden;
+<<<<<<< HEAD
     font-size: 0.5625rem;
     font-weight: bold;
     color: var(--body-quiet-color);
+=======
+    font-size: 9px;
+    font-weight: bold;
+    color: #666;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     _width: 700px;
 }
 
@@ -484,15 +686,26 @@ body.popup .submit-row {
 
 .inline-group div.add-row,
 .inline-group .tabular tr.add-row td {
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     background: var(--darkened-bg);
     padding: 8px 10px;
     border-bottom: 1px solid var(--hairline-color);
+=======
+    color: #666;
+    background: #f8f8f8;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .inline-group .tabular tr.add-row td {
     padding: 8px 10px;
+<<<<<<< HEAD
     border-bottom: 1px solid var(--hairline-color);
+=======
+    border-bottom: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .inline-group ul.tools a.add,
@@ -500,7 +713,11 @@ body.popup .submit-row {
 .inline-group .tabular tr.add-row td a {
     background: url(../img/icon-addlink.svg) 0 1px no-repeat;
     padding-left: 16px;
+<<<<<<< HEAD
     font-size: 0.75rem;
+=======
+    font-size: 12px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .empty-form {
@@ -518,8 +735,13 @@ body.popup .submit-row {
 }
 
 .related-lookup {
+<<<<<<< HEAD
     width: 1rem;
     height: 1rem;
+=======
+    width: 16px;
+    height: 16px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     background-image: url(../img/search.svg);
 }
 

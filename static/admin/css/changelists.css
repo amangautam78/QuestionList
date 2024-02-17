@@ -1,6 +1,7 @@
 /* CHANGELISTS */
 
 #changelist {
+<<<<<<< HEAD
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -9,6 +10,10 @@
 #changelist .changelist-form-container {
     flex: 1 1 auto;
     min-width: 0;
+=======
+    position: relative;
+    width: 100%;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist table {
@@ -27,6 +32,10 @@
 
 .change-list .filtered .results, .change-list .filtered .paginator,
 .filtered #toolbar, .filtered div.xfull {
+<<<<<<< HEAD
+=======
+    margin-right: 280px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     width: auto;
 }
 
@@ -35,6 +44,7 @@
 }
 
 #changelist-form .results {
+<<<<<<< HEAD
     overflow-x: auto;
     width: 100%;
 }
@@ -47,6 +57,19 @@
     color: var(--body-quiet-color);
     border-bottom: 1px solid var(--hairline-color);
     background: var(--body-bg);
+=======
+  overflow-x: auto;
+}
+
+#changelist .toplinks {
+    border-bottom: 1px solid #ddd;
+}
+
+#changelist .paginator {
+    color: #666;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     overflow: hidden;
 }
 
@@ -68,11 +91,16 @@
 }
 
 #changelist table tfoot {
+<<<<<<< HEAD
     color: var(--body-quiet-color);
+=======
+    color: #666;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* TOOLBAR */
 
+<<<<<<< HEAD
 #toolbar {
     padding: 8px 10px;
     margin-bottom: 15px;
@@ -121,10 +149,61 @@
 }
 
 #changelist-search img {
+=======
+#changelist #toolbar {
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background: #f8f8f8;
+    color: #666;
+}
+
+#changelist #toolbar form input {
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px;
+    color: #333;
+}
+
+#changelist #toolbar form #searchbar {
+    height: 19px;
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    margin: 0;
+    vertical-align: top;
+    font-size: 13px;
+    max-width: 230px;
+}
+
+#changelist #toolbar form #searchbar:focus {
+    border-color: #999;
+}
+
+#changelist #toolbar form input[type="submit"] {
+    border: 1px solid #ccc;
+    font-size: 13px;
+    padding: 4px 8px;
+    margin: 0;
+    vertical-align: middle;
+    background: #fff;
+    box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+    cursor: pointer;
+    color: #333;
+}
+
+#changelist #toolbar form input[type="submit"]:focus,
+#changelist #toolbar form input[type="submit"]:hover {
+    border-color: #999;
+}
+
+#changelist #changelist-search img {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     vertical-align: middle;
     margin-right: 4px;
 }
 
+<<<<<<< HEAD
 #changelist-search .help {
     word-break: break-word;
 }
@@ -141,6 +220,23 @@
 
 #changelist-filter h2 {
     font-size: 0.875rem;
+=======
+/* FILTER COLUMN */
+
+#changelist-filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 240px;
+    background: #f8f8f8;
+    border-left: none;
+    margin: 0;
+}
+
+#changelist-filter h2 {
+    font-size: 14px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 5px 15px;
@@ -148,6 +244,7 @@
     border-bottom: none;
 }
 
+<<<<<<< HEAD
 #changelist-filter h3,
 #changelist-filter details summary {
     font-weight: 400;
@@ -176,12 +273,23 @@
 
 #changelist-filter details[open] > summary::before {
     content: '↓';
+=======
+#changelist-filter h3 {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist-filter ul {
     margin: 5px 0;
     padding: 0 15px 15px;
+<<<<<<< HEAD
     border-bottom: 1px solid var(--hairline-color);
+=======
+    border-bottom: 1px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist-filter ul:last-child {
@@ -196,23 +304,38 @@
 
 #changelist-filter a {
     display: block;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     word-break: break-word;
 }
 
 #changelist-filter li.selected {
     border-left: 5px solid var(--hairline-color);
+=======
+    color: #999;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+#changelist-filter li.selected {
+    border-left: 5px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     padding-left: 10px;
     margin-left: -15px;
 }
 
 #changelist-filter li.selected a {
+<<<<<<< HEAD
     color: var(--link-selected-fg);
+=======
+    color: #5b80b2;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist-filter a:focus, #changelist-filter a:hover,
 #changelist-filter li.selected a:focus,
 #changelist-filter li.selected a:hover {
+<<<<<<< HEAD
     color: var(--link-hover-color);
 }
 
@@ -220,10 +343,20 @@
     font-size: 0.8125rem;
     margin-bottom: 10px;
     border-bottom: 1px solid var(--hairline-color);
+=======
+    color: #036;
+}
+
+#changelist-filter #changelist-filter-clear a {
+    font-size: 13px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* DATE DRILLDOWN */
 
+<<<<<<< HEAD
 .change-list .toplinks {
     display: flex;
     padding-bottom: 5px;
@@ -243,11 +376,84 @@
 .change-list .toplinks .date-back:focus,
 .change-list .toplinks .date-back:hover {
     color: var(--link-hover-color);
+=======
+.change-list ul.toplinks {
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.change-list ul.toplinks li {
+    padding: 3px 6px;
+    font-weight: bold;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.change-list ul.toplinks .date-back a {
+    color: #999;
+}
+
+.change-list ul.toplinks .date-back a:focus,
+.change-list ul.toplinks .date-back a:hover {
+    color: #036;
+}
+
+/* PAGINATOR */
+
+.paginator {
+    font-size: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 22px;
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+
+.paginator a:link, .paginator a:visited {
+    padding: 2px 6px;
+    background: #79aec8;
+    text-decoration: none;
+    color: #fff;
+}
+
+.paginator a.showall {
+    border: none;
+    background: none;
+    color: #5b80b2;
+}
+
+.paginator a.showall:focus, .paginator a.showall:hover {
+    background: none;
+    color: #036;
+}
+
+.paginator .end {
+    margin-right: 6px;
+}
+
+.paginator .this-page {
+    padding: 2px 6px;
+    font-weight: bold;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+.paginator a:focus, .paginator a:hover {
+    color: white;
+    background: #036;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* ACTIONS */
 
 .filtered .actions {
+<<<<<<< HEAD
+=======
+    margin-right: 280px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-right: none;
 }
 
@@ -256,6 +462,7 @@
     vertical-align: baseline;
 }
 
+<<<<<<< HEAD
 /* Once the :has() pseudo-class is supported by all browsers, the tr.selected
    selector and the JS adding the class can be removed. */
 #changelist tbody tr.selected {
@@ -273,24 +480,48 @@
     #changelist tbody tr:has(.action-select:checked) {
         background-color: SelectedItem;
     }
+=======
+#changelist table tbody tr.selected {
+    background-color: #FFFFCC;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist .actions {
     padding: 10px;
+<<<<<<< HEAD
     background: var(--body-bg);
     border-top: none;
     border-bottom: none;
     line-height: 1.5rem;
     color: var(--body-quiet-color);
     width: 100%;
+=======
+    background: #fff;
+    border-top: none;
+    border-bottom: none;
+    line-height: 24px;
+    color: #999;
+}
+
+#changelist .actions.selected {
+    background: #fffccf;
+    border-top: 1px solid #fffee8;
+    border-bottom: 1px solid #edecd6;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist .actions span.all,
 #changelist .actions span.action-counter,
 #changelist .actions span.clear,
 #changelist .actions span.question {
+<<<<<<< HEAD
     font-size: 0.8125rem;
     margin: 0 0.5em;
+=======
+    font-size: 13px;
+    margin: 0 0.5em;
+    display: none;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist .actions:last-child {
@@ -299,23 +530,37 @@
 
 #changelist .actions select {
     vertical-align: top;
+<<<<<<< HEAD
     height: 1.5rem;
     color: var(--body-fg);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 0.875rem;
+=======
+    height: 24px;
+    background: none;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     padding: 0 0 0 4px;
     margin: 0;
     margin-left: 10px;
 }
 
 #changelist .actions select:focus {
+<<<<<<< HEAD
     border-color: var(--body-quiet-color);
+=======
+    border-color: #999;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist .actions label {
     display: inline-block;
     vertical-align: middle;
+<<<<<<< HEAD
     font-size: 0.8125rem;
 }
 
@@ -335,4 +580,25 @@
 
 #changelist .actions .button:focus, #changelist .actions .button:hover {
     border-color: var(--body-quiet-color);
+=======
+    font-size: 13px;
+}
+
+#changelist .actions .button {
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+    cursor: pointer;
+    height: 24px;
+    line-height: 1;
+    padding: 4px 8px;
+    margin: 0;
+    color: #333;
+}
+
+#changelist .actions .button:focus, #changelist .actions .button:hover {
+    border-color: #999;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }

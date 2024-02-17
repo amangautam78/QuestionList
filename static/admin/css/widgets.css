@@ -1,6 +1,7 @@
 /* SELECTOR (FILTER INTERFACE) */
 
 .selector {
+<<<<<<< HEAD
     display: flex;
     flex-grow: 1;
     gap: 0 10px;
@@ -59,6 +60,52 @@
     margin: 0;
     text-align: left;
     display: flex;
+=======
+    width: 800px;
+    float: left;
+}
+
+.selector select {
+    width: 380px;
+    height: 17.2em;
+}
+
+.selector-available, .selector-chosen {
+    float: left;
+    width: 380px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.selector-chosen select {
+    border-top: none;
+}
+
+.selector-available h2, .selector-chosen h2 {
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 0;
+}
+
+.selector-chosen h2 {
+    background: #79aec8;
+    color: #fff;
+}
+
+.selector .selector-available h2 {
+    background: #f8f8f8;
+    color: #666;
+}
+
+.selector .selector-filter {
+    background: white;
+    border: 1px solid #ccc;
+    border-width: 0 1px;
+    padding: 8px;
+    color: #999;
+    font-size: 10px;
+    margin: 0;
+    text-align: left;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .selector .selector-filter label,
@@ -70,6 +117,7 @@
     padding: 0;
     overflow: hidden;
     line-height: 1;
+<<<<<<< HEAD
     min-width: auto;
 }
 
@@ -79,10 +127,17 @@
 
 .selector .selector-available input,
 .selector .selector-chosen input {
+=======
+}
+
+.selector .selector-available input {
+    width: 320px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-left: 8px;
 }
 
 .selector ul.selector-chooser {
+<<<<<<< HEAD
     align-self: center;
     width: 22px;
     background-color: var(--selected-bg);
@@ -90,6 +145,14 @@
     margin: 0;
     padding: 0;
     transform: translateY(-17px);
+=======
+    float: left;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 10em 5px 0 5px;
+    padding: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .selector-chooser li {
@@ -103,6 +166,7 @@
     margin: 0 0 10px;
     border-radius: 0 0 4px 4px;
 }
+<<<<<<< HEAD
 .selector .selector-chosen--with-filtered select {
     margin: 0;
     border-radius: 0;
@@ -112,6 +176,8 @@
 .selector .selector-chosen:not(.selector-chosen--with-filtered) .list-footer-display {
     display: none;
 }
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 
 .selector-add, .selector-remove {
     width: 16px;
@@ -120,7 +186,11 @@
     text-indent: -3000px;
     overflow: hidden;
     cursor: default;
+<<<<<<< HEAD
     opacity: 0.55;
+=======
+    opacity: 0.3;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .active.selector-add, .active.selector-remove {
@@ -151,6 +221,7 @@ a.selector-chooseall, a.selector-clearall {
     display: inline-block;
     height: 16px;
     text-align: left;
+<<<<<<< HEAD
     margin: 0 auto;
     overflow: hidden;
     font-weight: bold;
@@ -158,11 +229,24 @@ a.selector-chooseall, a.selector-clearall {
     color: var(--body-quiet-color);
     text-decoration: none;
     opacity: 0.55;
+=======
+    margin: 1px auto 3px;
+    overflow: hidden;
+    font-weight: bold;
+    line-height: 16px;
+    color: #666;
+    text-decoration: none;
+    opacity: 0.3;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 a.active.selector-chooseall:focus, a.active.selector-clearall:focus,
 a.active.selector-chooseall:hover, a.active.selector-clearall:hover {
+<<<<<<< HEAD
     color: var(--link-fg);
+=======
+    color: #447e9b;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 a.active.selector-chooseall, a.active.selector-clearall {
@@ -198,7 +282,10 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .stacked {
     float: left;
     width: 490px;
+<<<<<<< HEAD
     display: block;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .stacked select {
@@ -224,7 +311,10 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
     margin: 0 0 10px 40%;
     background-color: #eee;
     border-radius: 10px;
+<<<<<<< HEAD
     transform: none;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .stacked .selector-chooser li {
@@ -282,8 +372,13 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .selector .search-label-icon {
     background: url(../img/search.svg) 0 0 no-repeat;
     display: inline-block;
+<<<<<<< HEAD
     height: 1.125rem;
     width: 1.125rem;
+=======
+    height: 18px;
+    width: 18px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* DATE AND TIME */
@@ -292,15 +387,24 @@ p.datetime {
     line-height: 20px;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
+=======
+    color: #666;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     font-weight: bold;
 }
 
 .datetime span {
     white-space: nowrap;
     font-weight: normal;
+<<<<<<< HEAD
     font-size: 0.6875rem;
     color: var(--body-quiet-color);
+=======
+    font-size: 11px;
+    color: #ccc;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField {
@@ -309,7 +413,11 @@ p.datetime {
 }
 
 table p.datetime {
+<<<<<<< HEAD
     font-size: 0.6875rem;
+=======
+    font-size: 11px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-left: 0;
     padding-left: 0;
 }
@@ -343,8 +451,13 @@ table p.datetime {
 }
 
 .timezonewarning {
+<<<<<<< HEAD
     font-size: 0.6875rem;
     color: var(--body-quiet-color);
+=======
+    font-size: 11px;
+    color: #999;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 /* URL */
@@ -353,8 +466,13 @@ p.url {
     line-height: 20px;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     font-size: 0.6875rem;
+=======
+    color: #666;
+    font-size: 11px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     font-weight: bold;
 }
 
@@ -368,11 +486,23 @@ p.file-upload {
     line-height: 20px;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
     font-size: 0.6875rem;
     font-weight: bold;
 }
 
+=======
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.aligned p.file-upload {
+    margin-left: 170px;
+}
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 .file-upload a {
     font-weight: normal;
 }
@@ -382,8 +512,13 @@ p.file-upload {
 }
 
 span.clearable-file-input label {
+<<<<<<< HEAD
     color: var(--body-fg);
     font-size: 0.6875rem;
+=======
+    color: #333;
+    font-size: 11px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     display: inline;
     float: none;
 }
@@ -392,12 +527,20 @@ span.clearable-file-input label {
 
 .calendarbox, .clockbox {
     margin: 5px auto;
+<<<<<<< HEAD
     font-size: 0.75rem;
     width: 19em;
     text-align: center;
     background: var(--body-bg);
     color: var(--body-fg);
     border: 1px solid var(--hairline-color);
+=======
+    font-size: 12px;
+    width: 19em;
+    text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     overflow: hidden;
@@ -425,38 +568,70 @@ span.clearable-file-input label {
     margin: 0;
     text-align: center;
     border-top: none;
+<<<<<<< HEAD
     font-weight: 700;
     font-size: 0.75rem;
     color: #333;
     background: var(--accent);
+=======
+    background: #f5dd5d;
+    font-weight: 700;
+    font-size: 12px;
+    color: #333;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendar th {
     padding: 8px 5px;
+<<<<<<< HEAD
     background: var(--darkened-bg);
     border-bottom: 1px solid var(--border-color);
     font-weight: 400;
     font-size: 0.75rem;
     text-align: center;
     color: var(--body-quiet-color);
+=======
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendar td {
     font-weight: 400;
+<<<<<<< HEAD
     font-size: 0.75rem;
     text-align: center;
     padding: 0;
     border-top: 1px solid var(--hairline-color);
+=======
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     border-bottom: none;
 }
 
 .calendar td.selected a {
+<<<<<<< HEAD
     background: var(--secondary);
     color: var(--button-fg);
 }
 
 .calendar td.nonday {
     background: var(--darkened-bg);
+=======
+    background: #79aec8;
+    color: #fff;
+}
+
+.calendar td.nonday {
+    background: #f8f8f8;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendar td.today a {
@@ -468,22 +643,38 @@ span.clearable-file-input label {
     font-weight: 400;
     padding: 6px;
     text-decoration: none;
+<<<<<<< HEAD
     color: var(--body-quiet-color);
+=======
+    color: #444;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendar td a:focus, .timelist a:focus,
 .calendar td a:hover, .timelist a:hover {
+<<<<<<< HEAD
     background: var(--primary);
+=======
+    background: #79aec8;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     color: white;
 }
 
 .calendar td a:active, .timelist a:active {
+<<<<<<< HEAD
     background: var(--header-bg);
+=======
+    background: #417690;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     color: white;
 }
 
 .calendarnav {
+<<<<<<< HEAD
     font-size: 0.625rem;
+=======
+    font-size: 10px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     text-align: center;
     color: #ccc;
     margin: 0;
@@ -492,6 +683,7 @@ span.clearable-file-input label {
 
 .calendarnav a:link, #calendarnav a:visited,
 #calendarnav a:focus, #calendarnav a:hover {
+<<<<<<< HEAD
     color: var(--body-quiet-color);
 }
 
@@ -502,6 +694,18 @@ span.clearable-file-input label {
     line-height: 0.6875rem;
     border-top: 1px solid var(--hairline-color);
     padding: 8px 0;
+=======
+    color: #999;
+}
+
+.calendar-shortcuts {
+    background: white;
+    font-size: 11px;
+    line-height: 11px;
+    border-top: 1px solid #eee;
+    padding: 8px 0;
+    color: #ccc;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
@@ -537,6 +741,7 @@ span.clearable-file-input label {
 .calendar-cancel {
     margin: 0;
     padding: 4px 0;
+<<<<<<< HEAD
     font-size: 0.75rem;
     background: var(--close-button-bg);
     border-top: 1px solid var(--border-color);
@@ -549,6 +754,20 @@ span.clearable-file-input label {
 
 .calendar-cancel a {
     color: var(--button-fg);
+=======
+    font-size: 12px;
+    background: #eee;
+    border-top: 1px solid #ddd;
+    color: #333;
+}
+
+.calendar-cancel:focus, .calendar-cancel:hover {
+    background: #ddd;
+}
+
+.calendar-cancel a {
+    color: black;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     display: block;
 }
 
@@ -579,6 +798,7 @@ ul.timelist, .timelist li {
 
 /* RELATED WIDGET WRAPPER */
 .related-widget-wrapper {
+<<<<<<< HEAD
     display: flex;
     gap: 0 10px;
     flex-grow: 1;
@@ -600,4 +820,26 @@ ul.timelist, .timelist li {
 .dj_map {
     width: 600px;
     height: 400px;
+=======
+    float: left;       /* display properly in form rows with multiple fields */
+    overflow: hidden;  /* clear floated contents */
+}
+
+.related-widget-wrapper-link {
+    opacity: 0.3;
+}
+
+.related-widget-wrapper-link:link {
+    opacity: .8;
+}
+
+.related-widget-wrapper-link:link:focus,
+.related-widget-wrapper-link:link:hover {
+    opacity: 1;
+}
+
+select + .related-widget-wrapper-link,
+.related-widget-wrapper-link + .related-widget-wrapper-link {
+    margin-left: 7px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }

@@ -1,390 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
 
-        <meta name="description" content="Reshaping the educational landscape and empowering educators and students worldwide
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <meta name="description" content="Reshaping the educational landscape and empowering educators and students worldwide
 
 . - QnA Class">
 
-        <meta property="og:title" content="Redefining assessment and Learning - QNACLASS">
-        <meta property="og:description" content="Reshaping the educational landscape and empowering educators and students worldwide
+  <meta property="og:title" content="Redefining assessment and Learning - QNACLASS">
+  <meta property="og:description" content="Reshaping the educational landscape and empowering educators and students worldwide
 
 . - QnA Class">
-        <meta property="og:url" content="https://qnaclass.com">
-        <meta property="og:type" content="website">
+  <meta property="og:url" content="https://qnaclass.com">
+  <meta property="og:type" content="website">
 
-        <meta name="twitter:title" content="Reshaping the educational landscape and empowering educators and students worldwide
-
-. - QnA Class">
-        <meta name="twitter:description" content="Reshaping the educational landscape and empowering educators and students worldwide
+  <meta name="twitter:title" content="Reshaping the educational landscape and empowering educators and students worldwide
 
 . - QnA Class">
-        <meta name="twitter:url" content="https://qnaclass.com">
+  <meta name="twitter:description" content="Reshaping the educational landscape and empowering educators and students worldwide
 
-        <link rel="icon" href="/static/assets/images/logos/favicon.png" type="image/x-icon">
-        <link rel="canonical" href="https://qnaclass.com">
-        <title>QnA Class</title>
+. - QnA Class">
+  <meta name="twitter:url" content="https://qnaclass.com">
+
+  <link rel="icon" href="/static/assets/images/logos/favicon.png" type="image/x-icon">
+  <link rel="canonical" href="https://qnaclass.com">
+  <title>QnA Class</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <meta
-      name="google-signin-client_id"
-      content="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com"
-    />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="google-signin-client_id"
+    content="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com" />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
-      integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://accounts.google.com/gsi/client" async></script>
-    <meta
-      name="google-signin-client_id"
-      content="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com"
-    />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+    integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <meta name="google-signin-client_id"
+    content="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com" />
 
-<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 
-    <title>QnA CLASS</title>
+  <title>QnA CLASS</title>
 
-    <style type="text/css">
-      body {
-        background-image: url("/static/images/background_image.jpg");
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        padding-top: 50px;
-        padding: 10px;
-      }
+  <style type="text/css">
+    body {
+      background-image: url("/static/images/background_image.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding-top: 50px;
+      padding: 10px;
+    }
 
-      .social-login img {
-        width: 24px;
-      }
+    .social-login img {
+      width: 24px;
+    }
 
-      a {
-        text-decoration: none;
-      }
+    a {
+      text-decoration: none;
+    }
 
-      .card {
-        font-family: sans-serif;
-        max-width: 310px;
-        
-        border-radius: 10px;
+    .card {
+      font-family: sans-serif;
+      max-width: 310px;
 
-        padding: 30px;
-        box-shadow: 19px -20px 20px 7px rgba(0, 0, 0, 0.1);
-        opacity: 1;
-        border: 1px solid #fcfcfc;
-        height: 100px;
-        margin: auto;
-      }
+      border-radius: 10px;
 
-      .title {
-        text-align: center;
-        font-weight: bold;
-        margin: 0;
-      }
+      padding: 30px;
+      box-shadow: 19px -20px 20px 7px rgba(0, 0, 0, 0.1);
+      opacity: 1;
+      border: 1px solid #fcfcfc;
+      height: 100px;
+      margin: auto;
+    }
 
-      .subtitle {
-        text-align: center;
-        font-weight: bold;
-      }
+    .title {
+      text-align: center;
+      font-weight: bold;
+      margin: 0;
+    }
 
-      .btn-text {
-        margin: 0;
-      }
+    .subtitle {
+      text-align: center;
+      font-weight: bold;
+    }
 
-      .social-login {
-        display: flex;
-        justify-content: center;
-        gap: 5px;
-      }
+    .btn-text {
+      margin: 0;
+    }
 
-      .google-btn {
-        background: #fff;
-        border: solid 2px rgb(245 239 239);
-        border-radius: 8px;
-        font-weight: bold;
-        display: flex;
-        padding: 10px 10px;
-        flex: auto;
-        align-items: center;
-        gap: 5px;
-        justify-content: center;
-      }
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
 
-      .fb-btn {
-        background: #fff;
-        border: solid 2px rgb(69, 69, 185);
-        border-radius: 8px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-      }
+    .google-btn {
+      background: #fff;
+      border: solid 2px rgb(245 239 239);
+      border-radius: 8px;
+      font-weight: bold;
+      display: flex;
+      padding: 10px 10px;
+      flex: auto;
+      align-items: center;
+      gap: 5px;
+      justify-content: center;
+    }
 
-      .or {
-        text-align: center;
-        font-weight: bold;
-        border-bottom: 2px solid rgb(245 239 239);
-        line-height: 0.1em;
-        margin: 25px 0;
-      }
+    .fb-btn {
+      background: #fff;
+      border: solid 2px rgb(69, 69, 185);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
 
-      .or span {
-        background: #fff;
-        padding: 0 10px;
-      }
+    .or {
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 2px solid rgb(245 239 239);
+      line-height: 0.1em;
+      margin: 25px 0;
+    }
 
-      .email-login {
-        display: flex;
-        flex-direction: column;
-      }
+    .or span {
+      background: #fff;
+      padding: 0 10px;
+    }
 
-      .email-login label {
-        color: rgb(170 166 166);
-      }
+    .email-login {
+      display: flex;
+      flex-direction: column;
+    }
 
-      input[type="text"],
-      input[type="otp"] {
-        padding: 7px 7px;
-        margin-top: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-sizing: border-box;
-      }
+    .email-login label {
+      color: rgb(170 166 166);
+    }
 
-   .cta-btn {
-    background-color: #5665de;
-    color: white;
-    padding: 12px 12px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    margin-top: 43px;
-}
+    input[type="text"],
+    input[type="otp"] {
+      padding: 7px 7px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
 
-      .forget-pass {
-        text-align: center;
-        display: block;
-      }
+    .cta-btn {
+      background-color: #5665de;
+      color: white;
+      padding: 12px 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      margin-top: 43px;
+    }
 
-      .first-fields {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    .forget-pass {
+      text-align: center;
+      display: block;
+    }
 
-      .first-fields input[type="text"] {
-        flex: 1;
-        height: 40px;
-        margin-right: 10px;
-      }
+    .first-fields {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .first-fields button {
-        width: 30%;
-        height: 40px;
-      }
-      #validationToast {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 20px;
-        z-index: 1000;
-      }
-      #validationToast2 {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 20px;
-        z-index: 1000;
-      }
-      #validationToast3 {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 20px;
-        z-index: 1000;
-        background-color: white;
-      }
-      *{
+    .first-fields input[type="text"] {
+      flex: 1;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .first-fields button {
+      width: 30%;
+      height: 40px;
+    }
+
+    #validationToast {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 20px;
+      z-index: 1000;
+    }
+
+    #validationToast2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 20px;
+      z-index: 1000;
+    }
+
+    #validationToast3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 20px;
+      z-index: 1000;
+      background-color: white;
+    }
+
+    * {
       scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;}
+      scroll-behavior: smooth;
+    }
 
 
-.toast-header {
-    border-bottom-width: var(--mdb-toast-border-bottom-width);
-    background-color: white;
+    .toast-header {
+      border-bottom-width: var(--mdb-toast-border-bottom-width);
+      background-color: white;
+    }
+
+    .form-control {
+      min-height: auto;
+      padding: 7.5px 12px 7.68px 12px;
+      transition: all .1s linear;
+      box-shadow: none;
+    }
+
+
+    h1 {
+      font-size: 2.1rem;
+      color: white;
+      text-align: center;
+      font-family: "Lucida Console", Courier, monospace;
+      font-weight: 700;
+    }
+
+    .Typewriter__cursor {
+
+      color: #ffc900;
+    }
+
+
+.container{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
 }
-      .form-control {
-    min-height: auto;
-    padding: 7.5px 12px 7.68px 12px;
-    transition: all .1s linear;
-    box-shadow: none;
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
 }
 
-
-h1 {
-  font-size: 2.1rem;
-  color: white;
-  text-align: center;
-  font-family: "Lucida Console", Courier, monospace;
-  font-weight: 700;
+.container span{
+    font-size: 12px;
 }
 
-.Typewriter__cursor {
-
-    color: #ffc900;
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
 }
 
-    </style>
-  </head>
+.container button{
+    background-color: #512da8;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
 
-  <body style="background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);">
+.container button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons{
+    margin: 20px 0;
+}
+
+.social-icons a{
+    border: 1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+    background-color: #512da8;
+    height: 100%;
+    background: linear-gradient(to right, #5c6bc0, #512da8);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(200%);
+}
+  </style>
+</head>
+
+<body style="height: 100vh; background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);">
 
 
 
 
 
 
-<h1 id="app"></h1>
-
-
-    <div
-      id="validationToast"
-      class="toast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div class="toast-header">
-        <strong class="me-auto">Error</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="toast"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="toast-body">Mobile number is required!</div>
-    </div>
-
-    <div
-      id="validationToast2"
-      class="toast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div class="toast-header">
-        <strong class="me-auto">Error</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="toast"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="toast-body">Invalid otp please check again.</div>
-    </div>
-
-    <div
-      id="validationToast3"
-      class="toast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div class="toast-header">
-        <strong class="me-auto">Success</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="toast"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="toast-body">otp sent successful!</div>
-    </div>
-
-    <section class="vh-100"  >
-      <div class="container-fluid h-custom pt-5">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-              class="img-fluid"
-              alt="Sample image"
-            />
-          </div>
-          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <div class="card">
-              <div
-                id="g_id_onload"
-                data-client_id="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com"
-                data-login_uri="/auth/google"
-                data-auto_prompt="false"
-              ></div>
-
-              <div
-                class="g_id_signin"
-                data-type="standard"
-                data-size="large"
-                data-theme="outline"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left"
-              ></div>
-              <form>
-                <!-- <p class="or"><span style="color: #ccc; font-size: 12px;">OR</span></p> -->
+  <h1 id="app"></h1>
 
 
 
-                  <!-- <div class="mb-3">
+
+  <section >
+    <div class="container-fluid h-custom pt-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+      
+        <div class="">
+          <div class="card " >
+            <div id="g_id_onload"
+              data-client_id="856269078593-e4lk74dfooj14hgh0b49lnaj8t30h9i4.apps.googleusercontent.com"
+              data-login_uri="/auth/google" data-auto_prompt="false"></div>
+
+            <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+              data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left"></div>
+           
+            <form>
+              <!-- <p class="or"><span style="color: #ccc; font-size: 12px;">OR</span></p> -->
+
+
+
+              <!-- <div class="mb-3">
     <h6  style="font-size: 12px;" >10 Digit Mobile Number</h6>
 
     <input type="phone" class="form-floating form-control" id="mob" type="text"
                     name="mobileNumber" oninput="validateInput(this)" maxlength="10" minlength="10">
   </div> -->
-                  
-                 
-                    <!-- <h6  style="font-size: 12px;" >Enter OTP</h6>
+
+
+              <!-- <h6  style="font-size: 12px;" >Enter OTP</h6>
                     <div class="form-floating text-center">
                     <div
                     id="otp"
@@ -438,29 +548,74 @@ h1 {
                     />
                   </div>
                   </div> -->
-                <!-- <button class="cta-btn" type="button"  style="font-size: 12px;" onclick="Login()">
+              <!-- <button class="cta-btn" type="button"  style="font-size: 12px;" onclick="Login()">
                   LOG IN
                 </button> -->
 
-                <!-- ... existing code ... -->
-              </form>
-            </div>
+              <!-- ... existing code ... -->
+            </form>
           </div>
         </div>
-
       </div>
-    </section>
-  </body>
 
-  <script>
+    </div>
+  </section>
+  <hr class="hr hr-blurry" style="position: relative;top: 29px; height: 3px;" />
+  <p class="text-center mt-2" style="font-weight: bold;background-color: transparent; color: white;position: relative;">OR</p>
 
-var app = document.getElementById('app');
+  
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1 style="color: #512da8;">Free Demo</h1>
+                
+                <span>Please provide below Details</span>
+                <input type="text" placeholder="Name">
+                <input type="mobile" placeholder="Mobile">
+                <button>SUBMIT</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1 style="color: #512da8;">Sign In</h1>
+                <div class="social-icons">
+                </div>
+                <span>Mobile/Email Password</span>
+                <input type="text" placeholder="Enter Email or Mobile">
+                <input type="password" placeholder="Password">
+                <a href="#">Forget Your Password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your login credentials</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, administrators, teachers, and instructors!</h1>
+                    <p>Contact us with your details for free product demo</p>
+                    <button class="hidden" id="register">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-var typewriter = new Typewriter(app, {
+
+
+</body>
+
+<script>
+
+  var app = document.getElementById('app');
+
+  var typewriter = new Typewriter(app, {
     loop: true
-});
+  });
 
-typewriter.typeString('Building Trust, Enriching Lives!')
+  typewriter.typeString("Embrace challenges. You're stronger than you think.")
     .pauseFor(10000)
     // .deleteAll()
     // .typeString('Strings can be removed')
@@ -470,87 +625,102 @@ typewriter.typeString('Building Trust, Enriching Lives!')
     // .pauseFor(2500)
     .start();
 
-    function validateInput(input) {
+  function validateInput(input) {
 
     input.value = input.value.replace(/\D/g, '');
 
-      if (input.value.length === 10) {
-     
-       SendOtp(input.value);
-        }
+    if (input.value.length === 10) {
+
+      SendOtp(input.value);
+    }
+  }
+
+  function SendOtp() {
+    var mob = $("#mob").val();
+    var code = $("#otp").val();
+    if (!mob) {
+      var toast = new bootstrap.Toast(
+        document.getElementById("validationToast")
+      );
+      toast.show();
+      return;
     }
 
-    function SendOtp() {
-      var mob = $("#mob").val();
-      var code = $("#otp").val();
-      if (!mob) {
+    $.ajax({
+      type: "POST",
+      url: "/send-otp/",
+      data: { mobile: mob, otp: code },
+      success: function (response) {
         var toast = new bootstrap.Toast(
-          document.getElementById("validationToast")
+          document.getElementById("validationToast3")
         );
         toast.show();
-        return;
-      }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error: " + status);
+      },
+    });
+  }
 
-      $.ajax({
-        type: "POST",
-        url: "/send-otp/",
-        data: { mobile: mob, otp: code },
-        success: function (response) {
-          var toast = new bootstrap.Toast(
-            document.getElementById("validationToast3")
-          );
-          toast.show();
-        },
-        error: function (xhr, status, error) {
-          console.error("Error: " + status);
-        },
-      });
-    }
-
-    function Login() {
-      var mob = $("#mob").val();
-      let code = "";
-      $('#otp input').each(function () {
-        code += $(this).val();
+  function Login() {
+    var mob = $("#mob").val();
+    let code = "";
+    $('#otp input').each(function () {
+      code += $(this).val();
     });
 
-      $.ajax({
-        type: "POST",
-        url: "/check-otp/",
-        data: { mobile: mob, otp: code },
-        success: function (response) {
+    $.ajax({
+      type: "POST",
+      url: "/check-otp/",
+      data: { mobile: mob, otp: code },
+      success: function (response) {
 
-          if (response.inquiry === "true"){
-            window.location.href = '/inquiry';
-            return;
-          };
+        if (response.inquiry === "true") {
+          window.location.href = '/inquiry';
+          return;
+        };
 
-          if (response.status === "false") {
-            var toast = new bootstrap.Toast(
-              document.getElementById("validationToast2")
-            );
-            toast.show();
-            return;
-          }
-          
-          if (response.link){
-            window.location.href = response.link
-          }
-          
-        },
-        error: function (xhr, status, error) {
-          console.error("Error: " + status);
-        },
-      });
-    }
-      
-    document.addEventListener("DOMContentLoaded", function(event) {
+        if (response.status === "false") {
+          var toast = new bootstrap.Toast(
+            document.getElementById("validationToast2")
+          );
+          toast.show();
+          return;
+        }
 
-        function OTPInput() {
+        if (response.link) {
+          window.location.href = response.link
+        }
+
+      },
+      error: function (xhr, status, error) {
+        console.error("Error: " + status);
+      },
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+
+    function OTPInput() {
       const inputs = document.querySelectorAll('#otp > *[id]');
-      for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput();
+      for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function (event) { if (event.key === "Backspace") { inputs[i].value = ''; if (i !== 0) inputs[i - 1].focus(); } else { if (i === inputs.length - 1 && inputs[i].value !== '') { return true; } else if (event.keyCode > 47 && event.keyCode < 58) { inputs[i].value = event.key; if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode > 64 && event.keyCode < 91) { inputs[i].value = String.fromCharCode(event.keyCode); if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); }
+    } OTPInput();
 
 
-      });
+  });
+
+
+  const container = document.getElementById('container');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add("active");
+});
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove("active");
+});
 </script>
+
 </html>

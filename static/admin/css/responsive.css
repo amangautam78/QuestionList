@@ -14,11 +14,19 @@ input[type="submit"], button {
 
     td, th {
         padding: 10px;
+<<<<<<< HEAD
         font-size: 0.875rem;
     }
 
     .small {
         font-size: 0.75rem;
+=======
+        font-size: 14px;
+    }
+
+    .small {
+        font-size: 12px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Layout */
@@ -28,7 +36,11 @@ input[type="submit"], button {
     }
 
     #content {
+<<<<<<< HEAD
         padding: 15px 20px 20px;
+=======
+        padding: 20px 30px 30px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     div.breadcrumbs {
@@ -43,8 +55,14 @@ input[type="submit"], button {
         justify-content: flex-start;
     }
 
+<<<<<<< HEAD
     #site-name {
         margin: 0 0 8px;
+=======
+    #branding h1 {
+        margin: 0 0 8px;
+        font-size: 20px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         line-height: 1.2;
     }
 
@@ -87,23 +105,36 @@ input[type="submit"], button {
     }
 
     td .changelink, td .addlink {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Changelist */
 
+<<<<<<< HEAD
     #toolbar {
+=======
+    #changelist #toolbar {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         border: none;
         padding: 15px;
     }
 
     #changelist-search > div {
         display: flex;
+<<<<<<< HEAD
         flex-wrap: nowrap;
+=======
+        flex-wrap: wrap;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         max-width: 480px;
     }
 
     #changelist-search label {
+<<<<<<< HEAD
         line-height: 1.375rem;
     }
 
@@ -121,6 +152,20 @@ input[type="submit"], button {
     #changelist-search .quiet {
         width: 0;
         flex: 1 0 auto;
+=======
+        line-height: 22px;
+    }
+
+    #changelist #toolbar form #searchbar {
+        flex: 1 0 auto;
+        width: 0;
+        height: 22px;
+        margin: 0 10px 0 6px;
+    }
+
+    #changelist-search .quiet {
+        width: 100%;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin: 5px 0 0 25px;
     }
 
@@ -130,12 +175,23 @@ input[type="submit"], button {
         padding: 15px 0;
     }
 
+<<<<<<< HEAD
+=======
+    #changelist .actions.selected {
+        border: none;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     #changelist .actions label {
         display: flex;
     }
 
     #changelist .actions select {
+<<<<<<< HEAD
         background: var(--body-bg);
+=======
+        background: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     #changelist .actions .button {
@@ -147,21 +203,38 @@ input[type="submit"], button {
     #changelist .actions span.clear,
     #changelist .actions span.question,
     #changelist .actions span.action-counter {
+<<<<<<< HEAD
         font-size: 0.6875rem;
+=======
+        font-size: 11px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin: 0 10px 0 0;
     }
 
     #changelist-filter {
+<<<<<<< HEAD
         flex-basis: 200px;
+=======
+        width: 200px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .change-list .filtered .results,
     .change-list .filtered .paginator,
     .filtered #toolbar,
     .filtered .actions,
+<<<<<<< HEAD
 
     #changelist .paginator {
         border-top-color: var(--hairline-color); /* XXX Is this used at all? */
+=======
+    .filtered div.xfull {
+        margin-right: 230px;
+    }
+
+    #changelist .paginator {
+        border-top-color: #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     #changelist .results + .paginator {
@@ -171,7 +244,11 @@ input[type="submit"], button {
     /* Forms */
 
     label {
+<<<<<<< HEAD
         font-size: 0.875rem;
+=======
+        font-size: 14px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .form-row input[type=text],
@@ -186,12 +263,21 @@ input[type="submit"], button {
         box-sizing: border-box;
         margin: 0;
         padding: 6px 8px;
+<<<<<<< HEAD
         min-height: 2.25rem;
         font-size: 0.875rem;
     }
 
     .form-row select {
         height: 2.25rem;
+=======
+        min-height: 36px;
+        font-size: 14px;
+    }
+
+    .form-row select {
+        height: 36px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .form-row select[multiple] {
@@ -199,6 +285,7 @@ input[type="submit"], button {
         min-height: 0;
     }
 
+<<<<<<< HEAD
     fieldset .fieldBox + .fieldBox {
         margin-top: 10px;
         padding-top: 10px;
@@ -207,6 +294,22 @@ input[type="submit"], button {
 
     textarea {
         max-width: 100%;
+=======
+    fieldset .fieldBox {
+        float: none;
+        margin: 0 -10px;
+        padding: 0 10px;
+    }
+
+    fieldset .fieldBox + .fieldBox {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    textarea {
+        max-width: 518px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         max-height: 120px;
     }
 
@@ -221,6 +324,7 @@ input[type="submit"], button {
         margin-left: 15px;
     }
 
+<<<<<<< HEAD
     form .aligned div.radiolist {
         margin-left: 2px;
     }
@@ -235,6 +339,26 @@ input[type="submit"], button {
 
     .button, input[type=submit], input[type=button], .submit-row input, a.button {
         padding: 7px;
+=======
+    form .aligned ul.radiolist {
+        margin-left: 2px;
+    }
+
+    /* Related widget */
+
+    .related-widget-wrapper {
+        float: none;
+    }
+
+    .related-widget-wrapper-link + .selector {
+        max-width: calc(100% - 30px);
+        margin-right: 15px;
+    }
+
+    select + .related-widget-wrapper-link,
+    .related-widget-wrapper-link + .related-widget-wrapper-link {
+        margin-left: 10px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Selector */
@@ -254,7 +378,11 @@ input[type="submit"], button {
     }
 
     .selector .selector-filter input {
+<<<<<<< HEAD
         width: 100%;
+=======
+        width: auto;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         min-height: 0;
         flex: 1 1;
     }
@@ -276,6 +404,10 @@ input[type="submit"], button {
         width: 26px;
         height: 52px;
         padding: 2px 0;
+<<<<<<< HEAD
+=======
+        margin: auto 15px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         border-radius: 20px;
         transform: translateY(-10px);
     }
@@ -319,6 +451,10 @@ input[type="submit"], button {
         width: 52px;
         height: 26px;
         padding: 0 2px;
+<<<<<<< HEAD
+=======
+        margin: 15px auto;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         transform: none;
     }
 
@@ -366,23 +502,43 @@ input[type="submit"], button {
         display: none;
     }
 
+<<<<<<< HEAD
+=======
+    form .form-row p.datetime {
+        width: 100%;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     .datetime input {
         width: 50%;
         max-width: 120px;
     }
 
     .datetime span {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .datetime .timezonewarning {
         display: block;
+<<<<<<< HEAD
         font-size: 0.6875rem;
         color: var(--body-quiet-color);
     }
 
     .datetimeshortcuts {
         color: var(--border-color); /* XXX Redundant, .datetime span also sets #ccc */
+=======
+        font-size: 11px;
+        color: #999;
+    }
+
+    .datetimeshortcuts {
+        color: #ccc;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField {
@@ -414,7 +570,11 @@ input[type="submit"], button {
         padding: 15px 20px;
     }
 
+<<<<<<< HEAD
     .login #site-name {
+=======
+    .login #branding h1 {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin: 0;
     }
 
@@ -475,12 +635,17 @@ input[type="submit"], button {
 
     #content-related .module h2 {
         padding: 10px 15px;
+<<<<<<< HEAD
         font-size: 1rem;
+=======
+        font-size: 16px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Changelist */
 
     #changelist {
+<<<<<<< HEAD
         align-items: stretch;
         flex-direction: column;
     }
@@ -491,6 +656,27 @@ input[type="submit"], button {
 
     #changelist-filter {
         margin-left: 0;
+=======
+        display: flex;
+        flex-direction: column;
+    }
+
+    #changelist #toolbar {
+        order: 1;
+        padding: 10px;
+    }
+
+    #changelist .xfull {
+        order: 2;
+    }
+
+    #changelist-form {
+        order: 3;
+    }
+
+    #changelist-filter {
+        order: 4;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     #changelist .actions label {
@@ -506,6 +692,14 @@ input[type="submit"], button {
         flex: 1 0 100%;
     }
 
+<<<<<<< HEAD
+=======
+    .change-list .filtered .results, .change-list .filtered .paginator,
+    .filtered #toolbar, .filtered .actions, .filtered div.xfull {
+        margin-right: 0;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     #changelist-filter {
         position: static;
         width: auto;
@@ -536,6 +730,11 @@ input[type="submit"], button {
 
     .aligned .form-row,
     .aligned .form-row > div {
+<<<<<<< HEAD
+=======
+        display: flex;
+        flex-wrap: wrap;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         max-width: 100vw;
     }
 
@@ -543,6 +742,7 @@ input[type="submit"], button {
         width: calc(100vw - 30px);
     }
 
+<<<<<<< HEAD
     .flex-container {
         flex-flow: column;
     }
@@ -551,6 +751,8 @@ input[type="submit"], button {
         flex-flow: row;
     }
 
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     textarea {
         max-width: none;
     }
@@ -570,7 +772,10 @@ input[type="submit"], button {
 
     .aligned label {
         width: 100%;
+<<<<<<< HEAD
         min-width: auto;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         padding: 0 0 10px;
     }
 
@@ -585,6 +790,13 @@ input[type="submit"], button {
         max-width: 100%;
     }
 
+<<<<<<< HEAD
+=======
+    .aligned .checkbox-row {
+        align-items: center;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     .aligned .checkbox-row input {
         flex: 0 1 auto;
         margin: 0;
@@ -603,7 +815,12 @@ input[type="submit"], button {
     }
 
     .aligned p.file-upload {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        margin-left: 0;
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     span.clearable-file-input {
@@ -611,7 +828,11 @@ input[type="submit"], button {
     }
 
     span.clearable-file-input label {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         padding-bottom: 0;
     }
 
@@ -626,19 +847,31 @@ input[type="submit"], button {
         padding: 0;
     }
 
+<<<<<<< HEAD
     form .aligned ul,
     form .aligned ul.errorlist {
+=======
+    form .aligned ul {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin-left: 0;
         padding-left: 0;
     }
 
+<<<<<<< HEAD
     form .aligned div.radiolist {
         margin-top: 5px;
+=======
+    form .aligned ul.radiolist {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin-right: 15px;
         margin-bottom: -3px;
     }
 
+<<<<<<< HEAD
     form .aligned div.radiolist:not(.inline) div + div {
+=======
+    form .aligned ul.radiolist li + li {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         margin-top: 5px;
     }
 
@@ -666,14 +899,33 @@ input[type="submit"], button {
         align-self: center;
     }
 
+<<<<<<< HEAD
+=======
+    select + .related-widget-wrapper-link,
+    .related-widget-wrapper-link + .related-widget-wrapper-link {
+        margin-left: 15px;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     /* Selector */
 
     .selector {
         flex-direction: column;
+<<<<<<< HEAD
         gap: 10px 0;
     }
 
     .selector-available, .selector-chosen {
+=======
+    }
+
+    .selector > * {
+        float: none;
+    }
+
+    .selector-available, .selector-chosen {
+        margin-bottom: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         flex: 1 1 auto;
     }
 
@@ -683,9 +935,17 @@ input[type="submit"], button {
 
     .selector ul.selector-chooser {
         display: block;
+<<<<<<< HEAD
         width: 52px;
         height: 26px;
         padding: 0 2px;
+=======
+        float: none;
+        width: 52px;
+        height: 26px;
+        padding: 0 2px;
+        margin: 15px auto 20px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         transform: none;
     }
 
@@ -712,7 +972,11 @@ input[type="submit"], button {
     /* Inlines */
 
     .inline-group[data-inline-type="stacked"] .inline-related {
+<<<<<<< HEAD
         border: 1px solid var(--hairline-color);
+=======
+        border: 2px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         border-radius: 4px;
         margin-top: 15px;
         overflow: auto;
@@ -722,10 +986,18 @@ input[type="submit"], button {
         box-sizing: border-box;
     }
 
+<<<<<<< HEAD
+=======
+    .inline-group[data-inline-type="stacked"] .inline-related + .inline-related {
+        margin-top: 30px;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     .inline-group[data-inline-type="stacked"] .inline-related .module {
         padding: 0 10px;
     }
 
+<<<<<<< HEAD
     .inline-group[data-inline-type="stacked"] .inline-related .module .form-row {
         border-top: 1px solid var(--hairline-color);
         border-bottom: none;
@@ -735,6 +1007,12 @@ input[type="submit"], button {
         border-top: none;
     }
 
+=======
+    .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:last-child {
+        border-bottom: none;
+    }
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     .inline-group[data-inline-type="stacked"] .inline-related h3 {
         padding: 10px;
         border-top-width: 0;
@@ -764,7 +1042,11 @@ input[type="submit"], button {
 
     .inline-group[data-inline-type="stacked"] div.add-row {
         margin-top: 15px;
+<<<<<<< HEAD
         border: 1px solid var(--hairline-color);
+=======
+        border: 1px solid #eee;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         border-radius: 4px;
     }
 
@@ -783,6 +1065,7 @@ input[type="submit"], button {
     /* Submit row */
 
     .submit-row {
+<<<<<<< HEAD
         padding: 10px;
         margin: 0 0 15px;
         flex-direction: column;
@@ -790,16 +1073,38 @@ input[type="submit"], button {
     }
 
     .submit-row input, .submit-row input.default, .submit-row a {
+=======
+        padding: 10px 10px 0;
+        margin: 0 0 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .submit-row > * {
+        width: 100%;
+    }
+
+    .submit-row input, .submit-row input.default, .submit-row a, .submit-row a.closelink {
+        float: none;
+        margin: 0 0 10px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         text-align: center;
     }
 
     .submit-row a.closelink {
         padding: 10px 0;
+<<<<<<< HEAD
         text-align: center;
     }
 
     .submit-row a.deletelink {
         margin: 0;
+=======
+    }
+
+    .submit-row p.deletelink-box {
+        order: 4;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Messages */
@@ -853,7 +1158,13 @@ input[type="submit"], button {
     }
 
     .login .form-row label {
+<<<<<<< HEAD
         margin: 0 0 5px;
+=======
+        display: block;
+        margin: 0 0 5px;
+        padding: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         line-height: 1.2;
     }
 
@@ -861,7 +1172,11 @@ input[type="submit"], button {
         padding: 15px 0 0;
     }
 
+<<<<<<< HEAD
     .login br {
+=======
+    .login br, .login .submit-row label {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         display: none;
     }
 
@@ -873,7 +1188,11 @@ input[type="submit"], button {
     .errornote {
         margin: 0 0 20px;
         padding: 8px 12px;
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     /* Calendar and clock */
@@ -920,8 +1239,13 @@ input[type="submit"], button {
 
     .calendar-shortcuts {
         padding: 10px 0;
+<<<<<<< HEAD
         font-size: 0.75rem;
         line-height: 0.75rem;
+=======
+        font-size: 12px;
+        line-height: 12px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     }
 
     .calendar-shortcuts a {
@@ -929,7 +1253,11 @@ input[type="submit"], button {
     }
 
     .timelist a {
+<<<<<<< HEAD
         background: var(--body-bg);
+=======
+        background: #fff;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         padding: 4px;
     }
 
@@ -953,7 +1281,11 @@ input[type="submit"], button {
     /* History */
 
     table#change-history tbody th, table#change-history tbody td {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         word-break: break-word;
     }
 
@@ -964,7 +1296,11 @@ input[type="submit"], button {
     /* Docs */
 
     table.model tbody th, table.model tbody td {
+<<<<<<< HEAD
         font-size: 0.8125rem;
+=======
+        font-size: 13px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
         word-break: break-word;
     }
 }

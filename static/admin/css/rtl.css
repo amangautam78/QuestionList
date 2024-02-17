@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+=======
+body {
+    direction: rtl;
+}
+
+/* LOGIN */
+
+.login .form-row {
+    float: right;
+}
+
+.login .form-row label {
+    float: right;
+    padding-left: 0.5em;
+    padding-right: 0;
+    text-align: left;
+}
+
+.login .submit-row {
+    clear: both;
+    padding: 1em 9.4em 0 0;
+}
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 /* GLOBAL */
 
 th {
@@ -13,7 +38,11 @@ th {
     margin-right: 1.5em;
 }
 
+<<<<<<< HEAD
 .viewlink, .addlink, .changelink, .hidelink {
+=======
+.viewlink, .addlink, .changelink {
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     padding-left: 0;
     padding-right: 16px;
     background-position: 100% 1px;
@@ -87,26 +116,51 @@ thead th.sorted .text {
 }
 
 #changelist-filter {
+<<<<<<< HEAD
     border-left: none;
     border-right: none;
     margin-left: 0;
     margin-right: 30px;
+=======
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.change-list .filtered .results, .change-list .filtered .paginator, .filtered #toolbar, .filtered div.xfull {
+    margin-right: 0;
+    margin-left: 280px;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 #changelist-filter li.selected {
     border-left: none;
     padding-left: 10px;
     margin-left: 0;
+<<<<<<< HEAD
     border-right: 5px solid var(--hairline-color);
+=======
+    border-right: 5px solid #eaeaea;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     padding-right: 10px;
     margin-right: -15px;
 }
 
+<<<<<<< HEAD
+=======
+.filtered .actions {
+    margin-left: 280px;
+    margin-right: 0;
+}
+
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 #changelist table tbody td:first-child, #changelist table tbody th:first-child {
     border-right: none;
     border-left: none;
 }
 
+<<<<<<< HEAD
 .paginator .end {
     margin-left: 6px;
     margin-right: 0;
@@ -117,15 +171,33 @@ thead th.sorted .text {
     margin-right: auto;
 }
 
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 /* FORMS */
 
 .aligned label {
     padding: 0 0 3px 1em;
+<<<<<<< HEAD
 }
 
 .submit-row a.deletelink {
     margin-left: 0;
     margin-right: auto;
+=======
+    float: right;
+}
+
+.submit-row {
+    text-align: left
+}
+
+.submit-row p.deletelink-box {
+    float: right;
+}
+
+.submit-row input.default {
+    margin-left: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .vDateField, .vTimeField {
@@ -136,11 +208,21 @@ thead th.sorted .text {
     margin-left: 5px;
 }
 
+<<<<<<< HEAD
 form .aligned ul {
     margin-right: 163px;
     padding-right: 10px;
     margin-left: 0;
     padding-left: 0;
+=======
+form .aligned p.help, form .aligned div.help {
+    clear: right;
+}
+
+form .aligned ul {
+    margin-right: 163px;
+    margin-left: 0;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 form ul.inline li {
@@ -149,6 +231,7 @@ form ul.inline li {
     padding-left: 7px;
 }
 
+<<<<<<< HEAD
 form .aligned p.help,
 form .aligned div.help {
     margin-right: 160px;
@@ -182,6 +265,14 @@ form .wide input + div.help {
 }
 
 fieldset .fieldBox {
+=======
+input[type=submit].default, .submit-row input.default {
+    float: left;
+}
+
+fieldset .fieldBox {
+    float: right;
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
     margin-left: 20px;
     margin-right: 0;
 }
@@ -202,24 +293,30 @@ fieldset .fieldBox {
     top: 0;
     left: auto;
     right: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
 }
 
 .calendarbox .calendarnav-previous:focus,
 .calendarbox .calendarnav-previous:hover {
     background-position: 0 -45px;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendarnav-next {
     top: 0;
     right: auto;
     left: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 0 no-repeat;
 }
 
 .calendarbox .calendarnav-next:focus,
 .calendarbox .calendarnav-next:hover {
     background-position: 0 -15px;
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 }
 
 .calendar caption, .calendarbox h2 {
@@ -234,6 +331,7 @@ fieldset .fieldBox {
     text-align: right;
 }
 
+<<<<<<< HEAD
 .selector-add {
   background: url(../img/selector-icons.svg) 0 -64px no-repeat;
 }
@@ -266,6 +364,8 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
     background-position: 0 -176px;
 }
 
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
 .inline-deletelink {
     float: left;
 }
@@ -296,7 +396,10 @@ form .form-row p.datetime {
     margin-left: inherit;
     margin-right: 2px;
 }
+<<<<<<< HEAD
 
 .selector .selector-chooser {
     margin: 0;
 }
+=======
+>>>>>>> 3b568933b8ffaa9fd7f40506bf945986e5a961ea
