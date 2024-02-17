@@ -91,6 +91,50 @@ var quill = new Quill('#editor-container', {
   theme: 'snow'  // or 'bubble'
 });
 
+
+
+ // Configure image handler for Quill
+    quill.getModule('toolbar').addHandler('image', function () {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.click();
+
+        input.onchange = async function () {
+            var file = input.files[0];
+            var fileName = file.name;
+
+            // Create a new FormData object
+            var form = new FormData();
+            var d = new Date().getTime();
+            var insti_id = '{{ insti_id|safe }}';
+            var user_id = '{{ sub|safe }}';
+            var unique_key = d.toString() + '-' + insti_id.toString() + '-' + user_id.toString();
+            var key = "questions/" + unique_key + fileName;
+            form.append("key", key);
+            form.append("acl", "public-read");
+            form.append("Content-Type", "image/jpeg");
+            form.append("file", file, fileName);
+
+            var settings = {
+              "url": "https://insight-question.s3.ap-south-1.amazonaws.com/",
+              "method": "POST",
+              "timeout": 0,
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+
+              const range = quill.getSelection();
+              quill.insertEmbed(range.index, 'image', 'https://insight-question.s3.ap-south-1.amazonaws.com/' + key);
+              console.log(response);
+            });
+        };
+    });
+
 var quill_explaination = new Quill('#editor-container-explaination', {
   modules: {
     toolbar: [
@@ -102,6 +146,48 @@ var quill_explaination = new Quill('#editor-container-explaination', {
   placeholder: 'Compose an explaination...',
   theme: 'snow'  // or 'bubble'
 });
+
+
+    quill_explaination.getModule('toolbar').addHandler('image', function () {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.click();
+
+        input.onchange = async function () {
+            var file = input.files[0];
+            var fileName = file.name;
+
+            // Create a new FormData object
+            var form = new FormData();
+            var d = new Date().getTime();
+            var insti_id = '{{ insti_id|safe }}';
+            var user_id = '{{ sub|safe }}';
+            var unique_key = d.toString() + '-' + insti_id.toString() + '-' + user_id.toString();
+            var key = "questions/" + unique_key + fileName;
+            form.append("key", key);
+            form.append("acl", "public-read");
+            form.append("Content-Type", "image/jpeg");
+            form.append("file", file, fileName);
+
+            var settings = {
+              "url": "https://insight-question.s3.ap-south-1.amazonaws.com/",
+              "method": "POST",
+              "timeout": 0,
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+
+              const range = quill_explaination.getSelection();
+              quill_explaination.insertEmbed(range.index, 'image', 'https://insight-question.s3.ap-south-1.amazonaws.com/' + key);
+              console.log(response);
+            });
+        };
+    });
 
 function getEditorQuestion() {
     return quill.root.innerHTML;
