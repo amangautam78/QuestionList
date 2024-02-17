@@ -203,6 +203,12 @@ def set_question_paper(request):
 
 @csrf_exempt
 def add_question(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+	if not valid:
+		return redirect('/')
 	if request.method == 'POST':
 		requested_data = dict(request.POST)
 		question = requested_data.get('question')[0] if requested_data.get('question') else ''
@@ -218,7 +224,7 @@ def add_question(request):
 		source = 'quill'
 		DB.questions.insert_one({'batch': batch, 'que': question, 'explain': explain, 'options': option_map, 'is_multi': is_multi, 'qid': qid, 'source': source})
 		return JsonResponse({})
-	return render(request, "src/html/add_question.html", {})
+	return render(request, "src/html/add_question.html", {'insti_id': data.get('insti_id'), 'sub': data.get('sub')})
 
 @csrf_exempt
 def students(request):
