@@ -83,9 +83,16 @@ def dashboard(request):
 	
 	user_type = data.get('user_type')
 
-	total_students = 0
-	total_question_papers = 0
-	total_questions = 0
+	total_students = list(DB.students.aggregate([{'$count': 'count'}])) 
+	total_question_papers = list(DB.question_papers.aggregate([{'$count': 'count'}]))
+	total_questions = list(DB.questions.aggregate([{'$count': 'count'}]))
+
+	total_students = total_students[0]['count'] if total_students else 0
+	total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
+	total_questions = total_questions[0]['count'] if total_questions else 0
+
+
+	print(total_students, total_question_papers, total_questions)
 
 
 

@@ -400,6 +400,15 @@ footer button.show{
 }
 
 
+.question img {
+   max-width: 100%;
+  height: auto; 
+}
+.explain img {
+   max-width: 100%;
+  height: auto; 
+}
+
 </style>
 
 
@@ -418,7 +427,7 @@ footer button.show{
 	    <div class="col-12 col-md-8">
 		    <div class="info_box activeInfo">
 		        <div class="info-title"> <span>Question  {{que_label}}</span></div>
-		        <div class="info-list">
+		        <div class="info-list question">
 		            {{question.que|safe}}
 		        </div>
                  <div class="info-list">
