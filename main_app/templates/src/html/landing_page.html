@@ -74,10 +74,17 @@ body {
   color: var(--cd-color-white);
   font-weight: 400;
 } */
+@font-face {
+    font-family: reo;
+    src: url(/static/assets/fonts/reo1.ttf);
+}
+
     * {
       padding: 0px;
       margin: 0px;
       box-sizing: border-box;
+      font-family: reo1 !important;
+      
 
     }
 
@@ -511,6 +518,15 @@ p {
     .navbar-item img {
       max-height: 5.75rem;
     }
+    @media only screen and (min-width: 414px) and (max-width: 896px) {
+    #loader h1{
+        font-size: 12vw;
+    }
+    #moving-text h1{
+      font-size: 12vw;
+    }
+
+}
   </style>
 </head>
 
@@ -831,10 +847,49 @@ p {
 
 
 
+<script>
+    function locomotive_scroll() {
 
+gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+    el: document.querySelector(".main"),
+    smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+locoScroll.on("scroll", ScrollTrigger.update);
+
+// tell ScrollTrigger to use these proxy methods for the ".main" element since Locomotive Scroll is hijacking things
+ScrollTrigger.scrollerProxy(".main", {
+    scrollTop(value) {
+        return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
+});
+
+
+
+
+// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+ScrollTrigger.refresh();
+
+
+}
+locomotive_scroll()
+</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+    
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
   <script>
@@ -877,12 +932,20 @@ p {
     });
 
     function loader() {
-      const loader = document.querySelector("#loader");
-      setTimeout(() => {
+    const loader = document.querySelector("#loader");
+
+   
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
         loader.style.top = "-100%";
-      }, 4000)
-    }
-    loader();
+
+       
+        document.body.style.overflow = 'visible';
+    }, 4000);
+}
+
+loader();
 
 
     function scroll() {
