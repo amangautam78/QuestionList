@@ -39,7 +39,7 @@ insightassess.com ">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 
   <style>
@@ -360,7 +360,7 @@ p {
       animation-delay: 1s;
       animation-timing-function: linear;
       transition: all ease-in-out 2s;
-
+font-weight: bold;
     }
 
     @keyframes load {
@@ -525,31 +525,97 @@ p {
     #moving-text h1{
       font-size: 12vw;
     }
+   
+
 
 }
+
+.page0{
+        width: 100%;
+        height: 100vh;
+       
+        position: relative;
+
+    }
+
+    .page0 video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+    }
+
+    .page0-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+      .page0-content h1 span {
+        color: whitesmoke;
+      bottom: 0;
+        font-size: 20vw;
+        font-weight: 100;
+       justify-content: flex-end;
+      margin-bottom: 20vw;
+      
+    }
+    .page01{
+        width: 100%;
+        height: 70vh;
+
+    }
+
+    .wrapper {
+        width: 100%;
+        margin-top: 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper .line {
+        width: 90%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .wrapper .line span {
+        position: absolute;
+        font-size: 3rem;
+        line-height: 4.2rem;
+    }
+
+
   </style>
 </head>
 
 <body>
-  <div id="loader">
+  <!-- <div id="loader">
     <h1> ENGAGING</h1>
     <h1> EMPOWERING</h1>
     <h1> DYNAMIC</h1>
-  </div>
+  </div> -->
   
 
 
   <div class="main">
     <div class="page1">
-      <nav class="navbar navbar-transparent fixed-top navbar-sticky" style="position: fixed;" role="navigation"
+      <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0" style="position: fixed;" role="navigation"
         aria-label="main navigation">
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="navbar-brand">
-            <div class="navbar-item">
-              <img src="/static/assets/images/logos/title_logo.png" style="font-weight: 500">
+            <div class="navbar-item m-0 p-0">
+              <img src="/static/assets/images/logos/title_logo.png" class="m-0 p-0" style="font-weight: 500;object-fit: cover;">
             </div>
           </div>
-          <div class="navbar-item">
+          <div class="navbar-item ">
             <div id="nav-part2">
             
               <h4>
@@ -595,6 +661,45 @@ p {
         </div>
       </div>
     </div>
+     <div class="page0">
+           
+            <video src="static/assets/videos/video3.mp4" autoplay muted loop></video>
+            <div class="page0-content">
+               
+                <h1 style="margin-top: auto;">
+                    <span>Q</span>
+                    <span>n</span>
+                    <span>a</span>
+                    <span>C</span>
+                    <span>l</span>
+                    <span>a</span>
+                    <span>s</span>
+                    <span>s</span>
+                </h1>
+
+            </div>
+        </div>
+        <div class="page01">
+          <div class="wrapper">
+            <div class="line">
+                <span>We are a digital brand accelerator for fast-growing .Our mission is to transform </span>
+            </div>
+            <div class="line">
+                <span> founders' visions into remarkable brands.All our clients drive their businesses </span>
+            </div>
+            <div class="line">
+                <span>with sustainability at the forefront. Choose traditional compensation or an </span>
+            </div>
+            <div class="line">
+                <span>equity offset of up to 50% of our fees through our Venture Model—your vision,</span>
+            </div>
+            <div class="line">
+                <span>your decision.&nbsp;In any case, we are your new unfair advantage.</span>
+            </div>
+
+
+        </div>
+        </div>
     <div class="page2" >
 <!--Modal: Login with Avatar Form-->
 
@@ -846,7 +951,30 @@ p {
 
 
 
+  <script src="https://unpkg.com/split-type"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Scroll Trigger is needed for Scroll Effects -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Three.js is needed for 3d Effects -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+
+<!-- ControlKit is needed for Debug Panel -->
+<script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+<script  type="text/javascript"  src="https://unpkg.com/sheryjs/dist/Shery.js"></script> <!-- Recommended -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
     function locomotive_scroll() {
 
@@ -885,6 +1013,31 @@ ScrollTrigger.refresh();
 
 }
 locomotive_scroll()
+
+
+const textrev = gsap.timeline();
+
+textrev.from(".line span", 1.8, {
+    y: 200,
+    ease: "back.out",
+    delay: 1,
+    duration: 1,
+    skewY: 10,
+    stagger: {
+        amount: 0.4,
+
+    },
+    scrollTrigger: {
+        trigger: ".page2",
+        start: "top 100%",
+        scroller: ".main",
+
+        end: "top 90%",
+        scrub: 2
+
+    }
+});
+
 </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -931,21 +1084,21 @@ locomotive_scroll()
       }
     });
 
-    function loader() {
-    const loader = document.querySelector("#loader");
+//     function loader() {
+//     const loader = document.querySelector("#loader");
 
    
-    document.body.style.overflow = 'hidden';
+//     document.body.style.overflow = 'hidden';
 
-    setTimeout(() => {
-        loader.style.top = "-100%";
+//     setTimeout(() => {
+//         loader.style.top = "-100%";
 
        
-        document.body.style.overflow = 'visible';
-    }, 4000);
-}
+//         document.body.style.overflow = 'visible';
+//     }, 4000);
+// }
 
-loader();
+// loader();
 
 
     function scroll() {
