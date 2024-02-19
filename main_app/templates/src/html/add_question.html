@@ -3,8 +3,16 @@
 {% block content %}
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 
 <style type="text/css">
+  .card {
+    margin: auto;
+    margin-bottom: 20px;
+  }
 #editor-container {
   height: 250px;
   background-color: white;
@@ -17,6 +25,182 @@
 .correct-answer {
     background-color: #13deb9; /* Green color */
 }
+
+
+@import url('https://fonts.bunny.net/css?family=barlow:400,500&display=swap');
+
+html,
+button {
+  font-family: 'barlow', sans-serif;
+}
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 10px 0;
+  height: 100%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.toast-btn {
+  max-width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 5px;
+  margin: 2em auto;
+}
+
+.toast-btn {
+  padding: 1rem;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 150px;
+  transition: filter 0.2s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  background-color: transparent;
+  outline: none;
+  background: #3498db;
+  color: #fff;
+} 
+  
+.toast-btn:hover {
+  filter: brightness(0.8);
+}
+
+button.success-toast {
+  background-color: #27ae60;
+}
+
+button.danger-toast {
+  background-color: #c0392b;
+}
+  
+button.info-toast {
+  background-color: #2980b9;
+}
+
+button.warning-toast {
+  background-color: #f39c12;
+}
+
+.toasts {
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  z-index: 99;
+}
+  
+.toast-notification {
+  width: 350px;
+  margin-bottom: .75rem;
+  background: #f8f8ff;
+  border-radius: 2px;
+  box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.hide-toast {
+  display: none;
+}
+
+.toast-notification .toast-content {
+  font-weight: 400;
+  color: #353b48;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 1rem;
+}
+
+.toast-notification .toast-icon {
+  background-color: #27ae60;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.toast-notification .toast-icon i {
+  font-size: 1.25rem;
+}
+
+.toast-notification .toast-progress {
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.toast-notification .toast-progress-bar {
+  background-color: #b7b7b7;
+  height: 2px;
+  animation: toastProgress 3s ease-in-out forwards;
+}
+
+.slide-in-slide-out {
+  animation: slideInRight 0.3s ease-in-out forwards, slideOutRight 0.5s ease-in-out forwards 3s;
+  transform: translateX(110%);
+}
+
+.slide-in-fade-out {
+  animation: slideInRight 0.3s ease-in-out forwards, fadeOut 0.5s ease-in-out forwards 3s;
+  transform: translateX(110%);
+}
+
+.wiggle-me {
+  animation: wiggle 2s ease-in;
+}
+
+@keyframes slideInRight { 
+  0% { transform: translateX(110%); }
+  75% { transform: translateX(-10%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes slideOutRight { 
+  0% { transform: translateX(0%); }
+  25% { transform: translateX(-10%); }
+  100% { transform: translateX(110%); }
+}
+  
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes toastProgress {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
+
+@keyframes wiggle {
+  0%, 7% { transform: rotateZ(0); }
+  15% { transform: rotateZ(-13deg); }
+  20% { transform: rotateZ(9deg); }
+  25% { transform: rotateZ(-10deg); }
+  30% { transform: rotateZ(7deg); }
+  35% { transform: rotateZ(-2deg); }
+  40%, 100% { transform: rotateZ(0); }
+}
+
 </style>
 
 
@@ -32,16 +216,50 @@
   </div>  
 </div>
 
+
+
+
+
+
+
+
+
+
+
 <div class="container-fluid">
   <section class="content">
     <div class="container">
 
-      <div class="card" style="padding: 20px; max-width: 400px;">
-          <label class="form-label"> BATCH </label>
-          <input type="text" name="batch" id="batch" class="form-control">
-      </div>
+
+
+
+</div>
+<div class="toasts"></div>
+<div class="master-toast-notification hide-toast">
+  <div class="toast-content">
+    <div class="toast-icon">
+      <i class="fa-solid"></i>
+    </div>
+    <div class="toast-msg"></div>
+  </div>
+  <div class="toast-progress">
+    <div class="toast-progress-bar"></div>
+  </div>
+</div>
+
+
+
+      <div class="container mt-5" style="width: 300px; padding-bottom: 20px;">
+  <select class="form-control selectpicker" name="class" id="class" aria-label="Default select example" data-live-search="true" required>
+    <option value="">PLEASE SELECT CLASS/BATCH</option> 
+               {% for class in class_data %}
+                <option value="{{ class.class_id }}">{{ class.name }}</option>   
+              {% endfor %}
+              <!-- Options will be dynamically populated by Select2 -->
+     </select>
+</div>
       <div class="card">
-        <div id="editor-container">
+        <div id="editor-container" required>
         </div>
         <!-- Add submit button -->   
       </div>
@@ -49,12 +267,12 @@
 
       <div class="card" style="padding: 20px;">
       <h6 style="padding-bottom: 10px;">Add Options</h6>
-      <div id="form-placeholder"></div>
+      <div id="form-placeholder" required></div>
       <button id="btn-add" class="btn btn-outline-primary m-1 rounded-circle" style="width: 50px; height: 50px;">+</button>
 
     </div>
      <div class="card">
-        <div id="editor-container-explaination">
+        <div id="editor-container-explaination" required>
         </div>
         <!-- Add submit button -->
         
@@ -201,16 +419,16 @@ function getEditorExplaination() {
 function handleSubmit() {
 
   var question = getEditorQuestion();
-  var explaination = getEditorExplaination();
-  var batchValue = $('#batch').val();
+  var explanation = getEditorExplaination();
+  var batchValue = $('#class').val();
   function gatherFormData() {
 
       var formData = {
           question: question,
-          explaination: explaination,
+          explanation: explanation,
           options: [],
           correctAnswers: [],
-          batch: batchValue,
+          class: batchValue,
       };
 
       var optionRows = document.querySelectorAll('.option-row');
@@ -235,7 +453,35 @@ function handleSubmit() {
   }
 
   // Example usage
+
   var formData = gatherFormData();
+
+  if (!formData.question || !formData.explanation || !formData.class) {
+
+      var msg = 'Please provide Question, explanation and class!';
+      var icon = 'fa-triangle-exclamation';
+      var icon_color = '#f39c12';
+      var animation = 'slide-in-fade-out';
+      displayToastNotification(msg, icon, icon_color, animation);
+      return;
+} else {
+    // Proceed with validation for options and correctAnswers if needed
+
+    // Check if options and correctAnswers are provided
+    if (formData.options.length === 0 || formData.correctAnswers.length === 0) {
+
+        var msg = 'Please provide options and select correct answers.';
+        var icon = 'fa-triangle-exclamation';
+        var icon_color = '#f39c12';
+        var animation = 'slide-in-fade-out';
+        displayToastNotification(msg, icon, icon_color, animation);
+        return;
+    } else {
+        // Proceed with the form submission or other actions
+        console.log("Form data is valid:", formData);
+    }
+}
+
   // Make AJAX call to send the content to the backend
   $.ajax({
     url: '/add-question/', // Replace with your Django endpoint
@@ -245,8 +491,12 @@ function handleSubmit() {
       quill.root.innerHTML = ""; // Assuming this is the editor for the question
       quill_explaination.root.innerHTML = ""; // Assuming this is the editor for the explanation
       document.getElementById("form-placeholder").innerHTML = ""; // Clear options
-      $('#batch').val('');
-      new bootstrap.Toast(document.querySelector('#basicToast')).show();
+
+        var msg = 'Question Created Successfully.';
+        var icon = 'fa-check';
+        var icon_color = '#27ae60';
+        var animation = 'slide-in-slide-out';
+        displayToastNotification(msg, icon, icon_color, animation);
     },
     error: function(xhr, status, error) {
       console.error('Error saving content:', error);
@@ -301,6 +551,27 @@ $("#btn-add").click(function () {
 });
 
 
+
+
+
+var toastCounter = 1;
+
+
+
+function displayToastNotification( msg, icon, icon_color, animation ) {
+  var class_name = 'toast-'+toastCounter;
+  var new_node;
+
+  new_node = $('.master-toast-notification').clone().appendTo('.toasts').addClass(class_name + ' toast-notification').removeClass('master-toast-notification');
+  new_node.find('.toast-msg').text(msg);
+  new_node.find('.toast-icon i').addClass(icon);
+  new_node.find('.toast-icon').addClass('wiggle-me').css('background-color', icon_color);
+  new_node.removeClass('hide-toast').addClass(animation);
+  setTimeout(function() {
+    new_node.remove();
+  }, 3800);
+  toastCounter++;
+}
 
 </script>
 

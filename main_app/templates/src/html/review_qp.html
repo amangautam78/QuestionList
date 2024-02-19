@@ -1,5 +1,12 @@
 {% extends 'src/html/base.html' %} {% load static %} {% block content %}
 
+
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 <style>
   body {
     background-color: white;
@@ -12,6 +19,11 @@
   .backbtn {
     cursor: pointer;
   }
+
+  #editor-container {
+  height: 250px;
+  background-color: white;
+}
 </style>
 
 
@@ -43,6 +55,24 @@
       <i class="fas fa-long-arrow-alt-left me-2"></i>Back to Questions Panel
     </a>
     <div class="row">
+      <div class="col-12">
+        <div class="container mt-5" style="width: 300px; padding-bottom: 20px;">
+            <select class="form-control selectpicker" name="class" id="class" aria-label="Default select example" data-live-search="true" required>
+              <option value="">PLEASE SELECT CLASS/BATCH</option> 
+                         {% for class in class_data %}
+                          <option value="{{ class.class_id }}">{{ class.name }}</option>   
+                        {% endfor %}
+                        <!-- Options will be dynamically populated by Select2 -->
+               </select>
+          </div>
+        <div class="card">
+            <div id="editor-container" required>
+            </div>
+            <!-- Add submit button -->   
+          </div>
+
+      </div>
+
       <div class="col-12 col-md-8">
         <div
           class="d-flex justify-content-between align-items-center mt-2 mb-4"
@@ -122,6 +152,17 @@
 <script type="text/javascript">
 
 
+var quill = new Quill('#editor-container', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['code-block']
+    ]
+  },
+  placeholder: 'Please provide guideline for assessment...',
+  theme: 'snow'  // or 'bubble'
+});
 
 // Example usage of the function
 
@@ -164,10 +205,20 @@ var que_count = parseInt('{{que_count | safe }}', 10); // Convert to integer
 
 
 function setQuestionPaper(qp_temp_id) {
+
+
+      function getEditorQuestion() {
+        return quill.root.innerHTML;
+    }
+
+      var guideline = getEditorQuestion();
+      var class_id = $('#class').val();
+      var class_name = $('#class option:selected').text();
+
       $.ajax({
         url: "/set-question-paper/",
         method: "POST",
-        data: { qp_temp_id : qp_temp_id },
+        data: { qp_temp_id : qp_temp_id, guideline: guideline, class_id: class_id, class: class_name},
         success: function(res) {
             window.location.href = '/question-papers/';
         },
