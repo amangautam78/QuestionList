@@ -453,10 +453,20 @@
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+    #app {
+        font-size: 5vw;
+    }
+
+    .login_font{
+      font-size: 5vw;
+    }
+}
   </style>
 </head>
 
-<body style="height: 100vh; background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);">
+<body style="min-height: 100vh; background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);">
 
 
 
@@ -584,7 +594,7 @@
                 <input type="text" placeholder="Enter Email or Mobile">
                 <input type="password" placeholder="Password">
                 <a href="#">Forget Your Password?</a>
-                <button>Sign In</button>
+                <button class="p-3">Sign In</button>
             </form>
         </div>
         <div class="toggle-container">
@@ -592,12 +602,12 @@
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
                     <p>Enter your login credentials</p>
-                    <button class="hidden" id="login">Sign In</button>
+                    <button class="hidden p-3" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Hello, administrators, teachers, and instructors!</h1>
+                    <h1 class="login_font">Hello, administrators, teachers, and instructors!</h1>
                     <p>Contact us with your details for free product demo</p>
-                    <button class="hidden" id="register">Contact Us</button>
+                    <button class="hidden p-3" id="register">Contact Us</button>
                 </div>
             </div>
         </div>
