@@ -56,22 +56,41 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <!-- <span class="hide-menu">Home</span> -->
-            </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Dashboard</span>
+                <span class="hide-menu">Home</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/teachers/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Teachers</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/classes/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file"></i>
+                </span>
+                <span class="hide-menu">Classes</span>
               </a>
             </li>
 
-
-
             <li class="sidebar-item">
+              <a class="sidebar-link" href="/students/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Students</span>
+              </a>
+            </li> 
+
+           <li class="sidebar-item">
               <a class="sidebar-link" href="/questions/" aria-expanded="false">
                 <span>
                   <i class="ti ti-file"></i>
@@ -86,14 +105,6 @@
                   <i class="ti ti-file-description"></i>
                 </span>
                 <span class="hide-menu">Question Papers</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="/students/" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">Students</span>
               </a>
             </li>
 
@@ -189,15 +200,20 @@
       {% endblock %}
     </div>
   </div>
-  </div>
-  <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-  <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
-  <script src="{% static 'assets/js/app.min.js' %}"></script>
-  <script src="{% static 'assets/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
-  <script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script>
-  <script src="{% static 'assets/js/dashboard.js' %}"></script>
+<!-- Include jQuery and Select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.css"></script>
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<!-- Your other script tags -->
+<script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<!-- <script src="{% static 'assets/libs/simplebar/dist/simplebar.js' %}"></script> -->
+<!-- <script src="{% static 'assets/js/dashboard.js' %}"></script> -->
+<!-- Initialize Select2 -->
+
+
 </body>
 
 </html>

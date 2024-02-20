@@ -15,13 +15,7 @@
 
 }
 
-.oval-shape{
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: #13deb9;
-  color: black;
-  font-weight: bold;
-}
+
 
  /* CSS for slider */
 .form-range::-webkit-slider-thumb {
@@ -57,7 +51,19 @@
     border-radius: 5px;
     border: none;
 }
-
+.card {
+  position: relative;
+}
+.oval-shape{
+  border-top-right-radius: 5px;
+  padding: 5px 10px;
+  background-color: #13deb9;
+  color: black;
+  font-weight: bold;
+  top:0px;
+  right: 0px;
+  position: absolute;
+}
 </style>
   
 <div class="container-fluid">
@@ -97,19 +103,14 @@
                                     <div class="d-flex align-items-center">
                                         <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
                                         <div class="d-flex flex-column ">
-                                        <p class="mb-0 mt-2">BY: </p>
-                                        <p class="h5 text-black ">{{item.user_id}}</p>
+                                        <p class="h5 text-black ">{{item.created_by}}</p>
                                       </div>
                                     </div>
-                                    <div class="text-center oval-shape">EXAM READY</div>
+                                    <div class="text-center oval-shape">{{item.class}}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-12">
-                                <input type="range" id="slider1" class="form-range" min="0" max="100" value="50">
-                            </div>
-                        </div>
+                    
                     </div>
                 </a>
             </div>

@@ -45,9 +45,7 @@ urlpatterns = [
     path('set-question-paper/', views.set_question_paper, name="set_question_paper"),
     path('questions-discovery/', views.questions_discovery, name="questions_discovery"),
     path('add-question/', views.add_question, name="add_question"),
-    path('students/', views.students, name="students"),
-    path('get-student/<str:student_id>/', views.get_student, name="get_student"),
-    path('delete-student/<str:student_id>/', views.delete_student, name="delete_student"),
+
     path('auth/google', views.google_callback),
     path('inquiry', views.inquiry),
     path('take-exam', views.take_exam),
@@ -57,7 +55,20 @@ urlpatterns = [
     path('student-answer-sheet/', views.student_answer_sheet),
     path('explanation-sheet/', views.explanation_sheet),
 
-    
+    path('students/', views.students, name="students"),
+    path('get-student/<str:student_id>/', views.get_student, name="get_student"),
+    path('delete-student/<str:student_id>/', views.delete_student, name="delete_student"),
+
+ 
+    path('classes/', views.classes, name='classes'),
+    path('get-class/<str:class_id>/', views.get_class, name='get_class'),
+    path('delete-class/<str:class_id>/', views.delete_class, name='delete_class'),
+    path('list-classes/', views.list_classes, name='list_classes'),
+
+    path('teachers/', views.teachers, name='teachers'),
+    path('delete-teacher/<str:teacher_id>/', views.delete_teacher, name='delete_teachers'),
+    path('get-teacher/<str:teacher_id>/', views.get_teacher, name='get_teacher'),
+    path('edit-teacher/<str:teacher_id>/', views.edit_teacher, name='edit_teacher'),
     
 
     
