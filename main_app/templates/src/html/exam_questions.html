@@ -409,6 +409,39 @@ footer button.show{
   height: auto; 
 }
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+
+button:focus,
+input:focus{
+  outline: none;
+  box-shadow: none;
+}
+a,
+a:hover{
+  text-decoration: none;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+/*------------------  */
+.otp-countdown{
+  display: inline-block;
+  margin: 0 auto;
+  padding: 8px 20px;
+  background-color: #333;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 3px;
+  width: 150px;
+  
+}
+
 </style>
 
 
@@ -421,6 +454,25 @@ footer button.show{
     <!-- start Quiz button -->
 
     <div class="row">
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="text-center">
+        <div class="otp-countdown"  id="timer-countdown">{{remaining_time}}</div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
     	<!-- Info Box -->
@@ -511,53 +563,46 @@ footer button.show{
     <script type="text/javascript">
         
 
-//selecting all required elements
-const start_btn = document.querySelector(".start_btn button");
-const info_box = document.querySelector(".info_box");
-const exit_btn = info_box.querySelector(".buttons .quit");
-const continue_btn = info_box.querySelector(".buttons .restart");
-const quiz_box = document.querySelector(".quiz_box");
-const result_box = document.querySelector(".result_box");
-const option_list = document.querySelector(".option_list");
-const time_line = document.querySelector("header .time_line");
-const timeText = document.querySelector(".timer .time_left_txt");
-const timeCount = document.querySelector(".timer .timer_sec");
 
-// if startQuiz button clicked
-start_btn.onclick = ()=>{
-    info_box.classList.add("activeInfo"); //show info box
+
+
+
+// -------- coundown-timer-----
+if ($('#timer-countdown').length) {
+    function countdown( elementName, minutes, seconds )
+    {
+        var element, endTime, hours, mins, msLeft, time;
+        function twoDigits( n )
+        {
+            return (n <= 9 ? "0" + n : n);
+        }
+        function updateTimer()
+        {
+            msLeft = endTime - (+new Date);
+            if ( msLeft < 1000 ) {
+                element.innerHTML = "Time is up!";
+            } else {
+                time = new Date( msLeft );
+                hours = time.getUTCHours();
+                mins = time.getUTCMinutes();
+                element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+                setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+            }
+        }
+        element = document.getElementById( elementName );
+        endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+        updateTimer();
+    }
+    var remaining_time = '{{ remaining_time|safe }}';
+
+    countdown( "timer-countdown", 2, 30 );
 }
 
-// if exitQuiz button clicked
-exit_btn.onclick = ()=>{
-    info_box.classList.remove("activeInfo"); //hide info box
-}
-
-// if continueQuiz button clicked
 
 
-let timeValue =  15;
-let que_count = 0;
-let que_numb = 1;
-let userScore = 0;
-let counter;
-let counterLine;
-let widthValue = 0;
 
-const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
 
-// if restartQuiz button clicked
-restart_quiz.onclick = ()=>{
-    quiz_box.classList.add("activeQuiz"); //show quiz box
-    result_box.classList.remove("activeResult"); //hide result box
-    timeValue = 15; 
-    que_count = 0;
-    que_numb = 1;
-    userScore = 0;
-    widthValue = 0;
 
-}
 
 function prevQuestion(que_number) {
     var qp_id = '{{ qp_id|safe }}';
