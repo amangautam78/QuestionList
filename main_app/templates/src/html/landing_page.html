@@ -260,23 +260,23 @@ p {
       background-color: white;
     }
 
-    .navbar-transparent {
+    /* .navbar-transparent {
       background-color: transparent !important;
       backdrop-filter: blur(5px);
-      /* Optional: adds a blur effect */
+    
       border-bottom: none !important;
     }
 
     .navbar-sticky {
       position: -webkit-sticky;
-      /* For Safari */
+    
       position: sticky;
       top: 0;
       z-index: 1000;
-      /* Adjust z-index as needed */
+    
       background-color: rgba(255, 255, 255, 0.8);
-      /* Add background color for visibility */
-    }
+     
+    } */
 
     .head1 {
       padding: 5px;
@@ -520,18 +520,6 @@ p {
       max-height: 5.75rem;
     }
 
-    @media only screen and (min-width: 414px) and (max-width: 896px) {
-      #loader h1 {
-        font-size: 12vw;
-      }
-
-      #moving-text h1 {
-        font-size: 12vw;
-      }
-
-
-
-    }
 
     .page0 {
       width: 100%;
@@ -554,7 +542,7 @@ p {
       position: relative;
       z-index: 10;
       display: flex;
-      align-items: center;
+
       flex-direction: column;
       justify-content: space-between;
     }
@@ -564,7 +552,7 @@ p {
       bottom: 0;
       font-size: 20vw;
       font-weight: 100;
-      justify-content: flex-end;
+
       margin-bottom: 20vw;
 
     }
@@ -596,6 +584,53 @@ p {
       font-size: 3rem;
       line-height: 4.2rem;
     }
+
+    .faces {
+      height: 70vh;
+      width: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .laptop {
+      height: 50vh;
+      width: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media only screen and (min-width: 375px) and (max-width: 896px) {
+      #loader h1 {
+        font-size: 12vw;
+      }
+
+      #moving-text h1 {
+        font-size: 12vw;
+      }
+
+      .page01 {
+        display: none;
+      }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+      }
+
+
+    }
+
+    .laptop {
+      height: auto;
+      width: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+
+    }
   </style>
 </head>
 
@@ -609,27 +644,8 @@ p {
 
 
   <div class="main">
-    <div class="page1">
-      <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0" style="position: fixed;" role="navigation"
-        aria-label="main navigation">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-          <div class="navbar-brand">
-            <div class="navbar-item m-0 p-0">
-              <img src="/static/assets/images/logos/title_logo.png" class="m-0 p-0"
-                style="font-weight: 500;object-fit: cover;">
-            </div>
-          </div>
-          <div class="navbar-item ">
-            <div id="nav-part2">
-
-              <h4>
-                <a style="  font-weight: 500" href="/login/">LOGIN</a>
-              </h4>
-            </div>
-            <!-- <a style="color: #3e8ed0; margin-right: 5px; font-weight: bold" href="/login/"> LOGIN</a> -->
-          </div>
-        </div>
-      </nav>
+    <!-- <div class="page1">
+    
 
       <div class="hero is-white is-fullheight">
         <div class="hero-body">
@@ -665,13 +681,48 @@ p {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="page0">
+      <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0" style="position: fixed; " role="navigation"
+      aria-label="main navigation">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="navbar-brand">
+          <div class="navbar-item m-0 p-0">
+            <img src="/static/assets/images/logos/title_logo.png" class="m-0 p-0"
+              style="font-weight: 500;object-fit: cover;">
+          </div>
+        </div>
+        <div class="navbar-item ">
+          <div id="nav-part2">
 
+            <h4>
+              <a style="  font-weight: 500" href="/login/">LOGIN</a>
+            </h4>
+          </div>
+          <!-- <a style="color: #3e8ed0; margin-right: 5px; font-weight: bold" href="/login/"> LOGIN</a> -->
+        </div>
+      </div>
+    </nav>
       <video src="static/assets/videos/video3.mp4" autoplay muted loop></video>
       <div class="page0-content">
-
-        <h1 style="margin-top: auto;">
+        <p class="p-4 " style="margin-top: auto; font-size: 40px;
+  background-color: transparent;
+    color: #FD330B;
+       font-weight: bold;
+        color: transparent;
+        background: linear-gradient(to right,#FD330B, #fda00b);
+        -webkit-background-clip: text;
+position: relative;width: 35%;"> Revolutionizing Education through Interactive Quizzing</p>
+        <div class="row " style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
+          <div class="col-4 text-center">
+            <p  style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">Path to Interactive Learning and Growth</p>
+          </div>
+          <div class="col-4 text-center">
+            <p style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">Create engaging quizzes for your students</p>
+          </div>
+        </div>
+        
+        <h1 class="pb-0 mb-0">
           <span>Q</span>
           <span>n</span>
           <span>a</span>
@@ -681,29 +732,36 @@ p {
           <span>s</span>
           <span>s</span>
         </h1>
-
       </div>
     </div>
     <div class="page01">
-      <div class="wrapper">
-        <div class="line">
-          <span>We are a digital brand accelerator for fast-growing .Our mission is to transform </span>
-        </div>
-        <div class="line">
-          <span> founders' visions into remarkable brands.All our clients drive their businesses </span>
-        </div>
-        <div class="line">
-          <span>with sustainability at the forefront. Choose traditional compensation or an </span>
-        </div>
-        <div class="line">
-          <span>equity offset of up to 50% of our fees through our Venture Model—your vision,</span>
-        </div>
-        <div class="line">
-          <span>your decision.&nbsp;In any case, we are your new unfair advantage.</span>
-        </div>
+      .<div class="container-fluid">
+        <div class="row">
+          <div class="col">
+
+            <div class="wrapper">
+              <div class="line">
+                <span>We are a digital brand accelerator for fast-growing .Our mission is to transform </span>
+              </div>
+              <div class="line">
+                <span> founders' visions into remarkable brands.All our clients drive their businesses </span>
+              </div>
+              <div class="line">
+                <span>with sustainability at the forefront. Choose traditional compensation or an </span>
+              </div>
+              <div class="line">
+                <span>equity offset of up to 50% of our fees through our Venture Model—your vision,</span>
+              </div>
+              <div class="line">
+                <span>your decision.&nbsp;In any case, we are your new unfair advantage.</span>
+              </div>
 
 
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
     <div class="page2">
       <!--Modal: Login with Avatar Form-->
@@ -779,10 +837,9 @@ p {
     <div class="page7">
       <div class="container-fluid m-5">
 
-        <div class="row" style="min-height: 100vh; width: 100%;">
-          <div class="col anime1">
-            <img class="img" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png"
-              style="height: 70vh;width: auto; object-fit:cover;object-position: center;" alt="">
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-sm-12 anime1">
+            <img class="faces" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png" alt="">
           </div>
           <div class="col">
             <div class="paragraph p-5">
@@ -798,6 +855,7 @@ p {
               <button class="btn btn-primary p-3 mt-4">Teachers, start here </button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -805,7 +863,7 @@ p {
       <div class="container-fluid m-5">
 
         <div class="row" style="min-height: 70vh; width: 100%;">
-          <div class="col">
+          <div class="col-md-6 col-lg-6 col-sm-12 ">
             <div class="paragraph p-5">
               <p style="font-size: 1vw;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
               <p style="font-size: 3vw;font-weight: bold;"> <span class="p-1"
@@ -818,8 +876,7 @@ p {
             </div>
           </div>
           <div class="col anime2">
-            <img src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"
-              style="height: 50vh;width: auto; object-fit:cover;object-position: center;" alt="">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png" style="" alt="">
           </div>
 
 
@@ -852,21 +909,27 @@ p {
                 </div>
                 <div class="combine">
                   <p class="p-2 pt-3 " style="font-size: 20px; font-weight: bold;color: whitesmoke;">Features</p>
-                  <p class="pt-3 p-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>Access to
+                  <p class="pt-3 p-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to
                     Questions and
                     Assessment creation modules</p>
-                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg> Detailed
+                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg> Detailed
                     analytics, Progress tracking</p>
-                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>Monthly
+                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly
                     performance reports</p>
                 </div>
                 <div class="price mb-2">
@@ -888,10 +951,12 @@ p {
 
             <div class="col p-3">
               <div class="box mt-1 p-2 w-60 text-center" style="border-radius: 20px;background-color: #02C501;">
-                <h4 style="color: rgb(0, 57, 88);font-size: 20px;">Most Popular   <svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
-                  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
-                  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
-                </svg>
+                <h4 style="color: rgb(0, 57, 88);font-size: 20px;">Most Popular <svg xmlns="http://www.w3.org/2000/svg"
+                    width="26" height="26" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
                 </h4>
               </div>
 
@@ -903,26 +968,34 @@ p {
                 </div>
                 <div class="combine">
                   <p class="p-3 " style="font-size: 20px; font-weight: bold;">Features</p>
-                  <p class="  pl-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg> Access to
+                  <p class="  pl-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg> Access to
                     Questions and
                     Assessment creation modules</p>
-                  <p class="pl-2 pt-2"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>Detailed
+                  <p class="pl-2 pt-2"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Detailed
                     analytics, Progress tracking</p>
-                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>Monthly
+                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly
                     performance reports</p>
-                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>Access to
+                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to
                     Questions Marketplace</p>
                 </div>
                 <div class="price mb-3">
@@ -946,15 +1019,19 @@ p {
               <div class="box  p-2 mb-1 w-100 text-center" style="border-radius: 20px;background-color: #FFDC34;">
                 <h4 style="color: rgb(0, 58, 96); font-size: 20px;">Premium
 
-                    <svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
-                      <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
-                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
-                    </svg>
-                    <svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
-                      <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
-                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
-                    </svg>
-                  </h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
+                </h4>
               </div>
 
               <div class="col">
@@ -967,28 +1044,42 @@ p {
                 </div>
                 <div class="combine">
                   <p class="p-3 mt-2" style="font-size: 20px; font-weight: bold;color: #ffffff;">Features</p>
-                  <p class="pl-2 cardcl"> <svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg>Access
+                  <p class="pl-2 cardcl"> <svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access
                     to Questions and
                     Assessment creation modules</p>
-                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg>Detailed analytics, Progress tracking</p>
-                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg>Monthly performance reports</p>
-                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg>Access to Questions Marketplace</p>
-                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                  </svg>Mentoring Session with Students</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Detailed analytics, Progress tracking</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly performance reports</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to Questions Marketplace</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Mentoring Session with Students</p>
                 </div>
                 <div class="price mb-2">
                   <p class="p-2 cardcl" style="font-size: 27px;font-weight: 500;">Price</p>
