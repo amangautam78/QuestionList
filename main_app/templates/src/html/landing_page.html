@@ -421,9 +421,10 @@ p {
     }
 
     #moving-text {
-      overflow: scroll;
+      overflow:hidden;
       white-space: nowrap;
       padding: 3vw 0;
+      
     }
 
     #moving-text::-webkit-scrollbar {
@@ -620,17 +621,17 @@ p {
       }
 
 
+      .laptop {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+      }
     }
 
-    .laptop {
-      height: auto;
-      width: auto;
-      object-fit: cover;
-      object-position: center;
-    }
 
 
-    }
+    
   </style>
 </head>
 
@@ -713,11 +714,11 @@ p {
         background: linear-gradient(to right,#FD330B, #fda00b);
         -webkit-background-clip: text;
 position: relative;width: 35%;"> Revolutionizing Education through Interactive Quizzing</p>
-        <div class="row " style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
-          <div class="col-4 text-center">
+        <div class="row m-2" style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
+          <div class="col-12 text-center">
             <p  style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">Path to Interactive Learning and Growth</p>
           </div>
-          <div class="col-4 text-center">
+          <div class="col-12 text-center mt-3" >
             <p style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">Create engaging quizzes for your students</p>
           </div>
         </div>
