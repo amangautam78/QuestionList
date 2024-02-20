@@ -9,15 +9,21 @@
   <title>QnA CLASS</title>
   <link rel="shortcut icon" type="image/png" href="/static/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
-<style type="text/css">
-  
-  body {
-    background-color: #f4f2ee;
-  }
-</style>
+  <style type="text/css">
+    body {
+      background-color: #f4f2ee;
+    }
+
+    .sidebar-nav ul .sidebar-item.selected>.sidebar-link, .sidebar-nav ul .sidebar-item.selected>.sidebar-link.active, .sidebar-nav ul .sidebar-item>.sidebar-link.active {
+    background-color: transparent;
+   color:rgb(0, 93, 111);
+    border: 1px solid #FF5F38;
+}
+  </style>
 
 </head>
 
@@ -29,9 +35,9 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+        <div class="brand-logo d-flex align-items-center text-center justify-content-around">
           <a href="/" class="text-nowrap logo-img">
-             <strong style="color: green; margin-right: 5px;"> QnA</strong>CLASS
+            <strong style="color: green; margin-right: 5px;"> QnA</strong>CLASS
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -90,10 +96,10 @@
               </a>
             </li>
 
-            
 
 
- <!--            <li class="sidebar-item">
+
+            <!--            <li class="sidebar-item">
               <a class="sidebar-link" href="/retailers/" aria-expanded="false">
                 <span>
                   <i class="ti ti-file"></i>
@@ -112,7 +118,7 @@
             </li> -->
 
           </ul>
-       
+
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -139,11 +145,12 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              
+
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="" width="35" height="35"
+                    class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
@@ -151,7 +158,7 @@
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Account</p>
                     </a>
-                   <!--  <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <!--  <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">My Account</p>
                     </a>
@@ -168,13 +175,13 @@
         </nav>
       </header>
       <!--  Header End -->
-{% block content %}
-{% endblock %}
-      </div>
+      {% block content %}
+      {% endblock %}
     </div>
   </div>
+  </div>
   <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
-      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'assets/js/sidebarmenu.js' %}"></script>
   <script src="{% static 'assets/js/app.min.js' %}"></script>
