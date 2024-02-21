@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QnA CLASS</title>
+  <title>IA</title>
   <link rel="shortcut icon" type="image/png" href="/static/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -30,8 +30,8 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="/" class="text-nowrap logo-img">
-             <strong style="color: green; margin-right: 5px;"> QnA</strong>CLASS
+          <a href="/dashboard" class="text-nowrap logo-img">
+             <strong style="color: green; margin-right: 5px;"> INSIGHT</strong>ASSESS
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -40,6 +40,9 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
+
+            {% if user_type == 'ADMIN' %}
+
 
             <li class="sidebar-item">
               <a class="sidebar-link" href="/dashboard" aria-expanded="false">
@@ -84,6 +87,7 @@
               </a>
             </li>
 
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="/question-papers/" aria-expanded="false">
                 <span>
@@ -103,25 +107,121 @@
             </li>
 
             
-
-
- <!--            <li class="sidebar-item">
-              <a class="sidebar-link" href="/retailers/" aria-expanded="false">
+            {% elif user_type == 'TEACHER' %}
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file"></i>
+                  <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Retailers</span>
+                <span class="hide-menu">Home</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/trips/" aria-expanded="false">
+              <a class="sidebar-link" href="/classes/" aria-expanded="false">
                 <span>
                   <i class="ti ti-file"></i>
                 </span>
-                <span class="hide-menu">Trips</span>
+                <span class="hide-menu">Classes</span>
               </a>
-            </li> -->
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/students/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Students</span>
+              </a>
+            </li> 
+
+           <li class="sidebar-item">
+              <a class="sidebar-link" href="/questions/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file"></i>
+                </span>
+                <span class="hide-menu">Questions</span>
+              </a>
+            </li>
+
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/question-papers/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Question Papers</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/profile/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+
+            {% elif user_type == 'STUDENT' %}
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/dashboard" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Home</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/question-papers/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Question Papers</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/profile/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+
+            {% elif user_type == 'SALES' %}
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/dashboard" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Home</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/accounts/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file"></i>
+                </span>
+                <span class="hide-menu">Account</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/profile/" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+
+
+
+            {% endif %}
+
+
+            
 
           </ul>
        
@@ -159,10 +259,18 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
+
+                    {% if user_type == 'ADMIN' %}
                     <a href="/accounts/" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Account</p>
                     </a>
+                    {% else %}
+                    <a href="/profile/" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Profile</p>
+                    </a>
+                    {% endif %}
                    <!--  <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">My Account</p>
