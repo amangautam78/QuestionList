@@ -20,6 +20,36 @@
      -webkit-background-clip: text;
 }
 
+.table_colour{
+  color: #6d1900;
+}
+table {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse; 
+}
+
+th {
+ background: #ffffff !important;
+  position: sticky;
+  top: 0; 
+}
+.table-title {
+ background: #ffffff !important;
+  position: sticky;
+  top: 0; 
+}
+.btn_css{
+  background-color: rgba(255, 240, 232, 0.646);
+  border: solid 1px rgb(174, 174, 174);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  color: red;
+  border-radius: 5px;
+}
+.btn_css_edit{
+  color: black;
+}
 </style>
 
 
@@ -35,7 +65,7 @@
 
 
 <div class="container container1" style="height: 76vh;width: 98%;border-radius: 10px;">
-  <div class="table-wrapper table-responsive">
+  <div class="table-wrapper table-responsive" style="height: 74vh;">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
@@ -48,7 +78,7 @@
         </div>
       </div>
     </div>
-    <table class="table table-responsive" ">
+    <table class="table table-responsive" style="background-color: white;">
       <thead>
         <tr>
           <th>Name</th>
@@ -67,10 +97,10 @@
           <td class="address">{{student.address}}</td>
           <td class="mobile">{{student.mobile}}</td>
           <td class="batch">{{student.batch}}</td>
-          <td>
-                <i class="fas fa-pencil-alt" onclick="openEditModal(this)"></i>
+          <td style="width: 130px;">
+             <button class="btn_css btn_css_edit"> <i class="fas fa-pencil-alt" onclick="openEditModal(this)"></i></button>  
 
-                <i class="fas fa-trash-alt" onclick="openDeleteModal(this)"></i>
+              <button class="btn_css"> <i class="fas fa-trash-alt" onclick="openDeleteModal(this)"></i></button> 
 
           </td>
         </tr>
