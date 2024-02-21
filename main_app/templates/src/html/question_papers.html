@@ -1,6 +1,8 @@
 {% extends 'src/html/base.html' %}
 {% load static %}
   {% block content %}
+  <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
 <style type="text/css">
 
 
@@ -67,13 +69,17 @@
 
 </style>
   
+   {% if user_type != 'STUDENT' %}
 <div class="container-fluid">
-          <header class="container">
-                <a type="button" class="btn btn-primary" style="float: right; margin: 10px;" 
+    <header class="container">
+     
+      <a type="button" class="btn btn-primary" style="float: right; margin: 10px;" 
                  href="/questions-discovery/">SET QUESTION PAPER</a>
+      
                 
-            </header>
-        </div>
+    </header>
+</div>
+{% endif %}
 
 <div class="container-fluid">
 
@@ -86,7 +92,9 @@
               <!-- card 1 -->
               <div class="col-md-4">
                 <div class="card mb-3">
-                    <a class="card-body"  href="/take-exam?qp_id={{item.qp_id}}">
+                   
+                    {% if user_type == 'STUDENT' %}
+                     <a class="card-body">
                         <h5 class="text-black fw-bold h5">{{item.qp_id}}</h5>
                         <div class="row">
                             <div class="col-12">
@@ -113,14 +121,49 @@
                         </div>
                     
                     </a>
-<div class="buttons-bottom row">
-  <div class="col-6 pe-0">
-    <a class="btn btn-dark mt-0 w-100 rounded-0" href="/review-qp/{{item.qp_temp_id}}/">EDIT</a>
-  </div>
-  <div class="col-6 ps-0">
-    <a class="btn btn-success w-100 rounded-0" href="/view-qp/{{item.qp_temp_id}}/">VIEW</a>
-  </div>
-</div>
+                      <div class="buttons-bottom row">
+                       
+                        <div class="col-12">
+                          <a class="btn btn-success w-100 rounded-0" href="/take-exam?qp_id={{item.qp_id}}">START</a>
+                        </div>
+                      </div>
+                    {% else %}
+                     <a class="card-body"  href="/take-exam?qp_id={{item.qp_id}}">
+                        <h5 class="text-black fw-bold h5">{{item.qp_id}}</h5>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                
+                                  <div>
+                                    <p class="mb-2 mt-2"><span class="text-black h6">{{item.created_at}}</span></p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{% static '/assets/images/profile/user-1.jpg' %}" alt="Profile Pic" class="rounded-circle me-2" width="40" height="40">
+                                        <div class="d-flex flex-column ">
+                                        <p class="h5 text-black ">{{item.created_by}}</p>
+                                      </div>
+                                    </div>
+                                    <div class="text-center oval-shape">{{item.class}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </a>
+                      <div class="buttons-bottom row">
+                        <div class="col-6 pe-0">
+                          <a class="btn btn-dark mt-0 w-100 rounded-0" href="/review-qp/{{item.qp_temp_id}}/">EDIT</a>
+                        </div>
+                        <div class="col-6 ps-0">
+                          <a class="btn btn-success w-100 rounded-0" href="/view-qp/{{item.qp_temp_id}}/">VIEW</a>
+                        </div>
+                      </div>
+                    {% endif %}
 
 
                 </div>

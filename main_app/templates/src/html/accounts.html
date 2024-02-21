@@ -8,7 +8,7 @@
 	.counter-button-container{
   z-index: 100;
   position: fixed;
-  left: 91%;
+  right: 0;
 }
 </style>
 
@@ -31,21 +31,21 @@
             </div>
         </header>
 
-                     <div class="d-flex justify-content-between align-items-center px-6">
+            <div class="d-flex justify-content-between align-items-center px-6">
                <!-- Retailer Dropdown on the Left -->
              
            
                <!-- Cart Button on the Right -->
                <div class="counter-button-container">
                  <a onclick="window.location.href='/add-account/'">
-                   <button class="btn btn-outline-success m-1" style="border-radius: 50%; font-size: 23px; float: right;">
+                   <button class="btn btn-outline-success m-1" style="border-radius: 50%; font-size: 23px;">
                      +
                    </button>
                  </a>
                </div>
              </div>
 
-
+             <div class="table table-responsive">
              <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
@@ -89,12 +89,16 @@
 	        <a type="button" class="btn btn-outline-success btn-sm btn-rounded" href="/add-account?insti_id={{account.insti_id}}">
 	          Edit
 	        </a>
+	        <a type="button" class="btn btn-outline-success btn-sm btn-rounded" href="/approve-account?insti_id={{account.insti_id}}">
+	          Approve
+	        </a>
 	      </td>
 	    </tr>
     {% endfor %}
 
   </tbody>
 </table>
+</div>
     </div>
 
 

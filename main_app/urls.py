@@ -27,6 +27,7 @@ urlpatterns = [
    
     path('accounts/',views.accounts),
     path('add-account/',views.add_account),
+    path('approve-account/',views.approve_account),
    
     path('attendance-details/<str:emp_id>/', views.attendance_details),
     path('mark-attendance/', views.mark_attendance),

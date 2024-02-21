@@ -82,29 +82,40 @@ def dashboard(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
+	class_id = data.get('class_id')
 
-	total_students = list(DB.students.aggregate([{'$count': 'count'}])) 
-	total_question_papers = list(DB.question_papers.aggregate([{'$count': 'count'}]))
-	total_questions = list(DB.questions.aggregate([{'$count': 'count'}]))
-
-	total_students = total_students[0]['count'] if total_students else 0
-	total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
-	total_questions = total_questions[0]['count'] if total_questions else 0
-
-
-	print(total_students, total_question_papers, total_questions)
+	if user_type == 'STUDENT':
+		total_question_papers = list(DB.question_papers.aggregate([{'$match': {'class_id': class_id}}, {'$count': 'count'}]))
+		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
+		response = render(request, "src/html/dashboard.html",{"data": {
+			'total_question_papers': total_question_papers}, 'user_type': user_type})
 
 
+	else:
 
-	response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
+		total_students = list(DB.students.aggregate([{'$count': 'count'}])) 
+		total_question_papers = list(DB.question_papers.aggregate([{'$count': 'count'}]))
+		total_questions = list(DB.questions.aggregate([{'$count': 'count'}]))
 
-	# if token and not request.COOKIES.get("t"):
-	# 	response.set_cookie("t",token)
+		total_students = total_students[0]['count'] if total_students else 0
+		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
+		total_questions = total_questions[0]['count'] if total_questions else 0
+
+		response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
 
 	return response
 
 
 def questions(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+		
+	if not valid:
+		return redirect('/')
+	
+	user_type = data.get('user_type')
 	questions = list(DB.questions.find({}))
 	que_count = 0
 	user_id = 1
@@ -115,9 +126,18 @@ def questions(request):
 	else:
 		qp_temp_id = str(uuid4())
 		que_count = 0
-	return render(request, 'src/html/questions.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id})
+	return render(request, 'src/html/questions.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id, 'user_type': user_type})
 
 def questions_discovery(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+		
+	if not valid:
+		return redirect('/')
+	
+	user_type = data.get('user_type')
 	questions = list(DB.questions.find({}))
 	que_count = 0
 	user_id = 1
@@ -128,7 +148,7 @@ def questions_discovery(request):
 	else:
 		qp_temp_id = str(uuid4())
 		que_count = 0
-	return render(request, 'src/html/questions_discovery.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id})
+	return render(request, 'src/html/questions_discovery.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id, 'user_type': user_type})
 
 
 @csrf_exempt
@@ -180,25 +200,31 @@ def update_question_paper(request):
 
 
 def review_qp(request, qp_temp_id):
-
-	# temp_id = request.GET.get('temp_id')
-	# if temp_id:
-	# 	order_data = DB.cart_templates.find_one({'temp_id': temp_id}, {'_id': 0})
-	# 	cart_id = str(uuid4())
-	# 	order_data['cart_id'] = cart_id
-	# 	order_data['status'] = 'IN_CART'
-	# 	DB.partner_orders.insert_one(order_data)
-
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
 
 	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id}) or {}
 
 	class_data = list(DB.classes.find())
-	return render(request, 'src/html/review_qp.html', {'class_data': class_data, 'insti_id': temp_qp.get('insti_id'), 'temp_qp': temp_qp, 'que_count': len(temp_qp.get('qp_items')), 'qp_temp_id': temp_qp.get('qp_temp_id')})
+	return render(request, 'src/html/review_qp.html', {'class_data': class_data, 'insti_id': temp_qp.get('insti_id'), 'temp_qp': temp_qp, 'que_count': len(temp_qp.get('qp_items')), 'qp_temp_id': temp_qp.get('qp_temp_id'), 'user_type': user_type})
 
 
 def question_papers(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+		
+	if not valid:
+		return redirect('/')
+	
+	user_type = data.get('user_type')
 	question_papers = list(DB.question_papers.find({'status': {'$ne': 'IN_QP'}}).sort('_id', -1))
-	return render(request, "src/html/question_papers.html", {"question_papers":question_papers,"items_count":len(question_papers)})
+	return render(request, "src/html/question_papers.html", {"question_papers":question_papers,"items_count":len(question_papers), 'user_type': user_type})
 
 
 @csrf_exempt
@@ -251,7 +277,13 @@ def add_question(request):
 
 @csrf_exempt
 def students(request):
-
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+	if not valid:
+		return redirect('/')
+	user_type = data.get('user_type')
 	if request.method == 'POST':
 		student_data = dict(request.POST.items())
 		print(student_data)
@@ -263,7 +295,7 @@ def students(request):
 		print(student_data)
 		return JsonResponse({'data': student_data})
 	students_data = list(DB.students.find({}).sort('_id', -1))
-	return render(request, 'src/html/students.html', {'students_data': students_data})
+	return render(request, 'src/html/students.html', {'students_data': students_data, 'user_type': user_type})
 
 @csrf_exempt
 def get_student(request, student_id):
@@ -386,7 +418,18 @@ def mark_attendance(request):
 
 
 def profile(request):
-    return render(request, 'src/html/profile.html')
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+		
+	if not valid:
+		return redirect('/')
+	
+	user_type = data.get('user_type')
+	sub = data.get('sub')
+	user = DB.users.find_one({'sub': sub})
+	return render(request, 'src/html/profile.html', {'user': user, 'user_type': user_type})
 
 
 @csrf_exempt
@@ -424,6 +467,7 @@ def start_exam(request):
 		return redirect('/')
 
 	student_id = data.get('sub')
+	user_type = data.get('user_type')
 	qp_id = request.GET.get('qp_id')
 	
 
@@ -456,7 +500,17 @@ def start_exam(request):
 		prev_btn = 'disable'
 
 
-	return render(request, 'src/html/exam_questions.html', {'prev_btn': prev_btn, 'next_btn': next_btn, 'qp_id': qp_id, 'question': question, 'qp_items_length': qp_items_length, 'que_label': que_number + 1, 'selected_data': selected_data, 'answered': answered})
+	return render(request, 'src/html/exam_questions.html', {
+		'prev_btn': prev_btn,
+		'next_btn': next_btn, 
+		'qp_id': qp_id, 
+		'question': question, 
+		'qp_items_length': qp_items_length, 
+		'que_label': que_number + 1, 
+		'selected_data': selected_data, 
+		'answered': answered,
+		'user_type': user_type
+		})
 
 
 @csrf_exempt
@@ -506,6 +560,7 @@ def student_answer_sheet(request):
 	if not st:
 		return redirect('/')
 	student_id = data.get('sub')
+	user_type = data.get('user_type')
 	qp_id = request.GET.get('qp_id')
 	data_sheet = DB.answer_sheet.find_one({'student_id': student_id, 'qp_id': qp_id})
 	total_questions = 0
@@ -516,7 +571,13 @@ def student_answer_sheet(request):
 		total_questions = total_questions + 1
 
 	total_wrong = total_questions - total_correct
-	return render(request, 'src/html/student_answer_sheet.html', {'total_questions': total_questions, 'total_correct': total_correct, 'total_wrong': total_wrong, 'qp_id': qp_id})
+	return render(request, 'src/html/student_answer_sheet.html', {
+		'total_questions': total_questions, 
+		'total_correct': total_correct, 
+		'total_wrong': total_wrong, 
+		'qp_id': qp_id,
+		'user_type': user_type
+		})
 
 def explanation_sheet(request):
 	token = request.COOKIES.get('t')
@@ -524,28 +585,39 @@ def explanation_sheet(request):
 	if not st:
 		return redirect('/')
 	student_id = data.get('sub')
+	user_type = data.get('user_type')
+
 	qp_id = request.GET.get('qp_id')
-	questions = DB.question_papers.find_one({'qp_id': qp_id})
-	return render(request, 'src/html/explanation_sheet.html', {'questions': questions})
+	explanation = request.GET.get('explanation')
+	question_paper = DB.question_papers.find_one({'qp_id': qp_id})
+	return render(request, 'src/html/explanation_sheet.html', {'question_paper': question_paper, 'user_type': user_type, 'explanation': explanation})
 
 
 
 @csrf_exempt
 def accounts(request):
 
+	data = {}
 	token = request.COOKIES.get('t')
 	st, data = verify_token(token)
 	if not st:
 		return redirect('/')
+	user_type = data.get('user_type')
 	if data.get('user_type') == 'TEACHER':
 		account = DB.institutes.find_one({'insti_id': data.get('insti_id')}, {'_id': 0})
-		return render(request, 'src/html/account_details.html', {'account': account})
+		return render(request, 'src/html/account_details.html', {'account': account, 'user_type': user_type})
 	accounts = list(DB.institutes.find({}, {'_id': 0}))
-	return render(request, 'src/html/accounts.html', {'accounts': accounts})
+	return render(request, 'src/html/accounts.html', {'accounts': accounts, 'user_type': user_type})
 
 
 @csrf_exempt
 def add_account(request):
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
 	if request.method == 'POST':
 		insti_id = request.GET.get('insti_id')
 		requested_data = dict(request.POST.items())
@@ -558,12 +630,73 @@ def add_account(request):
 	account = {}
 	if insti_id:
 		account = DB.institutes.find_one({'insti_id': insti_id})
-	return render(request, 'src/html/add_account.html', {'account': account})
+	return render(request, 'src/html/add_account.html', {'account': account, 
+		'user_type': user_type})
 
+
+import random
+import string
+
+def generate_password(length=12):
+    # Define the set of characters to choose from
+    characters = string.ascii_letters + string.digits + string.punctuation
+
+    # Generate the password
+    password = ''.join(random.choice(characters) for i in range(length))
+
+    return password
+
+@csrf_exempt
+def approve_account(request):
+
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
+	if request.method == 'POST':
+		insti_id = request.GET.get('insti_id')
+		requested_data = dict(request.POST.items())
+		if not insti_id:
+			insti_id = 'IN{}'.format(str(int(datetime.now().timestamp())))
+		requested_data['insti_id'] = insti_id
+		DB.institutes.update_one({'insti_id': insti_id}, {'$set': requested_data}, upsert=True)
+		if requested_data.get('monthly_invoice'):
+			insti_data = DB.institutes.find_one({'insti_id': insti_id}, {'_id': 0})
+			DB.users.update_one({"insti_id": insti_data.get('insti_id')},{'$set': {
+			  "name": insti_data.get('spoc_name'),
+			  'institute_name': insti_data.get('institute_name'),
+			  "email": insti_data.get('email'),
+			  "mobile": insti_data.get('mobile'),
+			  "sub": str(uuid4()),
+			  "pass": generate_password(),
+			  "is_verified": True,
+			  "user_type": "ADMIN",
+			  "class_id": "",
+			  "insti_id": insti_data.get('insti_id'),
+			  "token": "",
+			  "picture": ""
+			}}, upsert=True)
+
+		return redirect('/accounts/')
+	insti_id = request.GET.get('insti_id')
+	account = {}
+	if insti_id:
+		account = DB.institutes.find_one({'insti_id': insti_id})
+	return render(request, 'src/html/approve_account.html', {'account': account, 
+		'user_type': user_type})
 
 
 @csrf_exempt
 def teachers(request):
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
 
 	if request.method == 'POST':
 		classes  = dict(request.POST).get('classes')
@@ -576,13 +709,13 @@ def teachers(request):
 		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': teacher_data}, upsert=True)
 
 		return JsonResponse({'data': teacher_data})
-	teacher_data = list(DB.teachers.find({}).sort('_id', -1))
-	class_data = list(DB.classes.find({}).sort('_id', -1))
+	teacher_data = list(DB.teachers.find({'insti_id': insti_id}).sort('_id', -1))
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
 	for j in teacher_data:
 
 		j['classes'] = [class_data_map.get(k) for k in j.get('classes')] if j.get('classes') else []
-	return render(request, 'src/html/teachers.html', {'teacher_data': teacher_data, 'class_data': class_data})
+	return render(request, 'src/html/teachers.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
 
 @csrf_exempt
 def get_teacher(request, teacher_id):
@@ -615,6 +748,8 @@ def classes(request):
 	if not st:
 		return redirect('/')
 
+	user_type = data.get('user_type')
+
 	if request.method == 'POST':
 		class_data = dict(request.POST.items())
 		class_data['insti_id'] = data.get('insti_id')
@@ -626,7 +761,7 @@ def classes(request):
 
 		return JsonResponse({'data': class_data})
 	class_data = list(DB.classes.find({}).sort('_id', -1))
-	return render(request, 'src/html/classes.html', {'class_data': class_data})
+	return render(request, 'src/html/classes.html', {'class_data': class_data, 'user_type': user_type})
 
 
 @csrf_exempt
@@ -656,14 +791,24 @@ def list_classes(request):
 	return JsonResponse({'data': classes})
 
 def view_qp(request, qp_temp_id):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
 	explanation = None if not request.GET.get('explanation') else '1'
 	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id}) or {}
-	return render(request, 'src/html/view_qp.html', {'temp_qp': temp_qp, 'explanation': explanation})
+	return render(request, 'src/html/view_qp.html', {'temp_qp': temp_qp, 'explanation': explanation, 'user_type': user_type})
 
 
 def question_details(request, qid):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
 	question = DB.questions.find_one({'qid': qid}) or {}
-	return render(request, 'src/html/question_details.html', {'question': question})
+	return render(request, 'src/html/question_details.html', {'question': question, 'user_type': user_type})
 
 
 
