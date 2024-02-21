@@ -634,9 +634,69 @@ def add_account(request):
 		'user_type': user_type})
 
 
+import random
+import string
+
+def generate_password(length=12):
+    # Define the set of characters to choose from
+    characters = string.ascii_letters + string.digits + string.punctuation
+
+    # Generate the password
+    password = ''.join(random.choice(characters) for i in range(length))
+
+    return password
+
+@csrf_exempt
+def approve_account(request):
+
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
+	if request.method == 'POST':
+		insti_id = request.GET.get('insti_id')
+		requested_data = dict(request.POST.items())
+		if not insti_id:
+			insti_id = 'IN{}'.format(str(int(datetime.now().timestamp())))
+		requested_data['insti_id'] = insti_id
+		DB.institutes.update_one({'insti_id': insti_id}, {'$set': requested_data}, upsert=True)
+		if requested_data.get('monthly_invoice'):
+			insti_data = DB.institutes.find_one({'insti_id': insti_id}, {'_id': 0})
+			DB.users.update_one({"insti_id": insti_data.get('insti_id')},{'$set': {
+			  "name": insti_data.get('spoc_name'),
+			  'institute_name': insti_data.get('institute_name'),
+			  "email": insti_data.get('email'),
+			  "mobile": insti_data.get('mobile'),
+			  "sub": str(uuid4()),
+			  "pass": generate_password(),
+			  "is_verified": True,
+			  "user_type": "ADMIN",
+			  "class_id": "",
+			  "insti_id": insti_data.get('insti_id'),
+			  "token": "",
+			  "picture": ""
+			}}, upsert=True)
+
+		return redirect('/accounts/')
+	insti_id = request.GET.get('insti_id')
+	account = {}
+	if insti_id:
+		account = DB.institutes.find_one({'insti_id': insti_id})
+	return render(request, 'src/html/approve_account.html', {'account': account, 
+		'user_type': user_type})
+
 
 @csrf_exempt
 def teachers(request):
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
 
 	if request.method == 'POST':
 		classes  = dict(request.POST).get('classes')
@@ -649,13 +709,13 @@ def teachers(request):
 		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': teacher_data}, upsert=True)
 
 		return JsonResponse({'data': teacher_data})
-	teacher_data = list(DB.teachers.find({}).sort('_id', -1))
-	class_data = list(DB.classes.find({}).sort('_id', -1))
+	teacher_data = list(DB.teachers.find({'insti_id': insti_id}).sort('_id', -1))
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
 	for j in teacher_data:
 
 		j['classes'] = [class_data_map.get(k) for k in j.get('classes')] if j.get('classes') else []
-	return render(request, 'src/html/teachers.html', {'teacher_data': teacher_data, 'class_data': class_data})
+	return render(request, 'src/html/teachers.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
 
 @csrf_exempt
 def get_teacher(request, teacher_id):

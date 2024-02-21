@@ -1,0 +1,61 @@
+{% extends 'src/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+	
+	.col {
+		background: white;
+		max-width: 500px;
+		margin: auto;
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+</style>
+
+ <div class="container-fluid">
+
+        <div class="row">
+<div class="col">
+
+    <h3 style="padding-bottom: 20px;">Institute/School Approval</h3>
+    <form method="POST">
+      <!-- 0) Institute/School Name -->
+      <div class="mb-3">
+        <label for="instituteName" class="form-label">Institute/School Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="instituteName" required name="institute_name" value="{{account.institute_name}}">
+      </div>
+
+      <!-- 1) Mobile Number -->
+      <div class="mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+        <input type="tel" class="form-control" id="mobileNumber" pattern="[0-9]{10}" required name="mobile" value="{{account.mobile}}">
+        <div class="form-text">Please enter a 10-digit mobile number.</div>
+      </div>
+
+
+      <!-- 5) Total Student Strength -->
+      <div class="mb-3">
+        <label for="monthly_invoice" class="form-label">Monthly Invoice Amount (in ₹)</label>
+        <input type="number" class="form-control" id="monthly_invoice" name="monthly_invoice" value="{{account.monthly_invoice}}" required>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Approve</button>
+    </form>
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
