@@ -426,6 +426,14 @@
     overflow: hidden;
     height: 266px;
 }
+@media only screen and (min-width: 375px) and (max-width: 896px) {
+  .counter-button-container{
+  z-index: 100;
+  position: fixed;
+  left: 81%;
+  top: 12%;
+}
+      }
 
 </style>
 
@@ -436,7 +444,7 @@
         <!-- Header -->
 
 <body>
-  <div class="container-fluid" style="width: 100%; height: 100vh;">
+  <div class="container-fluid" style="width: 100%; min-height: 100vh;">
     <header class="bg-surface-primary border-bottom pt-6">
       <div class="container-fluid">
           <div class="mb-npx">
@@ -530,7 +538,7 @@
 
  
 
-   <div class="row justify-content-start">
+   <div class="row justify-content-start" >
     {% for question in questions %}
     <div class="col-md-4 col-sm-6 col-lg-4 mt-2">
 
