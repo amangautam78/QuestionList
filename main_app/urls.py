@@ -40,7 +40,7 @@ urlpatterns = [
     path('questions/', views.questions, name="questions"),
     path('question-papers/', views.question_papers, name='question_papers'),
     path('add-to-question-paper/', views.add_to_question_paper, name='add_to_question_paper'),
-    path('review-qp/<str:qp_temp_id>/', views.review_qp, name="review_qp"),
+    
     path('update-question-paper/', views.update_question_paper, name="update_question_paper"),
     path('set-question-paper/', views.set_question_paper, name="set_question_paper"),
     path('questions-discovery/', views.questions_discovery, name="questions_discovery"),
@@ -69,8 +69,11 @@ urlpatterns = [
     path('delete-teacher/<str:teacher_id>/', views.delete_teacher, name='delete_teachers'),
     path('get-teacher/<str:teacher_id>/', views.get_teacher, name='get_teacher'),
     path('edit-teacher/<str:teacher_id>/', views.edit_teacher, name='edit_teacher'),
-    
 
+    path('review-qp/<str:qp_temp_id>/', views.review_qp, name="review_qp"),
+    path('view-qp/<str:qp_temp_id>/', views.view_qp, name='view_qp'),
+    path('questions/<str:qid>/', views.question_details, name='question_details'),
+    
     
     ]
 

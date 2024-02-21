@@ -60,13 +60,18 @@
             <select class="form-control selectpicker" name="class" id="class" aria-label="Default select example" data-live-search="true" required>
               <option value="">PLEASE SELECT CLASS/BATCH</option> 
                          {% for class in class_data %}
-                          <option value="{{ class.class_id }}">{{ class.name }}</option>   
+                          {% if temp_qp.class_id == class.class_id %}
+                          <option value="{{ class.class_id }}" selected>{{ class.name }}</option>
+                          {% else %}
+                          <option value="{{ class.class_id }}">{{ class.name }}</option>
+                          {% endif %}
                         {% endfor %}
                         <!-- Options will be dynamically populated by Select2 -->
                </select>
           </div>
         <div class="card">
             <div id="editor-container" required>
+              {{temp_qp.guideline|safe}}
             </div>
             <!-- Add submit button -->   
           </div>

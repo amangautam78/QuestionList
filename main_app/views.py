@@ -190,7 +190,7 @@ def review_qp(request, qp_temp_id):
 	# 	DB.partner_orders.insert_one(order_data)
 
 
-	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id, 'status': 'IN_QP'}) or {}
+	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id}) or {}
 
 	class_data = list(DB.classes.find())
 	return render(request, 'src/html/review_qp.html', {'class_data': class_data, 'insti_id': temp_qp.get('insti_id'), 'temp_qp': temp_qp, 'que_count': len(temp_qp.get('qp_items')), 'qp_temp_id': temp_qp.get('qp_temp_id')})
@@ -654,6 +654,21 @@ def list_classes(request):
 	classes = [{'text': cl.get('name'), 'id': cl.get('class_id')} for cl in list(DB.classes.find({'insti_id': insti_id}))]
 	print(classes)
 	return JsonResponse({'data': classes})
+
+def view_qp(request, qp_temp_id):
+	explanation = None if not request.GET.get('explanation') else '1'
+	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id}) or {}
+	return render(request, 'src/html/view_qp.html', {'temp_qp': temp_qp, 'explanation': explanation})
+
+
+def question_details(request, qid):
+	question = DB.questions.find_one({'qid': qid}) or {}
+	return render(request, 'src/html/question_details.html', {'question': question})
+
+
+
+
+
 
 
 

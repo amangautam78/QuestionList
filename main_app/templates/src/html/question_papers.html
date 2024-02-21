@@ -54,16 +54,17 @@
 .card {
   position: relative;
 }
-.oval-shape{
-  border-top-right-radius: 5px;
-  padding: 5px 10px;
-  background-color: #13deb9;
-  color: black;
-  font-weight: bold;
-  top:0px;
-  right: 0px;
-  position: absolute;
+.oval-shape {
+    border-top-right-radius: 5px;
+    padding: 5px 10px;
+    background-color: var(--bs-green);
+    color: black;
+    font-weight: bold;
+    top: 0px;
+    right: 0px;
+    position: absolute;
 }
+
 </style>
   
 <div class="container-fluid">
@@ -84,9 +85,9 @@
 
               <!-- card 1 -->
               <div class="col-md-4">
-                <a class="card mb-3" href="/take-exam?qp_id={{item.qp_id}}">
-                    <div class="card-body">
-                        <h5 class="text-black fw-bold h4 ">{{item.qp_id}}</h5>
+                <div class="card mb-3">
+                    <a class="card-body"  href="/take-exam?qp_id={{item.qp_id}}">
+                        <h5 class="text-black fw-bold h5">{{item.qp_id}}</h5>
                         <div class="row">
                             <div class="col-12">
                                 <div class="d-flex justify-content-between">
@@ -111,8 +112,18 @@
                             </div>
                         </div>
                     
-                    </div>
-                </a>
+                    </a>
+<div class="buttons-bottom row">
+  <div class="col-6 pe-0">
+    <a class="btn btn-dark mt-0 w-100 rounded-0" href="/review-qp/{{item.qp_temp_id}}/">EDIT</a>
+  </div>
+  <div class="col-6 ps-0">
+    <a class="btn btn-success w-100 rounded-0" href="/view-qp/{{item.qp_temp_id}}/">VIEW</a>
+  </div>
+</div>
+
+
+                </div>
             </div>
 
     {% endfor %}
