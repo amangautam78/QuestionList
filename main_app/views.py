@@ -82,24 +82,26 @@ def dashboard(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
+	class_id = data.get('class_id')
 
-	total_students = list(DB.students.aggregate([{'$count': 'count'}])) 
-	total_question_papers = list(DB.question_papers.aggregate([{'$count': 'count'}]))
-	total_questions = list(DB.questions.aggregate([{'$count': 'count'}]))
-
-	total_students = total_students[0]['count'] if total_students else 0
-	total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
-	total_questions = total_questions[0]['count'] if total_questions else 0
-
-
-	print(total_students, total_question_papers, total_questions)
+	if user_type == 'STUDENT':
+		total_question_papers = list(DB.question_papers.aggregate([{'$match': {'class_id': class_id}}, {'$count': 'count'}]))
+		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
+		response = render(request, "src/html/dashboard.html",{"data": {
+			'total_question_papers': total_question_papers}, 'user_type': user_type})
 
 
+	else:
 
-	response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
+		total_students = list(DB.students.aggregate([{'$count': 'count'}])) 
+		total_question_papers = list(DB.question_papers.aggregate([{'$count': 'count'}]))
+		total_questions = list(DB.questions.aggregate([{'$count': 'count'}]))
 
-	# if token and not request.COOKIES.get("t"):
-	# 	response.set_cookie("t",token)
+		total_students = total_students[0]['count'] if total_students else 0
+		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
+		total_questions = total_questions[0]['count'] if total_questions else 0
+
+		response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
 
 	return response
 
@@ -422,7 +424,9 @@ def profile(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
-	return render(request, 'src/html/profile.html', {'user_type': user_type})
+	sub = data.get('sub')
+	user = DB.users.find_one({'sub': sub})
+	return render(request, 'src/html/profile.html', {'user': user, 'user_type': user_type})
 
 
 @csrf_exempt

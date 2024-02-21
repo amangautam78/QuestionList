@@ -11,6 +11,7 @@
         <!--  Row 1 -->
         <div class="row">
          
+              {% if data.total_students %}
 
               <div class="col-lg-4">
                       <!-- Monthly Earnings -->
@@ -40,6 +41,10 @@
                         </div>
                       </div>
                     </div>
+            {% endif %}
+
+
+            {% if data.total_question_papers %}
               <div class="col-lg-4">
                 <!-- Monthly Earnings -->
                 <div class="card">
@@ -68,6 +73,9 @@
                 </div>
               </div>
 
+              {% endif %}
+
+              {% if data.total_questions %}
                <div class="col-lg-4">
                 <!-- Monthly Earnings -->
                 <div class="card">
@@ -95,6 +103,7 @@
                   </div>
                 </div>
               </div>
+              {% endif %}
             </div>
         </div>
        
