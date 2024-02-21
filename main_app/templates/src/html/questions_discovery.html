@@ -196,6 +196,44 @@
   padding: 10px;
 }
 
+
+
+.card {
+    max-height: 300px;
+    min-height: 300px; /* Set a minimum height to ensure the button is always visible */
+    overflow: hidden;
+    position: relative; /* Position relative to allow absolute positioning of the button */
+}
+.card-body {
+    padding: 20px; /* Adjust as needed */
+}
+
+
+.show-more {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(to right, #7a68d0, #7a68d0);
+    opacity: 0.9;
+    color: var(--bs-black);
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.add-to-qp {
+      position: absolute;
+    top: 0px;
+    width: 100%;
+    opacity: 0.9;
+    color: var(--bs-black);
+    padding-bottom: 10px;
+    font-weight: bold;
+
+}
+.btn {
+
+     --bs-btn-border-radius: 0px;
+ 
+}
 </style>
 
 
@@ -291,8 +329,17 @@
                   </div>
                     
                 </div>
-                 <div class="text-end">
-                        <button id="addBtn-{{ question.qid }}" class="btn btn-danger m-1" onclick="addToCart('{{ question.qid }}')">+</button>
+                            <a class="show-more" href="/questions/{{question.qid}}">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center mt-3">
+                  Show More >
+                </div>
+              </div>
+            </div>
+          </a>
+                 <div class="text-end add-to-qp">
+                        <button id="addBtn-{{ question.qid }}" class="btn btn-danger" onclick="addToCart('{{ question.qid }}')">+</button>
                     </div>
             </div>
           </div>
