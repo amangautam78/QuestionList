@@ -597,19 +597,27 @@ def explanation_sheet(request):
 @csrf_exempt
 def accounts(request):
 
+	data = {}
 	token = request.COOKIES.get('t')
 	st, data = verify_token(token)
 	if not st:
 		return redirect('/')
+	user_type = data.get('user_type')
 	if data.get('user_type') == 'TEACHER':
 		account = DB.institutes.find_one({'insti_id': data.get('insti_id')}, {'_id': 0})
-		return render(request, 'src/html/account_details.html', {'account': account})
+		return render(request, 'src/html/account_details.html', {'account': account, 'user_type': user_type})
 	accounts = list(DB.institutes.find({}, {'_id': 0}))
-	return render(request, 'src/html/accounts.html', {'accounts': accounts})
+	return render(request, 'src/html/accounts.html', {'accounts': accounts, 'user_type': user_type})
 
 
 @csrf_exempt
 def add_account(request):
+	data = {}
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
 	if request.method == 'POST':
 		insti_id = request.GET.get('insti_id')
 		requested_data = dict(request.POST.items())
@@ -622,7 +630,8 @@ def add_account(request):
 	account = {}
 	if insti_id:
 		account = DB.institutes.find_one({'insti_id': insti_id})
-	return render(request, 'src/html/add_account.html', {'account': account})
+	return render(request, 'src/html/add_account.html', {'account': account, 
+		'user_type': user_type})
 
 
 
