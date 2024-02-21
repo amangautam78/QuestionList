@@ -108,7 +108,7 @@ body {
 
     .page1 {
       width: 100%;
-      min-height: 10vh;
+      min-height: auto;
       position: relative;
 
     }
@@ -551,8 +551,9 @@ p {
     .page0-content h1 span {
       color: whitesmoke;
       bottom: 0;
-      font-size: 20vw;
+      font-size: 15vw;
       font-weight: 100;
+      
 
       margin-bottom: 20vw;
 
@@ -599,6 +600,16 @@ p {
       object-fit: cover;
       object-position: center;
     }
+    .p_width{
+      width: 35%;
+    }
+    .p_width_sm{
+      width: 30%;
+      font-weight: bold;
+    }
+    .p_size{
+      font-size: 45px;
+    }
 
     @media only screen and (min-width: 375px) and (max-width: 896px) {
       #loader h1 {
@@ -627,16 +638,27 @@ p {
         object-fit: cover;
         object-position: center;
       }
+      .p_width{
+      width: auto;
     }
+      .p_width_sm{
+      width: auto;
+      font-weight: bold;
+    }
+    .p_size{
+      font-size: 20px;
+    }
+    }
+
   </style>
 </head>
 
 <body>
-  <div id="loader">
+  <!-- <div id="loader">
     <h1> ENGAGING</h1>
     <h1> EMPOWERING</h1>
     <h1> DYNAMIC</h1>
-  </div>
+  </div> -->
 
 
 
@@ -648,8 +670,8 @@ p {
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="navbar-brand">
             <div class="navbar-item m-0 p-0">
-              <img src="/static/assets/images/logos/title_logo.png" class="m-0 p-0"
-                style="font-weight: 500;object-fit: cover;">
+              <img src="/static/assets/images/logos/IAlogo_new.png"  class="m-0 p-0"
+                style="font-weight: 500; width: 85px;">
             </div>
           </div>
           <div class="navbar-item ">
@@ -659,7 +681,7 @@ p {
                 <a style="  font-weight: 500" href="/login/">LOGIN</a>
               </h4>
             </div>
-            <!-- <a style="color: #3e8ed0; margin-right: 5px; font-weight: bold" href="/login/"> LOGIN</a> -->
+          
           </div>
         </div>
       </nav>
@@ -669,38 +691,31 @@ p {
 
 
 
-      <video src="static/assets/videos/video3.mp4" autoplay muted loop></video>
+      <video style="filter: brightness(60%);" src="static/assets/videos/video3.mp4" autoplay muted loop></video>
       <div class="page0-content">
-        <p class="p-4 " style="margin-top: auto; font-size: 40px;
+        <p class="p-4 p_width" style="margin-top: auto; font-size: 40px;
   background-color: transparent;
     color: #FD330B;
        font-weight: bold;
         color: transparent;
         background: linear-gradient(to right,#FD330B, #fda00b);
         -webkit-background-clip: text;
-position: relative;width: 35%;"> Revolutionizing Education through Interactive Quizzing</p>
+position: relative;"> Revolutionizing Education through Interactive Quizzing</p>
         <div class="row m-2" style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
           <div class="col-12 text-center">
-            <p
-              style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">
+            <p class="p_width_sm"
+              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
               Path to Interactive Learning and Growth</p>
           </div>
           <div class="col-12 text-center mt-3">
-            <p
-              style="color: rgb(255, 198, 179);font-size: 15px;background-color: #0000003a ; border-radius: 10px;border: 1px solid rgba(211, 90, 60, 0.685);width: 25vw; ">
+            <p class="p_width_sm"
+              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
               Create engaging quizzes for your students</p>
           </div>
         </div>
 
-        <h1 class="pb-0 mb-0">
-          <span>Q</span>
-          <span>n</span>
-          <span>a</span>
-          <span>C</span>
-          <span>l</span>
-          <span>a</span>
-          <span>s</span>
-          <span>s</span>
+        <h1 class="pb-0 mb-0 text-center">
+          <span >insightassess</span>
         </h1>
       </div>
     </div>
@@ -734,7 +749,7 @@ position: relative;width: 35%;"> Revolutionizing Education through Interactive Q
 
     </div>
     <div class="page2">
-      <!--Modal: Login with Avatar Form-->
+     
 
       <div id="moving-text">
         <div class="con">
@@ -754,16 +769,21 @@ position: relative;width: 35%;"> Revolutionizing Education through Interactive Q
           <h1>CUSTOMIZED</h1>
         </div>
       </div>
+
       <section class="content">
+        <div class="row text-center">
+          <div class="col">
+          <h1>QUESTION CARDS</h1>
+        </div></div>
         <div class="container">
           <div class="row ">
 
             {% for question in hero_questions %}
 
 
-            <div class="col-md-3 col-lg-6 col-sm-6 mb-3">
-              <div class="card border-0 shadow">
-                <div class="card-body">
+            <div class="col-md-3 col-lg-6 col-sm-6 mb-3" >
+              <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
+                <div class="card-body" style="background: linear-gradient(45deg, #ff9a9d54 0%, #fad0c455 99%, #fad0c451 100%); border-radius: 20px;">
                   <div class="question">
                     <p class="card-text"><strong>QUESTION</strong></p>
                     {{ question.que|safe}}
@@ -805,20 +825,20 @@ position: relative;width: 35%;"> Revolutionizing Education through Interactive Q
 
     </div>
     <div class="page7">
-      <div class="container-fluid m-5">
+      <div class="container-fluid mt-5 mb-4">
 
         <div class="row">
           <div class="col-md-6 col-lg-6 col-sm-12 anime1">
             <img class="faces" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png" alt="">
           </div>
           <div class="col">
-            <div class="paragraph p-5">
-              <p style="font-size: 1vw;font-weight: 100;">TEACHERS</p>
-              <p style="font-size: 3vw;font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
+            <div class="paragraph p-2 pr-0">
+              <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
+              <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
                 has been priceless for my students’ engagement.”</p>
-              <p style="font-size: .7vw;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
                 Coordinator / Hyderabad, Telangana</p>
-              <p style="font-size: 1.4vw;font-weight: 100;padding-right:2vw ;">
+              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
                 We empower teachers to support their entire classroom. 90% of US teachers who have used Qna Classes have
                 found us effective.
               </p>
@@ -830,23 +850,23 @@ position: relative;width: 35%;"> Revolutionizing Education through Interactive Q
       </div>
     </div>
     <div class="page8">
-      <div class="container-fluid m-5">
+      <div class="container-fluid mt-5">
 
         <div class="row" style="min-height: 70vh; width: 100%;">
           <div class="col-md-6 col-lg-6 col-sm-12 ">
-            <div class="paragraph p-5">
-              <p style="font-size: 1vw;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
-              <p style="font-size: 3vw;font-weight: bold;"> <span class="p-1"
+            <div class="paragraph pl-5 pt-5 ">
+              <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
+              <p style="font-size: 35px;font-weight: bold;"> <span class="p-1 "
                   style="background-color: #BFE6DD;">You</span> can learn anything.</p>
 
-              <p style="font-size: 1.4vw;font-weight: 100;padding-right:2vw ;">
+              <p style="font-size: 15px;font-weight: 100;padding-right:20px ;">
                 Build a deep, solid understanding in math, science, grammar, history, SAT®, and more.
               </p>
               <button class="btn btn-primary p-3 mt-4">Learners, Start here</button>
             </div>
           </div>
           <div class="col anime2">
-            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png" style="" alt="">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
           </div>
 
 
@@ -1238,13 +1258,13 @@ position: relative;width: 35%;"> Revolutionizing Education through Interactive Q
       }
     });
 
-    function loader() {
-      const loader = document.querySelector("#loader");
-      setTimeout(() => {
-        loader.style.top = "-100%";
-      }, 4000)
-    }
-    loader();
+    // function loader() {
+    //   const loader = document.querySelector("#loader");
+    //   setTimeout(() => {
+    //     loader.style.top = "-100%";
+    //   }, 4000)
+    // }
+    // loader();
 
 
 
