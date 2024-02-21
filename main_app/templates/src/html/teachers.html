@@ -38,7 +38,22 @@
 .table_colour{
   color: #6d1900;
 }
+table {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse; 
+}
 
+th {
+ background: #ffffff !important;
+  position: sticky;
+  top: 0; 
+}
+.table-title {
+ background: #ffffff !important;
+  position: sticky;
+  top: 0; 
+}
 </style>
 
 
@@ -53,7 +68,7 @@
 <!-- Modal -->
 <div class="body">
   <div class="container container1 " style="height: 76vh;width: 98%;border-radius: 10px;">
-    <div class="table-wrapper table-responsive">
+    <div class="table-wrapper table-responsive" style="height: 74vh;">
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6 " >
@@ -74,7 +89,7 @@
         </div>
       </div>
       <table class="table table-striped table-hover">
-        <thead>
+        <thead >
           <tr class="table_colour">
             <th>Name</th>
             <th>Email</th>

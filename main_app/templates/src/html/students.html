@@ -11,6 +11,14 @@
   padding: 10px;
   color: black;
 } 
+.ms{
+  background-color: transparent;
+ color: #FD330B;
+    
+     color: transparent;
+     background: linear-gradient(to right,#cd2e0e, #ffc853);
+     -webkit-background-clip: text;
+}
 
 </style>
 
@@ -26,21 +34,21 @@
 <!-- Modal -->
 
 
-<div class="container container1">
+<div class="container container1" style="height: 76vh;width: 98%;border-radius: 10px;">
   <div class="table-wrapper table-responsive">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
-          <h4>Manage <b>Students</b></h4>
+          <h4 class="ms">Manage <b>Students</b></h4>
         </div>
-        <div class="col-sm-6">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+        <div class="col-sm-6 text-end">
+          <button type="button" style="background: linear-gradient(to right, #ffc3a0e2 0%, #ffafbcdf 100%);color: rgb(220, 70, 11);" class="btn " data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
   <i class="fas fa-plus"></i> <span>Add New Student</span>
 </button>
         </div>
       </div>
     </div>
-    <table class="table table-responsive">
+    <table class="table table-responsive" ">
       <thead>
         <tr>
           <th>Name</th>
@@ -113,7 +121,9 @@
   </div>
 </div>
 
-
+<div class="section bottom-0 text-center">
+  <h1 style="font-size: 4vw;color: #e3e3e3da;">Qna Class</h1>
+</div>
 
 
 <!-- Delete Modal HTML -->
