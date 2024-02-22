@@ -39,7 +39,7 @@ insightassess.com ">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 
   <style>
@@ -74,10 +74,17 @@ body {
   color: var(--cd-color-white);
   font-weight: 400;
 } */
+    @font-face {
+      font-family: reo;
+      src: url(/static/assets/fonts/reo.ttf);
+    }
+
     * {
       padding: 0px;
       margin: 0px;
       box-sizing: border-box;
+      font-family: reo !important;
+
 
     }
 
@@ -101,7 +108,7 @@ body {
 
     .page1 {
       width: 100%;
-      min-height: 100vh;
+      min-height: auto;
       position: relative;
 
     }
@@ -236,14 +243,14 @@ p {
     }
 
     .titled {
-      font-family: 'Merriweather', serif !important;
+      /* font-family: 'Merriweather', serif !important; */
       font-size: 30px !important;
       font-weight: 400 !important;
       line-height: 64px !important;
     }
 
     .subtitled {
-      font-family: 'Merriweather', serif !important;
+      /* font-family: 'Merriweather', serif !important; */
       font-size: 20px !important;
       font-weight: 400 !important;
       line-height: 36px !important;
@@ -253,23 +260,23 @@ p {
       background-color: white;
     }
 
-    .navbar-transparent {
+    /* .navbar-transparent {
       background-color: transparent !important;
       backdrop-filter: blur(5px);
-      /* Optional: adds a blur effect */
+    
       border-bottom: none !important;
     }
 
     .navbar-sticky {
       position: -webkit-sticky;
-      /* For Safari */
+    
       position: sticky;
       top: 0;
       z-index: 1000;
-      /* Adjust z-index as needed */
+    
       background-color: rgba(255, 255, 255, 0.8);
-      /* Add background color for visibility */
-    }
+     
+    } */
 
     .head1 {
       padding: 5px;
@@ -353,7 +360,7 @@ p {
       animation-delay: 1s;
       animation-timing-function: linear;
       transition: all ease-in-out 2s;
-
+      font-weight: bold;
     }
 
     @keyframes load {
@@ -414,9 +421,10 @@ p {
     }
 
     #moving-text {
-      overflow: scroll;
+      overflow: hidden;
       white-space: nowrap;
       padding: 3vw 0;
+
     }
 
     #moving-text::-webkit-scrollbar {
@@ -432,155 +440,316 @@ p {
         transform: translateX(-100%);
       }
     }
-    .cardcl{
-     color: white;
+
+    .cardcl {
+      color: white;
     }
 
 
     #nav-part2 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1vw;
 
     }
 
     #nav-part2 h4 {
-        padding: 10px 20px;
-        border: 1px solid rgba(0, 0, 0, 0.443);
-        border-radius: 50px;
-        color: rgb(68, 68, 68);
-        font-size: 18px;
-        position: relative;
-        transition: all ease 0.4s;
-        overflow: hidden;
+      padding: 10px 20px;
+      border: 1px solid rgba(0, 0, 0, 0.443);
+      border-radius: 50px;
+      color: rgb(68, 68, 68);
+      font-size: 18px;
+      position: relative;
+      transition: all ease 0.4s;
+      overflow: hidden;
     }
 
     #nav-part2 h4::after {
-        content: "";
-        position: absolute;
-        background-color: black;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        bottom: -100%;
-        border-radius: 50%;
-        transition: all ease 0.4s;
+      content: "";
+      position: absolute;
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      bottom: -100%;
+      border-radius: 50%;
+      transition: all ease 0.4s;
 
     }
 
     #nav-part2 h4:hover::after {
-        bottom: 0;
-        border-radius: 0;
+      bottom: 0;
+      border-radius: 0;
     }
 
     #nav-part2 h4 a {
-        text-decoration: none;
-        color: rgb(68, 68, 68);
-        z-index: 9;
-        position: relative;
+      text-decoration: none;
+      color: rgb(68, 68, 68);
+      z-index: 9;
+      position: relative;
     }
 
     #nav-part2 h4:hover a {
-        color: #EFEAE3;
+      color: #EFEAE3;
 
     }
 
     #center {
-        height: 65vh;
-        width: 100%;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        border-bottom: 1px solid #0000003c;
-        padding-bottom: 2.5vw;
+      height: 65vh;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid #0000003c;
+      padding-bottom: 2.5vw;
     }
 
     #left h3 {
 
-        width: 25vw;
-        font-size: 1.8vw;
-        line-height: 2vw;
+      width: 25vw;
+      font-size: 1.8vw;
+      line-height: 2vw;
     }
 
     #nav-part2 h4 a {
-        font-weight: 100;
-        color: black;
+      font-weight: 100;
+      color: black;
     }
 
     .navbar-item img {
       max-height: 5.75rem;
     }
+
+
+    .page0 {
+      width: 100%;
+      height: 100vh;
+
+      position: relative;
+
+    }
+
+    .page0 video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+    }
+
+    .page0-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 10;
+      display: flex;
+
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .page0-content h1 span {
+      color: whitesmoke;
+      bottom: 0;
+      font-size: 15vw;
+      font-weight: 100;
+      
+
+      margin-bottom: 20vw;
+
+    }
+
+    .page01 {
+      width: 100%;
+      height: 70vh;
+
+    }
+
+    .wrapper {
+      width: 100%;
+      margin-top: 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrapper .line {
+      width: 90%;
+      height: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wrapper .line span {
+      position: absolute;
+      font-size: 3rem;
+      line-height: 4.2rem;
+    }
+
+    .faces {
+      height: 70vh;
+      width: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .laptop {
+      height: 50vh;
+      width: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+    .p_width{
+      width: 35%;
+    }
+    .p_width_sm{
+      width: 30%;
+      font-weight: bold;
+    }
+    .p_size{
+      font-size: 45px;
+    }
+
+    @media only screen and (min-width: 375px) and (max-width: 896px) {
+      #loader h1 {
+        font-size: 12vw;
+      }
+
+      #moving-text h1 {
+        font-size: 12vw;
+      }
+
+      .page01 {
+        display: none;
+      }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+      }
+
+
+      .laptop {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+      }
+      .p_width{
+      width: auto;
+    }
+      .p_width_sm{
+      width: auto;
+      font-weight: bold;
+    }
+    .p_size{
+      font-size: 20px;
+    }
+    }
+
   </style>
 </head>
 
 <body>
-  <div id="loader">
+  <!-- <div id="loader">
     <h1> ENGAGING</h1>
     <h1> EMPOWERING</h1>
     <h1> DYNAMIC</h1>
-  </div>
-  
+  </div> -->
+
 
 
   <div class="main">
     <div class="page1">
-      <nav class="navbar navbar-transparent fixed-top navbar-sticky" style="position: fixed;" role="navigation"
-        aria-label="main navigation">
+
+      <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0"
+        style="position: relative;top: 0; z-index: 99999;" role="navigation" aria-label="main navigation">
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="navbar-brand">
-            <div class="navbar-item">
-              <img src="/static/assets/images/logos/title_logo.png" style="font-weight: 500">
+            <div class="navbar-item m-0 p-0">
+              <img src="/static/assets/images/logos/IAlogo_new.png"  class="m-0 p-0"
+                style="font-weight: 500; width: 85px;">
             </div>
           </div>
-          <div class="navbar-item">
+          <div class="navbar-item ">
             <div id="nav-part2">
-            
+
               <h4>
-                <a style="  font-weight: 500" href="/login/">LOGIN</a></h4>
-          </div>
-            <!-- <a style="color: #3e8ed0; margin-right: 5px; font-weight: bold" href="/login/"> LOGIN</a> -->
+                <a style="  font-weight: 500" href="/login/">LOGIN</a>
+              </h4>
+            </div>
+          
           </div>
         </div>
       </nav>
 
-      <div class="hero is-white is-fullheight">
-        <div class="hero-body">
-          <div class="container">
-            <div class="columns  is-vcentered reverse-columns">
-              <div class="column
-        is-10-mobile 
-        is-10-tablet 
-        is-5-desktop 
-        is-5-widescreen 
-        is-5-fullhd " data-aos="fade-down">
-                <h2 class="title titled is-1 mb-6" style="color: #3e8ed0;">
-                  Revolutionizing Education through Interactive Quizzing
-                </h2>
-                <div class="head">
-                  <div class="head1">Path to Interactive Learning and Growth</div>
-                  <div class="head2">Create engaging quizzes for your students</div>
-                </div>
+    </div>
+    <div class="page0">
 
+
+
+      <video style="filter: brightness(60%);" src="static/assets/videos/video3.mp4" autoplay muted loop></video>
+      <div class="page0-content">
+        <p class="p-4 p_width" style="margin-top: auto; font-size: 40px;
+  background-color: transparent;
+    color: #FD330B;
+       font-weight: bold;
+        color: transparent;
+        background: linear-gradient(to right,#FD330B, #fda00b);
+        -webkit-background-clip: text;
+position: relative;"> Revolutionizing Education through Interactive Quizzing</p>
+        <div class="row m-2" style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
+          <div class="col-12 text-center">
+            <p class="p_width_sm"
+              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
+              Path to Interactive Learning and Growth</p>
+          </div>
+          <div class="col-12 text-center mt-3">
+            <p class="p_width_sm"
+              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
+              Create engaging quizzes for your students</p>
+          </div>
+        </div>
+
+        <h1 class="pb-0 mb-0 text-center">
+          <span >insightassess</span>
+        </h1>
+      </div>
+    </div>
+    <div class="page01">
+      .<div class="container-fluid">
+        <div class="row">
+          <div class="col">
+
+            <div class="wrapper">
+              <div class="line">
+                <span>We are a digital brand accelerator for fast-growing .Our mission is to transform </span>
               </div>
-              <div data-aos="fade-right" class="column
-        is-10-mobile 
-        is-10-tablet 
-        is-4-desktop 
-        is-7-widescreen 
-        is-4-fullhd is-offset-1-fullhd">
-                <figure class="image is-square">
-                  <img src="https://bulmatemplates.github.io/bulma-templates/images/undraw_Camera_re_cnp4.svg">
-                </figure>
+              <div class="line">
+                <span> founders' visions into remarkable brands.All our clients drive their businesses </span>
               </div>
+              <div class="line">
+                <span>with sustainability at the forefront. Choose traditional compensation or an </span>
+              </div>
+              <div class="line">
+                <span>equity offset of up to 50% of our fees through our Venture Model—your vision,</span>
+              </div>
+              <div class="line">
+                <span>your decision.&nbsp;In any case, we are your new unfair advantage.</span>
+              </div>
+
 
             </div>
           </div>
         </div>
       </div>
+
     </div>
-    <div class="page2" >
-<!--Modal: Login with Avatar Form-->
+    <div class="page2">
+     
 
       <div id="moving-text">
         <div class="con">
@@ -600,16 +769,21 @@ p {
           <h1>CUSTOMIZED</h1>
         </div>
       </div>
+
       <section class="content">
+        <div class="row text-center">
+          <div class="col">
+          <h1>QUESTION CARDS</h1>
+        </div></div>
         <div class="container">
           <div class="row ">
 
             {% for question in hero_questions %}
 
 
-            <div class="col-md-3 col-lg-6 col-sm-6 mb-3">
-              <div class="card border-0 shadow">
-                <div class="card-body">
+            <div class="col-md-3 col-lg-6 col-sm-6 mb-3" >
+              <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
+                <div class="card-body" style="background: linear-gradient(45deg, #ff9a9d54 0%, #fad0c455 99%, #fad0c451 100%); border-radius: 20px;">
                   <div class="question">
                     <p class="card-text"><strong>QUESTION</strong></p>
                     {{ question.que|safe}}
@@ -650,10 +824,58 @@ p {
       </section>
 
     </div>
+    <div class="page7">
+      <div class="container-fluid mt-5 mb-4">
 
-    <div class="page4"  > 
-      
-      <div class="row" >
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-sm-12 anime1">
+            <img class="faces" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png" alt="">
+          </div>
+          <div class="col">
+            <div class="paragraph p-2 pr-0">
+              <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
+              <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
+                has been priceless for my students’ engagement.”</p>
+              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+                Coordinator / Hyderabad, Telangana</p>
+              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
+                We empower teachers to support their entire classroom. 90% of US teachers who have used Qna Classes have
+                found us effective.
+              </p>
+              <button class="btn btn-primary p-3 mt-4">Teachers, start here </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="page8">
+      <div class="container-fluid mt-5">
+
+        <div class="row" style="min-height: 70vh; width: 100%;">
+          <div class="col-md-6 col-lg-6 col-sm-12 ">
+            <div class="paragraph pl-5 pt-5 ">
+              <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
+              <p style="font-size: 35px;font-weight: bold;"> <span class="p-1 "
+                  style="background-color: #BFE6DD;">You</span> can learn anything.</p>
+
+              <p style="font-size: 15px;font-weight: 100;padding-right:20px ;">
+                Build a deep, solid understanding in math, science, grammar, history, SAT®, and more.
+              </p>
+              <button class="btn btn-primary p-3 mt-4">Learners, Start here</button>
+            </div>
+          </div>
+          <div class="col anime2">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="page4">
+
+      <div class="row">
         <div class="col p-5 text-center" style="font-weight: bold; font-size: 27px;">
           <span class="">STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
         </div>
@@ -661,9 +883,9 @@ p {
       <div class="row" style=" padding: 1vw;">
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 "
-          >
-          <div class="row" style="border: 1px solid #D5D5D5; border-radius: 30px; background: linear-gradient(170deg, rgb(0, 0, 0) 11.2%, rgb(11, 123, 145) 91.1%);color: whitesmoke;" >
+        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+          <div class="row"
+            style="border: 1px solid #D5D5D5; border-radius: 30px; background: linear-gradient(170deg, rgb(0, 0, 0) 11.2%, rgb(11, 123, 145) 91.1%);color: whitesmoke;">
 
             <div class="col p-3">
               <div class="box mt-2 p-2 w-50 text-center" style="border-radius: 20px;background-color: #4a8688b3;">
@@ -675,15 +897,30 @@ p {
                   <p class="p-1 mb-4" style="font-size: 27px; font-weight: bold;color: whitesmoke;">Software Only</p>
 
                 </div>
-                <div class="combine" >
+                <div class="combine">
                   <p class="p-2 pt-3 " style="font-size: 20px; font-weight: bold;color: whitesmoke;">Features</p>
-                  <p class="pt-3 p-2 " > <i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Access to Questions and
-                    Assessment   creation modules</p>
-                  <p class="pt-2 p-2 "><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Detailed analytics, Progress tracking</p>
-                  <p class="pt-2 p-2 "><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Monthly performance reports</p>
+                  <p class="pt-3 p-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to
+                    Questions and
+                    Assessment creation modules</p>
+                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg> Detailed
+                    analytics, Progress tracking</p>
+                  <p class="pt-2 p-2 "><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly
+                    performance reports</p>
                 </div>
                 <div class="price mb-2">
                   <p class="p-2 " style="font-size: 25px;font-weight: 500;">Price</p>
@@ -698,13 +935,19 @@ p {
         </div>
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 "
-          >
-          <div class="row" style="border: 1px solid #D5D5D5; border-radius: 30px;background-color: #00203b;color: white;">
+        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+          <div class="row"
+            style="border: 1px solid #D5D5D5; border-radius: 30px;background-color: #00203b;color: white;">
 
             <div class="col p-3">
               <div class="box mt-1 p-2 w-60 text-center" style="border-radius: 20px;background-color: #02C501;">
-                <h4 style="color: rgb(0, 57, 88);font-size: 20px;">Most Popular<i class="fa-solid fa-medal pl-3"></i></h4>
+                <h4 style="color: rgb(0, 57, 88);font-size: 20px;">Most Popular <svg xmlns="http://www.w3.org/2000/svg"
+                    width="26" height="26" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
+                </h4>
               </div>
 
               <div class="col">
@@ -713,17 +956,37 @@ p {
                     Questions Bank</p>
 
                 </div>
-                <div class="combine" >
+                <div class="combine">
                   <p class="p-3 " style="font-size: 20px; font-weight: bold;">Features</p>
-                  <p class="  pl-2 "> <i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Access to Questions and
+                  <p class="  pl-2 "> <svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg> Access to
+                    Questions and
                     Assessment creation modules</p>
-                  <p class="pl-2 pt-2"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Detailed analytics, Progress tracking</p>
-                  <p class="pl-2 pt-3"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Monthly performance reports</p>
-                  <p class="pl-2 pt-3"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #65e697;"></i>Access to Questions Marketplace</p>
+                  <p class="pl-2 pt-2"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Detailed
+                    analytics, Progress tracking</p>
+                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly
+                    performance reports</p>
+                  <p class="pl-2 pt-3"><svg class="pr-2" style="color: #65e697;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to
+                    Questions Marketplace</p>
                 </div>
                 <div class="price mb-3">
                   <p class="p-2" style="font-size: 27px;font-weight: 500;">Price</p>
@@ -738,14 +1001,27 @@ p {
         </div>
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4  p-5"
-          >
-          <div class="row" style="border: 1px solid #D5D5D5; border-radius: 30px;background: linear-gradient(113.1deg, rgb(254, 140, 48) 14%, rgb(253, 75, 101) 80.5%, rgb(255, 53, 109) 100.6%);">
+        <div class="col-md-4 col-sm-12 col-lg-4  p-5">
+          <div class="row"
+            style="border: 1px solid #D5D5D5; border-radius: 30px;background: linear-gradient(113.1deg, rgb(254, 140, 48) 14%, rgb(253, 75, 101) 80.5%, rgb(255, 53, 109) 100.6%);">
 
             <div class="col p-3">
               <div class="box  p-2 mb-1 w-100 text-center" style="border-radius: 20px;background-color: #FFDC34;">
-                <h4 style="color: rgb(0, 58, 96); font-size: 20px;">Premium <i class="fa-solid fa-medal pl-5 "></i><i
-                    class="fa-solid fa-medal pl-3 text-end"></i></h4>
+                <h4 style="color: rgb(0, 58, 96); font-size: 20px;">Premium
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-award-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+                  </svg>
+                </h4>
               </div>
 
               <div class="col">
@@ -756,23 +1032,49 @@ p {
                     Mentoring Session</p>
 
                 </div>
-                <div class="combine" >
+                <div class="combine">
                   <p class="p-3 mt-2" style="font-size: 20px; font-weight: bold;color: #ffffff;">Features</p>
-                  <p class="pl-2 cardcl"> <i class="fa-regular fa-circle-check pr-2"
-                      style="color: #ffdc34;"></i>Access to Questions and
+                  <p class="pl-2 cardcl"> <svg class="pr-2" style="color: #ffdc34;" xmlns="http://www.w3.org/2000/svg"
+                      width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access
+                    to Questions and
                     Assessment creation modules</p>
-                  <p class="pl-2 pt-2 cardcl"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #ffdc34;"></i>Detailed analytics, Progress tracking</p>
-                  <p class="pl-2 pt-2 cardcl"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #ffdc34;"></i>Monthly performance reports</p>
-                  <p class="pl-2 pt-2 cardcl"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #ffdc34;"></i>Access to Questions Marketplace</p>
-                  <p class="pl-2 pt-2 cardcl"><i class="fa-regular fa-circle-check pr-2"
-                      style="color: #ffdc34;"></i>Mentoring Session with Students</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Detailed analytics, Progress tracking</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Monthly performance reports</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Access to Questions Marketplace</p>
+                  <p class="pl-2 pt-2 cardcl"><svg class="pr-2" style="color: #ffdc34;"
+                      xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-check-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                    </svg>Mentoring Session with Students</p>
                 </div>
                 <div class="price mb-2">
                   <p class="p-2 cardcl" style="font-size: 27px;font-weight: 500;">Price</p>
-                  <p class="p-2 text-center cardcl" style="font-size: 25px;font-weight: bold;">₹999 / month / student</p>
+                  <p class="p-2 text-center cardcl" style="font-size: 25px;font-weight: bold;">₹999 / month / student
+                  </p>
                 </div>
                 <div class="button w-100 "
                   style="font-weight: bold;background: #FFDC34;border-radius: 20px;color: #00203b; ">Get Started</div>
@@ -784,57 +1086,134 @@ p {
 
       </div>
 
-<!--      
+      <!--      
     <video src="{% static 'dist/videos/video.mp4' %}" type="video/mp4" autoplay muted loop></video> -->
     </div>
-   
 
-  </div>
-  <footer class="py-4" style="background-color: #00203b;">
-    <div class="container text-center">
-      <p class="mb-0">
-        Created with <i class="fas fa-heart text-danger"></i> by QnA Class
-      </p>
+
+
+    <div class="py-4 page_footer"
+      style="background-color: #00203b;min-height: 10vh;width: 100%;position: relative;bottom: 0;">
+      <div class="container text-center ">
+        <p class="mb-0 text-white">
+          Created with <svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="16" height="16"
+            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+            <path
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+          </svg> by QnA Class
+        </p>
+      </div>
     </div>
-  </footer>
+  </div>
 
 
 
 
 
   <!-- Hero del producto -->
+  <script src="https://unpkg.com/split-type"></script>
+
+   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+  integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
 
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+  <!-- Scroll Trigger is needed for Scroll Effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+  <!-- Three.js is needed for 3d Effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- ControlKit is needed for Debug Panel -->
+  <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script> <!-- Recommended -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+
+  <script>
+    function locomotive_scroll() {
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+      const locoScroll = new LocomotiveScroll({
+        el: document.querySelector(".main"),
+        smooth: true
+      });
+      // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+      locoScroll.on("scroll", ScrollTrigger.update);
+
+      // tell ScrollTrigger to use these proxy methods for the ".main" element since Locomotive Scroll is hijacking things
+      ScrollTrigger.scrollerProxy(".main", {
+        scrollTop(value) {
+          return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+        }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+        getBoundingClientRect() {
+          return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        },
+        // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+        pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
+      });
+
+
+
+
+      // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+      ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+      // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+      ScrollTrigger.refresh();
+
+
+    }
+    locomotive_scroll()
+
+
+    const textrev = gsap.timeline();
+
+    textrev.from(".line span", 1.8, {
+      y: 200,
+      ease: "back.out",
+      delay: 1,
+      duration: 1,
+      skewY: 10,
+      stagger: {
+        amount: 0.4,
+
+      },
+      scrollTrigger: {
+        trigger: ".page2",
+        start: "top 100%",
+        scroller: ".main",
+
+        end: "top 90%",
+        scrub: 2
+
+      }
+    });
+
+  </script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
   <script>
@@ -845,6 +1224,9 @@ p {
     });
   </script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+
+
   <script>
     AOS.init({
       once: true
@@ -876,13 +1258,14 @@ p {
       }
     });
 
-    function loader() {
-      const loader = document.querySelector("#loader");
-      setTimeout(() => {
-        loader.style.top = "-100%";
-      }, 4000)
-    }
-    loader();
+    // function loader() {
+    //   const loader = document.querySelector("#loader");
+    //   setTimeout(() => {
+    //     loader.style.top = "-100%";
+    //   }, 4000)
+    // }
+    // loader();
+
 
 
     function scroll() {
@@ -895,8 +1278,10 @@ p {
 
 
 
-    
+
   </script>
+  
+  
 </body>
 
 </html>
