@@ -658,6 +658,47 @@ p {
     }
     }
 
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      .subs_p{
+ padding: 10px !important;
+}
+.apple_pro_height{
+        min-height: 40vh !important;
+      }
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .subs_p{
+ padding: 20px !important;
+}
+.laptop {
+        height:  30vh !important;
+        width:  50vw !important;
+       
+      }
+      .faces{
+        height:  30vh !important;
+        width:  50vw !important;
+       object-fit: cover !important;
+       object-position: center !important;
+       position: relative;
+ top: 20%;
+
+      }
+      .page01 {
+      width: 100%;
+      height: 50vh;
+
+    }
+      .page4 {
+      width: 100%;
+      min-height: 70vh !important;
+
+    }
+   
+    
+    
+    }
+
   </style>
 </head>
 
@@ -843,7 +884,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
     <div class="page8">
       <div class="container-fluid mt-5">
 
-        <div class="row" style="min-height: 70vh; width: 100%;">
+        <div class="row apple_pro_height" style="min-height: 70vh; width: 100%;">
           <div class="col-md-6 col-lg-6 col-sm-12 ">
             <div class="paragraph pl-5 pt-5 ">
               <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
@@ -878,12 +919,12 @@ position: relative;"> Transforming education through tailored assessments.</p>
     padding-top: 20px;">SAMPLE QUESTIONS</h1>
         </div></div>
         <div class="container">
-          <div class="row" style="margin: auto;">
+          <div class="row" >
 
             {% for question in hero_questions %}
 
 
-            <div class="col-md-3 col-lg-12 col-sm-12 mb-3" style="margin: auto;">
+            <div class="col-md-4 col-lg-4 col-sm-12 mb-3" >
               <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
                 <div class="card-body" style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
                   <div class="question">
@@ -931,10 +972,10 @@ position: relative;"> Transforming education through tailored assessments.</p>
           <span class="">STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
         </div>
       </div>
-      <div class="row" style=" padding: 1vw;">
+      <div class="row justify-content-evenly" style=" padding: 1vw;">
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p  p-5 ">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px; background: linear-gradient(170deg, rgb(0, 0, 0) 11.2%, rgb(11, 123, 145) 91.1%);color: whitesmoke;">
 
@@ -988,7 +1029,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p p-5 ">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px;background-color: #00203b;color: white;">
 
@@ -1054,7 +1095,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </div>
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4  p-5">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p  p-5">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px;background: linear-gradient(113.1deg, rgb(254, 140, 48) 14%, rgb(253, 75, 101) 80.5%, rgb(255, 53, 109) 100.6%);">
 
