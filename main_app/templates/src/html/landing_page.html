@@ -780,20 +780,79 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </div>
       </div>
 
-<!--       <section class="content">
+
+    </div>
+    <div class="page7">
+      <div class="container-fluid mt-5 mb-4">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-sm-12 anime1">
+            <img class="faces" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png" alt="">
+          </div>
+          <div class="col">
+            <div class="paragraph p-2 pr-0">
+              <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
+              <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
+                has been priceless for my students’ engagement.”</p>
+              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+                Coordinator / Hyderabad, Telangana</p>
+              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
+                We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight Assess have
+                found us effective.
+              </p>
+              <a class="btn btn-primary p-3 mt-4" href="/login/">Teachers, start here </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="page8">
+      <div class="container-fluid mt-5">
+
+        <div class="row" style="min-height: 70vh; width: 100%;">
+          <div class="col-md-6 col-lg-6 col-sm-12 ">
+            <div class="paragraph pl-5 pt-5 ">
+              <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
+              <p style="font-size: 35px;font-weight: bold;"> <span class="p-1 "
+                  style="background-color: #BFE6DD;">You</span> can learn anything.</p>
+
+              <p style="font-size: 15px;font-weight: 100;padding-right:20px ;">
+                Build a deep, solid understanding in math, science, grammar, history, SAT®, and more.
+              </p>
+              <a class="btn btn-primary p-3 mt-4" href="/login/">Learners, Start here</a>
+            </div>
+          </div>
+          <div class="col anime2">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+      <section class="content">
         <div class="row text-center">
           <div class="col">
-          <h1>QUESTION CARDS</h1>
+          <h1 style="    background: linear-gradient(to right, var(--mdb-green), var(--mdb-black));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 20px;">SAMPLE QUESTIONS</h1>
         </div></div>
         <div class="container">
-          <div class="row ">
+          <div class="row" style="margin: auto;">
 
             {% for question in hero_questions %}
 
 
-            <div class="col-md-3 col-lg-6 col-sm-6 mb-3" >
+            <div class="col-md-3 col-lg-9 col-sm-9 mb-3" style="margin: auto;">
               <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
-                <div class="card-body" style="background: linear-gradient(45deg, #ff9a9d54 0%, #fad0c455 99%, #fad0c451 100%); border-radius: 20px;">
+                <div class="card-body" style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
                   <div class="question">
                     <p class="card-text"><strong>QUESTION</strong></p>
                     {{ question.que|safe}}
@@ -831,58 +890,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
           </div>
         </div>
-      </section> -->
-
-    </div>
-    <div class="page7">
-      <div class="container-fluid mt-5 mb-4">
-
-        <div class="row">
-          <div class="col-md-6 col-lg-6 col-sm-12 anime1">
-            <img class="faces" src="https://cdn.kastatic.org/images/lohp/faces_collage_2@2x.png" alt="">
-          </div>
-          <div class="col">
-            <div class="paragraph p-2 pr-0">
-              <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
-              <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
-                has been priceless for my students’ engagement.”</p>
-              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
-                Coordinator / Hyderabad, Telangana</p>
-              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
-                We empower teachers to support their entire classroom. 90% of US teachers who have used Qna Classes have
-                found us effective.
-              </p>
-              <button class="btn btn-primary p-3 mt-4">Teachers, start here </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="page8">
-      <div class="container-fluid mt-5">
-
-        <div class="row" style="min-height: 70vh; width: 100%;">
-          <div class="col-md-6 col-lg-6 col-sm-12 ">
-            <div class="paragraph pl-5 pt-5 ">
-              <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
-              <p style="font-size: 35px;font-weight: bold;"> <span class="p-1 "
-                  style="background-color: #BFE6DD;">You</span> can learn anything.</p>
-
-              <p style="font-size: 15px;font-weight: 100;padding-right:20px ;">
-                Build a deep, solid understanding in math, science, grammar, history, SAT®, and more.
-              </p>
-              <button class="btn btn-primary p-3 mt-4">Learners, Start here</button>
-            </div>
-          </div>
-          <div class="col anime2">
-            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
-          </div>
-
-
-        </div>
-      </div>
-    </div>
+      </section> 
     <div class="page4">
 
       <div class="row">
@@ -943,6 +951,8 @@ position: relative;"> Transforming education through tailored assessments.</p>
             </div>
           </div>
         </div>
+
+
 
 
         <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
@@ -1110,7 +1120,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
             fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
             <path
               d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-          </svg> by QnA Class
+          </svg> by IA
         </p>
       </div>
     </div>
