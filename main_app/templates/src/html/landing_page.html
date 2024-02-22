@@ -630,9 +630,21 @@ p {
         font-size: 7vw;
       }
 
-      .page01 {
+      /* .page01 {
         display: none;
-      }
+      } */
+      .wrapper .line span{
+        font-size: 3.5vw;
+        font-weight: bold;
+        line-height: 4rem;
+      } 
+      .wrapper .line {
+    width: 90%;
+    height: 43px;
+    position: relative;
+    overflow: hidden;
+}
+      
 
       .faces {
         height: auto;
@@ -664,6 +676,11 @@ p {
     
 
     }
+    .page01 {
+      width: 100%;
+      height: 50vh;
+
+    }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -673,6 +690,12 @@ p {
 .apple_pro_height{
         min-height: 40vh !important;
       }
+      .wrapper .line {
+    width: 90%;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+}
     }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .subs_p{
@@ -692,6 +715,17 @@ p {
  top: 20%;
 
       }
+      .wrapper .line {
+   
+    height: 60px !important;
+   
+   
+}
+.wrapper .line span{
+ 
+        font-weight: bold;
+     
+      } 
       .page01 {
       width: 100%;
       height: 50vh;
@@ -705,6 +739,13 @@ p {
    
     
     
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .page01 {
+      width: 100%;
+      height: 80vh;
+
+    }
     }
 
   </style>
