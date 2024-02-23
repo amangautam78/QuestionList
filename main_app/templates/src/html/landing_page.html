@@ -422,15 +422,18 @@ p {
       white-space: nowrap;
       display: inline-block;
       animation-name: move;
-      animation-duration: 8s;
+      animation-duration: 10s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
+     
+     
     }
 
     #moving-text {
       overflow: hidden;
       white-space: nowrap;
       padding: 3vw 0;
+     
 
     }
 
@@ -444,7 +447,7 @@ p {
       }
 
       to {
-        transform: translateX(-100%);
+        transform: translateX(-90%);
       }
     }
 
@@ -624,12 +627,24 @@ p {
       }
 
       #moving-text h1 {
-        font-size: 12vw;
+        font-size: 7vw;
       }
 
-      .page01 {
+      /* .page01 {
         display: none;
-      }
+      } */
+      .wrapper .line span{
+        font-size: 3.5vw;
+        font-weight: bold;
+        line-height: 4rem;
+      } 
+      .wrapper .line {
+    width: 90%;
+    height: 43px;
+    position: relative;
+    overflow: hidden;
+}
+      
 
       .faces {
         height: auto;
@@ -654,6 +669,82 @@ p {
     }
     .p_size{
       font-size: 20px;
+    }
+    .gola {
+      width: 5vw;
+      height: 5vw;
+    
+
+    }
+    .page01 {
+      width: 100%;
+      height: 50vh;
+
+    }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      .subs_p{
+ padding: 10px !important;
+}
+.apple_pro_height{
+        min-height: 40vh !important;
+      }
+      .wrapper .line {
+    width: 90%;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+}
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .subs_p{
+ padding: 20px !important;
+}
+.laptop {
+        height:  30vh !important;
+        width:  50vw !important;
+       
+      }
+      .faces{
+        height:  30vh !important;
+        width:  50vw !important;
+       object-fit: cover !important;
+       object-position: center !important;
+       position: relative;
+ top: 20%;
+
+      }
+      .wrapper .line {
+   
+    height: 60px !important;
+   
+   
+}
+.wrapper .line span{
+ 
+        font-weight: bold;
+     
+      } 
+      .page01 {
+      width: 100%;
+      height: 50vh;
+
+    }
+      .page4 {
+      width: 100%;
+      min-height: 70vh !important;
+
+    }
+   
+    
+    
+    }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .page01 {
+      width: 100%;
+      height: 80vh;
+
     }
     }
 
@@ -698,7 +789,7 @@ p {
 
 
 
-      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4" autoplay muted loop></video>
+      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4"  preload="auto" autoplay="autoplay" muted loop playsinline></video>
       <div class="page0-content">
         <p class="p-4 p_width" style="margin-top: auto; font-size: 40px;
   background-color: transparent;
@@ -711,18 +802,18 @@ position: relative;"> Transforming education through tailored assessments.</p>
         <div class="row m-2" style="margin-top: auto; font-size: 1vw;color: white;position: relative;">
           <div class="col-12 text-center">
             <p class="p_width_sm"
-              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
+              style="color: #fff1e9;font-size: 18px; border-radius: 10px;border: 1px solid #fff1e9; ">
               Path to Interactive Learning and Growth</p>
           </div>
           <div class="col-12 text-center mt-3">
             <p class="p_width_sm"
-              style="color: #fff1e9;font-size: 15px; border-radius: 10px;border: 1px solid #fff1e9; ">
+              style="color: #fff1e9;font-size: 18px; border-radius: 10px;border: 1px solid #fff1e9; ">
               Design interactive and personalized assessments tailored to your students' needs.</p>
           </div>
         </div>
 
         <h1 class="pb-0 mb-0 text-center">
-          <span >insightassess</span>
+          <span >Insight Assess</span>
         </h1>
       </div>
     </div>
@@ -762,8 +853,30 @@ position: relative;"> Transforming education through tailored assessments.</p>
     </div>
     <div class="page2">
      
-
       <div id="moving-text">
+        <div class="con">
+          <div class="gola"></div>
+          <h1>DATA-DRIVEN INSIGHT FOR MENTORING</h1>
+          <div class="gola"></div>
+          <h1>EMPOWERING EDUCATORS</h1>
+          <div class="gola"></div>
+          <h1>INSPIRATIONAL</h1>
+          <div class="gola"></div>
+          <h1>CUSTOMIZED</h1>
+        </div>
+        <div class="con">
+          <div class="gola"></div>
+          <h1>DATA DRIVEN INSIGHT FOR MENTORING</h1>
+          <div class="gola"></div>
+          <h1>INSPIRATIONAL</h1>
+         
+          <h1>EMPOWERING EDUCATORS</h1>
+          <div class="gola"></div>
+          <h1>INSPIRATIONAL</h1>
+
+        </div>
+      </div>
+      <!-- <div id="moving-text">
         <div class="con">
           <div class="gola"></div>
           <h1>DATA-DRIVEN INSIGHT FOR MENTORING
@@ -786,7 +899,9 @@ position: relative;"> Transforming education through tailored assessments.</p>
           <div class="gola"></div>
           <h1>CUSTOMIZED</h1>
         </div>
-      </div>
+        
+      </div> -->
+
 
 
     </div>
@@ -818,7 +933,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
     <div class="page8">
       <div class="container-fluid mt-5">
 
-        <div class="row" style="min-height: 70vh; width: 100%;">
+        <div class="row apple_pro_height" style="min-height: 70vh; width: 100%;">
           <div class="col-md-6 col-lg-6 col-sm-12 ">
             <div class="paragraph pl-5 pt-5 ">
               <p style="font-size: 14px;font-weight: 100;color: #6f6f6f;">LEARNERS AND STUDENTS</p>
@@ -853,12 +968,12 @@ position: relative;"> Transforming education through tailored assessments.</p>
     padding-top: 20px;">SAMPLE QUESTIONS</h1>
         </div></div>
         <div class="container">
-          <div class="row" style="margin: auto;">
+          <div class="row" >
 
             {% for question in hero_questions %}
 
 
-            <div class="col-md-3 col-lg-12 col-sm-12 mb-3" style="margin: auto;">
+            <div class="col-md-4 col-lg-4 col-sm-12 mb-3" >
               <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
                 <div class="card-body" style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
                   <div class="question">
@@ -902,14 +1017,14 @@ position: relative;"> Transforming education through tailored assessments.</p>
     <div class="page4">
 
       <div class="row">
-        <div class="col p-5 text-center" style="font-weight: bold; font-size: 27px;">
+        <div class="col p-2 text-center" style="font-weight: bold; font-size: 27px;">
           <span class="">STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
         </div>
       </div>
-      <div class="row" style=" padding: 1vw;">
+      <div class="row justify-content-evenly" style=" padding: 1vw;">
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p  p-5 ">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px; background: linear-gradient(170deg, rgb(0, 0, 0) 11.2%, rgb(11, 123, 145) 91.1%);color: whitesmoke;">
 
@@ -963,7 +1078,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4 p-5 ">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p p-5 ">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px;background-color: #00203b;color: white;">
 
@@ -1029,7 +1144,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </div>
 
 
-        <div class="col-md-4 col-sm-12 col-lg-4  p-5">
+        <div class="col-md-5 col-sm-12 col-lg-4 subs_p  p-5">
           <div class="row"
             style="border: 1px solid #D5D5D5; border-radius: 30px;background: linear-gradient(113.1deg, rgb(254, 140, 48) 14%, rgb(253, 75, 101) 80.5%, rgb(255, 53, 109) 100.6%);">
 

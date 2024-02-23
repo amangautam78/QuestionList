@@ -153,6 +153,7 @@ def questions_discovery(request):
 
 @csrf_exempt
 def add_to_question_paper(request):
+
 	requested_data = dict(request.POST.items())
 	user_id = 1
 
@@ -200,6 +201,8 @@ def update_question_paper(request):
 
 
 def review_qp(request, qp_temp_id):
+
+
 	data = {}
 	token = request.COOKIES.get('t')
 	st, data = verify_token(token)
@@ -256,6 +259,7 @@ def add_question(request):
 		valid, data = verify_token(request.COOKIES['t'])
 	if not valid:
 		return redirect('/')
+	user_type = data.get('user_type')
 	if request.method == 'POST':
 		requested_data = dict(request.POST)
 		question = requested_data.get('question')[0] if requested_data.get('question') else ''
@@ -273,7 +277,7 @@ def add_question(request):
 		return JsonResponse({})
 	insti_id = data.get('insti_id')
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
-	return render(request, "src/html/add_question.html", {'insti_id': insti_id, 'sub': data.get('sub'), 'class_data': class_data})
+	return render(request, "src/html/add_question.html", {'user_type': user_type, 'insti_id': insti_id, 'sub': data.get('sub'), 'class_data': class_data})
 
 @csrf_exempt
 def students(request):
@@ -331,90 +335,11 @@ def verify_token(token):
     return True, decoded_token
 
 
-
-
-
 def logout(request):
     del request.session['user_id']
     del request.session['role']
     return redirect('login')
 
-
-
-
-def employees_attendance(request):
-    
-	# token = request.COOKIES.get('t')
-	# st, data = verify_token(token)
-	# if not st:
-	# 	return redirect('https://infinitybrands.co/login/')
-
-	# company_id = data.get('company_id')
-	# print(company_id)
-    
-	if request.method == 'POST':
-		requested_data = dict(request.POST.items())
-		
-		requested_data['company_id'] = company_id
-		requested_data['emp_id'] = 'EMP' + str(int(datetime.now().timestamp()))
-		requested_data['is_employee'] = False if requested_data.get('role') == 'admin' else True
-		DB.users.insert_one(requested_data)
-
-	employees = list(DB.users.find({'company_id': company_id}, {'_id': 0}).sort('_id', -1))
-	return render(request, 'src/html/employees_attendance.html', {'employees': employees})
-    
-def attendance_details(request, emp_id):
-
-	# token = request.COOKIES.get('t')
-	# st, data = verify_token(token)
-	# if not st:
-	# 	return redirect('https://infinitybrands.co/login/')
-
-	# company_id = data.get('company_id')
-
-	if request.method == 'POST':
-		requested_data = dict(request.POST.items())
-		print(requested_data)
-	emp_name = DB.users.find_one({'emp_id': emp_id})
-	emp_attendance = list(DB['attendance_{0}'.format(company_id)].find({'emp_id': emp_id}, {'_id': 0}).sort('_id', -1))
-	return render(request, 'src/html/attendance_details.html', {'emp_id': emp_id, 'emp_name': emp_name.get('name'), 'emp_history': emp_attendance})
-
-
-@csrf_exempt
-def mark_attendance(request):
-    # token = request.COOKIES.get('t')
-    # st, data = verify_token(token)
-    # if not st:
-    #     return redirect('https://infinitybrands.co/login/')
-
-    # company_id = data.get("company_id")
-    emp_id = request.POST.get('emp_id')
-    action = request.POST.get('action')
-
-    if not emp_id or not action or not company_id:
-        return JsonResponse({})
-
-    emp_docs = DB['attendance_{}'.format(company_id)].find_one({"emp_id":emp_id, "date":str(datetime.now().date())})
-
-    if emp_docs:
-
-        if action in emp_docs:
-            return JsonResponse({})
-
-        elif action == 'out':
-            if emp_docs.get('in'):
-                in_at = emp_docs['in']['created_at']
-                working_hrs = datetime.now() - in_at
-
-                hours, remainder = divmod(working_hrs.seconds, 3600)
-                minutes, _ = divmod(remainder, 60)
-
-                DB['attendance_{}'.format(company_id)].update_one({"emp_id":emp_id, "date":str(datetime.now().date()),},{"$set":{ 'out.action':action, 'out.created_at':datetime.now(), 'work_hrs':f'{hours} hr, {minutes} min' }}, upsert=True)
-
-        return JsonResponse({})
-    DB['attendance_{}'.format(company_id)].update_one({"emp_id":emp_id, "date":str(datetime.now().date())},{"$set":{"in.created_at":datetime.now(), 'in.action':action, "status":'present'}}, upsert=True)
-
-    return JsonResponse({})
 
 
 def profile(request):
@@ -432,32 +357,18 @@ def profile(request):
 	return render(request, 'src/html/profile.html', {'user': user, 'user_type': user_type})
 
 
-@csrf_exempt
-def employees(request):
-	
-	# token = request.COOKIES.get('t')
-	# st, data = verify_token(token)
-	# if not st:
-	# 	return redirect('https://infinitybrands.co/login/')
-
-	company_id = data.get('company_id')
-    
-	if request.method == 'POST':
-		requested_data = dict(request.POST.items())
-		
-		requested_data['company_id'] = company_id
-		requested_data['emp_id'] = 'EMP' + str(int(datetime.now().timestamp()))
-		requested_data['is_employee'] = False if requested_data.get('role') == 'admin' else True
-		DB.users.insert_one(requested_data)
-
-	employees = list(DB.users.find({'company_id': company_id}, {'_id': 0}).sort('_id', -1))
-	return render(request, 'src/html/employees.html', {'employees': employees})
-
 
 def take_exam(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+	if not valid:
+		return redirect('/')
+	user_type = data.get('user_type')
 	qp_id = request.GET.get('qp_id')
 	que_paper = DB.question_papers.find_one({'qp_id': qp_id}, {'_id': 0, 'guideline': 1, 'qp_id': 1})
-	return render(request, 'src/html/exam.html', {'qp_id': que_paper.get('qp_id'), 'question_paper': que_paper})
+	return render(request, 'src/html/exam.html', {'qp_id': que_paper.get('qp_id'), 'question_paper': que_paper, 'user_type': user_type})
 
 
 def start_exam(request):
@@ -736,9 +647,15 @@ def delete_teacher(request, teacher_id):
 
 @csrf_exempt
 def edit_teacher(request, teacher_id):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+
+	user_type = data.get('user_type')
 	class_data = list(DB.classes.find({}).sort('_id', -1))
 	teacher_data = DB.teachers.find_one({'teacher_id': teacher_id})
-	return render(request, 'src/html/edit_teacher.html', {'teacher_data': teacher_data, 'class_data': class_data})
+	return render(request, 'src/html/edit_teacher.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
 
 
 @csrf_exempt
