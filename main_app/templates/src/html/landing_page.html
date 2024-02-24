@@ -571,7 +571,7 @@ p {
 
     .page01 {
       width: 100%;
-      height: 70vh;
+      height: auto;
 
     }
 
@@ -598,14 +598,14 @@ p {
     }
 
     .faces {
-      height: 70vh;
+      height: auto;
       width: auto;
       object-fit: cover;
       object-position: center;
     }
 
     .laptop {
-      height: 50vh;
+      height: auto;
       width: auto;
       object-fit: cover;
       object-position: center;
@@ -678,7 +678,7 @@ p {
     }
     .page01 {
       width: 100%;
-      height: 50vh;
+      height: auto;
 
     }
     }
@@ -702,17 +702,19 @@ p {
  padding: 20px !important;
 }
 .laptop {
-        height:  30vh !important;
-        width:  50vw !important;
+        height:  auto;
+        width:  auto;
+        object-fit: cover;
+        object-position: center;
        
       }
       .faces{
-        height:  30vh !important;
-        width:  50vw !important;
+        height:  auto;
+        width:  auto;
        object-fit: cover !important;
        object-position: center !important;
        position: relative;
- top: 20%;
+ /* top: 20%; */
 
       }
       .wrapper .line {
@@ -728,7 +730,7 @@ p {
       } 
       .page01 {
       width: 100%;
-      height: 50vh;
+      height: auto;
 
     }
       .page4 {
@@ -743,10 +745,62 @@ p {
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .page01 {
       width: 100%;
-      height: 80vh;
+      height: auto;
 
     }
     }
+    @media only screen and (min-width: 0px) and (max-width: 740px) {
+    .p_width{
+      width: auto;
+    }
+    .p_width_sm{
+      width: auto;
+      font-weight: bold;
+    }
+    .wrapper .line span{
+        font-size: 3.5vw;
+        font-weight: bold;
+        line-height: 4rem;
+      } 
+      .wrapper .line {
+    width: 90%;
+    height: 43px;
+    position: relative;
+    overflow: hidden;
+}
+.page01 {
+      width: 100%;
+      height: auto;
+
+    }
+    .laptop {
+        height:  auto;
+        width:   auto;
+        object-fit: cover;
+        object-position: center;
+       
+      }
+      .faces{
+        height:  auto;
+        width:   auto;
+        object-fit: cover;
+       object-position: center !important;
+     
+
+      }
+      #moving-text h1 {
+        font-size: 7vw;
+      }
+      .p_size{
+      font-size: 20px;
+    }
+    .sml_scr_p{
+      font-size: 14px !important;
+    }
+    .sml_scr_u{
+      font-size: 9px !important;
+    }
+  }
 
   </style>
 </head>
@@ -761,6 +815,7 @@ p {
 
 
   <div class="main">
+    
     <div class="page1">
 
       <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0"
@@ -817,7 +872,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </h1>
       </div>
     </div>
-    <div class="page01">
+    <div class="page01 mb-4" >
       .<div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -917,9 +972,9 @@ position: relative;"> Transforming education through tailored assessments.</p>
               <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
               <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
                 has been priceless for my students’ engagement.”</p>
-              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+              <p class="sml_scr_u" style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
                 Coordinator / Hyderabad, Telangana</p>
-              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
+              <p class="sml_scr_p" style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
                 We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight Assess have
                 found us effective.
               </p>
