@@ -41,15 +41,15 @@ insightassess.com ">
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-408X5DQFYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-408X5DQFYP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-408X5DQFYP');
-</script>
+    gtag('config', 'G-408X5DQFYP');
+  </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
@@ -425,15 +425,15 @@ p {
       animation-duration: 10s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-     
-     
+
+
     }
 
     #moving-text {
       overflow: hidden;
       white-space: nowrap;
       padding: 3vw 0;
-     
+
 
     }
 
@@ -563,7 +563,7 @@ p {
       bottom: 0;
       font-size: 15vw;
       font-weight: 100;
-      
+
 
       margin-bottom: 20vw;
 
@@ -610,15 +610,58 @@ p {
       object-fit: cover;
       object-position: center;
     }
-    .p_width{
+
+    .p_width {
       width: 35%;
     }
-    .p_width_sm{
+
+    .p_width_sm {
       width: 30%;
       font-weight: bold;
     }
-    .p_size{
+
+    .p_size {
       font-size: 45px;
+    }
+
+    .page3 {
+      height: auto;
+      width: 100%;
+    }
+
+    .page3_h1 {
+      font-size: 4.5vw;
+      color: #242526;
+      line-height: 4vw;
+      font-weight: 500;
+
+    }
+    .gollu {
+        height: 30vw;
+        width: 30vw;
+        background: linear-gradient(109.6deg, rgb(9, 154, 151) 11.2%, rgb(21, 205, 168) 91.1%);
+        border-radius: 50%;
+       
+        filter: blur(25px);
+       z-index: -1;
+       right: 50%;
+        animation-name: gollu;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        animation-direction: alternate;
+
+    }
+    @keyframes gollu {
+        from {
+            filter: blur(20px);
+            transform: translate(10%, -10%) skew(0);
+        }
+
+        to {
+            filter: blur(30px);
+            transform: translate(-10%, 10%) skew(-10deg);
+        }
     }
 
     @media only screen and (min-width: 375px) and (max-width: 896px) {
@@ -633,18 +676,19 @@ p {
       /* .page01 {
         display: none;
       } */
-      .wrapper .line span{
+      .wrapper .line span {
         font-size: 3.5vw;
         font-weight: bold;
         line-height: 4rem;
-      } 
+      }
+
       .wrapper .line {
-    width: 90%;
-    height: 43px;
-    position: relative;
-    overflow: hidden;
-}
-      
+        width: 90%;
+        height: 43px;
+        position: relative;
+        overflow: hidden;
+      }
+
 
       .faces {
         height: auto;
@@ -660,148 +704,173 @@ p {
         object-fit: cover;
         object-position: center;
       }
-      .p_width{
-      width: auto;
-    }
-      .p_width_sm{
-      width: auto;
-      font-weight: bold;
-    }
-    .p_size{
-      font-size: 20px;
-    }
-    .gola {
-      width: 5vw;
-      height: 5vw;
-    
 
-    }
-    .page01 {
-      width: 100%;
-      height: auto;
+      .p_width {
+        width: auto;
+      }
 
-    }
+      .p_width_sm {
+        width: auto;
+        font-weight: bold;
+      }
+
+      .p_size {
+        font-size: 20px;
+      }
+
+      .gola {
+        width: 5vw;
+        height: 5vw;
+
+
+      }
+
+      .page01 {
+        width: 100%;
+        height: auto;
+
+      }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
-      .subs_p{
- padding: 10px !important;
-}
-.apple_pro_height{
+      .subs_p {
+        padding: 10px !important;
+      }
+
+      .apple_pro_height {
         min-height: 40vh !important;
       }
+
       .wrapper .line {
-    width: 90%;
-    height: 70px;
-    position: relative;
-    overflow: hidden;
-}
+        width: 90%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+      }
     }
+
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-      .subs_p{
- padding: 20px !important;
-}
-.laptop {
-        height:  auto;
-        width:  auto;
+      .subs_p {
+        padding: 20px !important;
+      }
+
+      .laptop {
+        height: auto;
+        width: auto;
         object-fit: cover;
         object-position: center;
-       
-      }
-      .faces{
-        height:  auto;
-        width:  auto;
-       object-fit: cover !important;
-       object-position: center !important;
-       position: relative;
- /* top: 20%; */
 
       }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover !important;
+        object-position: center !important;
+        position: relative;
+        /* top: 20%; */
+
+      }
+
       .wrapper .line {
-   
-    height: 60px !important;
-   
-   
-}
-.wrapper .line span{
- 
+
+        height: 60px !important;
+
+
+      }
+
+      .wrapper .line span {
+
         font-weight: bold;
-     
-      } 
+
+      }
+
       .page01 {
-      width: 100%;
-      height: auto;
+        width: 100%;
+        height: auto;
 
-    }
+      }
+
       .page4 {
-      width: 100%;
-      min-height: 70vh !important;
+        width: 100%;
+        min-height: 70vh !important;
+
+      }
+
+
 
     }
-   
-    
-    
-    }
+
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .page01 {
-      width: 100%;
-      height: auto;
+        width: 100%;
+        height: auto;
 
+      }
     }
-    }
+
     @media only screen and (min-width: 0px) and (max-width: 740px) {
-    .p_width{
-      width: auto;
-    }
-    .p_width_sm{
-      width: auto;
-      font-weight: bold;
-    }
-    .wrapper .line span{
+      .p_width {
+        width: auto;
+      }
+
+      .p_width_sm {
+        width: auto;
+        font-weight: bold;
+      }
+
+      .wrapper .line span {
         font-size: 3.5vw;
         font-weight: bold;
         line-height: 4rem;
-      } 
-      .wrapper .line {
-    width: 90%;
-    height: 43px;
-    position: relative;
-    overflow: hidden;
-}
-.page01 {
-      width: 100%;
-      height: auto;
+      }
 
-    }
-    .laptop {
-        height:  auto;
-        width:   auto;
+      .wrapper .line {
+        width: 90%;
+        height: 43px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page01 {
+        width: 100%;
+        height: auto;
+
+      }
+
+      .laptop {
+        height: auto;
+        width: auto;
         object-fit: cover;
         object-position: center;
-       
-      }
-      .faces{
-        height:  auto;
-        width:   auto;
-        object-fit: cover;
-       object-position: center !important;
-     
 
       }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center !important;
+
+
+      }
+
       #moving-text h1 {
         font-size: 7vw;
       }
-      .p_size{
-      font-size: 20px;
-    }
-    .sml_scr_p{
-      font-size: 14px !important;
-    }
-    .sml_scr_u{
-      font-size: 9px !important;
-    }
-  }
 
+      .p_size {
+        font-size: 20px;
+      }
+
+      .sml_scr_p {
+        font-size: 14px !important;
+      }
+
+      .sml_scr_u {
+        font-size: 9px !important;
+      }
+    }
   </style>
 </head>
 
@@ -815,7 +884,7 @@ p {
 
 
   <div class="main">
-    
+
     <div class="page1">
 
       <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0"
@@ -823,7 +892,7 @@ p {
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="navbar-brand">
             <div class="navbar-item m-0 p-0">
-              <img src="/static/assets/images/logos/title_logo_new.png"  class="m-0 p-0"
+              <img src="/static/assets/images/logos/title_logo_new.png" class="m-0 p-0"
                 style="font-weight: 500; width: 85px;">
             </div>
           </div>
@@ -834,7 +903,7 @@ p {
                 <a style="  font-weight: 500" href="/login/">LOGIN</a>
               </h4>
             </div>
-          
+
           </div>
         </div>
       </nav>
@@ -844,7 +913,8 @@ p {
 
 
 
-      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4"  preload="auto" autoplay="autoplay" muted loop playsinline></video>
+      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4" preload="auto" autoplay="autoplay"
+        muted loop playsinline></video>
       <div class="page0-content">
         <p class="p-4 p_width" style="margin-top: auto; font-size: 40px;
   background-color: transparent;
@@ -868,11 +938,11 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </div>
 
         <h1 class="pb-0 mb-0 text-center">
-          <span >Insight Assess</span>
+          <span>Insight Assess</span>
         </h1>
       </div>
     </div>
-    <div class="page01 mb-4" >
+    <div class="page01 mb-4">
       .<div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -882,10 +952,10 @@ position: relative;"> Transforming education through tailored assessments.</p>
                 <span>At Our Education Revolution, we are dedicated to </span>
               </div>
               <div class="line">
-                <span> empowering educators and educational institutions to  </span>
+                <span> empowering educators and educational institutions to </span>
               </div>
               <div class="line">
-                <span> revolutionize the way teaching and learning are  </span>
+                <span> revolutionize the way teaching and learning are </span>
               </div>
               <div class="line">
                 <span> conducted. Our platform offers innovative solutions </span>
@@ -896,8 +966,8 @@ position: relative;"> Transforming education through tailored assessments.</p>
               <div class="line">
                 <span> teachers and students alike.</span>
               </div>
-          
-         
+
+
 
 
             </div>
@@ -907,7 +977,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
     </div>
     <div class="page2">
-     
+
       <div id="moving-text">
         <div class="con">
           <div class="gola"></div>
@@ -924,7 +994,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
           <h1>DATA DRIVEN INSIGHT FOR MENTORING</h1>
           <div class="gola"></div>
           <h1>INSPIRATIONAL</h1>
-         
+
           <h1>EMPOWERING EDUCATORS</h1>
           <div class="gola"></div>
           <h1>INSPIRATIONAL</h1>
@@ -972,10 +1042,12 @@ position: relative;"> Transforming education through tailored assessments.</p>
               <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
               <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
                 has been priceless for my students’ engagement.”</p>
-              <p class="sml_scr_u" style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+              <p class="sml_scr_u" style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA /
+                Middle school
                 Coordinator / Hyderabad, Telangana</p>
               <p class="sml_scr_p" style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
-                We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight Assess have
+                We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight
+                Assess have
                 found us effective.
               </p>
               <a class="btn btn-primary p-3 mt-4" href="/login/">Teachers, start here </a>
@@ -1002,7 +1074,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
             </div>
           </div>
           <div class="col anime2">
-            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png" alt="">
           </div>
 
 
@@ -1012,63 +1084,91 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
 
-      <section class="content">
-        <div class="row text-center">
-          <div class="col">
+    <section class="content">
+      <div class="row text-center">
+        <div class="col">
           <h1 style="    background: linear-gradient(to right, var(--mdb-green), var(--mdb-black));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
     font-size: 30px;
     padding-top: 20px;">SAMPLE QUESTIONS</h1>
-        </div></div>
-        <div class="container">
-          <div class="row" >
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
 
-            {% for question in hero_questions %}
+          {% for question in hero_questions %}
 
 
-            <div class="col-md-4 col-lg-4 col-sm-12 mb-3" >
-              <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
-                <div class="card-body" style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
-                  <div class="question">
-                    <p class="card-text"><strong>QUESTION</strong></p>
-                    {{ question.que|safe}}
-                  </div>
-                  <hr>
-                  <div class="options">
-                    <p class="card-text"><strong>OPTIONS</strong></p>
-                    {% for index, option in question.options.items %}
-                    {% if option.ans == 'true' %}
-                    <p class="card-text">
-                    <div class="correct_option text-success">
-                      Option {{index}}: {{ option.opt|safe }}
-                    </div>
-                    </p>
-                    {% else %}
-                    <p class="card-text">
-                    <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
-                    </p>
-                    {% endif %}
-
-                    {% endfor %}
-                  </div>
-                  <hr>
-
-                  <div class="explain text-wrap">
-                    <strong>EXPLANATION</strong>
-                    <p class="card-text">{{ question.explain|safe }}</p>
-                  </div>
-
+          <div class="col-md-4 col-lg-4 col-sm-12 mb-3">
+            <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
+              <div class="card-body"
+                style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
+                <div class="question">
+                  <p class="card-text"><strong>QUESTION</strong></p>
+                  {{ question.que|safe}}
                 </div>
+                <hr>
+                <div class="options">
+                  <p class="card-text"><strong>OPTIONS</strong></p>
+                  {% for index, option in question.options.items %}
+                  {% if option.ans == 'true' %}
+                  <p class="card-text">
+                  <div class="correct_option text-success">
+                    Option {{index}}: {{ option.opt|safe }}
+                  </div>
+                  </p>
+                  {% else %}
+                  <p class="card-text">
+                  <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                  </p>
+                  {% endif %}
+
+                  {% endfor %}
+                </div>
+                <hr>
+
+                <div class="explain text-wrap">
+                  <strong>EXPLANATION</strong>
+                  <p class="card-text">{{ question.explain|safe }}</p>
+                </div>
+
               </div>
             </div>
+          </div>
 
-            {% endfor %}
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+    <div class="page3">
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="col-md-8 col-sm-12 col-lg-8 p-5" style="position: relative;">
+            <h1 class="page3_h1 ">
+              We're committed to giving every child the chance to learn and succeed. Our team is passionate about creating enjoyable, impactful educational experiences for a brighter future.</h1>
+          </div>
+          <div class="col-md-4 col-sm-12 col-lg-4" style="position: relative;">
+            <div class="row ">
+              <div class="col-12 p-2" style="height: auto;width: auto; object-fit: cover;object-position: center;"><img
+                  src="https://cdn.kastatic.org/images/lohp/math-unicorn-donate-collage.png"
+                  alt=""></div>
+              <div class="col-12 p-5 pt-3">
+                <h6 style="font-size: 12px;color: #707378;">TOGETHER WE CAN MAKE A DIFFERENCE</h6>
+                <h3 style="font-size: 24px;color: #21242C;">Every child deserves the chance to learn.</h3>
+                <p style="color: #21242C;">Worldwide, 617 million children lack fundamental math and reading skills. As a nonprofit, we provide essential education. Your support can transform a child's life trajectory.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 gollu" style="position: absolute;">
 
           </div>
         </div>
-      </section> 
+      </div>
+    </div>
     <div class="page4">
 
       <div class="row">
@@ -1311,15 +1411,15 @@ position: relative;"> Transforming education through tailored assessments.</p>
   <!-- Hero del producto -->
   <script src="https://unpkg.com/split-type"></script>
 
-   
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
     integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-  integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
 
 
@@ -1407,7 +1507,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
   </script>
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
@@ -1478,8 +1578,8 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
   </script>
-  
-  
+
+
 </body>
 
 </html>
