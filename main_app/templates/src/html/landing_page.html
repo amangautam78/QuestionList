@@ -41,15 +41,15 @@ insightassess.com ">
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-408X5DQFYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-408X5DQFYP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-408X5DQFYP');
-</script>
+    gtag('config', 'G-408X5DQFYP');
+  </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
@@ -425,15 +425,15 @@ p {
       animation-duration: 10s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-     
-     
+
+
     }
 
     #moving-text {
       overflow: hidden;
       white-space: nowrap;
       padding: 3vw 0;
-     
+
 
     }
 
@@ -563,7 +563,7 @@ p {
       bottom: 0;
       font-size: 15vw;
       font-weight: 100;
-      
+
 
       margin-bottom: 20vw;
 
@@ -571,7 +571,7 @@ p {
 
     .page01 {
       width: 100%;
-      height: 70vh;
+      height: auto;
 
     }
 
@@ -598,27 +598,71 @@ p {
     }
 
     .faces {
-      height: 70vh;
+      height: auto;
       width: auto;
       object-fit: cover;
       object-position: center;
     }
 
     .laptop {
-      height: 50vh;
+      height: auto;
       width: auto;
       object-fit: cover;
       object-position: center;
     }
-    .p_width{
+
+    .p_width {
       width: 35%;
     }
-    .p_width_sm{
+
+    .p_width_sm {
       width: 30%;
       font-weight: bold;
     }
-    .p_size{
+
+    .p_size {
       font-size: 45px;
+    }
+
+    .page3 {
+      height: auto;
+      width: 100%;
+    }
+
+    .page3_h1 {
+      font-size: 4.5vw;
+      color: #242526;
+      line-height: 4vw;
+      font-weight: 500;
+
+    }
+    .gollu {
+        height: 30vw;
+        width: 30vw;
+        background: linear-gradient(109.6deg, rgb(9, 154, 151) 11.2%, rgb(21, 205, 168) 91.1%);
+        border-radius: 50%;
+       
+        filter: blur(25px);
+       z-index: -1;
+       right: 50%;
+       
+        animation-name: gollu;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        animation-direction: alternate;
+
+    }
+    @keyframes gollu {
+        from {
+            filter: blur(20px);
+            transform: translate(10%, -10%) skew(0);
+        }
+
+        to {
+            filter: blur(30px);
+            transform: translate(-10%, 10%) skew(-10deg);
+        }
     }
 
     @media only screen and (min-width: 375px) and (max-width: 896px) {
@@ -633,18 +677,19 @@ p {
       /* .page01 {
         display: none;
       } */
-      .wrapper .line span{
+      .wrapper .line span {
         font-size: 3.5vw;
         font-weight: bold;
         line-height: 4rem;
-      } 
+      }
+
       .wrapper .line {
-    width: 90%;
-    height: 43px;
-    position: relative;
-    overflow: hidden;
-}
-      
+        width: 90%;
+        height: 43px;
+        position: relative;
+        overflow: hidden;
+      }
+
 
       .faces {
         height: auto;
@@ -660,94 +705,177 @@ p {
         object-fit: cover;
         object-position: center;
       }
-      .p_width{
-      width: auto;
-    }
-      .p_width_sm{
-      width: auto;
-      font-weight: bold;
-    }
-    .p_size{
-      font-size: 20px;
-    }
-    .gola {
-      width: 5vw;
-      height: 5vw;
-    
 
-    }
-    .page01 {
-      width: 100%;
-      height: 50vh;
+      .p_width {
+        width: auto;
+      }
 
-    }
+      .p_width_sm {
+        width: auto;
+        font-weight: bold;
+      }
+
+      .p_size {
+        font-size: 20px;
+      }
+
+      .gola {
+        width: 5vw;
+        height: 5vw;
+
+
+      }
+
+      .page01 {
+        width: 100%;
+        height: auto;
+
+      }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
-      .subs_p{
- padding: 10px !important;
-}
-.apple_pro_height{
+      .subs_p {
+        padding: 10px !important;
+      }
+
+      .apple_pro_height {
         min-height: 40vh !important;
       }
+
       .wrapper .line {
-    width: 90%;
-    height: 70px;
-    position: relative;
-    overflow: hidden;
-}
-    }
-    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-      .subs_p{
- padding: 20px !important;
-}
-.laptop {
-        height:  30vh !important;
-        width:  50vw !important;
-       
+        width: 90%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
       }
-      .faces{
-        height:  30vh !important;
-        width:  50vw !important;
-       object-fit: cover !important;
-       object-position: center !important;
-       position: relative;
- top: 20%;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .subs_p {
+        padding: 20px !important;
+      }
+
+      .laptop {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
 
       }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover !important;
+        object-position: center !important;
+        position: relative;
+        /* top: 20%; */
+
+      }
+
       .wrapper .line {
-   
-    height: 60px !important;
-   
-   
-}
-.wrapper .line span{
- 
+
+        height: 60px !important;
+
+
+      }
+
+      .wrapper .line span {
+
         font-weight: bold;
-     
-      } 
+
+      }
+
       .page01 {
-      width: 100%;
-      height: 50vh;
+        width: 100%;
+        height: auto;
 
-    }
+      }
+
       .page4 {
-      width: 100%;
-      min-height: 70vh !important;
+        width: 100%;
+        min-height: 70vh !important;
+
+      }
+
+
 
     }
-   
-    
-    
-    }
+
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .page01 {
-      width: 100%;
-      height: 80vh;
+        width: 100%;
+        height: auto;
 
-    }
+      }
     }
 
+    @media only screen and (min-width: 0px) and (max-width: 740px) {
+      .p_width {
+        width: auto;
+      }
+
+      .p_width_sm {
+        width: auto;
+        font-weight: bold;
+      }
+
+      .wrapper .line span {
+        font-size: 3.5vw;
+        font-weight: bold;
+        line-height: 4rem;
+      }
+
+      .wrapper .line {
+        width: 90%;
+        height: 43px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page01 {
+        width: 100%;
+        height: auto;
+
+      }
+
+      .laptop {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+
+      }
+
+      .faces {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        object-position: center !important;
+
+
+      }
+
+      #moving-text h1 {
+        font-size: 7vw;
+      }
+
+      .p_size {
+        font-size: 20px;
+      }
+
+      .sml_scr_p {
+        font-size: 14px !important;
+      }
+
+      .sml_scr_u {
+        font-size: 9px !important;
+      }
+    }
+.page4{
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='100' height='100' patternTransform='scale(2) rotate(55)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/><path d='M0 0v1l1-1H0zm6.29 0-.147.143 11.81 11.619 8.19-8.143L22.666.047 22.709 0h-1.998l-.045.047 3.477 3.572-6.19 6.143L8.238.192 8.434 0H6.289zm6.759 0 1.047 1.047L15.143 0h-2.094zm14.474 0 7.143 7.143-2.428 2.523-3.43-3.523-4.855 4.572 8.238 8.142L43.857 7.143 36.686 0h-2.008l7.226 7.191-9.666 9.713L26 10.762l2.762-2.57 3.476 3.617 4.477-4.618L29.572.047 29.62 0h-2.096zm14.288 0 4.808 4.809 4.572-4.57L50.953 0h-2.047l.285.285-2.572 2.572L43.762 0H41.81zm14.068 0-17.64 17.904 4.57 4.62L65 .333 64.697 0H62.79l.258.285-20.19 20.192-2.572-2.573L57.857 0H55.88zm14.549 0-3.62 3.62 8.145 8.142L86.666.047 86.619 0h-1.951l.047.047L75 9.762l-6.143-6.143 2.57-2.572L75 4.619 79.62 0h-2.048l-2.619 2.62L72.334 0h-1.906zm21.43 0-3.62 3.62 4.57 4.571L100 .998V0h-.953l-6.19 6.191-2.572-2.572L93.905 0h-2.048zm-88 2.191L0 6.091v2.04l3.762-3.846 2.666 3.049-6.381 6.19-.047-.05v2.098l8.38-8.095L3.858 2.19zM100 6.091l-4.572 4.624L100 15.572v-2.097l-2.572-2.713L100 8.13V6.09zm-35.762.1-4.572 4.57 4.572 4.573 4.57-4.572-4.57-4.57zm21.428 0L74.953 16.904l-3.572-3.57-4.572 4.57 8.144 8.143 15.285-15.285-4.572-4.57zm-21.428 2 2.57 2.57-2.57 2.573-2.572-2.572 2.572-2.57zm21.477 0 2.57 2.57L75 24.048l-6.143-6.143 2.57-2.57L75 18.904 85.715 8.191zM10.666 10 0 20.668v2L10.666 12l2.572 2.572L0 27.811v2l15.238-15.239L10.666 10zm46.43 3.334L42.809 27.619l-7.381-7.38-8.143 8.142 4.572 4.572 3.57-3.572 2.811 2.81-6.142 6.143L21.38 27.619l-4.572 4.572 15.287 15.286 25-25L67.809 33.19l4.572-4.572-15.285-15.285zm35.713.238-4.57 4.57 11.714 11.715.047-.046v-1.954l-9.715-9.714 2.572-2.57L100 22.714v-2.047l-.047.047-7.144-7.143zm-71.143.094-12 11.38 4.572 4.669 7.334-7.238 3.381 3.57 4.62-4.62-7.907-7.761zm35.43 1.62L70.38 28.571l-2.572 2.57-10.713-10.714-25 25-13.287-13.285 2.572-2.57 10.715 10.712 8.142-8.142-4.81-4.809-3.57 3.57-2.573-2.57 6.143-6.143 7.38 7.381 14.288-14.287zm-35.477.429 5.904 5.762L25 24l-3.38-3.523-7.335 7.285-2.57-2.62 9.904-9.427zm64.047 4.762-4.57 4.57L96.38 40.334l3.619-3.62V34.81L85.666 20.477zm.049 2L99 35.762l-2.572 2.572-13.285-13.287 2.572-2.57zm-6.953 4.904L67.809 38.334l-3.57-3.572-4.573 4.572 8.143 8.143 15.525-15.524-4.572-4.572zm-71.666.238-4.573 4.572L17.81 47.477l4.572-4.573L7.096 27.62zm50 0L45.38 39.334l4.572 4.57 11.713-11.713-4.57-4.572zm21.713 1.762 2.572 2.572-13.524 13.524-6.142-6.143 2.57-2.572 3.572 3.572L78.81 29.381zm-71.713.238L20.38 42.904l-2.572 2.573L4.523 32.19l2.573-2.572zm50 0 2.57 2.572-9.713 9.713-2.572-2.57 9.715-9.715zm28.57 5.143-4.57 4.572 11.713 11.713 4.572-4.57-11.715-11.715zM0 34.809v1.906l.953-.953L0 34.809zm85.715 1.953 9.713 9.715-2.57 2.57-9.715-9.713 2.572-2.572zm-82.192 1.81L0 41.877v2.08l2.523 2.424L0 48.973v2.12l7.096 7.098 8.142-8.144L3.523 38.572zm0 1.951L13.238 50l-6.142 6.143L.953 50l3.57-3.715L1 42.857l2.523-2.334zM100 41.877l-1.096 1.027L100 43.957v-2.08zm-57.191.027-4.57 4.573 4.57 4.57 4.572-4.57-4.572-4.573zm14.287 0L45.38 53.62l4.572 4.572 7.143-7.144 10.713 10.715 4.572-4.57-15.285-15.288zm21.476 0-8.144 8.143L75 54.619l3.572-3.572 7.143 7.144 4.57-4.572-11.713-11.715zm-35.763 2 2.572 2.573-2.572 2.57-2.57-2.57 2.57-2.573zm14.287 0L70.38 57.191l-2.572 2.57-10.713-10.714-7.143 7.144-2.572-2.572 9.715-9.715zm21.476 0 9.713 9.715-2.57 2.572-7.143-7.144L75 52.619l-2.572-2.572 6.144-6.143zm-53.619 1.573L9.666 60.762l4.572 4.572 15.285-15.287-4.57-4.57zm0 2 2.57 2.57-13.285 13.287-2.572-2.572 13.287-13.285zM100 48.973l-1.047 1.074L100 51.094v-2.121zm-64.334.074-4.57 4.572 18.857 18.858 11.713-11.715-4.57-4.57-7.143 7.142-14.287-14.287zm0 2 14.287 14.287 7.143-7.143 2.57 2.57-9.713 9.716-16.857-16.858 2.57-2.572zm60.953 1.81-4.572 4.57L100 65.382v-2.049l-5.904-5.904 2.57-2.57L100 58.19v-1.953l-3.38-3.38zm-68.096 3.334L9.666 75.047l4.572 4.572 7.143-7.142 7.142 7.142 4.573-4.572-7.143-7.143 2.57-2.57 7.143 7.143 4.572-4.573-11.715-11.713zm50 0-8.142 8.143 8.142 8.143 4.573-4.573-3.573-3.57 3.573-3.572-4.573-4.57zM0 56.238v2l9.666 9.666-2.57 2.573L0 63.38v2l7.096 7.096 4.57-4.573L0 56.238zm28.523 1.905 9.715 9.714-2.572 2.57-7.143-7.142-4.57 4.572L31.096 75l-2.573 2.572-7.142-7.144-7.143 7.144L11.666 75l16.857-16.857zm50 .048 2.573 2.57-3.573 3.573 3.573 3.57-2.573 2.573-6.142-6.143 6.142-6.143zm10.715 1.57-4.572 4.573 3.572 3.57-6.904 6.905 4.57 4.572 11.477-11.477-8.143-8.142zm.047 2 6.143 6.143-9.475 9.477-2.572-2.572 6.904-6.905-3.57-3.57 2.57-2.572zm-25.047 1.573-8.142 8.143 4.57 4.57 8.143-8.143-4.57-4.57zm0 2 2.57 2.57-6.142 6.143-2.57-2.57 6.142-6.143zm-21.43 5.143L28.524 84.762l-7.142-7.143-4.572 4.57 11.714 11.715 18.858-18.857-4.572-4.57zm28.573 0-4.572 4.57 11.714 11.715 4.573-4.573L71.38 70.477zm28.572 0L88.238 82.189l4.57 4.43 7.145-7 .047.047v-2.094l-7.143 7.047-2.572-2.476L100 72.428v-1.905l-.047-.046zM0 70.523v1.952l16.809 16.81-2.57 2.572-3.573-3.572-7.143 7.143L0 91.904v2.05l3.523 3.523 7.143-7.143 3.572 3.57 4.57-4.57L0 70.524zm42.809 1.954 2.572 2.57-16.858 16.857-9.714-9.715 2.572-2.57 7.142 7.143L42.81 72.477zm28.572 0 9.715 9.712-2.573 2.573-9.714-9.715 2.572-2.57zm-17.858 1.57-4.57 4.572 4.57 4.57 4.573-4.57-4.573-4.572zm0 2 2.573 2.572-2.573 2.57-2.57-2.57 2.57-2.572zM0 77.619v2.047l6.096 6.096-2.573 2.666L0 84.81v1.953l3.523 3.664 4.573-4.713L0 77.619zm64.238 0L53.523 88.334l-7.142-7.145-4.572 4.573 11.714 11.715L68.81 82.189l-4.57-4.57zm0 2 2.57 2.57-13.285 13.288-9.714-9.715 2.572-2.573 7.142 7.145 10.715-10.715zm7.143 5.143-8.143 8.142 4.57 4.573 3.573-3.573 3.572 3.573 4.57-4.573-8.142-8.142zm14.285 0-4.57 4.572L89 97.238l4.572-4.572-7.906-7.904zm14.287 0-4.572 4.572 4.619 4.62v-2.097l-2.572-2.572 2.572-2.57V84.81l-.047-.05zm-28.525 1.953 6.144 6.142L75 95.427l-3.572-3.57-3.57 3.57-2.573-2.57 6.143-6.142zm14.287.047 5.904 5.904-2.572 2.572-5.904-5.904 2.572-2.572zm-46.477 1.572-4.572 4.57L41.762 100h2l-7.096-7.096 2.572-2.57L48.906 100h2L39.238 88.334zm-18.095 3.57-7.096 7.143-3.332-3.332L6.289 100h2.143l2.33-2.285L13.049 100h2.094l6.095-6.096L24 96.524 20.71 100h1.999L26 96.428l-4.857-4.524zm75.476 3.334L91.857 100h2.047l2.762-2.762 2.572 2.57-.191.192H100v-1.38l-3.38-3.382zm-36.142.096L55.879 100h1.978l2.57-2.62L62.79 100h1.908l-4.22-4.666zm-28.381.094L27.523 100h2.096l2.524-2.523L34.678 100h2.008l-4.59-4.572zm50 .049L77.572 100h2.047l2.524-2.523L84.668 100h1.951l-4.523-4.523zM0 98.617V100h1l.191-.191L0 98.617zm71.38.43-.952.953h1.906l-.953-.953z'  stroke-width='1' stroke='none' fill='hsla(174, 43%, 58%, 1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(-64,-50)' fill='url(%23a)'/></svg>")
+}
+    
   </style>
 </head>
 
@@ -761,6 +889,7 @@ p {
 
 
   <div class="main">
+
     <div class="page1">
 
       <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0"
@@ -768,7 +897,7 @@ p {
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="navbar-brand">
             <div class="navbar-item m-0 p-0">
-              <img src="/static/assets/images/logos/title_logo_new.png"  class="m-0 p-0"
+              <img src="/static/assets/images/logos/title_logo_new.png" class="m-0 p-0"
                 style="font-weight: 500; width: 85px;">
             </div>
           </div>
@@ -779,7 +908,7 @@ p {
                 <a style="  font-weight: 500" href="/login/">LOGIN</a>
               </h4>
             </div>
-          
+
           </div>
         </div>
       </nav>
@@ -789,7 +918,8 @@ p {
 
 
 
-      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4"  preload="auto" autoplay="autoplay" muted loop playsinline></video>
+      <video style="filter: brightness(60%);" src="/static/assets/videos/video3.mp4" preload="auto" autoplay="autoplay"
+        muted loop playsinline></video>
       <div class="page0-content">
         <p class="p-4 p_width" style="margin-top: auto; font-size: 40px;
   background-color: transparent;
@@ -813,11 +943,11 @@ position: relative;"> Transforming education through tailored assessments.</p>
         </div>
 
         <h1 class="pb-0 mb-0 text-center">
-          <span >Insight Assess</span>
+          <span>Insight Assess</span>
         </h1>
       </div>
     </div>
-    <div class="page01">
+    <div class="page01 mb-4">
       .<div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -827,10 +957,10 @@ position: relative;"> Transforming education through tailored assessments.</p>
                 <span>At Our Education Revolution, we are dedicated to </span>
               </div>
               <div class="line">
-                <span> empowering educators and educational institutions to  </span>
+                <span> empowering educators and educational institutions to </span>
               </div>
               <div class="line">
-                <span> revolutionize the way teaching and learning are  </span>
+                <span> revolutionize the way teaching and learning are </span>
               </div>
               <div class="line">
                 <span> conducted. Our platform offers innovative solutions </span>
@@ -841,8 +971,8 @@ position: relative;"> Transforming education through tailored assessments.</p>
               <div class="line">
                 <span> teachers and students alike.</span>
               </div>
-          
-         
+
+
 
 
             </div>
@@ -852,7 +982,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
     </div>
     <div class="page2">
-     
+
       <div id="moving-text">
         <div class="con">
           <div class="gola"></div>
@@ -869,7 +999,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
           <h1>DATA DRIVEN INSIGHT FOR MENTORING</h1>
           <div class="gola"></div>
           <h1>INSPIRATIONAL</h1>
-         
+
           <h1>EMPOWERING EDUCATORS</h1>
           <div class="gola"></div>
           <h1>INSPIRATIONAL</h1>
@@ -917,10 +1047,12 @@ position: relative;"> Transforming education through tailored assessments.</p>
               <p style="font-size: 15px;font-weight: 100;">TEACHERS</p>
               <p class="p_size" style="font-weight: bold;"> “I’m finally able to truly differentiate my classroom. This
                 has been priceless for my students’ engagement.”</p>
-              <p style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA / Middle school
+              <p class="sml_scr_u" style="font-size: 12px;font-weight: 100;color: #8c8c8c;">UDAYA LAKSHMI PALAPALA /
+                Middle school
                 Coordinator / Hyderabad, Telangana</p>
-              <p style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
-                We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight Assess have
+              <p class="sml_scr_p" style="font-size: 20px;font-weight: 100;padding-right:2vw ;">
+                We empower teachers to support their entire classroom assessments. 100% teachers who have used Insight
+                Assess have
                 found us effective.
               </p>
               <a class="btn btn-primary p-3 mt-4" href="/login/">Teachers, start here </a>
@@ -947,7 +1079,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
             </div>
           </div>
           <div class="col anime2">
-            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png"  alt="">
+            <img class="laptop" src="https://cdn.kastatic.org/images/lohp/laptop_collage@2x.png" alt="">
           </div>
 
 
@@ -957,68 +1089,97 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
 
-      <section class="content">
-        <div class="row text-center">
-          <div class="col">
+    <section class="content"  >
+      <div class="row text-center">
+        <div class="col" >
           <h1 style="    background: linear-gradient(to right, var(--mdb-green), var(--mdb-black));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
     font-size: 30px;
     padding-top: 20px;">SAMPLE QUESTIONS</h1>
-        </div></div>
-        <div class="container">
-          <div class="row" >
+        </div>
+      </div>
+      <div class="container"  style="  background-image: url('/static/assets/images/products/school.png');
+      background-size:cover;">
+        <div class="row">
 
-            {% for question in hero_questions %}
+          {% for question in hero_questions %}
 
 
-            <div class="col-md-4 col-lg-4 col-sm-12 mb-3" >
-              <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
-                <div class="card-body" style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
-                  <div class="question">
-                    <p class="card-text"><strong>QUESTION</strong></p>
-                    {{ question.que|safe}}
-                  </div>
-                  <hr>
-                  <div class="options">
-                    <p class="card-text"><strong>OPTIONS</strong></p>
-                    {% for index, option in question.options.items %}
-                    {% if option.ans == 'true' %}
-                    <p class="card-text">
-                    <div class="correct_option text-success">
-                      Option {{index}}: {{ option.opt|safe }}
-                    </div>
-                    </p>
-                    {% else %}
-                    <p class="card-text">
-                    <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
-                    </p>
-                    {% endif %}
-
-                    {% endfor %}
-                  </div>
-                  <hr>
-
-                  <div class="explain text-wrap">
-                    <strong>EXPLANATION</strong>
-                    <p class="card-text">{{ question.explain|safe }}</p>
-                  </div>
-
+          <div class="col-md-4 col-lg-4 col-sm-12 mb-3 mt-2">
+            <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
+              <div class="card-body"
+                style="background: linear-gradient(45deg, var(--bs-teal) 0%, var(--mdb-yellow) 99%, var(--mdb-teal) 100%); border-radius: 20px;">
+                <div class="question">
+                  <p class="card-text"><strong>QUESTION</strong></p>
+                  {{ question.que|safe}}
                 </div>
+                <hr>
+                <div class="options">
+                  <p class="card-text"><strong>OPTIONS</strong></p>
+                  {% for index, option in question.options.items %}
+                  {% if option.ans == 'true' %}
+                  <p class="card-text">
+                  <div class="correct_option text-success">
+                    Option {{index}}: {{ option.opt|safe }}
+                  </div>
+                  </p>
+                  {% else %}
+                  <p class="card-text">
+                  <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                  </p>
+                  {% endif %}
+
+                  {% endfor %}
+                </div>
+                <hr>
+
+                <div class="explain text-wrap">
+                  <strong>EXPLANATION</strong>
+                  <p class="card-text">{{ question.explain|safe }}</p>
+                </div>
+
               </div>
             </div>
+          </div>
 
-            {% endfor %}
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+    <div class="page3">
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="col-md-8 col-sm-12 col-lg-8 p-5" style="position: relative;">
+            <h1 class="page3_h1 ">
+              We're committed to giving every child the chance to learn and succeed. Our team is passionate about creating enjoyable, impactful educational experiences for a brighter future.</h1>
+          </div>
+          <div class="col-md-4 col-sm-12 col-lg-4" style="position: relative;">
+            <div class="row ">
+              <div class="col-12 p-2" style="height: auto;width: auto; object-fit: cover;object-position: center;"><img
+                  src="https://cdn.kastatic.org/images/lohp/math-unicorn-donate-collage.png"
+                  alt=""></div>
+              <div class="col-12 p-5 pt-3">
+                <h6 style="font-size: 12px;color: #707378;">TOGETHER WE CAN MAKE A DIFFERENCE</h6>
+                <h3 style="font-size: 24px;color: #21242C;">Every child deserves the chance to learn.</h3>
+                <p style="color: #21242C;">Worldwide, 617 million children lack fundamental math and reading skills. As a nonprofit, we provide essential education. Your support can transform a child's life trajectory.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 gollu mt-4" style="position: absolute;">
 
           </div>
         </div>
-      </section> 
-    <div class="page4">
+      </div>
+    </div>
+    <div class="page4" >
 
       <div class="row">
-        <div class="col p-2 text-center" style="font-weight: bold; font-size: 27px;">
-          <span class="">STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
+        <div class="col  text-center" style="font-weight: bold; font-size: 27px;background-color: white;">
+          <span style="border-radius: 15px;" >STUDENT-BASED LOGIN SUBSCRIPTION PRICING PLAN</span>
         </div>
       </div>
       <div class="row justify-content-evenly" style=" padding: 1vw;">
@@ -1256,15 +1417,15 @@ position: relative;"> Transforming education through tailored assessments.</p>
   <!-- Hero del producto -->
   <script src="https://unpkg.com/split-type"></script>
 
-   
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
     integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-  integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
 
 
@@ -1352,7 +1513,7 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
   </script>
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
@@ -1423,8 +1584,8 @@ position: relative;"> Transforming education through tailored assessments.</p>
 
 
   </script>
-  
-  
+
+
 </body>
 
 </html>
