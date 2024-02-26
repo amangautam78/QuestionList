@@ -73,6 +73,8 @@ urlpatterns = [
     path('questions/<str:qid>/', views.question_details, name='question_details'),
     
     path('analytics-index/', views.analytics_index, name="analytics_index"),
+    path('analytics-dashboard-crm/', views.analytics_dashboard_crm, name="analytics_dashboard_crm"),
+    path('analytics-dashboard-projects/', views.analytics_dashboard_projects, name="analytics_dashboard_projects"),
     
     
     ]

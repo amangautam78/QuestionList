@@ -732,6 +732,15 @@ def analytics_index(request):
     context ={}
     return render(request, 'src/html/analytics_index.html',context)
 
+def analytics_dashboard_crm(request):
+    context ={}
+    return render(request, 'src/html/analytics_dashboard_crm.html',context)
+
+    
+def analytics_dashboard_projects(request):
+    context ={}
+    return render(request, 'src/html/analytics_dashboard_projects.html',context)
+
     
 
 
