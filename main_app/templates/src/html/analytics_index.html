@@ -10,18 +10,11 @@
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
   
-    <!-- third party css -->
-    <!-- <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
-    <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style"> -->
-
-
-    <!-- third party css -->
+ 
 <link href="{% static 'assets/css/vendor/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" type="text/css">
-<!-- <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" id="light-style">
-<link href="{% static 'assets/css/app-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style"> -->
+<link href="{% static 'assets/css/app-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style">
 
 
 </head>
@@ -606,19 +599,15 @@
     <div class="rightbar-overlay"></div>
     <!-- /End-bar -->
 
-    <!-- bundle -->
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/app.min.js"></script>
-
-    <!-- third party js -->
-    <script src="assets/js/vendor/apexcharts.min.js"></script>
-    <script src="assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- third party js ends -->
-
-    <!-- demo app -->
-    <script src="assets/js/pages/demo.dashboard.js"></script>
-    <!-- end demo js-->
+    <script src="{% static 'assets/js/analytics/vendor.min.js' %}"></script>
+    <script src="{% static 'assets/js/analytics/app.min.js' %}"></script>
+  
+    <script src="{% static 'assets/js/analytics/vendor/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/js/analytics/vendor/jquery-jvectormap-1.2.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/analytics/vendor/jquery-jvectormap-world-mill-en.js' %}"></script>
+  
+    <script src="{% static 'assets/js/analytics/pages/demo.dashboard.js' %}"></script>
+    
 </body>
 
 </html>
