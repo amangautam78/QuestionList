@@ -72,6 +72,8 @@ urlpatterns = [
     path('view-qp/<str:qp_temp_id>/', views.view_qp, name='view_qp'),
     path('questions/<str:qid>/', views.question_details, name='question_details'),
     
+    path('analytics-index/', views.analytics_index, name="analytics_index"),
+    
     
     ]
 
