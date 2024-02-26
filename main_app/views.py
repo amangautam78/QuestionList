@@ -728,7 +728,11 @@ def question_details(request, qid):
 	return render(request, 'src/html/question_details.html', {'question': question, 'user_type': user_type})
 
 
+def analytics_index(request):
+    context ={}
+    return render(request, 'src/html/analytics_index.html',context)
 
+    
 
 
 
