@@ -7,7 +7,11 @@
 
 <style>
 
-/* 
+.counter-button-container{
+  z-index: 100;
+  position: fixed;
+  left: 91%;
+}
 
 .btn {
     position: relative;
@@ -17,11 +21,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: red; 
+    background-color: red; /* Set the background color for the notification */
     color: white;
-    border-radius: 50%; 
-    padding: 4px 8px; 
-    font-size: 12px; 
+    border-radius: 50%; /* Make it a circle */
+    padding: 4px 8px; /* Adjust padding as needed */
+    font-size: 12px; /* Adjust font size as needed */
   }
   
   .row-cols-2 .col,
@@ -32,7 +36,7 @@
   }
 
   .cardproducts{
-    transition: box-shadow 0.5s ease-in-out; 
+    transition: box-shadow 0.5s ease-in-out; /* Increase transition duration */
   }
 
   .cardproducts:hover {
@@ -50,7 +54,20 @@
     margin-left: 30px;
   }
 
- 
+  .container-box {
+        border: none;
+        padding: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        
+    }
     
     .rupeetext ,
     .gsttext
@@ -114,14 +131,27 @@
     width: 150%;
   }
 
- 
+  /* Media query for mobile devices */
   @media only screen and (max-width: 600px) {
     #retailerSelect {
       width: 100%;
     }
   }
 
+  .container-box {
+            text-align: center;
+            padding: 15px;
+            margin: 10px;
+            text-decoration: none;
+            color: #000;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
 
+        .container-box.active {
+            background-color: #007bff;
+            color: #fff;
+        }
 
         .btn-success {
         background-color: green;
@@ -147,26 +177,23 @@
 
 }
 .explain {
-  background-color: #ade2ff;
   padding: 10px;
 }
 .options {
-  background: #edf9ff;
   padding: 10px;
 
 }
 .question {
-  background-color: #f2f2f2;
   padding: 10px;
 }
 .card {
     max-height: 300px;
-    min-height: 300px; 
+    min-height: 300px; /* Set a minimum height to ensure the button is always visible */
     overflow: hidden;
-    position: relative; 
+    position: relative; /* Position relative to allow absolute positioning of the button */
 }
 .card-body {
-    padding: 20px; 
+    padding: 20px; /* Adjust as needed */
 }
 
 
@@ -179,198 +206,7 @@
     color: var(--bs-black);
     padding-bottom: 10px;
     font-weight: bold;
-} */
-
-/* ############ */
-.counter-button-container{
-  z-index: 100;
-  position: fixed;
-  left: 91%;
 }
-.counter-button-container button:hover{
- background-color: #ffa6886c;
-}
-.container-box {
-            text-align: center;
-            padding: 15px;
-            margin: 10px;
-            text-decoration: none;
-            color: #000;
-            border: 1px solid #ccc;
-            cursor: pointer;
-        }
-
-        .container-box.active {
-            background-color: #007bff;
-            color: #fff;
-        }
-.container-box {
-        border: none;
-        padding: 15px;
-        margin-bottom: 15px;
-        text-align: center;
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        
-    }
-
-.container {
-        width: 300px;
-        height: 300px;
-        perspective: 1000px;
-    }
-
-    .card {
-        min-height: 100%;
-        border-radius: 50px;
-        background: radial-gradient(circle at 10% 20%, rgb(186, 190, 245) 0%, rgb(192, 192, 245) 33.1%, rgb(218, 203, 246) 90%);
-        transition: 0.5s ease-in-out;
-        transform-style: preserve-3d;
-        box-shadow:
-            #05471100 20px 20px 25px,
-            #02140033 0px 25px 25px;
-    }
-
-    .glass {
-        transform-style: preserve-3d;
-        position: absolute;
-        inset: 8px;
-        background: linear-gradient(#ffffff59, #ffffffd0);
-        border-radius: 55px;
-        border-top-right-radius: 100%;
-        border-left: 1px solid white;
-        border-bottom: 1px solid white;
-        transition: 0.5s ease-in-out;
-
-        transform: translate3d(0, 0, 25px);
-    }
-
-    .content {
-        padding: 130px 60px 0 30px;
-    }
-
-    .content h1 {
-        color: var(--prime_color);
-        font-weight: 900;
-        font-size: 20px;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .content p {
-        margin-top: 10px;
-        color: #5d2400;
-        font-size: 15px;
-    }
-
-    .footer {
-    transform-style: preserve-3d;
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-
-    .footer .link {
-        transition: 0.2s ease-in-out;
-        font-size: 14px;
-        color: #c37500;
-        cursor: pointer;
-    }
-
-    .footer .link:hover {
-        transform: translate3d(0, 0, 10px);
-        color: var(--prime_color);
-    }
-
-    .footer .social {
-        transform-style: preserve-3d;
-        display: flex;
-        gap: 10px;
-    }
-
-    .footer .social .social_icons {
-        display: inline-block;
-        width: 95px;
-        height: 25px;
-        background: #fff;
-        color: var(--prime_color);
-        border-radius: 10%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: #472e0580 7px 7px 5px;
-        transition: 0.5s;
-    }
-
-    .footer .social .social_icons:nth-child(1) {
-        transition: 0.2s ease-in-out 0.2s;
-    }
-
-    .footer .social .social_icons:nth-child(2) {
-        transition: 0.2s ease-in-out 0.4s;
-    }
-
-    .footer .social .social_icons:nth-child(3) {
-        transition: 0.2s ease-in-out 0.6s;
-    }
-
-
-    /*Hover Effect*/
-
-    .container:hover .card {
-        transform: rotate3d(1, 1, 0, 5deg);
-        box-shadow:
-            #0547110d 30px 50px 25px,
-            #47340511 0px 25px 30px;
-    }
-
-    .container:hover .card .footer .social .social_icons {
-        transform: translate3d(0, 0, 50px);
-        box-shadow: #472e0533 -5px 20px 10px;
-    }
-
-    .container:hover .card .logo .circle2 {
-        transform: translate3d(0, 0, 60px);
-    }
-
-    .container:hover .card .logo .circle3 {
-        transform: translate3d(0, 0, 80px);
-    }
-
-    .container:hover .card .logo .circle4 {
-        transform: translate3d(0, 0, 100px);
-    }
-
-    .container:hover .card .logo .circle5 {
-        transform: translate3d(0, 0, 120px);
-    }
-    .show-more:hover{
-      color: #c94b1e;
-    }
-    .content {
-    padding: 20px 60px 0 23px;
-    overflow: hidden;
-    height: 266px;
-}
-@media only screen and (min-width: 375px) and (max-width: 896px) {
-  .counter-button-container{
-  z-index: 100;
-  position: fixed;
-  left: 81%;
-  top: 12%;
-}
-      }
-
 </style>
 
 
@@ -379,159 +215,101 @@
 
         <!-- Header -->
 
-<body>
-  <div class="container-fluid" style="width: 100%; min-height: 100vh;">
-    <header class="bg-surface-primary border-bottom pt-6">
-      <div class="container-fluid">
-          <div class="mb-npx">
-              <div class="row align-items-center">
-                  <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                      <!-- Title -->
-                      <h1 class="h4 mb-0 ls-tight " style="padding-bottom: 20px;color: coral;">Questions</h1>
-                  </div>
-                  <!-- Actions -->
-                 
-              </div>
 
-          </div>
-      </div>
-  </header>
+<div class="container-fluid">
+          <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h4 mb-0 ls-tight text-primary" style="padding-bottom: 20px;">Questions</h1>
+                        </div>
+                        <!-- Actions -->
+                       
+                    </div>
 
-       <div class="d-flex justify-content-between align-items-center px-6">
-         <!-- Retailer Dropdown on the Left -->
-       
-     
-         <!-- Cart Button on the Right -->
-         <div class="counter-button-container">
-           <a onclick="window.location.href='/add-question/'">
-             <button class="btn btn-outline-warning m-1 pt-0" style="border-radius: 50%; font-size: 23px;">
-               +
-             </button>
-           </a>
-         </div>
-       </div>
-           
-       <div class="row" style="padding-top: 30px;">
-            {% for category in categories %}
-            <div class="col-md-3">
-                <a class="container-box {% if cat == category.key %}active{% endif %}" href="/product-discovery/{{retailer_id}}/?cat={{category.key}}">
-                    <p>{{ category.name }}</p>
-                </a>
-            </div>
-            {% endfor %}
-      </div>
-
-
-     
-
-<!-- <div class="row">
-  {% for question in questions %}
-  <div class="col col-md-4">
-      <div class="card border-0 shadow">
-          <div class="card-body">
-            <div class="question">
-              <p class="card-text"><strong>QUESTION</strong></p>
-              {{ question.que|safe}}
-            </div>
-              <div class="options">
-              <p class="card-text"><strong>OPTIONS</strong></p>
-              {% for index, option in question.options.items %}
-                {% if option.ans == 'true' %}
-                <p class="card-text">
-                <div class="correct_option text-success">
-                  Option {{index}}: {{ option.opt|safe }}
                 </div>
-                </p>
-                {% else %}
-                  <p class="card-text">
-                    <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
-                  </p>
-                {% endif %}
+            </div>
+        </header>
 
-              {% endfor %}
+             <div class="d-flex justify-content-between align-items-center px-6">
+               <!-- Retailer Dropdown on the Left -->
+             
+           
+               <!-- Cart Button on the Right -->
+               <div class="counter-button-container">
+                 <a onclick="window.location.href='/add-question/'">
+                   <button class="btn btn-outline-success m-1" style="border-radius: 50%; font-size: 23px;">
+                     +
+                   </button>
+                 </a>
+               </div>
+             </div>
+                 
+             <div class="row" style="padding-top: 30px;">
+                  {% for category in categories %}
+                  <div class="col-md-3">
+                      <a class="container-box {% if cat == category.key %}active{% endif %}" href="/product-discovery/{{retailer_id}}/?cat={{category.key}}">
+                          <p>{{ category.name }}</p>
+                      </a>
+                  </div>
+                  {% endfor %}
             </div>
 
-            <div class="explain">
-              <strong>EXPLANATION</strong>
-              <p class="card-text">{{ question.explain|safe }}</p>
-            </div>
-              
-          </div>
-       <a class="show-more" href="/questions/{{question.qid}}">
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center mt-3">
-            Show More >
-          </div>
-        </div>
-      </div>
-    </a>
-      </div>
-    </div>
- 
-  {% endfor %}
-   </div> -->
 
- 
+           
 
-   <div class="row justify-content-start" >
-    {% for question in questions %}
-    <div class="col-md-4 col-sm-6 col-lg-4 mt-4">
+    <div class="row">
+        {% for question in questions %}
+        <div class="col-12 col-md-4">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                  <div class="question">
+                    <p class="card-text"><strong>QUESTION</strong></p>
+                    {{ question.que|safe}}
+                  </div>
+                    <div class="options">
+                    <p class="card-text"><strong>OPTIONS</strong></p>
+                    {% for index, option in question.options.items %}
+                      {% if option.ans == 'true' %}
+                      <p class="card-text">
+                      <div class="correct_option text-success">
+                        Option {{index}}: {{ option.opt|safe }}
+                      </div>
+                      </p>
+                      {% else %}
+                        <p class="card-text">
+                          <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                        </p>
+                      {% endif %}
 
-    <div class="container">
-      <div class="card" >
-
-
-          <div class="logo">
-              <span class="circle circle1"></span>
-              <span class="circle circle2"></span>
-              <span class="circle circle3"></span>
-              <span class="circle circle4"></span>
-              <span class="circle circle5">
-                  
-              </span>
-          </div>
-
-          <div class="glass">
-              <div class="content" style="overflow: hidden;">
-                  <h1>QUESTION</h1>
-                  <p style="position: relative;z-index: 99999;">{{ question.que|safe}}</p>
-              </div>
-
-              <div class="footer">
-
-                  <div class="social ">
-                   
-                      <span class="social_icons ">
-                      
-                          <a class="show-more" href="/questions/{{question.qid}}">
-                            <div class="link">
-                            Read More <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                          </div>
-                          </a>
-                          
-                   
-                      </span>
-                   
+                    {% endfor %}
                   </div>
 
-                 
+                  <div class="explain">
+                    <strong>EXPLANATION</strong>
+                    <p class="card-text">{{ question.explain|safe }}</p>
+                  </div>
+                    
+                </div>
+             <a class="show-more" href="/questions/{{question.qid}}">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center mt-3">
+                  Show More >
+                </div>
               </div>
-
+            </div>
+          </a>
+            </div>
           </div>
-
-
-      </div>
-  </div>
-    </div>
-    {% endfor %}
-   </div>
+      
+        {% endfor %}
+         </div>
 
 </div>
 
-
-
-</body>
 
 
 
