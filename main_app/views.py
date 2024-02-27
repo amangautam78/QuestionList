@@ -729,8 +729,19 @@ def question_details(request, qid):
 
 
 def analytics_index(request):
-    context ={}
-    return render(request, 'src/html/analytics_index.html',context)
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+	user_type = data.get('user_type')
+	print(data.get('sub'))
+	insight_data = DB.insights.find_one({'sub': data.get('sub')})
+	context = {
+					'user_type': user_type,
+					'insight_data': insight_data
+				}
+
+	return render(request, 'src/html/analytics_index.html', context)
 
 def analytics_dashboard_crm(request):
     context ={}
