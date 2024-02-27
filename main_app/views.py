@@ -666,6 +666,7 @@ def classes(request):
 		return redirect('/')
 
 	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
 
 	if request.method == 'POST':
 		class_data = dict(request.POST.items())
@@ -677,7 +678,7 @@ def classes(request):
 		DB.classes.update_one({'class_id': class_id}, {'$set': class_data}, upsert=True)
 
 		return JsonResponse({'data': class_data})
-	class_data = list(DB.classes.find({}).sort('_id', -1))
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	return render(request, 'src/html/classes.html', {'class_data': class_data, 'user_type': user_type})
 
 

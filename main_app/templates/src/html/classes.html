@@ -233,6 +233,7 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Subject</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -240,8 +241,8 @@
       <tbody>
       	{% for class in class_data %}
         <tr style="border-bottom: 1px solid #ebf1f5;" data-class-id="{{ class.class_id }}">
-          <td class="btn btn-outline-warning m-1 name"><span style="color: black;">Go to</span> {{class.name}}</td>
-
+          <td class="btn btn-outline-warning m-1 name">{{class.name}}</td>
+<td class="btn-outline-warning m-1 subject">{{class.subject}}</td>
           <td>
             <button class="btn_css btn_css_edit"> <i class="fas fa-pencil-alt" onclick="openEditModal(this)"></i></button>   
           </td>
@@ -271,6 +272,10 @@
           <div class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" name="name" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" name="subject" required>
           </div>
         </div>
         <div class="modal-footer">
@@ -348,6 +353,10 @@ function openEditModal(iconElement) {
                                         <label>Name</label>
                                         <input type="text" class="form-control" name="name" value="${response.data.name}" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Subject</label>
+                                        <input type="text" class="form-control" name="subject" value="${response.data.subject}" required>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
@@ -382,6 +391,7 @@ $(document).on('click', '.save-changes-btn', function() {
 
         var row = $(`tr[data-class-id="${class_id}"]`);
         row.find('.name').text(newData.name);
+        row.find('.subject').text(newData.subject);
 
     }
 
