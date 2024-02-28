@@ -5,78 +5,204 @@
 {% block content %}
 
 
-  <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 
 
 <style type="text/css">
+  body {
+    background-color: #eee;
+  }
 
-body {
-  background-color: #eee;
-}
+
+  .card {
+    border: none;
+    padding: 10px;
+  }
+
+  .form-select:focus {
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .graphic {
+    background-color: blue;
+    border: 1px solid blue;
+  }
+
+  .graphic:hover {
+    background-color: blue;
+    border: 1px solid blue;
+  }
+
+  .code {
+    background-color: red;
+    border: 1px solid red;
+  }
+
+  .code:hover {
+    background-color: red;
+    border: 1px solid red;
+  }
+
+  .form-select {
+    width: 172px;
+  }
+
+  .team-button button {
+    font-size: 12px;
+    width: 180px;
+    height: 40px;
+  }
+
+  .team-projects span {
+    font-size: 12px;
+    width: 180px;
+    height: 40px;
+    border: 1px solid #d4d2d2;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 4px;
+    padding-left: 23px;
+    padding-right: 23px;
+  }
 
 
-.card {
-  border:none;
-  padding: 10px;
-}
-
-.form-select:focus {
-  border-color: #8bbafe;outline: 0;box-shadow: none;
-}
-.graphic {
-  background-color: blue;border:1px solid blue;
-}
-.graphic:hover {
-  background-color: blue;border:1px solid blue;
-}
-.code {
-  background-color: red;border:1px solid red;
-}
-.code:hover {
-  background-color: red;border:1px solid red;
-}
-.form-select {
-  width: 172px;
-}
-.team-button button {
-  font-size: 12px;width: 180px;height: 40px;
-}
-.team-projects span {
-  font-size: 12px;width: 180px;height: 40px;border: 1px solid #d4d2d2;padding: 10px;background-color: #eee;border-radius: 4px;padding-left: 23px;padding-right: 23px;
-}  
 </style>
 
 
+<div class="container-fluid">
+  <!-- <div class="container">
+    <div class="row">
+     
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="d-flex flex-column align-items-center p-2">
+            <img src="/static/assets/images/profile/user-1.jpg" class="rounded-circle" width="100">
+            <div style="padding: 40px;">
+              <span>{{user.name}}</span><br>
+              <span>{{user.mobile}}</span><br>
+              <span>{{user.user_type}}</span>
+              <div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
 
- <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <!-- First Column -->
-                <div class="col-lg-6 col-md-12">
-<div class="card">
- <div class="d-flex flex-column align-items-center p-2">
-        <img src="/static/assets/images/profile/user-1.jpg" class="rounded-circle" width="100">
-        <div style="padding: 40px;">
-          <span>{{user.name}}</span><br>
-          <span>{{user.mobile}}</span><br>
-          <span>{{user.user_type}}</span>
-          <div>
-          <a class="btn btn-danger" href="/analytics-index/">INSIGHT</a>
+    </div>
+  </div> -->
+</div>
+
+<body>
+  <div class="container ">
+    <!-- Account page navigation-->
+   
+   
+    <div class="row">
+      <div class="col-xl-4">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+          <div class="card-header">Profile Picture</div>
+          <div class="card-body text-center">
+            <!-- Profile picture image-->
+           
+              <img src="/static/assets/images/profile/user-1.jpg" class="rounded-circle img-account-profile rounded-circle mb-2" width="100">
+            <!-- Profile picture help block-->
+            <!-- <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div> -->
+            <!-- Profile picture upload button-->
+            <!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <!-- Account details card-->
+        <div class="card mb-4">
+          <div class="card-header">Account Details</div>
+          <div class="card-body">
+            <form>
+              <!-- Form Group (username)-->
+              <div class="mb-3">
+                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
+                  site)</label>
+                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
+                  value="{{user.name}}" disabled>
+              </div>
+              <!-- Form Row-->
+              <div class="row gx-3 mb-3">
+                <!-- Form Group (first name)-->
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputFirstName">First name</label>
+                  <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"
+                    value="{{user.given_name}}" disabled>
+                </div>
+                <!-- Form Group (last name)-->
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputLastName">Last name</label>
+                  <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name"
+                    value="{{user.family_name}}" disabled>
+                </div>
+              </div>
+              <!-- Form Row        -->
+              <div class="row gx-3 mb-3">
+                <!-- Form Group (organization name)-->
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputOrgName">Institute ID </label>
+                  <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name"
+                    value="{{user.insti_id}}" disabled>
+                </div>
+                <!-- Form Group (location)-->
+                <div class="col-md-6">
+                  <!-- <label class="small mb-1" for="inputLocation">Location</label>
+                  <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location"
+                    value="San Francisco, CA"> -->
+                </div>
+              </div>
+              <!-- Form Group (email address)-->
+              <div class="mb-3">
+                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"
+                  value="{{user.email}}" disabled>
+              </div>
+              <!-- Form Row-->
+              <div class="row gx-3 mb-3">
+                <!-- Form Group (phone number)-->
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputPhone">Phone number</label>
+                  <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number"
+                    value="{{user.mobile}}" disabled>
+                </div>
+                <!-- Form Group (birthday)-->
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputOrgName">Educational Background</label>
+                  <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name"
+                    value="{{user.user_type}}" disabled>
+                </div>
+              </div>
+              <!-- Save changes button-->
+             
+              <div class="row justify-content-between">
+                <div class="col">
+                  <!-- <button class="btn btn-primary" type="button">Save changes</button> -->
+                </div>
+                <div class="col text-end">
+                 
+                  <a class="btn btn-danger"  href="/analytics-index/">INSIGHT DASHBOARD</a>
+               
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
+  
+</body>
 
-                </div>
 
-
-            </div>
-        </div>
-</div>
-
-       
 
 {% endblock %}
-
-     

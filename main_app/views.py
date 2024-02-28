@@ -260,7 +260,7 @@ def question_papers(request):
 	
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
-	classes = data.get('classes')
+	classes = data.get('classes') or []
 
 	if user_type == 'STUDENT' or user_type == 'TEACHER':
 		question_papers = list(DB.question_papers.find({'status': {'$ne': 'IN_QP'}, 'class_id': {'$in': classes}}).sort('_id', -1))
