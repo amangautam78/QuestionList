@@ -21,8 +21,44 @@ def landing_page(request):
 	questions = list(DB.hero_questions.find())
 	return render(request, 'src/html/landing_page.html', {'hero_questions': questions})
 
-
+@csrf_exempt
 def login(request):
+	if request.method == 'POST':
+		username = request.POST.get("username")
+		password = request.POST.get("password")
+
+		user_doc = DB.users.find_one({"$or": [{"mobile": username}, {"email": username}], 'pass': password})
+
+		if not user_doc:
+			DB.leads.insert_one(decoded_token)
+			return redirect('/inquiry')
+
+		if user_doc and user_doc.get("is_verified"):
+
+			sub = user_doc.get("sub")
+			mob = user_doc.get("mobile")
+			email = user_doc.get("email")
+			user_type = user_doc.get("user_type")
+			insti_id = user_doc.get("insti_id")
+			name = user_doc.get("name")
+			classes = user_doc.get('classes')
+
+			user_dict = {
+					  "login_type": "username-pass",
+	                  "email": email,
+	                  "user_type": user_type,
+	                  "sub": sub,
+	                  "name": name,
+	                  "mobile": mob,
+	                  "insti_id": insti_id,
+	                  "classes": classes
+	                }
+			jwt_token = generate_token(user_dict)
+			response = HttpResponseRedirect('/dashboard')
+			response.set_cookie("t", jwt_token)
+			user_doc = DB.users.find_one_and_update({"email": email}, {"$set":{"token":jwt_token}})
+			return response
+
 
 	return render(request, 'src/html/login.html', {})
 
@@ -118,17 +154,10 @@ def questions(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
-	questions = list(DB.questions.find({}))
-	que_count = 0
-	user_id = 1
-	temp_qp = DB.question_papers.find_one({'user_id': user_id, 'status': 'IN_QP'})
-	if temp_qp:
-		qp_temp_id = temp_qp.get('qp_temp_id')
-		que_count = len(temp_qp.get('qp_items'))
-	else:
-		qp_temp_id = str(uuid4())
-		que_count = 0
-	return render(request, 'src/html/questions.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id, 'user_type': user_type})
+	insti_id = data.get('insti_id')
+	questions = list(DB.questions.find({'insti_id': insti_id}))
+	return render(request, 'src/html/questions.html', {"questions": questions, 'user_type': user_type})
+
 
 def questions_discovery(request):
 	valid = False
@@ -140,7 +169,8 @@ def questions_discovery(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
-	questions = list(DB.questions.find({}))
+	insti_id = data.get('insti_id')
+	questions = list(DB.questions.find({'insti_id': insti_id}))
 	que_count = 0
 	user_id = 1
 	temp_qp = DB.question_papers.find_one({'user_id': user_id, 'status': 'IN_QP'})
