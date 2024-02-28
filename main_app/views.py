@@ -260,6 +260,9 @@ def add_question(request):
 	if not valid:
 		return redirect('/')
 	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
+	sub = data.get('sub')
+
 	if request.method == 'POST':
 		requested_data = dict(request.POST)
 		question = requested_data.get('question')[0] if requested_data.get('question') else ''
@@ -267,50 +270,35 @@ def add_question(request):
 		options = requested_data.get('options[]')
 		correct_ans = requested_data.get('correctAnswers[]')
 		is_multi = True if requested_data.get('is_multi') else False
-		batch = requested_data.get('batch')[0] if requested_data.get('batch') else ''
+		class_id = requested_data.get('class_id')[0] if requested_data.get('class_id') else ''
+		class_name = requested_data.get('class_name')[0] if requested_data.get('class_name') else ''
 		qid = str(uuid4())
 		option_map = {}
 		for idx, opt in enumerate(options):
 			option_map.update({str(idx + 1): {'opt': opt, 'ans': correct_ans[idx]}})
 		source = 'quill'
-		DB.questions.insert_one({'batch': batch, 'que': question, 'explain': explain, 'options': option_map, 'is_multi': is_multi, 'qid': qid, 'source': source})
+		DB.questions.insert_one(
+									{
+										'class_id': class_id,
+										'class_name': class_name,
+										'que': question,
+										'explain': explain,
+										'options': option_map,
+										'is_multi': is_multi,
+										'qid': qid,
+										'source': source,
+										'user_type': user_type,
+										'sub': sub,
+										'insti_id': insti_id,
+										'created_at': datetime.now()
+								}
+							)
 		return JsonResponse({})
 	insti_id = data.get('insti_id')
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	return render(request, "src/html/add_question.html", {'user_type': user_type, 'insti_id': insti_id, 'sub': data.get('sub'), 'class_data': class_data})
 
-@csrf_exempt
-def students(request):
-	valid = False
-	data = {}
-	if request.COOKIES.get('t'):
-		valid, data = verify_token(request.COOKIES['t'])
-	if not valid:
-		return redirect('/')
-	user_type = data.get('user_type')
-	if request.method == 'POST':
-		student_data = dict(request.POST.items())
-		print(student_data)
-		student_id = student_data.get('student_id')
-		if not student_id:
-			student_id = str(uuid4())
-		student_data['student_id'] = student_id
-		DB.students.update_one({'student_id': student_id}, {'$set': student_data}, upsert=True)
-		print(student_data)
-		return JsonResponse({'data': student_data})
-	students_data = list(DB.students.find({}).sort('_id', -1))
-	return render(request, 'src/html/students.html', {'students_data': students_data, 'user_type': user_type})
 
-@csrf_exempt
-def get_student(request, student_id):
-	student_data = DB.students.find_one({'student_id': student_id}, {'_id': 0})
-	return JsonResponse({'data': student_data})
-
-@csrf_exempt
-def delete_student(request, student_id):
-	if request.method == 'DELETE':
-		student_data = DB.students.delete_one({'student_id': student_id})
-		return JsonResponse({})
 
 def generate_token(user_dict):
 
@@ -617,6 +605,7 @@ def teachers(request):
 			teacher_id = str(uuid4())
 		teacher_data['teacher_id'] = teacher_id
 		teacher_data['classes'] = classes
+		teacher_data['insti_id'] = insti_id
 		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': teacher_data}, upsert=True)
 
 		return JsonResponse({'data': teacher_data})
@@ -653,9 +642,81 @@ def edit_teacher(request, teacher_id):
 		return redirect('/')
 
 	user_type = data.get('user_type')
-	class_data = list(DB.classes.find({}).sort('_id', -1))
+	insti_id = data.get('insti_id')
+
+	if request.method == 'POST':
+		classes  = dict(request.POST).get('classes')
+		requested_data = dict(request.POST.items())
+		requested_data['classes'] = classes
+		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': requested_data})
+		return redirect('/teachers/')
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	teacher_data = DB.teachers.find_one({'teacher_id': teacher_id})
 	return render(request, 'src/html/edit_teacher.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
+
+
+
+@csrf_exempt
+def students(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+	if not valid:
+		return redirect('/')
+	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
+	if request.method == 'POST':
+		classes  = dict(request.POST).get('classes')
+		student_data = dict(request.POST.items())
+		student_id = student_data.get('student_id')
+		if not student_id:
+			student_id = str(uuid4())
+		student_data['student_id'] = student_id
+		student_data['insti_id'] = insti_id
+		student_data['classes'] = classes
+		DB.students.update_one({'student_id': student_id}, {'$set': student_data}, upsert=True)
+		return JsonResponse({'data': student_data})
+	students_data = list(DB.students.find({}).sort('_id', -1))
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
+	for j in students_data:
+
+		j['classes'] = [class_data_map.get(k) for k in j.get('classes')] if j.get('classes') else []
+	return render(request, 'src/html/students.html', {'students_data': students_data,'class_data': class_data, 'user_type': user_type})
+
+@csrf_exempt
+def get_student(request, student_id):
+	student_data = DB.students.find_one({'student_id': student_id}, {'_id': 0})
+	return JsonResponse({'data': student_data})
+
+@csrf_exempt
+def delete_student(request, student_id):
+	if request.method == 'DELETE':
+		student_data = DB.students.delete_one({'student_id': student_id})
+		return JsonResponse({})
+
+
+@csrf_exempt
+def edit_student(request, student_id):
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+
+	user_type = data.get('user_type')
+	insti_id = data.get('insti_id')
+
+	if request.method == 'POST':
+		classes  = dict(request.POST).get('classes')
+		requested_data = dict(request.POST.items())
+		requested_data['classes'] = classes
+		DB.students.update_one({'student_id': student_id}, {'$set': requested_data})
+		return redirect('/students/')
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+	student_data = DB.students.find_one({'student_id': student_id})
+	return render(request, 'src/html/edit_student.html', {'student_data': student_data, 'class_data': class_data, 'user_type': user_type})
+
 
 
 @csrf_exempt

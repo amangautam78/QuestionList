@@ -253,7 +253,7 @@ button.warning-toast {
   <select class="form-control selectpicker" name="class" id="class" aria-label="Default select example" data-live-search="true" required>
     <option value="">PLEASE SELECT CLASS/BATCH</option> 
                {% for class in class_data %}
-                <option value="{{ class.class_id }}">{{ class.name }}</option>   
+                <option value="{{ class.class_id }}">{{ class.name }} {{ class.subject }}</option>   
               {% endfor %}
               <!-- Options will be dynamically populated by Select2 -->
      </select>
@@ -420,7 +420,9 @@ function handleSubmit() {
 
   var question = getEditorQuestion();
   var explanation = getEditorExplaination();
-  var batchValue = $('#class').val();
+
+  var class_id = $('#class').val();
+  var class_name = $('#class option:selected').text();
   function gatherFormData() {
 
       var formData = {
@@ -428,7 +430,8 @@ function handleSubmit() {
           explanation: explanation,
           options: [],
           correctAnswers: [],
-          class: batchValue,
+          class_name: class_name,
+          class_id: class_id
       };
 
       var optionRows = document.querySelectorAll('.option-row');
@@ -456,7 +459,7 @@ function handleSubmit() {
 
   var formData = gatherFormData();
 
-  if (!formData.question || !formData.explanation || !formData.class) {
+  if (!formData.question || !formData.explanation || !formData.class_id) {
 
       var msg = 'Please provide Question, explanation and class!';
       var icon = 'fa-triangle-exclamation';
