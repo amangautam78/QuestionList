@@ -54,9 +54,12 @@
     >
       <i class="fas fa-long-arrow-alt-left me-2"></i>Back to Questions Panel
     </a>
-    <div class="row">
-      <div class="col-12">
-        <div class="container mt-5" style="width: 300px; padding-bottom: 20px;">
+    <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+      <div class="col-12 col-md-8">
+        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+         
+         <div class="col-6">
+            <label for="class"> SELECT CLASS</label>
             <select class="form-control selectpicker" name="class" id="class" aria-label="Default select example" data-live-search="true" required>
               <option value="">PLEASE SELECT CLASS/BATCH</option> 
                          {% for class in class_data %}
@@ -68,7 +71,12 @@
                         {% endfor %}
                         <!-- Options will be dynamically populated by Select2 -->
                </select>
-          </div>
+        </div>
+         <div class="col-6 col-md-4">
+            <label for="duration"> EXAM DURATION (In Minutes)</label>
+            <input type="number" class="form-control" id="duration" value="{{ temp_qp.duration }}" step="any" />
+          </div> 
+        </div>
         <div class="card">
             <div id="editor-container" required>
               {{temp_qp.guideline|safe}}
@@ -219,11 +227,12 @@ function setQuestionPaper(qp_temp_id) {
       var guideline = getEditorQuestion();
       var class_id = $('#class').val();
       var class_name = $('#class option:selected').text();
+      var duration = $('#duration').val();
 
       $.ajax({
         url: "/set-question-paper/",
         method: "POST",
-        data: { qp_temp_id : qp_temp_id, guideline: guideline, class_id: class_id, class: class_name},
+        data: { qp_temp_id : qp_temp_id, guideline: guideline, class_id: class_id, class: class_name, duration: duration},
         success: function(res) {
             window.location.href = '/question-papers/';
         },

@@ -47,6 +47,7 @@ def google_callback(request):
 		user_type = user_doc.get("user_type")
 		insti_id = user_doc.get("insti_id")
 		name = user_doc.get("name")
+		classes = user_doc.get('classes')
 
 		user_dict = {
 				  "login_type": "google",
@@ -55,7 +56,8 @@ def google_callback(request):
                   "sub": sub,
                   "name": name,
                   "mobile": mob,
-                  "insti_id": insti_id
+                  "insti_id": insti_id,
+                  "classes": classes
                 }
 		jwt_token = generate_token(user_dict)
 		response = HttpResponseRedirect('/dashboard')
@@ -209,10 +211,11 @@ def review_qp(request, qp_temp_id):
 	if not st:
 		return redirect('/')
 	user_type = data.get('user_type')
+	classes = data.get('classes')
 
 	temp_qp = DB.question_papers.find_one({'qp_temp_id': qp_temp_id}) or {}
 
-	class_data = list(DB.classes.find())
+	class_data = list(DB.classes.find({'class_id': {'$in': classes}}))
 	return render(request, 'src/html/review_qp.html', {'class_data': class_data, 'insti_id': temp_qp.get('insti_id'), 'temp_qp': temp_qp, 'que_count': len(temp_qp.get('qp_items')), 'qp_temp_id': temp_qp.get('qp_temp_id'), 'user_type': user_type})
 
 
@@ -226,7 +229,13 @@ def question_papers(request):
 		return redirect('/')
 	
 	user_type = data.get('user_type')
-	question_papers = list(DB.question_papers.find({'status': {'$ne': 'IN_QP'}}).sort('_id', -1))
+	insti_id = data.get('insti_id')
+	classes = data.get('classes')
+
+	if user_type == 'STUDENT' or user_type == 'TEACHER':
+		question_papers = list(DB.question_papers.find({'status': {'$ne': 'IN_QP'}, 'class_id': {'$in': classes}}).sort('_id', -1))
+	elif user_type == 'ADMIN':
+		question_papers = list(DB.question_papers.find({'status': {'$ne': 'IN_QP'}, 'insti_id': insti_id}).sort('_id', -1))
 	return render(request, "src/html/question_papers.html", {"question_papers":question_papers,"items_count":len(question_papers), 'user_type': user_type})
 
 
@@ -238,16 +247,16 @@ def set_question_paper(request):
 		valid, data = verify_token(request.COOKIES['t'])
 	if not valid:
 		return redirect('/')
-
 	qp_temp_id = request.POST.get('qp_temp_id')
 	qp_id = 'QP{}'.format(str(int(datetime.now().timestamp())))
 	created_at = datetime.now()
 	class_name = request.POST.get('class')
 	class_id = request.POST.get('class_id')
 	guideline = request.POST.get('guideline')
+	duration = request.POST.get('duration')
 	created_by = data.get('name')
 	by_id = data.get('sub')
-	DB.question_papers.update_one({'qp_temp_id': qp_temp_id}, {'$set': {'insti_id': data.get('insti_id'), 'created_by': created_by, 'sub': by_id, 'class': class_name, 'class_id': class_id, 'guideline': guideline, 'status': 'READY_FOR_EXAM', 'qp_id': qp_id, 'created_at': created_at}})
+	DB.question_papers.update_one({'qp_temp_id': qp_temp_id}, {'$set': {'insti_id': data.get('insti_id'), 'created_by': created_by, 'sub': by_id, 'class': class_name, 'class_id': class_id, 'guideline': guideline, 'status': 'READY_FOR_EXAM', 'qp_id': qp_id, 'created_at': created_at, 'duration': duration}})
 
 	return JsonResponse({})
 
@@ -262,6 +271,7 @@ def add_question(request):
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
 	sub = data.get('sub')
+	classes = data.get('classes')
 
 	if request.method == 'POST':
 		requested_data = dict(request.POST)
@@ -295,7 +305,11 @@ def add_question(request):
 							)
 		return JsonResponse({})
 	insti_id = data.get('insti_id')
-	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+	if user_type == 'ADMIN':
+		class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+	elif user_type == 'TEACHER':
+		class_data = list(DB.classes.find({'insti_id': insti_id, 'class_id': {'$in': classes}}).sort('_id', -1))
+
 	return render(request, "src/html/add_question.html", {'user_type': user_type, 'insti_id': insti_id, 'sub': data.get('sub'), 'class_data': class_data})
 
 
@@ -369,11 +383,25 @@ def start_exam(request):
 	user_type = data.get('user_type')
 	qp_id = request.GET.get('qp_id')
 	
-
 	que_number = int(request.GET.get('que_num')) - 1 if request.GET.get('que_num') else 0
 
 	q_num = que_number + 1
 	sheet = DB.answer_sheet.find_one({'student_id': student_id, 'qp_id': qp_id}) or {}
+	
+	if not sheet:
+		start_time = datetime.now()
+		que_paper = DB.question_papers.find_one({'qp_id': qp_id}, {'_id': 0, 'duration': 1, 'qp_id': 1})
+		duration = int(que_paper.get('duration')) * 60 if que_paper.get('duration') else 120 * 60
+		DB.answer_sheet.insert_one({'student_id': student_id, 'qp_id': qp_id, 'start_time': start_time, 'duration': duration})
+		remaining_time =  duration
+
+	if sheet:
+		start_time = sheet.get('start_time')  # Assuming sheet.get('start_time') returns a datetime object
+		current_time = datetime.now()
+		time_difference = current_time - start_time
+		time_difference_seconds = time_difference.total_seconds()
+		remaining_time = sheet.get('duration') - time_difference_seconds
+
 	selected_data = []
 	answered = []
 	if sheet.get('answers'):
@@ -398,6 +426,7 @@ def start_exam(request):
 	if que_number == 0:
 		prev_btn = 'disable'
 
+	print(remaining_time)
 
 	return render(request, 'src/html/exam_questions.html', {
 		'prev_btn': prev_btn,
@@ -408,7 +437,8 @@ def start_exam(request):
 		'que_label': que_number + 1, 
 		'selected_data': selected_data, 
 		'answered': answered,
-		'user_type': user_type
+		'user_type': user_type,
+		'remaining_time': remaining_time
 		})
 
 
@@ -434,7 +464,8 @@ def save_answer(request):
 		'$set': {
 			f'answers.{que_num}.qid': qid,
 			f'answers.{que_num}.selected': selected,
-			f'answers.{que_num}.ans': ans
+			f'answers.{que_num}.ans': ans,
+			f'answers.{que_num}.s_at': datetime.now(),
 			}
 		}, upsert=True)
 	return JsonResponse({})
@@ -449,7 +480,7 @@ def save_final_sheet(request):
 	student_id = data.get('sub')
 	requested_data = dict(request.POST.items())
 	qp_id = requested_data.get('qp_id')
-	DB.answer_sheet.update_one({'student_id': student_id, 'qp_id': qp_id}, {'$set': {'status': 'SUBMITTED'}})
+	DB.answer_sheet.update_one({'student_id': student_id, 'qp_id': qp_id}, {'$set': {'status': 'SUBMITTED', 'fs_at': datetime.now()}})
 	return JsonResponse({})
 
 
@@ -603,23 +634,24 @@ def teachers(request):
 		teacher_id = teacher_data.get('teacher_id')
 		if not teacher_id:
 			teacher_id = str(uuid4())
-		teacher_data['teacher_id'] = teacher_id
+		teacher_data['sub'] = teacher_id
 		teacher_data['classes'] = classes
 		teacher_data['insti_id'] = insti_id
-		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': teacher_data}, upsert=True)
-
+		teacher_data['user_type'] = 'TEACHER'
+		teacher_data['is_verified'] = True
+		
+		DB.users.update_one({'sub': teacher_id}, {'$set': teacher_data}, upsert=True)
 		return JsonResponse({'data': teacher_data})
-	teacher_data = list(DB.teachers.find({'insti_id': insti_id}).sort('_id', -1))
+	teacher_data = list(DB.users.find({'insti_id': insti_id, 'user_type': 'TEACHER'}).sort('_id', -1))
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
 	for j in teacher_data:
-
 		j['classes'] = [class_data_map.get(k) for k in j.get('classes')] if j.get('classes') else []
 	return render(request, 'src/html/teachers.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
 
 @csrf_exempt
 def get_teacher(request, teacher_id):
-	teacher_data = DB.teachers.find_one({'teacher_id': teacher_id}, {'_id': 0})
+	teacher_data = DB.users.find_one({'sub': teacher_id}, {'_id': 0})
 	class_data = list(DB.classes.find({}).sort('_id', -1))
 	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
 	selected_class = [{'class_id': k, 'name': class_data_map.get(k)} for k in teacher_data.get('classes')]
@@ -629,7 +661,7 @@ def get_teacher(request, teacher_id):
 @csrf_exempt
 def delete_teacher(request, teacher_id):
 	if request.method == 'DELETE':
-		teacher_data = DB.teachers.delete_one({'teacher_id': teacher_id})
+		teacher_data = DB.users.delete_one({'sub': teacher_id})
 		return JsonResponse({})
 
 
@@ -648,10 +680,10 @@ def edit_teacher(request, teacher_id):
 		classes  = dict(request.POST).get('classes')
 		requested_data = dict(request.POST.items())
 		requested_data['classes'] = classes
-		DB.teachers.update_one({'teacher_id': teacher_id}, {'$set': requested_data})
+		DB.users.update_one({'sub': teacher_id}, {'$set': requested_data})
 		return redirect('/teachers/')
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
-	teacher_data = DB.teachers.find_one({'teacher_id': teacher_id})
+	teacher_data = DB.users.find_one({'sub': teacher_id})
 	return render(request, 'src/html/edit_teacher.html', {'teacher_data': teacher_data, 'class_data': class_data, 'user_type': user_type})
 
 
@@ -672,12 +704,14 @@ def students(request):
 		student_id = student_data.get('student_id')
 		if not student_id:
 			student_id = str(uuid4())
-		student_data['student_id'] = student_id
+		student_data['sub'] = student_id
 		student_data['insti_id'] = insti_id
 		student_data['classes'] = classes
-		DB.students.update_one({'student_id': student_id}, {'$set': student_data}, upsert=True)
+		student_data['user_type'] = 'STUDENT'
+		student_data['is_verified'] = True
+		DB.users.update_one({'sub': student_id}, {'$set': student_data}, upsert=True)
 		return JsonResponse({'data': student_data})
-	students_data = list(DB.students.find({}).sort('_id', -1))
+	students_data = list(DB.users.find({'insti_id': insti_id, 'user_type': 'STUDENT'}).sort('_id', -1))
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
 	class_data_map = {i.get('class_id'): i.get('name') for i in class_data}
 	for j in students_data:
@@ -687,13 +721,13 @@ def students(request):
 
 @csrf_exempt
 def get_student(request, student_id):
-	student_data = DB.students.find_one({'student_id': student_id}, {'_id': 0})
+	student_data = DB.users.find_one({'sub': student_id}, {'_id': 0})
 	return JsonResponse({'data': student_data})
 
 @csrf_exempt
 def delete_student(request, student_id):
 	if request.method == 'DELETE':
-		student_data = DB.students.delete_one({'student_id': student_id})
+		student_data = DB.users.delete_one({'sub': student_id})
 		return JsonResponse({})
 
 
@@ -703,18 +737,16 @@ def edit_student(request, student_id):
 	st, data = verify_token(token)
 	if not st:
 		return redirect('/')
-
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
-
 	if request.method == 'POST':
 		classes  = dict(request.POST).get('classes')
 		requested_data = dict(request.POST.items())
 		requested_data['classes'] = classes
-		DB.students.update_one({'student_id': student_id}, {'$set': requested_data})
+		DB.users.update_one({'sub': student_id}, {'$set': requested_data})
 		return redirect('/students/')
 	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
-	student_data = DB.students.find_one({'student_id': student_id})
+	student_data = DB.users.find_one({'sub': student_id})
 	return render(request, 'src/html/edit_student.html', {'student_data': student_data, 'class_data': class_data, 'user_type': user_type})
 
 

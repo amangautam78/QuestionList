@@ -244,14 +244,16 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Classes</th>
+             <th>Pass</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {% for teacher in teacher_data %}
-          <tr data-teacher-id="{{ teacher.teacher_id }}">
+          <tr data-teacher-id="{{ teacher.sub }}">
             <td class="name">{{teacher.name}}</td>
-            <td class="email">{{teacher.email}}</td>
+            <td class="email">{{teacher.email}}
+            </td>
             <td class="mobile">{{teacher.mobile}}</td>
   
             <td class="batch">
@@ -259,8 +261,11 @@
                 {{class}}
               {% endfor %}
           </td>
+          <td>              <button class="btn btn-outline-warning" onclick="showPass(this)">SHOW PASS</button> 
+</td>
             <td style="width: 130px;">
-              <a class="btn_css btn_css_edit" href="/edit-teacher/{{teacher.teacher_id}}/"> <i class="fas fa-pencil-alt"></i></a>
+
+              <a class="btn_css btn_css_edit" href="/edit-teacher/{{teacher.sub}}/"> <i class="fas fa-pencil-alt"></i></a>
                  
   
                <button class="btn_css"><i class="fas fa-trash-alt" onclick="openDeleteModal(this)"></i></button>   
@@ -317,9 +322,7 @@
       </div>
     </div>
   </div>
-  <div class="section bottom-0 text-center">
-    <h1 style="font-size: 4vw;color: #e3e3e3da;">Qna Class</h1>
-  </div>
+
 </div>
 
 
@@ -415,6 +418,38 @@ function saveChanges(teacher_id) {
 
 
 
+function showPass(iconElement) {
+    var row = $(iconElement).closest('tr');
+    var teacher_id = row.data('teacher-id');
+
+    var username = 'nk@gmail.com';
+    var password = 'naga@SSN';
+
+    var modalContent =`<div id="deleteStudentModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Teacher Login Credentials</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>USERNAME: ${username} </p>
+          <p class="text-warning">PASSWORD: ${password}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>`;
+            $('body').append(modalContent);
+
+            // Open the modal
+            $(`#deleteStudentModal`).modal('show');
+
+}
 
 function openDeleteModal(iconElement) {
     var row = $(iconElement).closest('tr');

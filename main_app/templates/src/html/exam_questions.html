@@ -569,7 +569,7 @@ body{
 
 // -------- coundown-timer-----
 if ($('#timer-countdown').length) {
-    function countdown( elementName, minutes, seconds )
+    function countdown( elementName, seconds )
     {
         var element, endTime, hours, mins, msLeft, time;
         function twoDigits( n )
@@ -590,12 +590,12 @@ if ($('#timer-countdown').length) {
             }
         }
         element = document.getElementById( elementName );
-        endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+        endTime = (+new Date) + 1000 * seconds + 500;
         updateTimer();
     }
-    var remaining_time = '{{ remaining_time|safe }}';
+    var remainingTimeInSeconds = parseFloat('{{ remaining_time|safe }}')
 
-    countdown( "timer-countdown", 2, 30 );
+    countdown( "timer-countdown", remainingTimeInSeconds);
 }
 
 

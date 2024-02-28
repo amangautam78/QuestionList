@@ -249,7 +249,7 @@
         </thead>
         <tbody>
           {% for student in students_data %}
-          <tr data-student-id="{{ student.student_id }}">
+          <tr data-student-id="{{ student.sub }}">
             <td class="name">{{student.name}}</td>
             <td class="email">{{student.email}}</td>
             <td class="mobile">{{student.mobile}}</td>
@@ -260,7 +260,7 @@
               {% endfor %}
           </td>
             <td style="width: 130px;">
-              <a class="btn_css btn_css_edit" href="/edit-student/{{student.student_id}}/"> <i class="fas fa-pencil-alt"></i></a>
+              <a class="btn_css btn_css_edit" href="/edit-student/{{student.sub}}/"> <i class="fas fa-pencil-alt"></i></a>
                  
   
                <button class="btn_css"><i class="fas fa-trash-alt" onclick="openDeleteModal(this)"></i></button>   
