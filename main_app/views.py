@@ -155,8 +155,28 @@ def questions(request):
 	
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
-	questions = list(DB.questions.find({'insti_id': insti_id}))
-	return render(request, 'src/html/questions.html', {"questions": questions, 'user_type': user_type})
+	
+	bucket = ''
+	class_id = request.GET.get('class_id')
+	if request.GET.get('questions') == 'bank':
+		bucket = 'bank'
+		if class_id:
+			questions = list(DB.questions.find({'insti_id': None, 'class_id': class_id}))
+		else:
+			questions = list(DB.questions.find({'insti_id': None}))
+	else:
+		bucket = 'question'
+		if class_id:
+			questions = list(DB.questions.find({'insti_id': insti_id, 'class_id': class_id}))
+		else:
+			questions = list(DB.questions.find({'insti_id': insti_id}))
+
+
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+
+
+
+	return render(request, 'src/html/questions.html', {"questions": questions, 'user_type': user_type, 'bucket': bucket, 'class_data': class_data, 'class_id': class_id})
 
 
 def questions_discovery(request):
@@ -301,12 +321,12 @@ def add_question(request):
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
 	sub = data.get('sub')
-	classes = data.get('classes')
+	classes = data.get('classes') or []
 
 	if request.method == 'POST':
 		requested_data = dict(request.POST)
 		question = requested_data.get('question')[0] if requested_data.get('question') else ''
-		explain = requested_data.get('explaination')[0] if requested_data.get('explaination') else ''
+		explain = requested_data.get('explanation')[0] if requested_data.get('explanation') else ''
 		options = requested_data.get('options[]')
 		correct_ans = requested_data.get('correctAnswers[]')
 		is_multi = True if requested_data.get('is_multi') else False
