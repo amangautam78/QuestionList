@@ -955,7 +955,15 @@ p {
             <div id="nav-part2">
 
               <h4>
+                {% if dashboard %}
+                <a style="  font-weight: 500" href="/dashboard">DASHBOARD</a>
+
+                {% else %}
                 <a style="  font-weight: 500" href="/login/">LOGIN</a>
+
+                {% endif %}
+
+                
               </h4>
             </div>
 
