@@ -18,8 +18,16 @@ from google.auth import jwt as gjwt
 
 
 def landing_page(request):
+	valid = False
+	data = {}
+	if request.COOKIES.get('t'):
+		valid, data = verify_token(request.COOKIES['t'])
+	dashboard = None
+	if valid:
+		dashboard = 'dashboard'
+
 	questions = list(DB.hero_questions.find())
-	return render(request, 'src/html/landing_page.html', {'hero_questions': questions})
+	return render(request, 'src/html/landing_page.html', {'hero_questions': questions, 'dashboard': dashboard})
 
 @csrf_exempt
 def login(request):
