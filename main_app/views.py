@@ -190,7 +190,22 @@ def questions_discovery(request):
 	
 	user_type = data.get('user_type')
 	insti_id = data.get('insti_id')
-	questions = list(DB.questions.find({'insti_id': insti_id}))
+
+	bucket = ''
+	class_id = request.GET.get('class_id')
+	if request.GET.get('questions') == 'bank':
+		bucket = 'bank'
+		if class_id:
+			questions = list(DB.questions.find({'insti_id': None, 'class_id': class_id}))
+		else:
+			questions = list(DB.questions.find({'insti_id': None}))
+	else:
+		bucket = 'question'
+		if class_id:
+			questions = list(DB.questions.find({'insti_id': insti_id, 'class_id': class_id}))
+		else:
+			questions = list(DB.questions.find({'insti_id': insti_id}))
+
 	que_count = 0
 	user_id = 1
 	temp_qp = DB.question_papers.find_one({'user_id': user_id, 'status': 'IN_QP'})
@@ -200,7 +215,16 @@ def questions_discovery(request):
 	else:
 		qp_temp_id = str(uuid4())
 		que_count = 0
-	return render(request, 'src/html/questions_discovery.html', {"questions": questions, 'que_count': que_count, 'qp_temp_id': qp_temp_id, 'user_type': user_type})
+	class_data = list(DB.classes.find({'insti_id': insti_id}).sort('_id', -1))
+	return render(request, 'src/html/questions_discovery.html', {
+		"questions": questions,
+		'que_count': que_count,
+		'qp_temp_id': qp_temp_id,
+		'user_type': user_type,
+		'class_data': class_data, 
+		'bucket': bucket,
+		'class_id': class_id
+		})
 
 
 @csrf_exempt
@@ -879,11 +903,17 @@ def analytics_index(request):
 	if not st:
 		return redirect('/')
 	user_type = data.get('user_type')
-	print(data.get('sub'))
-	insight_data = DB.insights.find_one({'sub': data.get('sub')})
+
+	insight_data = DB.insights.find_one({'sub': 'e4248f67-7a40-433c-b2d3-e7236b157673'})
+	actual_data = [25, 35, 45, 50, 55, 60, 70]  # Your actual data as a list or dictionary
+	projected_data = [75, 65, 55, 50, 45, 40, 30]  # Your projected data as a list or dictionary
+	exams_data = ["E1", "E2", "E3", "E4", "E5", "E6", "E7"]  # Your exams data as a list or dictionary
 	context = {
 					'user_type': user_type,
-					'insight_data': insight_data
+					'insight_data': insight_data,
+					'actual_data': actual_data,
+        			'projected_data': projected_data,
+        			'exams_data': json.dumps(exams_data)
 				}
 
 	return render(request, 'src/html/analytics_index.html', context)

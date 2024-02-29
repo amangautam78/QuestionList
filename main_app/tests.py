@@ -43,3 +43,169 @@ def generate_pid(supercategory, category, subcategory):
     return pid
 
 
+
+
+
+
+
+
+
+from vendor_management_system.settings import DB
+
+from uuid import uuid4
+
+
+
+data = [
+  {
+    "S.N.": 1,
+    "Question": "What is the process by which green plants make their food?",
+    "options": {
+      "1": {
+        "opt": "Photosynthesis",
+        "ans": "true"
+      },
+      "2": {
+        "opt": "Respiration",
+        "ans": "false"
+      },
+      "3": {
+        "opt": "Transpiration",
+        "ans": "false"
+      },
+      "4": {
+        "opt": "Digestion",
+        "ans": "false"
+      }
+    },
+    "Correct Option": "1) Photosynthesis",
+    "Explanation": "Photosynthesis is the process by which green plants use sunlight to synthesize food from carbon dioxide and water."
+  },
+  {
+    "S.N.": 2,
+    "Question": "What is the SI unit of electric current?",
+    "options": {
+      "1": {
+        "opt": "Ampere",
+        "ans": "true"
+      },
+      "2": {
+        "opt": "Volt",
+        "ans": "false"
+      },
+      "3": {
+        "opt": "Ohm",
+        "ans": "false"
+      },
+      "4": {
+        "opt": "Watt",
+        "ans": "false"
+      }
+    },
+    "Correct Option": "1) Ampere",
+    "Explanation": "The SI unit of electric current is ampere (A)."
+  },
+  {
+    "S.N.": 3,
+    "Question": "Which of the following is a non-metallic mineral?",
+    "options": {
+      "1": {
+        "opt": "Gold",
+        "ans": "false"
+      },
+      "2": {
+        "opt": "Diamond",
+        "ans": "false"
+      },
+      "3": {
+        "opt": "Coal",
+        "ans": "true"
+      },
+      "4": {
+        "opt": "Iron",
+        "ans": "false"
+      }
+    },
+    "Correct Option": "3) Coal",
+    "Explanation": "Coal is a non-metallic mineral."
+  },
+  {
+    "S.N.": 4,
+    "Question": "What is the pH of a neutral solution?",
+    "options": {
+      "1": {
+        "opt": "7",
+        "ans": "true"
+      },
+      "2": {
+        "opt": "6",
+        "ans": "false"
+      },
+      "3": {
+        "opt": "8",
+        "ans": "false"
+      },
+      "4": {
+        "opt": "9",
+        "ans": "false"
+      }
+    },
+    "Correct Option": "1) 7",
+    "Explanation": "A neutral solution has a pH of 7."
+  },
+  {
+    "S.N.": 5,
+    "Question": "What is the unit of force in the International System of Units (SI)?",
+    "options": {
+      "1": {
+        "opt": "Newton",
+        "ans": "true"
+      },
+      "2": {
+        "opt": "Joule",
+        "ans": "false"
+      },
+      "3": {
+        "opt": "Watt",
+        "ans": "false"
+      },
+      "4": {
+        "opt": "Volt",
+        "ans": "false"
+      }
+    },
+    "Correct Option": "1) Newton",
+    "Explanation": "The unit of force in the International System of Units (SI) is the Newton (N)."
+  }
+]
+
+
+
+
+def add_questions_to_question_bank(data):
+
+    class_id = '2823e361-3bfb-4ab9-9729-10d7507178f1'
+    class_name = 'CLASS 9 SCIENCE'
+    question_payload_list = [] 
+
+
+    for question in data:
+        question_payload = {}
+        question_payload['class_id'] = class_id
+        question_payload['class_name'] = class_name
+        question_payload['que'] ='<p>' + question.get('Question') + '</p>'
+        question_payload['explain'] = '<p>' + question.get('Correct Option') + '</p><p>' + question.get('Explanation') + '</p>'
+        question_payload['options'] = question.get('options')
+        question_payload['is_multi'] = False
+        question_payload['qid'] = str(uuid4())
+        question_payload_list.append(question_payload)
+    return question_payload_list
+
+#DB.questions.insert_many(add_questions_to_question_bank(data))
+
+
+
+
+
+
+
