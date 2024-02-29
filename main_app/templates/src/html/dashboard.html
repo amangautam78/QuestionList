@@ -9,13 +9,19 @@
 
 <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 
-<div class="container-fluid" style="width: 100%;height: 90vh;"  >
-  <!--  Row 1 -->
-  <div class="row">
+
 
  <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
+
+          {% if dashboard and dashboard.website_link %}
+
+            <iframe src="{{dashboard.website_link}}" width="100%" height="800px" frameborder="0"></iframe>
+
+          {% endif %}
+
+
          
               {% if data.total_students %}
 
@@ -117,11 +123,7 @@
     </div>
 
 
-  </div>
-</div>
-<div class="section bottom-0 text-center">
-  <h1 style="font-size: 4vw;color: #e3e3e3da;">Insight Assess</h1>
-</div>
+
 
 
 

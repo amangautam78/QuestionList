@@ -121,12 +121,15 @@ def dashboard(request):
 	
 	user_type = data.get('user_type')
 	class_id = data.get('class_id')
+	insti_id = data.get('insti_id')
+
+	dashboard = DB.dashboards.find_one({'insti_id': insti_id})
 
 	if user_type == 'STUDENT':
 		total_question_papers = list(DB.question_papers.aggregate([{'$match': {'class_id': class_id}}, {'$count': 'count'}]))
 		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
 		response = render(request, "src/html/dashboard.html",{"data": {
-			'total_question_papers': total_question_papers}, 'user_type': user_type})
+			'total_question_papers': total_question_papers}, 'user_type': user_type, 'dashboard': dashboard})
 
 
 	else:
@@ -139,7 +142,7 @@ def dashboard(request):
 		total_question_papers = total_question_papers[0]['count'] if total_question_papers else 0
 		total_questions = total_questions[0]['count'] if total_questions else 0
 
-		response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type})
+		response = render(request, "src/html/dashboard.html",{"data": {'total_students': total_students, 'total_question_papers': total_question_papers, 'total_questions': total_questions}, 'user_type': user_type, 'dashboard': dashboard})
 
 	return response
 
