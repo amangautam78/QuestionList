@@ -388,9 +388,10 @@ def verify_token(token):
 
 
 def logout(request):
-    del request.session['user_id']
-    del request.session['role']
-    return redirect('login')
+	response = HttpResponseRedirect('/')
+	response.delete_cookie("t")
+	return response
+
 
 
 

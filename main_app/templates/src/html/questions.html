@@ -227,9 +227,20 @@
 .rdio-primary input[type=radio]:checked + label::after {
   background-color: #fbc52d;
 }
+.card {
+  position: relative;
+}
 
-
-
+.oval-shape {
+    border-top-right-radius: 5px;
+    padding: 5px 10px;
+    background-color: var(--bs-yellow);
+    color: black;
+    font-weight: bold;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+}
 </style>
 
 
@@ -336,6 +347,8 @@
                     <strong>EXPLANATION</strong>
                     <p class="card-text">{{ question.explain|safe }}</p>
                   </div>
+
+                  <div class="text-center oval-shape">{{question.class_name}}</div>
                     
                 </div>
              <a class="show-more" href="/questions/{{question.qid}}">
