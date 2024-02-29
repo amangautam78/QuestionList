@@ -337,23 +337,15 @@
                                     </div>
                                     <!-- end card-body-->
                                 </div>
-                                <!-- end card-->
-                            </div>
-                            <!-- end col -->
-                        </div>
-                        {% endif %}
 
 
 
 
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-                                <div class="card"></div>
-                                <!-- end card-->
-                            </div>
+                      <div class="row">
+                        
                             <!-- end col-->
 
-                            <div class="col-xl-3 col-lg-6 order-lg-1">
+                            <div class="col-xl-6 col-lg-12 order-lg-1">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">Subject Wise Split</h4>
@@ -361,24 +353,6 @@
                                         <div id="average-sales" class="apex-charts mb-4 mt-4"
                                             data-colors="#727cf5,#0acf97,#fa5c7c,#ffbc00"></div>
 
-                                        <div class="chart-widget-list">
-                                            <p>
-                                                <i class="mdi mdi-square text-primary"></i> MATHS
-                                                <span class="float-end">Marks 300.56</span>
-                                            </p>
-                                            <p>
-                                                <i class="mdi mdi-square text-danger"></i> CHEMISTRY
-                                                <span class="float-end">Marks 135.18</span>
-                                            </p>
-                                            <p>
-                                                <i class="mdi mdi-square text-success"></i>PHYSICS
-                                                <span class="float-end">Marks 48.96</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <i class="mdi mdi-square text-warning"></i> OTHER
-                                                <span class="float-end">Marks 154.02</span>
-                                            </p>
-                                        </div>
                                     </div>
                                     <!-- end card-body-->
                                 </div>
@@ -386,7 +360,7 @@
                             </div>
                             <!-- end col-->
 
-                            <div class="col-xl-3 col-lg-6 order-lg-1">
+                            <div class="col-xl-6 col-lg-12 order-lg-1">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title mb-2">Improvement Areas</h4>
@@ -419,6 +393,21 @@
                             </div>
                             <!-- end col -->
                         </div>
+
+
+
+
+
+                                <!-- end card-->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        {% endif %}
+
+
+
+
+
                         <!-- end row -->
                     </div>
                     <!-- container -->
@@ -488,7 +477,10 @@
                 },
             };
             new ApexCharts(document.querySelector("#revenue-chart"), r).render();
-  
+            var actual_data = JSON.parse('{{ actual_data|escapejs }}');
+            var projected_data = JSON.parse('{{ projected_data|escapejs }}');
+            var exams_data = JSON.parse('{{ exams_data|safe }}');
+          
             e = ["#727cf5", "#e3eaef"];
             (t = o("#high-performing-product").data("colors")) && (e = t.split(","));
             
@@ -501,31 +493,18 @@
                 series: [
                     {
                         name: "Actual",
-                        data: [65, 59, 80, 81, 56, 89, 40, 32, 65, 59, 80, 81],
+                        data: actual_data,
                     },
                     {
                         name: "Projection",
-                        data: [89, 40, 32, 65, 59, 80, 81, 56, 89, 40, 65, 59],
+                        data: projected_data,
                     },
                 ],
                 zoom: { enabled: !1 },
                 legend: { show: !1 },
                 colors: e,
                 xaxis: {
-                    categories: [
-                        "Test1",
-                        "Test2",
-                        "Test3",
-                        "Test4",
-                        "Test5",
-                        "Test6",
-                        "Test7",
-                        "Test8",
-                        "Test9",
-                        "Test10",
-                        "Test11",
-                        "Test12",
-                    ],
+                    categories: exams_data,
                     axisBorder: { show: !1 },
                 },
                 yaxis: {
