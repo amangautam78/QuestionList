@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="icon" href="/static/assets/images/logos/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+  <link rel="canonical" href="https://insightassess.com">
+  <title>IA</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-408X5DQFYP"></script>
+ 
+</head>
+<style>
+    .body_bg {
+        background-image: url('/static/assets/images/products/school2.png');
+
+
+    }
+    img{
+        background-size:cover;
+      object-fit: cover;
+      object-position: 0; 
+    }
+    .page1 {
+      width: 100%;
+      min-height: auto;
+      position: relative;
+
+    }
+    .navbar-item img {
+      max-height: 5.75rem;
+    }
+
+
+    #nav-part2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1vw;
+
+    }
+
+    #nav-part2 h4 {
+      padding: 10px 20px;
+      border: 1px solid rgba(0, 0, 0, 0.443);
+      border-radius: 50px;
+      color: rgb(68, 68, 68);
+      font-size: 18px;
+      position: relative;
+      transition: all ease 0.4s;
+      overflow: hidden;
+    }
+
+    #nav-part2 h4::after {
+      content: "";
+      position: absolute;
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      bottom: -100%;
+      border-radius: 50%;
+      transition: all ease 0.4s;
+
+    }
+
+    #nav-part2 h4:hover::after {
+      bottom: 0;
+      border-radius: 0;
+    }
+
+    #nav-part2 h4 a {
+      text-decoration: none;
+      color: rgb(68, 68, 68);
+      z-index: 9;
+      position: relative;
+    }
+
+    #nav-part2 h4:hover a {
+      color: #EFEAE3;
+
+    }
+</style>
+
+<body class="body_bg">
+ <div class="main">
+    <div class="page1">
+
+        <nav class="navbar navbar-transparent fixed-top navbar-sticky p-0 m-0"
+          style="position: relative;top: 0; z-index: 99999;" role="navigation" aria-label="main navigation">
+          <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="navbar-brand">
+              <div class="navbar-item m-0 p-0">
+                <a  href="/">
+                <img src="/static/assets/images/logos/title_logo_new.png" class="m-0 p-0"
+                  style="font-weight: 500; width: 85px;"></a>
+              </div>
+            </div>
+          
+          </div>
+        </nav>
+  
+      </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row p-3">
+
+                {% for question in hero_questions %}
+
+
+                <div class="col-md-4 col-lg-4 col-sm-12 mb-3 mt-2">
+                    <div class="card  shadow" style="border: 1px solid rgb(230, 230, 230);border-radius: 20px ">
+                        <div class="card-body" style="background: linear-gradient(45deg, #20c997 0%, #ffeb3b 99%,#009688 100%);; border-radius: 20px;">
+                            <div class="question">
+                                <p class="card-text"><strong>QUESTION</strong></p>
+                                {{ question.que|safe}}
+                            </div>
+                            <hr>
+                            <div class="options">
+                                <p class="card-text"><strong>OPTIONS</strong></p>
+                                {% for index, option in question.options.items %}
+                                {% if option.ans == 'true' %}
+                                <p class="card-text">
+                                <div class="correct_option text-success">
+                                    Option {{index}}: {{ option.opt|safe }}
+                                </div>
+                                </p>
+                                {% else %}
+                                <p class="card-text">
+                                <div class="correct_option1">Option {{index}}: {{ option.opt|safe }}</div>
+                                </p>
+                                {% endif %}
+
+                                {% endfor %}
+                            </div>
+                            <hr>
+
+                            <div class="explain text-wrap">
+                                <strong>EXPLANATION</strong>
+                                <p class="card-text">{{ question.explain|safe }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+ </div>
+    <script src="https://unpkg.com/split-type"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+  
+  
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+    <!-- Scroll Trigger is needed for Scroll Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+    <!-- Three.js is needed for 3d Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+  
+    <!-- ControlKit is needed for Debug Panel -->
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script> <!-- Recommended -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script>
+       
+    function locomotive_scroll() {
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+      const locoScroll = new LocomotiveScroll({
+        el: document.querySelector(".main"),
+        smooth: true
+      });
+      // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+      locoScroll.on("scroll", ScrollTrigger.update);
+
+      // tell ScrollTrigger to use these proxy methods for the ".main" element since Locomotive Scroll is hijacking things
+      ScrollTrigger.scrollerProxy(".main", {
+        scrollTop(value) {
+          return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+        }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+        getBoundingClientRect() {
+          return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        },
+        // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+        pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
+      });
+
+
+
+
+      // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+      ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+      // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+      ScrollTrigger.refresh();
+
+
+    }
+    locomotive_scroll()
+
+            function scroll() {
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector('.main'),
+        smooth: true
+      });
+    }
+    scroll();
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
+</body>
+
+</html>

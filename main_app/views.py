@@ -927,9 +927,9 @@ def analytics_dashboard_projects(request):
     context ={}
     return render(request, 'src/html/analytics_dashboard_projects.html',context)
 
-    
-
-
+def blog_page(request):
+	questions = list(DB.hero_questions.find())
+	return render(request, 'src/html/blog_page.html', {'hero_questions': questions})
 
 
 
