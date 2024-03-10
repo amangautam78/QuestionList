@@ -513,7 +513,7 @@ def start_exam(request):
 		prev_btn = 'disable'
 
 	print(remaining_time)
-
+	#print('rendering exam_questions.html')
 	return render(request, 'src/html/exam_questions.html', {
 		'prev_btn': prev_btn,
 		'next_btn': next_btn, 
@@ -542,6 +542,7 @@ def save_answer(request):
 	selected = requested_data.get('selected_options[]') if requested_data.get('selected_options[]') else []
 	question = DB.questions.find_one({'qid': qid}, {'options': 1})
 	ans = []
+
 	for key, val in question.get('options').items():
 		if val.get('ans') == 'true':
 			ans.append(key)
@@ -945,3 +946,74 @@ def blog_page(request):
 
 
 
+######################################################next-save-functionality code testing
+'''
+def start_exam_next(request):
+	print('Exam started from start_exam_next')
+	token = request.COOKIES.get('t')
+	st, data = verify_token(token)
+	if not st:
+		return redirect('/')
+
+	student_id = data.get('sub')
+	user_type = data.get('user_type')
+	qp_id = request.GET.get('qp_id')
+	
+	que_number = int(request.GET.get('que_num')) - 1 if request.GET.get('que_num') else 0
+
+	q_num = que_number + 1
+	sheet = DB.answer_sheet.find_one({'student_id': student_id, 'qp_id': qp_id}) or {}
+	
+	if not sheet:
+		start_time = datetime.now()
+		que_paper = DB.question_papers.find_one({'qp_id': qp_id}, {'_id': 0, 'duration': 1, 'qp_id': 1})
+		duration = int(que_paper.get('duration')) * 60 if que_paper.get('duration') else 120 * 60
+		DB.answer_sheet.insert_one({'student_id': student_id, 'qp_id': qp_id, 'start_time': start_time, 'duration': duration})
+		remaining_time =  duration
+
+	if sheet:
+		start_time = sheet.get('start_time')  # Assuming sheet.get('start_time') returns a datetime object
+		current_time = datetime.now()
+		time_difference = current_time - start_time
+		time_difference_seconds = time_difference.total_seconds()
+		remaining_time = sheet.get('duration') - time_difference_seconds
+
+	selected_data = []
+	answered = []
+	if sheet.get('answers'):
+		answered = list(map(int, list(sheet.get('answers').keys())))
+	sheet_selected_data = sheet.get('answers', {}).get(str(q_num))
+	if sheet_selected_data:
+		selected_data = sheet_selected_data.get('selected')
+	question = list(DB.question_papers.aggregate([{'$match': {'qp_id': qp_id}}, {
+        '$project': {
+            'qp_items_length': {'$size': '$qp_items'},
+            'question': {'$arrayElemAt': ['$qp_items', que_number]}  # Retrieve the first question from qp_items array
+        }
+    }]))
+	if question:
+		qp_items_length = list(range(1, question[0]['qp_items_length'] + 1))
+		question = question[0]['question']
+		
+	next_btn = None
+	prev_btn = None
+	if len(qp_items_length) == que_number + 1:
+		next_btn = 'disable'
+	if que_number == 0:
+		prev_btn = 'disable'
+
+	print(remaining_time)
+
+	return render(request, 'src/html/exam_questions_next.html', {
+		'prev_btn': prev_btn,
+		'next_btn': next_btn, 
+		'qp_id': qp_id, 
+		'question': question, 
+		'qp_items_length': qp_items_length, 
+		'que_label': que_number + 1, 
+		'selected_data': selected_data, 
+		'answered': answered,
+		'user_type': user_type,
+		'remaining_time': remaining_time
+		})
+'''

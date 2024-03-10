@@ -49,6 +49,9 @@ urlpatterns = [
     path('inquiry', views.inquiry),
     path('take-exam', views.take_exam),
     path('start-exam/', views.start_exam),
+
+    #path('start-exam/', views.start_exam_next),
+
     path('save-answer/', views.save_answer),
     path('save-final-sheet/', views.save_final_sheet),
     path('student-answer-sheet/', views.student_answer_sheet),

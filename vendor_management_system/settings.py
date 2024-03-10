@@ -113,8 +113,8 @@ DATABASES = {
 
 import pymongo
 
-# CONNECTION = pymongo.MongoClient('mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/?retryWrites=true&w=majority')
-CONNECTION = pymongo.MongoClient('mongodb://localhost:27017')
+CONNECTION = pymongo.MongoClient('mongodb+srv://naga_1:nagaSSNabc@cluster0.har30oi.mongodb.net/?retryWrites=true&w=majority')
+#CONNECTION = pymongo.MongoClient('mongodb://localhost:27017')
 
 DB = CONNECTION.ql
 

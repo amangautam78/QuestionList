@@ -475,6 +475,7 @@ body{
 
 
 
+
     	<!-- Info Box -->
 	    <div class="col-12 col-md-8">
 		    <div class="info_box activeInfo">
@@ -511,10 +512,11 @@ body{
                   </div>
 
 
-
-            <div class="text-end">
+            <!--
+                <div class="text-end">
                   <button class="btn btn-outline-success save_answer" onclick="saveAnswer('{{question.qid}}')"> SAVE </button>  
             </div>
+            -->
          
                     
                 </div>
@@ -550,7 +552,11 @@ body{
                     {% if que_num in answered %}
 			         <button class="btn btn-success response_button" id="res-{{que_num}}" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
                      {% else %}
-                     <button class="btn btn-secondary response_button" id="res-{{que_num}}" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
+                     <button class="btn {% if prev_btn %}
+                    <button class="btn btn-outline-primary m-1 prev" onclick="prevQuestion('{{que_label}}')">disabled>PREVIOUS</button>
+                    {% else %}
+                    <button class="btn btn-outline-primary m-1 prev" onclick="prevQuestion('{{que_label}}')">PREVIOUS</button>
+                    {% endif %} response_button" id="res-{{que_num}}" onclick="toQuestion('{{que_num}}')">{{ que_num }}</button>
                     {% endif %}
                 {% endfor %}
 			</div>
@@ -612,6 +618,7 @@ function prevQuestion(que_number) {
 
 function nextQuestion(que_number) {
     var qp_id = '{{ qp_id|safe }}';
+    saveAnswer('{{question.qid}}')
     que_number = parseInt(que_number);
     window.location.href = "/start-exam/?qp_id=" + qp_id + '&que_num=' + (que_number + 1);
 }
@@ -656,6 +663,7 @@ function saveAnswer(qid) {
 }
 
 function nextSubmit () {
+    saveAnswer('{{question.qid}}')
     var qp_id = '{{ qp_id|safe }}';
         $.ajax({
         url: "/save-final-sheet/",
